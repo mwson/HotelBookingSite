@@ -61,4 +61,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.listMember(key);
 	}
 
+	@Override
+	public void updateMember(MemberVO vo) {
+
+		memberDao.updateMember(vo);
+	}
+
 }
