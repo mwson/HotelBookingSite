@@ -7,7 +7,7 @@
 		WHERE id=#{id}
 		ORDER BY qseq DESC
 	</select>
-	
+	 
 	<select id="listAllQna" resultType="qna">
 		SELECT *
 		FROM qna
