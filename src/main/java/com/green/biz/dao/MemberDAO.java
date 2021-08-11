@@ -77,4 +77,8 @@ public class MemberDAO {
 	public List<MemberVO> listMember(String key) {
 		return mybatis.selectList("MemberDAO.listMember", key);
 	}
+	
+	public void updateMember(MemberVO vo) {
+		mybatis.update("MemberDAO.updateMember", vo);
+	}
 }

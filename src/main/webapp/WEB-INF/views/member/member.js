@@ -49,7 +49,7 @@ function go_save() {
 		$("#pwd").focus();
 		return false;
 	} else if ($("#pwdcheck").val() == "") {
-		alert("비밀번호 확인를 입력해 주세요!");
+		alert("비밀번호 확인을 입력해 주세요!");
 		$("#pwdcheck").focus();
 		return false;
 	} else if($("#pwd").val() != $("#pwdcheck").val()) {
@@ -65,6 +65,15 @@ function go_save() {
 	}
 }
 
+function go_update() {
+	if($("#pwd").val() == "") {
+		alert("비밀번호를 입력해 주세요!");
+		$("#pwd").focus();
+		return false;
+	}  else {
+		$("#update").attr("action", "update").submit();
+	}
+}
 /*
  * 우편번호 찾기 창 오픈
  */

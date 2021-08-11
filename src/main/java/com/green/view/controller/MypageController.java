@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import com.green.biz.cart.CartService;
 import com.green.biz.dto.CartVO;
 import com.green.biz.dto.MemberVO;
 import com.green.biz.dto.OrderVO;
+import com.green.biz.member.MemberService;
 import com.green.biz.order.OrderService;
 
 @Controller
@@ -25,6 +27,8 @@ public class MypageController {
 	private CartService cartService;
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping(value = "/cart_insert", method = RequestMethod.POST)
 	public String CartInsert(CartVO vo, Model model, HttpSession session) {
@@ -262,4 +266,28 @@ public class MypageController {
 		return "mypage/mypage";
 	}
 	
+	@RequestMapping(value = "/update_member", method = RequestMethod.GET)
+	public String updateMemverView(HttpSession session, Model model) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		
+		if(loginUser == null) {
+			return "member/login";
+		} else {
+			model.addAttribute("loginUser", loginUser);			
+		}
+		return "mypage/updateMember";
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String joinAction(@RequestParam(value = "addr1")String addr1, MemberVO vo, Model model) {
+		vo.setAddress(addr1);
+		memberService.updateMember(vo);
+		String id = vo.getId();
+		MemberVO memberVO = new MemberVO();
+		memberVO = memberService.getMember(id);
+		model.addAttribute("loginUser", memberVO);		
+		
+		return "mypage/mypage";
+	}	
+		
 }
