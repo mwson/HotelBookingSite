@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDAO">	
+	<select id="listBoard" resultType="board">
+		SELECT *
+		FROM board
+		ORDER BY indate DESC
+	</select>
+	
+	<select id="getBoard" parameterType="int" resultType="board">
+		SELECT *
+		FROM board
+		WHERE bseq=#{bseq}
+	</select>
+	
+	<insert id="insertBoard">
+		INSERT INTO board(bseq, subject, content, image)
+		VALUES(board_seq.NEXTVAL, #{subject}, #{content}, #{image})
+	</insert>
+	
+	<update id="updateBoard">
+		UPDATE board
+		SET subject=#{subject}, content=#{content}, image=#{image}
+		WHERE bseq=#{bseq}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM board
+		WHERE bseq=#{bseq}
+	</delete>
+</mapper>
