@@ -3,6 +3,13 @@
 <%@include file="../header.jsp"%>
 <%@include file="../sub_menu.jsp"%>
 
+<script type="text/javascript">
+	function admin_product_list() {
+		var theForm = document.frm;
+		theForm.action = "admin_product_list";
+		theForm.submit();
+	}
+</script>
 <article>
 	<h1>상품수정</h1>  
 	<form name="frm" id="update_form" method="post" enctype="multipart/form-data">
@@ -97,7 +104,7 @@
 		</table>
 		
 		<input class="btn" type="button" value="수정" onClick="go_mod_save('${productVO.pseq}')">           
-		<input class="btn" type="button" value="취소" onClick="go_mov1()">
+		<input class="btn" type="button" value="취소" onClick="admin_product_list()">
 	</form> 
 </article>
 

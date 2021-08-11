@@ -17,6 +17,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.green.biz.admin.AdminService;
+import com.green.biz.board.BoardService;
+import com.green.biz.dto.BoardVO;
 import com.green.biz.dto.MemberVO;
 import com.green.biz.dto.OrderVO;
 import com.green.biz.dto.ProductVO;
@@ -44,6 +46,8 @@ public class AdminController {
 	private MemberService memberService;
 	@Autowired
 	private QnaService qnaService;
+	@Autowired
+	private BoardService boardService;
 	
 	@RequestMapping(value = "/admin_login_form")
 	public String adminLoginView() {
@@ -339,6 +343,160 @@ public class AdminController {
 			qnaService.updateQna(vo);
 			
 			return "redirect:admin_qna_list";
+		}
+	}
+	
+	/*
+	 * 공지사항 목록 출력
+	 */
+	@RequestMapping(value = "/admin_board_list")
+	public String adminBoardList(HttpSession session, Model model) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/main";
+		} else {
+			List<BoardVO> boardList = boardService.listBoard();
+			
+			model.addAttribute("boardList", boardList);
+			
+			return "admin/board/boardList";
+		}
+	}
+	
+	/*
+	 * 공지사항 세부내용 출력
+	 */
+	@RequestMapping(value = "/admin_board_detail")
+	public String adminBoardDetail(HttpSession session, BoardVO vo, Model model) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/main";
+		} else {
+			BoardVO boardVO = boardService.getBoard(vo.getBseq());
+			
+			model.addAttribute("boardVO", boardVO);
+			
+			return "admin/board/boardDetail";
+		}
+	}
+	
+	/*
+	 * 공지사항 등록 화면 출력
+	 */
+	@RequestMapping(value = "/admin_board_write_form")
+	public String adminBoardWriteForm(HttpSession session, Model model) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/main";
+		} else {
+			return "admin/board/boardWrite";
+		}
+	}
+	
+	/*
+	 * 공지사항 등록
+	 */
+	@RequestMapping(value = "/admin_board_write")
+	public String adminBoardWrite(HttpSession session,
+			@RequestParam(value = "board_image")MultipartFile uploadFile, BoardVO vo) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/main";
+		} else {
+			String fileName = "";
+			
+			if(!uploadFile.isEmpty()) {	// 화면에서 product_image 필드에 이미지가 입력된 경우
+				fileName = uploadFile.getOriginalFilename();
+				vo.setImage(fileName);	// VO 객체에 이미지파일명 저장
+				
+				// 이미지 파일을 업로드 하기 위해 이미지 저장 실제 경로를 구한다.
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/board_images/");
+				//System.out.println("이동 이미지 경로: " + image_path);				
+				
+				try {
+					File file = new File(image_path + fileName);
+					uploadFile.transferTo(file);	// 상품이미지 저장 경로로 이동시킴
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			boardService.insertBoard(vo);
+			
+			return "redirect:admin_board_list";
+		}
+	}
+	
+	/*
+	 * 공지사항 업데이트 화면 출력
+	 */
+	@RequestMapping(value = "/admin_board_update_form")
+	public String adminBoardUpdateForm(HttpSession session, BoardVO vo, Model model) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/main";
+		} else {
+			BoardVO boardVO = boardService.getBoard(vo.getBseq());
+			
+			model.addAttribute("boardVO", boardVO);
+			
+			return "admin/board/boardUpdate";
+		}
+	}
+	
+	/*
+	 * 공지사항 업데이트
+	 */
+	@RequestMapping(value = "/admin_board_update")
+	public String adminBoardUpdate(HttpSession session,
+			@RequestParam(value = "board_image")MultipartFile uploadFile, BoardVO vo) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/main";
+		} else {
+			String fileName = "";
+			
+			if(!uploadFile.isEmpty()) {	// 화면에서 product_image 필드에 이미지가 입력된 경우
+				fileName = uploadFile.getOriginalFilename();
+				vo.setImage(fileName);	// VO 객체에 이미지파일명 저장
+				
+				// 이미지 파일을 업로드 하기 위해 이미지 저장 실제 경로를 구한다.
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/board_images/");
+				//System.out.println("이동 이미지 경로: " + image_path);				
+				
+				try {
+					File file = new File(image_path + fileName);
+					uploadFile.transferTo(file);	// 상품이미지 저장 경로로 이동시킴
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			boardService.updateBoard(vo);
+			
+			return "redirect:admin_board_detail?bseq=" + vo.getBseq();
+		}
+	}
+	
+	/*
+	 * 공지사항 삭제
+	 */
+	@RequestMapping(value = "/admin_board_delete")
+	public String adminBoardDelete(HttpSession session, BoardVO vo) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/main";
+		} else {
+			boardService.deleteBoard(vo.getBseq());
+			
+			return "redirect:admin_board_list";
 		}
 	}
 	
