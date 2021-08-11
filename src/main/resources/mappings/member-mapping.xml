@@ -56,4 +56,12 @@
 		WHERE name LIKE '%' || #{key} || '%'
 		ORDER BY regdate DESC
 	</select>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="updateMember" parameterType="member">
+		update member
+		set pwd=#{pwd}, email=#{email}, zip_num=#{zip_num}, address=#{address}, phone=#{phone} 
+		where id=#{id}
+	</update>
+	
 </mapper>

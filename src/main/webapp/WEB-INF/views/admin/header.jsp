@@ -10,6 +10,7 @@
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="admin/product/product.js"></script>
+<script type="text/javascript" src="admin/board/board.js"></script>
 </head>
 <body onload="go_ab()">	<!-- 페이지 로드시에 제품의 순매출 계산 -->
 	<div id="wrap">
