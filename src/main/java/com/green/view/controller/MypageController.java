@@ -8,12 +8,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.green.biz.cart.CartService;
+import com.green.biz.dto.AddressVO;
 import com.green.biz.dto.CartVO;
 import com.green.biz.dto.MemberVO;
 import com.green.biz.dto.OrderVO;
@@ -279,7 +279,7 @@ public class MypageController {
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String joinAction(@RequestParam(value = "addr1")String addr1, MemberVO vo, Model model) {
+	public String updateMember(@RequestParam(value = "addr1")String addr1, MemberVO vo, Model model) {
 		vo.setAddress(addr1);
 		memberService.updateMember(vo);
 		String id = vo.getId();
@@ -290,4 +290,18 @@ public class MypageController {
 		return "mypage/mypage";
 	}	
 		
+	@RequestMapping(value = "/match_pwd", method = RequestMethod.GET)
+	public String matchPassword(HttpSession session, Model model) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		String OriginPwd = loginUser.getPwd();
+		model.addAttribute("originPwd", OriginPwd);
+		return "mypage/matchPassword";
+	}
+	
+	@RequestMapping(value = "/password_check", method = RequestMethod.GET)
+	public String passwordCheck() {	
+		return "mypage/updateMember";		
+	}
+
+	
 }
