@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -266,28 +265,61 @@ public class MypageController {
 		return "mypage/mypage";
 	}
 	
-	@RequestMapping(value = "/update_member", method = RequestMethod.GET)
+	@RequestMapping(value = "/update_member_form")
 	public String updateMemverView(HttpSession session, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
 			return "member/login";
 		} else {
-			model.addAttribute("loginUser", loginUser);			
+			MemberVO memberVO = memberService.getMember(loginUser.getId());
+			
+			model.addAttribute("memberVO", memberVO);
+			
+			return "mypage/updateMember";
 		}
-		return "mypage/updateMember";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String joinAction(@RequestParam(value = "addr1")String addr1, MemberVO vo, Model model) {
-		vo.setAddress(addr1);
-		memberService.updateMember(vo);
-		String id = vo.getId();
-		MemberVO memberVO = new MemberVO();
-		memberVO = memberService.getMember(id);
-		model.addAttribute("loginUser", memberVO);		
+	@RequestMapping(value = "/update_member")
+	public String updateMember(HttpSession session,
+			@RequestParam(value = "addr1")String addr1, MemberVO vo, Model model) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
-		return "mypage/mypage";
+		if(loginUser == null) {
+			return "member/login";
+		} else {
+			vo.setAddress(addr1);
+			
+			memberService.updateMember(vo);
+			
+			return "redirect:update_member_form";
+		}
 	}	
 		
+	@RequestMapping(value = "/match_pwd", method = RequestMethod.GET)
+	public String matchPassword(HttpSession session, Model model) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		
+		if(loginUser == null) {
+			return "member/login";
+		} else {
+			String OriginPwd = loginUser.getPwd();
+			
+			model.addAttribute("originPwd", OriginPwd);
+			
+			return "mypage/matchPassword";
+		}
+	}
+	
+	@RequestMapping(value = "/password_check", method = RequestMethod.GET)
+	public String passwordCheck(HttpSession session) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		
+		if(loginUser == null) {
+			return "member/login";
+		} else {
+			return "mypage/updateMember";
+		}
+	}
+	
 }

@@ -37,3 +37,13 @@ function go_cart_delete() {
 function go_order_insert() {
 	$("#theform").attr("action", "order_insert").submit();
 }
+
+function go_update() {
+	if($("#pwd").val() == "") {
+		alert("비밀번호를 입력해 주세요!");
+		$("#pwd").focus();
+		return false;
+	} else {
+		$("#update").attr("action", "update_member").submit();
+	}
+}
