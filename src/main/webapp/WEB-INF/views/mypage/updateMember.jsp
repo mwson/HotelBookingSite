@@ -11,31 +11,31 @@
 		<fieldset>
 			<legend>Basic Info</legend>
 			<label>User ID</label>
-			<input type="text" name="id" id="id" value = "${loginUser.id }" readonly="readonly">
+			<input type="text" name="id" id="id" readonly="readonly" value="${memberVO.id}">
 
 			<br>
 			<label>Password</label> 
-			<input type="password" name="pwd" id="pwd" value = "${loginUser.pwd }">
+			<input type="password" name="pwd" id="pwd" value="${memberVO.pwd}">
 			<br> 
 			<label>Name</label>
-			<input type="text" name="name" id="name" readonly="readonly" value = "${loginUser.name }">
+			<input type="text" name="name" id="name" readonly="readonly" value="${memberVO.name}">
 			<br> 
 			<label>E-Mail</label>
-			<input type="text" name="email" value = "${loginUser.email }">
+			<input type="text" name="email" value="${memberVO.email}">
 			<br>
 		</fieldset>
 		
 		<fieldset>
 			<legend>Optional</legend>
 			<label>Zip Code</label> 
-			<input type="text" name="zip_num" size="10" value = "${loginUser.zip_num }">      
+			<input type="text" name="zip_num" size="10" value="${memberVO.zip_num}">      
 			<input type="button" value="주소 찾기" class="dup" onclick="post_zip()">
 			<br>
 			<label>Address</label> 
-			<input type="text" name="addr1" size="50"value = "${loginUser.address }">
+			<input type="text" name="addr1" size="50" value="${memberVO.address}">
 			<br>
 			<label>Phone Number</label> 
-			<input type="text" name="phone" value="${loginUser.phone }">
+			<input type="text" name="phone" value="${memberVO.phone}">
 			<br>
 		</fieldset>
 		

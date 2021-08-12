@@ -59,9 +59,9 @@
 	
 	<!-- 회원 정보 수정 -->
 	<update id="updateMember" parameterType="member">
-		update member
-		set pwd=#{pwd}, email=#{email}, zip_num=#{zip_num}, address=#{address}, phone=#{phone} 
-		where id=#{id}
+		UPDATE member
+		SET pwd=#{pwd}, email=#{email}, zip_num=#{zip_num}, address=#{address}, phone=#{phone} 
+		WHERE id=#{id}
 	</update>
 	
 </mapper>
