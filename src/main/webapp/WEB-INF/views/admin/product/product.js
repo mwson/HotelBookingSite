@@ -100,13 +100,6 @@ function go_save() {
 	}
 }
 
-/*
- * 상품 리스트로 이동
- */
-function go_mov1() {
-	$("#frm").attr("action", "admin_product_list").submit();
-}
-
 /* 
  * 상품 상세보기 요청 함수
  */
@@ -175,8 +168,4 @@ function go_mod_save(pseq) {
 			$("#update_form").attr("action", "admin_product_update").submit();
 		}
 	}
-}
-
-function go_mov2() {
-	$("#write_form").attr("action", "admin_product_list").submit();
 }

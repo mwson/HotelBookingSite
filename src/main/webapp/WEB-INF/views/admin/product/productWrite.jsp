@@ -3,6 +3,13 @@
 <%@include file="../header.jsp"%>
 <%@include file="../sub_menu.jsp"%>
 
+<script type="text/javascript">
+	function go_admin_product_list() {
+		var theForm = document.frm;
+		theForm.action = "admin_product_list";
+		theForm.submit();
+	}
+</script>
 <article>
 	<h1>상품등록</h1>  
 	<!-- [1] 파일을 업로드 하기 위해서는 폼태그를 post 방식으로 전송하고, 인코딩 타입을 multipart/form-data 로 지정해야 한다. -->
@@ -56,7 +63,7 @@
 		</table>
 		
 		<input class="btn" type="button" value="등록" onClick="go_save()">           
-		<input class="btn" type="button" value="취소" onClick="go_mov2()">
+		<input class="btn" type="button" value="취소" onClick="go_admin_product_list()">
 	</form> 
 </article>
 

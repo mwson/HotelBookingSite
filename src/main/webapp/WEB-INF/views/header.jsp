@@ -11,7 +11,7 @@
 <script type="text/javascript" src="member/member.js"></script>
 <script type="text/javascript" src="product/product.js"></script>
 <script type="text/javascript" src="member/findIdAndPassword.js"></script>
-<script type="text/javascript" src="mypage/mypage.js"></script> 
+<script type="text/javascript" src="mypage/mypage.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -56,6 +56,10 @@
 					<li>/</li>
 					<li>
 						<a href="qna_list">Q&amp;A(1:1)</a>
+					</li>
+					<li>/</li>
+					<li>
+						<a href="board_list">공지사항</a>
 					</li>
 				</ul>
 			</nav>

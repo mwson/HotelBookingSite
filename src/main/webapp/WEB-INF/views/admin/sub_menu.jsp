@@ -6,6 +6,7 @@
 		<li><a href='admin_order_list'>주문리스트</a></li>
 		<li><a href='admin_member_list'>회원리스트</a></li>
 		<li><a href='admin_qna_list'>Q&amp;A리스트</a></li>
+		<li><a href='admin_board_list'>공지사항리스트</a></li>
 		<li><a href='admin_sales_record_form'>제품별 판매 실적</a></li>
 	</ul>
 </nav>
