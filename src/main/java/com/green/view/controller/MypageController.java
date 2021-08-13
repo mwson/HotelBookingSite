@@ -259,11 +259,11 @@ public class MypageController {
 				// 주문요약정보를 요약 리스트에 저장
 				orderList.add(vo3);
 			}
-			model.addAttribute("title", "(총 주문 내역)");
+			model.addAttribute("title", "(진행 완료 주문 내역)");
 			model.addAttribute("orderList", orderList);
 		}
 		
-		return "mypage/mypage";
+		return "mypage/mypage2";
 	}
 	
 	@RequestMapping(value = "/update_member", method = RequestMethod.GET)
