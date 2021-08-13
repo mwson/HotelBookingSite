@@ -26,7 +26,7 @@
 						<fmt:formatNumber value="${orderVO.price2}" type="currency"/>
 					</td>
 					<td>
-						<a href="order_detail?oseq=${orderVO.oseq}"> 조회 </a>
+						<a href="order_detail?oseq=${orderVO.oseq}"> 조회 </a><!--  -->
 					</td>
 				</tr>
 			</c:forEach>    
