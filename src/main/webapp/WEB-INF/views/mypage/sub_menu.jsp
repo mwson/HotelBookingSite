@@ -15,7 +15,7 @@
 			<ul class="dep2" style="display:none">
 				<li><a href="cart_list">장바구니(cart)내역</a></li>
 				<li><a href="mypage">진행중인 주문내역</a></li>
-				<li><a href="order_all">총 주문내역</a></li>
+				<li><a href="order_all">총 주문내역</a></li><!--  -->
 			</ul>
 			</ul>
 	<ul class="dep1_1">
