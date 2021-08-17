@@ -173,7 +173,7 @@ public class MypageController {
 				
 				orderList.add(vo3);
 			}
-			model.addAttribute("title", "(진행중인 주문 내역)");
+			model.addAttribute("title", "진행중인 주문 내역");
 			model.addAttribute("orderList", orderList);
 		}
 		
@@ -228,12 +228,16 @@ public class MypageController {
 			// 사용자의 전체 주문 조회
 			vo.setId(loginUser.getId());
 			vo.setResult("");	// 처리결과를 지정하지 않음
+			
 			List<Integer> oseqList = orderService.selectSeqOrdering(vo);
 			
 			// 요약정보 목록 저장용 List변수
 			List<OrderVO> orderList = new ArrayList<>();
+			List<OrderVO> orderListNext = new ArrayList<>();
+			
 			for(int oseq : oseqList) {
-				// 주문목록 조회를 위한 입력 설정
+				// 주문목록 조회를 위한 입력 설정				
+				
 				OrderVO vo2 = new OrderVO();
 				vo2.setId(loginUser.getId());
 				vo2.setResult("");
@@ -244,28 +248,46 @@ public class MypageController {
 				// 주문 요약정보 생성
 				OrderVO vo3 = new OrderVO();
 				vo3 = orderList2.get(0);
-				if(orderList2.size() > 1) {
-					vo3.setPname(vo3.getPname() + " 외 " + (orderList2.size() -1) + "건");
-				} else {
-					vo3.setPname(vo3.getPname());
-				}
-				
-				int totalPrice = 0;
-				for(OrderVO vo4 : orderList2) {
-					totalPrice += vo4.getQuantity() * vo4.getPrice2();
-				}
-				vo3.setPrice2(totalPrice);
-				
-				// 주문요약정보를 요약 리스트에 저장
-				orderList.add(vo3);
+				if(vo3.getResult().equals("2")) {
+					if(orderList2.size() > 1) {
+						vo3.setPname(vo3.getPname() + " 외 " + (orderList2.size() -1) + "건");
+					} else {
+						vo3.setPname(vo3.getPname());
+					}
+					
+					int totalPrice = 0;
+					for(OrderVO vo4 : orderList2) {
+						totalPrice += vo4.getQuantity() * vo4.getPrice2();
+					}
+					vo3.setPrice2(totalPrice);
+					
+					// 주문요약정보를 요약 리스트에 저장
+					orderList.add(vo3);
+				} else if (vo3.getResult().equals("1")) {
+					if(orderList2.size() > 1) {
+						vo3.setPname(vo3.getPname() + " 외 " + (orderList2.size() -1) + "건");
+					} else {
+						vo3.setPname(vo3.getPname());
+					}
+					
+					int totalPrice = 0;
+					for(OrderVO vo4 : orderList2) {
+						totalPrice += vo4.getQuantity() * vo4.getPrice2();
+					}
+					vo3.setPrice2(totalPrice);
+					
+					// 주문요약정보를 요약 리스트에 저장
+					orderListNext.add(vo3);
+				}				
 			}
-			model.addAttribute("title", "(진행 완료 주문 내역)");
-			model.addAttribute("orderList", orderList);
+			
+			model.addAttribute("orderList1", orderList);
+			model.addAttribute("orderList2", orderListNext);
 		}
 		
 		return "mypage/mypage2";
 	}
-	
+
 	@RequestMapping(value = "/update_member", method = RequestMethod.GET)
 	public String updateMemverView(HttpSession session, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");

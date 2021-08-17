@@ -2,7 +2,7 @@
 
 <%@include file="../header.jsp"%>  
 <%@include file="sub_img.html"%> 
-<%@include file="sub_menu.jsp"%>       
+<%@include file="sub_menu.jsp"%>     
 
 <article style="margin-bottom: 20px">
 	<h2>Cart List</h2>

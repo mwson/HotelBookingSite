@@ -15,7 +15,7 @@
 				<th>결제 금액</th>
 				<th>주문 상세</th>   
 			</tr>
-			<c:forEach items="${orderList}" var="orderVO">
+			<c:forEach items="${orderList1}" var="orderVO">
 				<tr>  
 					<td>
 						<fmt:formatDate value="${orderVO.indate}" type="date"/>
@@ -48,18 +48,18 @@
 				<th>결제 금액</th>
 				<th>주문 상세</th>   
 			</tr>
-			<c:forEach items="${orderList}" var="orderVO">
+			<c:forEach items="${orderList2}" var="orderVO2">
 				<tr>  
 					<td>
-						<fmt:formatDate value="${orderVO.indate}" type="date"/>
+						<fmt:formatDate value="${orderVO2.indate}" type="date"/>
 					</td>
-					<td>${orderVO.oseq}</td>    
-					<td>${orderVO.pname}</td>
+					<td>${orderVO2.oseq}</td>    
+					<td>${orderVO2.pname}</td>
 					<td>
-						<fmt:formatNumber value="${orderVO.price2}" type="currency"/>
+						<fmt:formatNumber value="${orderVO2.price2}" type="currency"/>
 					</td>
 					<td>
-						<a href="order_detail?oseq=${orderVO.oseq}"> 조회 </a>
+						<a href="order_detail?oseq=${orderVO2.oseq}"> 조회 </a>
 					</td>
 				</tr>
 			</c:forEach>    
