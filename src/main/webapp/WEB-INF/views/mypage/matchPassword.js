@@ -1,7 +1,6 @@
-/*
+/**
  * MatchPassword JS.
  */
-
 function passwordCheck2() {	
 	var originPwd = $("#originPwd").val();
 	var inputPwd = $("#inputPwd").val();
@@ -11,10 +10,10 @@ function passwordCheck2() {
 		$("#inputPwd").focus();
 		return false;
 	} else if (originPwd != inputPwd) {	
-		alert("비밀번호가 일치하지 않습니다!");
+		alert("비밀번호가 일치하지 않습니다.");
 		return false;
 	} else if (originPwd == inputPwd) {
-		opener.document.location.href="update_member_form";
+		opener.document.location.href="update_member";
 		self.close();
 	}
 }

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class CartVO {
 	
 	private int cseq;
-	private String id;	// »ç¿ëÀÚ ID
+	private String id;
 	private int pseq;
 	private String mname;
 	private String pname;

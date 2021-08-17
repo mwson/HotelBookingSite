@@ -23,21 +23,13 @@ public class MemberController {
 	private MemberService memberService;
 	
 	/*
-	 * 로그인 화면 표시
+	 * "로그인" 화면
 	 */
 	@RequestMapping(value = "/login_form", method = RequestMethod.GET)
 	public String loginView() {
 		return "member/login";
 	}
 	
-	/*
-	 * 사용자 로그인 처리
-	 * 
-	 * id, pwd 사용자 입력 얻어옴 -> 커맨드 객체
-	 * loginID를 가지고 id, pwd 인증
-	 * 사용자 인증 후 사용자 정보 조회하여 index로 redirect: redirect:/index
-	 * 사용자 인증 실패시: login_fail.jsp 표시
-	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginAction(MemberVO vo, Model model) {
 		int result = memberService.loginID(vo);
@@ -77,7 +69,7 @@ public class MemberController {
 	public String idCheckView(@RequestParam(value = "id", defaultValue = "", required = true)String id, Model model) {
 		model.addAttribute("id", id);
 		
-		return "member/idcheck";
+		return "member/idCheck";
 	}
 	
 	/*
@@ -105,7 +97,7 @@ public class MemberController {
 		model.addAttribute("id", id);
 		
 		// member/idcheck.jsp 화면 리턴
-		return "member/idcheck";
+		return "member/idCheck";
 	}
 	
 	/*
@@ -169,7 +161,7 @@ public class MemberController {
 			model.addAttribute("message", -1);
 		}
 
-		return "member/findResult";
+		return "member/findIdResult";
 	}
 	
 	@RequestMapping(value = "/find_password", method = RequestMethod.GET)

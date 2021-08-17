@@ -2,19 +2,27 @@ package com.green.biz.dto;
 
 import java.sql.Timestamp;
 
-public class BoardVO {
+public class NoticeVO {
 	
-	private int bseq;
+	private int nseq;
+	private String kind;
 	private String subject;
 	private String content;
 	private String image;
 	private Timestamp indate;
 	
-	public int getBseq() {
-		return bseq;
+	public int getNseq() {
+		return nseq;
 	}
-	public void setBseq(int bseq) {
-		this.bseq = bseq;
+	public void setNseq(int nseq) {
+		this.nseq = nseq;
+	}
+	
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 	
 	public String getSubject() {
@@ -47,8 +55,8 @@ public class BoardVO {
 	
 	@Override
 	public String toString() {
-		return "BoardVO [bseq=" + bseq + ", subject=" + subject + ", content=" + content + ", image=" + image
-				+ ", indate=" + indate + "]";
+		return "NoticeVO [nseq=" + nseq + ", kind=" + kind + ", subject=" + subject + ", content=" + content
+				+ ", image=" + image + ", indate=" + indate + "]";
 	}
 	
 }

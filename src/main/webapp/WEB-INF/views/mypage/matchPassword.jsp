@@ -7,6 +7,7 @@
 <script type="text/javascript" src="mypage/matchPassword.js"></script>
 <meta charset="UTF-8">
 <title>비밀번호 확인</title>
+<link href="CSS/subpage.css" rel="stylesheet">
 <style type="text/css">
 	body{   
 		background-color:#B96DB5;
@@ -60,9 +61,9 @@
 <body>
 	<div id="popup">
 		<h1>비밀번호 확인</h1>
-		<form method="get" id="checkPassword" name="formm" action="password_check">
-			<input type="hidden" id="originPwd" value="${originPwd}"/>
-			비밀번호 <input id="inputPwd" type="password" name="inputPwd" value="">
+		<form method="get" id = "checkPassword" name="formm" action="password_check">
+			<input type = "hidden" id = "originPwd" value = "${originPwd}"/>
+			비밀번호 <input id = "inputPwd" type="password" name = "inputPwd" value = "">
 			<input type="button" value="입력" onclick="passwordCheck2()">
 		</form>
 	</div>

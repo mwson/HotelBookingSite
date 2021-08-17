@@ -2,14 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript">
-	alert("비밀번호 변경되었습니다!");
-	self.close();
-</script>
+	<meta charset="UTF-8">
+	<title>비밀번호 변경</title>
 </head>
 <body>
-	
+	<script type="text/javascript">
+		alert("비밀번호가 변경되었습니다!");
+		self.close();
+	</script>
 </body>
 </html>

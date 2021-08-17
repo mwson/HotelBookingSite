@@ -21,7 +21,7 @@ function idcheck() {
 	// 아이디 중복 체크를 위한 윈도우 오픈 요청
 	var url = "id_check_form?id=" + $("#id").val();
 	
-	window.open(url, "_black_1", "toolbar=no, menubar=no, scrollbars=no, resizable=yes, width=350, height=200");	
+	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=300");
 }
 
 // 사용가능한 아이디를 사용
@@ -71,5 +71,5 @@ function go_save() {
 function post_zip() {
 	var url = "find_zip_num";
 	
-	window.open(url, "_black_1", "toolbar=no, menubar=no, scrollbars=no, resizable=yes, width=500, height=350");	
+	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
 }

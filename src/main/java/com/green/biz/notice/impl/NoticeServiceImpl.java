@@ -1,43 +1,48 @@
-package com.green.biz.board.impl;
+package com.green.biz.notice.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.green.biz.board.BoardService;
-import com.green.biz.dao.BoardDAO;
-import com.green.biz.dto.BoardVO;
+import com.green.biz.dao.NoticeDAO;
+import com.green.biz.dto.NoticeVO;
+import com.green.biz.notice.NoticeService;
 
-@Service("boardService")
-public class BoardServiceImpl implements BoardService {
-	
+@Service("noticeService")
+public class NoticeServiceImpl implements NoticeService {
+
 	@Autowired
-	private BoardDAO boardDAO;
-
+	private NoticeDAO noticeDAO;
+	
 	@Override
-	public List<BoardVO> listBoard() {
-		return boardDAO.listBoard();
+	public List<NoticeVO> listNotice() {
+		return noticeDAO.listNotice();
 	}
 
 	@Override
-	public BoardVO getBoard(int bseq) {
-		return boardDAO.getBoard(bseq);
+	public List<NoticeVO> listNoticeView() {
+		return noticeDAO.listNoticeView();
+	}
+	
+	@Override
+	public NoticeVO getNotice(int nseq) {
+		return noticeDAO.getNotice(nseq);
 	}
 
 	@Override
-	public void insertBoard(BoardVO vo) {
-		boardDAO.insertBoard(vo);
+	public void insertNotice(NoticeVO vo) {
+		noticeDAO.insertNotice(vo);
 	}
 
 	@Override
-	public void updateBoard(BoardVO vo) {
-		boardDAO.updateBoard(vo);
+	public void updateNotice(NoticeVO vo) {
+		noticeDAO.updateNotice(vo);
 	}
 
 	@Override
-	public void deleteBoard(int bseq) {
-		boardDAO.deleteBoard(bseq);
+	public void deleteNotice(int nseq) {
+		noticeDAO.deleteNotice(nseq);
 	}
 
 }

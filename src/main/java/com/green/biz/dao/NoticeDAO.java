@@ -6,32 +6,36 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.green.biz.dto.BoardVO;
+import com.green.biz.dto.NoticeVO;
 
-@Repository("boardDAO")
-public class BoardDAO {
+@Repository("noardDAO")
+public class NoticeDAO {
 	
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public List<BoardVO> listBoard() {
-		return mybatis.selectList("BoardDAO.listBoard");
+	public List<NoticeVO> listNotice() {
+		return mybatis.selectList("NoticeDAO.listNotice");
 	}
 	
-	public BoardVO getBoard(int bseq) {
-		return mybatis.selectOne("BoardDAO.getBoard", bseq);
+	public List<NoticeVO> listNoticeView() {
+		return mybatis.selectList("NoticeDAO.listNoticeView");
 	}
 	
-	public void insertBoard(BoardVO vo) {
-		mybatis.insert("BoardDAO.insertBoard", vo);
+	public NoticeVO getNotice(int nseq) {
+		return mybatis.selectOne("NoticeDAO.getNotice", nseq);
 	}
 	
-	public void updateBoard(BoardVO vo) {
-		mybatis.update("BoardDAO.updateBoard", vo);
+	public void insertNotice(NoticeVO vo) {
+		mybatis.insert("NoticeDAO.insertNotice", vo);
 	}
 	
-	public void deleteBoard(int bseq) {
-		mybatis.delete("BoardDAO.deleteBoard", bseq);
+	public void updateNotice(NoticeVO vo) {
+		mybatis.update("NoticeDAO.updateNotice", vo);
+	}
+	
+	public void deleteNotice(int nseq) {
+		mybatis.delete("NoticeDAO.deleteNotice", nseq);
 	}
 	
 }

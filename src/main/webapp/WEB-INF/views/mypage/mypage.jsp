@@ -5,7 +5,7 @@
 <%@include file="sub_menu.jsp"%>
 
 <article>
-	<h2>My Page${title}</h2>
+	<h2>${title}</h2>
 	<form name="formm" method="post">
 		<table id="cartList">
 			<tr>
@@ -33,11 +33,11 @@
 		</table>   
 		    
 		<div class="clear"></div>
-		
 		<div id="buttons" style="float: right">
 			<input type="button" value="쇼핑 계속하기" class="cancel" onclick="location.href='index'"> 
 		</div>
+		
 	</form>  
 </article>
- 
+
 <%@include file="../footer.jsp"%>    

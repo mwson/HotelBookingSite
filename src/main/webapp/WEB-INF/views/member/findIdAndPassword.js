@@ -4,8 +4,7 @@
 function find_id_form() {
 	var url = "find_id_form";
 	
-	window.open(url, "_black_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no," +
-		"width=550, height=500, top=300, left=300");
+	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
 }
 
 /*
@@ -28,34 +27,34 @@ function findMemberId() {
 }
 
 function findPassword() {
-	if($("#idPW").val() == "") {
+	if($("#idPw").val() == "") {
 		alert("아이디를 입력해 주세요!");
-		$("#idPW").focus();
+		$("#idPw").focus();
 		return false;
-	} else if($("#namePW").val() == "") {
+	} else if($("#namePw").val() == "") {
 		alert("이름을 입력해 주세요!");
-		$("#namePW").focus();
+		$("#namePw").focus();
 		return false;
-	} else if($("#emailPW").val() == "") {
+	} else if($("#emailPw").val() == "") {
 		alert("이메일을 입력해 주세요!");
-		$("#emailPW").focus();
+		$("#emailPw").focus();
 		return false;
 	} else {
-		$("#findPW").attr("action", "find_password").submit();
+		$("#findPw").attr("action", "find_password").submit();
 	}
 }
 
 function changePassword() {
 	if($("#pwd").val() == "") {
-		alert("암호를 입력해 주세요!");
+		alert("비밀번호를 입력해 주세요!");
 		$("#pwd").focus();
 		return false;
 	} else if($("#pwdCheck").val() == "") {
-		alert("암호확인을 입력해 주세요!");
+		alert("비밀번호 확인을 입력해 주세요!");
 		$("#pwdCheck").focus();
 		return false;
 	} else if($("#pwd").val() != $("#pwdCheck").val()) {
-		alert("암호가 일치하지 않습니다!");
+		alert("비밀번호가 일치하지 않습니다!");
 		$("#pwdcheck").focus();
 		return false;
 	} else {

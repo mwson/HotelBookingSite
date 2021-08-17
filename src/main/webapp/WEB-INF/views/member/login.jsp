@@ -1,30 +1,66 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>  
 
 <%@include file="../header.jsp"%>  
-<%@include file="sub_img.html"%> 
-<%@include file="sub_menu.html"%>
-   
-<article>
-	<h1>Login</h1>
-	<form method="post" action="login">
-		<fieldset>
-			<legend></legend>
-			<label>User ID</label>
-			<input name="id" type="text" value="${id}">
-			<br> 
-			<label>Password</label> 
-			<input name="pwd" type="password">
-			<br>
-		</fieldset>
-			
-		<div class="clear"></div>
-		
-		<div id="buttons">
-			<input type="submit" value="로그인" class="submit">
-			<input type="button" value="회원가입" class="cancel" onclick="location='contract'">
-			<input type="button" value="아이디 비밀번호 찾기" class="submit" onclick="find_id_form()">     
-		</div>
-	</form>
-</article>
+
+<div class="breadcrumb-option set-bg" data-setbg="img/breadcrumb-bg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h1>로그인</h1>
+                    <div class="breadcrumb__links">
+                        <a href="index">메인</a>
+                        <span>로그인</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="blog__sidebar">
+                    <div class="blog__sidebar__categories">
+                        <h4>로그인</h4>
+                        <ul>
+                            <li><a href="login_form">로그인</a></li>
+                            <li><a href="contract">회원가입</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-md-9">
+				<h2 class="mb-5">로그인</h2>
+			    <div class="login_form col-lg-5 col-md-5">
+			        <form method="POST" name=formm action="login">
+			            <div class="mb-4">
+			                <label for="id">아이디</label>
+			                <input type="text" class="form-control" id="id" name="id" placeholder="아이디">
+			            </div>
+			            <div class="mb-4">
+			                <label for="pwd">비밀번호</label> 
+			                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호">
+			            </div>
+			            <hr>
+			            <div class="login_form_button mb-4">
+			                <div class="id_pw_find">
+			                    <a href="#" class="a" onclick="find_id_form()">아이디 / 비밀번호 찾기</a>
+			                </div>
+			                <div class="register">
+			                    <a href="#" class="a" onclick="location='contract'">회원가입</a>
+			                </div>
+			                <div class="login_form_button_clear"></div>
+			            </div>
+			            <button type="submit" class="btn btn-warning btn-lg btn-block">로그인</button>
+			        </form>
+			    </div>
+			</div>
+        </div>
+    </div>
+</section>
 
 <%@include file="../footer.jsp"%>

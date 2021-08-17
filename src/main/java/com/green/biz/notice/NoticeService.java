@@ -1,18 +1,20 @@
-package com.green.biz.board;
+package com.green.biz.notice;
 
 import java.util.List;
 
-import com.green.biz.dto.BoardVO;
+import com.green.biz.dto.NoticeVO;
 
-public interface BoardService {
+public interface NoticeService {
 		
-	public List<BoardVO> listBoard();
+	public List<NoticeVO> listNotice();
 	
-	public BoardVO getBoard(int bseq);
+	public List<NoticeVO> listNoticeView();
 	
-	public void insertBoard(BoardVO vo);
+	public NoticeVO getNotice(int nseq);
 	
-	public void updateBoard(BoardVO vo);
+	public void insertNotice(NoticeVO vo);
 	
-	public void deleteBoard(int bseq);
+	public void updateNotice(NoticeVO vo);
+	
+	public void deleteNotice(int nseq);
 }
