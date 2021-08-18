@@ -42,7 +42,7 @@ public class MemberController {
 			
 			return "redirect:/index";
 		} else {
-			return "member/login_fail";
+			return "member/loginFail";
 		}
 	}
 	

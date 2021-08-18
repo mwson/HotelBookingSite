@@ -18,7 +18,7 @@
         <div class="findId">
 			<h3 class="mb-5">아이디 찾기</h3>
         	<div class="findId_form">
-	            <form name="findId" id="findId" action="find_id" method="get">
+	            <form method="get" id="findId" name="findId" action="find_id">
 	                <div class="mb-4">
 	                    <label for="id">이름</label>
 	                    <input type="text" class="form-control" id="nameId" name="name" placeholder="이름">

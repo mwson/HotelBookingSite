@@ -2459,24 +2459,26 @@ ol {
 .btn-warning {
     background-color: #E9AD28;
     border-color: #E9AD28;
-    color: #FFF; }
-
+    color: #FFF;
+}
 .btn-warning:hover,
 .btn-warning:focus {
     border-color: #D9AD28;
     background-color: #D9AD28;
-    color: #FFF; }
-
+    color: #FFF;
+}
 .btn-warning:active,
 .btn-warning:visited,
 .btn-warning:active:focus,
 .btn-warning:active:hover {
     border-color: #C9AD28;
     background-color: #C9AD28;
-    color: #FFF; }
+    color: #FFF;
+}
 
 /*
  * findIdAndPassword, findIdResult, findPwdResult
+ * idCheck, findZipNum
  */
 .findIdAndPassword,
 .findIdResult,
@@ -2487,17 +2489,30 @@ ol {
 }
 
 /*
- * contract, login, findIdAndPassword, findIdResult, findPwdResult, join_form
+ * join, login, findIdAndPassword, updateMember,
+ * order, cart, qna
  */
-.contract_form,
-.login_form,
+.contract .contract_form .contract_form_text,
+.join .join_form .join_form_input,
+.idCheck .idCheck_form,
+.findZipNum .findZipNum_form,
+.login .login_form,
 .findIdAndPassword .findId_form,
 .findIdAndPassword .findPw_form,
 .findIdResult .findIdResult_form,
 .findPwdResult .findPwdResult_form,
-.join_form,
-.idCheck .idCheck_form,
-.findZipNum .findZipNum_form {
+.updateMember_form .updateMember_form_input,
+.orderList .orderList_form .orderList_form_empty,
+.orderList .orderList_form .orderList_form_table,
+.orderDetail .orderDetail_form .orderDetail_form_empty,
+.orderDetail .orderDetail_form .orderDetail_form_table,
+.cartList .cartList_form .cartList_form_empty,
+.cartList .cartList_form .cartList_form_color,
+.qnaList .qnaList_form .qnaList_form_empty,
+.qnaList .qnaList_form .qnaList_form_table,
+.qnaView .qnaView_form .qnaView_form_q,
+.qnaView .qnaView_form .qnaView_form_a,
+.qnaWrite .qnaWrite_form .qnaWrite_form_q {
 	border-radius: 10px;
 	background-color: #F8F9FA;
 	padding: 25px;
@@ -2509,35 +2524,35 @@ ol {
 .login_form_button .id_pw_find {
 	float: left;
 }
-
 .login_form_button .id_pw_find .a {
 	font-weight: 300;
 	color: #007BFF;
 }
-
 .login_form_button .register {
 	float: right;
 }
-
 .login_form_button .register .a {
 	font-weight: 300;
 	color: #007BFF;
 }
-
 .login_form_button .login_form_button_clear {
 	clear: both;
+}
+
+/*
+ * contract_form
+ */
+.contract .contract_form {
+	padding: 10px;
 }
 
 /*
  * join_form
  */
 .join_form .join_form_button .join_form_button_reset {
-	padding: 20px;
 	float: left;
 }
-
 .join_form .join_form_button .join_form_button_submit {
-	padding: 20px;
 	float: right;
 }
 
@@ -2548,36 +2563,106 @@ ol {
 .idCheck .idCheck_form .idSearch_result .idSearch_result_success {	
 	float: left;
 }
-
 .idCheck .idCheck_form .idSearch .idSearch_button,
 .idCheck .idCheck_form .idSearch_result .idSearch_result_success_button {
 	float: right;
 }
-
 .idCheck .idCheck_form .idSearch .idSearch_clear {
 	clear: both;
 }
 
-.idCheck_form .idSearch_result {
-	padding: 0px;
-}
-
 /*
- * idCheck
+ * findZipNum
  */
-
 .findZipNum .findZipNum_form .findZipNum_search .findZipNum_search_input {	
 	float: left;
 }
-
 .findZipNum .findZipNum_form .findZipNum_search .findZipNum_search_button {	
 	float: right;
 }
-
 .findZipNum .findZipNum_form .findZipNum_search .findZipNum_search_clear {
 	clear: both;
 }
-
 .findZipNum .findZipNum_result {
-	padding: 15px;
+	padding: 10px;
+}
+
+/*
+ * order
+ */
+.orderList .orderList_form,
+.orderDetail .orderDetail_form {
+	padding: 20px;
+}
+.orderList .orderList_form .orderList_form_table .orderList_form_table_now,
+.orderList .orderList_form .orderList_form_table .orderList_form_table_now_past,
+.orderDetail .orderDetail_form .orderDetail_form_table .orderDetail_form_table_now,
+.orderDetail .orderDetail_form .orderDetail_form_table .orderDetail_form_table_now_past {
+	padding: 10px;
+}
+.orderDetail .orderDetail_form .orderDetail_button .orderList_button_list {
+	float: left;
+}
+.orderList .orderList_form .orderList_form_empty_button,
+.orderList .orderList_form .orderList_button_booking,
+.orderDetail .orderDetail_form .orderDetail_form_empty_button,
+.orderDetail .orderDetail_form .orderDetail_button .orderDetail_button_booking {
+	float: right;
+}
+
+/*
+ * cart
+ */
+.cartList .cartList_form {
+	padding: 20px;
+}
+.cartList .cartList_form .cartList_form_table {
+	padding: 10px;
+}
+.cartList .cartList_form .cartList_form_total .cartList_form_total_text,
+.cartList .cartList_form .cartList_form_total .cartList_form_total_number {
+	float: left;
+}
+.cartList .cartList_form .cartList_form_total_clear,
+.cartList .cartList_form .cartList_form_table_clear {
+	clear: both;
+}
+.cartList .cartList_form .cartList_form_empty_button,
+.cartList .cartList_form .cartList_form_table_button {
+	float: right;
+}
+
+/*
+ * qna
+ */
+.qnaList .qnaList_form,
+.qnaList .qnaView_form,
+.qnaList .qnaWrite_form {
+	padding: 20px;
+}
+.qnaList .qnaList_form_button,
+.qnaWrite .qnaWrite_form_button .qnaWrite_form_button_write {
+	padding-right: 2px;
+	float: right;
+}
+.qnaView .qnaView_form_button .qnaView_form_button_list {
+	float: right;
+}
+.qnaView .qnaView_form .qnaView_form_q .qnaView_q_table,
+.qnaView .qnaView_form .qnaView_form_a .qnaView_a_textarea,
+.qnaWrite .qnaWrite_form .qnaWrite_form_q .qnaWrite_form_input {
+	padding: 10px;
+}
+.qnaWrite .qnaWrite_form_button .qnaWrite_form_button_reset {
+	float: left;
+}
+
+/*
+ * updateMember
+ */
+.updateMember_form .updateMember_form_button .updateMember_form_button_reset {
+	float: left;
+}
+.updateMember_form .updateMember_form_button .updateMember_form_button_submit {
+	float: right;
 }

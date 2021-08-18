@@ -3,55 +3,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>아이디 찾기</title>
-<link href="CSS/subpage.css" rel="stylesheet">
-<style type="text/css">
-	body {   
-		background-color:#B96DB5;
-		font-family: Verdana;
-	}
-	
-	#wrap {     
-		margin: 0 20px;
-	}
-	
-	h1 {
-		font-family: "Times New Roman", Times, serif;
-		font-size: 45px;
-		color: #CCC;
-		font-weight: normal;
-	}
-	
-	input[type=button], input[type=submit] {
-		float: right;
-	}
-</style>
-<script type="text/javascript">
-	function idok(){
-		self.close();
-	}
-</script>
+	<meta charset="UTF-8">
+	<title>아이디 찾기</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+	<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+	<link rel="stylesheet" href="css/nice-select.css" type="text/css">
+	<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+	<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap">
-		<h1>ID 찾기 결과</h1>
-		<form method=post name=formm style="margin-right: 0" action="id_check_form">
-			User ID <input type=text name="id" value="${id}">   
-			<div style="margin-top: 20px">   
+	<div class="findIdResult">
+		<h3 class="mb-5">아이디 찾기</h3>
+        <div class="findIdResult_form col-lg-3 col-md-3">
+			<form method="POST" name=formm>
 				<c:if test="${message == 1}">
 					<script type="text/javascript">
-						opener.document.formm.id.value="";
+						opener.document.formm.id.value="${id}";
 					</script>
-					요청하신 ID는 ${id}입니다.
+					<p class="mb-3">조회된 아이디는 ${id}입니다.</p>
 				</c:if>
-				
 				<c:if test="${message == -1}">
-					가입하지 않은 ID입니다.
+					<p class="mb-3">입력하신 정보를 찾을 수 없습니다.</p>
 				</c:if>
-			</div>
-			<input type="button" value="확인" class="cancel" onclick="idok()">
+			<input type="button" class="btn btn-warning btn-lg btn-block" value="확인" onclick="idok()">
 		</form>
-	</div>  
+        </div>
+    </div>
+	
+	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.slicknav.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+	
+	<script type="text/javascript">
+		function idok() {
+			self.close();
+		}
+	</script>
 </body>
 </html>

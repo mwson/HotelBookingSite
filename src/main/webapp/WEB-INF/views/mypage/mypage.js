@@ -1,49 +1,75 @@
 /**
- * 장바구니 항목 삭제
+ * 
  */
-function go_cart_delete() {
-	var count = 0; // 삭제할 항목의 갯수
-	
-	/*
-	 * if문과 for문의 내용은 삭제할 항목이 체크가 되어있는지 확인.
-	 * 체크가 하나도 안되어 있으면 삭제 처리 불가하도록 처리
-	 */
-	// 삭제할 항목이 하나만 체크되어 있을 경우
-	if(document.formm.cseq.length == undefined) {
-		// cseq가 하나만 체크가 되어 있는 경우
-		if(document.formm.cseq.checked == true) {
-			count++;
-		}
+// 계약서 동의 여부 확인
+function go_next() {
+	if($(".agree")[0].checked == true) { // 동의함에 체크되어 있으면 '회원가입'을 요청함
+		$("#join").attr("action", "join_form").submit();
+	} else if($(".agree")[1].checked == true) {
+		alert("약관에 동의해 주셔야 합니다.");
+		return false;
 	}
-	
-	// 삭제할 항목이 2개 이상인 경우
-	for(var i=0; i<document.formm.cseq.length; i++) {
-		if(document.formm.cseq[i].checked == true) {
-			count++;
-		}
+}
+
+// id 중복확인 화면 출력
+function idcheck() {
+	if($("#id").val() == "") {
+		alert("아이디를 입력해 주세요!");
+		$("#id").focus();
+		return false;
 	}
+	// 아이디 중복 체크를 위한 윈도우 오픈 요청
+	var url = "id_check_form?id=" + $("#id").val();
 	
-	if(count == 0) {
-		alert("삭제할 항목을 선택해 주세요!");
+	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=300");
+}
+
+// 사용가능한 아이디를 사용
+/*
+function idok() {
+	$("#theform").attr("action", "id_check_confirmed").submit();
+}
+*/
+
+/*
+ * 회원가입 시, 필수 입력 사항 체크
+ * action url: join
+ */
+function go_save() {
+	if($("#id").val() == "") {
+		alert("아이디를 입력해주세요!");
+		$("#id").focus();
+		return false;
+	} else if($("#id").val() != $("#reid").val()) {
+		alert("아이디 중복 확인을 해주세요!");
+		$("#id").focus();
+		return false;
+	} else if ($("#pwd").val() == "") {
+		alert("비밀번호를 입력해 주세요!");
+		$("#pwd").focus();
+		return false;
+	} else if ($("#pwdCheck").val() == "") {
+		alert("비밀번호 확인을 입력해 주세요!");
+		$("#pwdcheck").focus();
+		return false;
+	} else if($("#pwd").val() != $("#pwdCheck").val()) {
+		alert("비밀번호가 일치하지 않습니다!");
+		$("#pwdcheck").focus();
+		return false;
+	} else if($("#name").val() == "") {
+		alert("이름을 입력해 주세요!");
+		$("#name").focus();
+		return false;
 	} else {
-		document.formm.action = "cart_delete";
-		document.formm.submit();
+		$("#join").attr("action", "join").submit();
 	}
 }
 
 /*
- * 장바구니에 저장된 내역을 주문처리 요청
+ * 우편번호 찾기 창 오픈
  */
-function go_order_insert() {
-	$("#theform").attr("action", "order_insert").submit();
-}
-
-function go_update() {
-	if($("#pwd").val() == "") {
-		alert("비밀번호를 입력해 주세요!");
-		$("#pwd").focus();
-		return false;
-	} else {
-		$("#update").attr("action", "update_member").submit();
-	}
+function post_zip() {
+	var url = "find_zip_num";
+	
+	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
 }

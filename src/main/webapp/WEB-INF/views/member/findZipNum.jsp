@@ -33,15 +33,15 @@
 	        </form>
 	    </div>
 	    <div class="findZipNum_result">
-	        <table class="table table-striped">
+	        <table class="table table-striped" style="text-align: center;">
 	            <thead>
 	                <tr>
 	                    <th style="width: 25%;">우편번호</th>
-	                    <th>주소</th>
+	                    <th style="width: 75%;">주소</th>
 	                </tr>
 	            </thead>
-	            <c:forEach items="${addressList}" var="addressVO">
-	                <tbody>
+	            <tbody>
+	            	<c:forEach items="${addressList}" var="addressVO">
 	                    <tr>
 	                        <td>${addressVO.zip_num}</td>
 	                        <td>
@@ -50,8 +50,8 @@
 	                            </a>
 	                        </td>
 	                    </tr>
-	                </tbody>
-	            </c:forEach>
+	            	</c:forEach>
+	            </tbody>
 	        </table>
 	    </div>
 	</div>

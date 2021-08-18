@@ -32,6 +32,7 @@
                     </div>
                     <div class="blog__sidebar__categories">
                         <h4>고객센터</h4>
+                        <hr>
                         <ul>
                             <li><a href="notice_list">공지사항</a></li>
                             <li><a href="#">자주하는 질문</a></li>

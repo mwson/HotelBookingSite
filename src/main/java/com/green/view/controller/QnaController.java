@@ -20,6 +20,9 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	/*
+	 * "문의목록" 화면
+	 */
 	@RequestMapping(value = "/qna_list", method = RequestMethod.GET)
 	public String qnaList(HttpSession session, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -35,32 +38,9 @@ public class QnaController {
 		}
 	}
 	
-	@RequestMapping(value = "/qna_write_form", method = RequestMethod.GET)
-	public String qnaWriteView(HttpSession session) {
-		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-		
-		if(loginUser == null) {
-			return "member/login";
-		} else {
-			return "qna/qnaWrite";	// Qna게시글 등록화면 표시
-		}		
-	}
-	
-	@RequestMapping(value = "/qna_write", method = RequestMethod.POST)
-	public String qnaWriteAction(HttpSession session, QnaVO vo) {
-		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-		
-		if(loginUser == null) {
-			return "member/login";
-		} else {
-			vo.setId(loginUser.getId());
-		
-			qnaService.insertQna(vo);
-			
-			return "redirect:qna_list";
-		}
-	}
-	
+	/*
+	 * "문의목록 상세" 화면 
+	 */
 	@RequestMapping(value = "/qna_view", method = RequestMethod.GET)
 	public String qnaView(HttpSession session, QnaVO vo, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -76,4 +56,37 @@ public class QnaController {
 			return "qna/qnaView";
 		}
 	}
+	
+	/*
+	 * "문의하기" 폼 화면 
+	 */
+	@RequestMapping(value = "/qna_write_form", method = RequestMethod.GET)
+	public String qnaWriteView(HttpSession session) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		
+		if(loginUser == null) {
+			return "member/login";
+		} else {
+			return "qna/qnaWrite";
+		}		
+	}
+	
+	/*
+	 * "문의하기" 화면 
+	 */
+	@RequestMapping(value = "/qna_write", method = RequestMethod.POST)
+	public String qnaWriteAction(HttpSession session, QnaVO vo) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		
+		if(loginUser == null) {
+			return "member/login";
+		} else {
+			vo.setId(loginUser.getId());
+		
+			qnaService.insertQna(vo);
+			
+			return "redirect:qna_list";
+		}
+	}
+
 }

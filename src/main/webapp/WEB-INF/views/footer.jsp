@@ -20,11 +20,11 @@
                                 <li><a href="#">자주하는 질문</a></li>
                             </ul>
                             <ul>
-                                <li><a href="#">문의하기</a></li>
-                                <li><a href="#">장바구니</a></li>
-                                <li><a href="#">문의내역</a></li>
-								<li><a href="#">회원정보 수정</a></li>
-                                <li><a href="#">예약확인</a></li>
+                                <li><a href="qna_write_form">문의하기</a></li>
+								<li><a href="#">예약확인</a></li>
+                                <li><a href="cart_list">장바구니</a></li>
+                                <li><a href="qna_list">문의내역</a></li>
+								<li><a href="update_member_form">회원정보 수정</a></li>
                             </ul>
                         </div>
                     </div>
@@ -53,11 +53,9 @@
             <div class="footer__copyright">
                 <div class="row">
                     <div class="col-lg-7 col-md-7">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         <div class="footer__copyright__text">
                             <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made by Colorlib</p>
                         </div>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                 </div>
             </div>
@@ -76,5 +74,6 @@
 	<script type="text/javascript" src="product/product.js"></script>
 	<script type="text/javascript" src="member/findIdAndPassword.js"></script>
 	<script type="text/javascript" src="mypage/mypage.js"></script>
+	<script type="text/javascript" src="qna/qna.js"></script>
 </body>
 </html>

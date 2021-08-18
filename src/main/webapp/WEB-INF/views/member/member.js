@@ -48,11 +48,11 @@ function go_save() {
 		alert("비밀번호를 입력해 주세요!");
 		$("#pwd").focus();
 		return false;
-	} else if ($("#pwdcheck").val() == "") {
+	} else if ($("#pwdCheck").val() == "") {
 		alert("비밀번호 확인을 입력해 주세요!");
 		$("#pwdcheck").focus();
 		return false;
-	} else if($("#pwd").val() != $("#pwdcheck").val()) {
+	} else if($("#pwd").val() != $("#pwdCheck").val()) {
 		alert("비밀번호가 일치하지 않습니다!");
 		$("#pwdcheck").focus();
 		return false;

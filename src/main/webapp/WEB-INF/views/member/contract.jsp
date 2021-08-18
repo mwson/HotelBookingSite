@@ -25,6 +25,7 @@
                 <div class="blog__sidebar">
                     <div class="blog__sidebar__categories">
                         <h4>회원가입</h4>
+                        <hr>
                         <ul>
                             <li><a href="login_form">로그인</a></li>
                             <li><a href="contract">회원가입</a></li>
@@ -34,11 +35,12 @@
             </div>
 
             <div class="contract col-lg-9 col-md-9">
-				<h2 class="mb-5">호텔그린에 오신 것을 환영합니다.</h2>
+				<h2 class="mb-4">호텔그린에 오신 것을 환영합니다.</h2>
 				<form method="post" action="join_form" id="join" name="formm">
 				    <div class="contract_form col-lg-12 col-md-12">
-				        <p>약관 및 개인정보 수집, 이용 사항을 확인하시고 동의여부에 체크해주시기 바랍니다.</p>
-				            <textarea class="form-control mb-3" rows="12" readonly>
+                        <div class="contract_form_text">
+                            <p>약관 및 개인정보 수집, 이용 사항을 확인하시고 동의여부에 체크해주시기 바랍니다.</p>
+                                <textarea class="form-control mb-3" rows="12" readonly>
 제 1 장 총칙
 
 제 1 조 (목적) 
@@ -212,24 +214,20 @@
 (2) 회사의 정액 서비스 회원 및 기타 유료 서비스 이용 회원의 경우 회사가 별도로 정한 약관 및 정책에 따릅니다.
 (3) 서비스 이용으로 발생한 분쟁에 대해 소송이 제기되는 경우 회사의 본사 소재지를 관할하는 법원을 관할 법원으로 합니다.
 </textarea>
-						<div class="contract_form_check">
-							<div class="form-check">
-                                <input class="form-check-input agree" type="radio" id="okon1" name="okon1">
-                                <label class="form-check-label">
-									동의함
-                                </label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input agree" type="radio" id="okon1" name="okon1" checked>
-								<label class="form-check-label">
-									동의안함
-								</label>
-							</div>
-                            <div class=""></div>
-						</div>
+                            <div class="contract_form_check">
+                                <div class="form-check">
+                                    <input class="form-check-input agree" type="radio" id="okon1" name="okon1">
+                                    <label class="form-check-label">동의함</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input agree" type="radio" id="okon1" name="okon1" checked>
+                                    <label class="form-check-label">동의안함</label>
+                                </div>
+                            </div>
+                        </div>
 			    	</div>
                     <br>
-			    	<div>
+			    	<div class="contract_form_button col-lg-12 col-md-12">
 			    		<input type="button" class="btn btn-warning btn-lg btn-block" value="다음" onclick="go_next()">
 			    	</div>
 				</form>

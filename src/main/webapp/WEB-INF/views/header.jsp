@@ -82,16 +82,16 @@
                                     <li><a href="#">고객센터</a>
                                         <ul class="dropdown">
                                             <li><a href="notice_list">공지사항</a></li>
-                                            <li><a href="./room-details.html">자주하는 질문</a></li>
-                                            <li><a href="./blog-details.html">문의하기</a></li>
+                                            <li><a href="#">자주하는 질문</a></li>
+                                            <li><a href="qna_write_form">문의하기</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">마이 페이지</a>
+                                    <li><a href="#">마이페이지</a>
                                         <ul class="dropdown">
-                                            <li><a href="./about.html">회원정보 수정</a></li>
-                                            <li><a href="./room-details.html">예약확인</a></li>
-                                            <li><a href="./blog-details.html">장바구니</a></li>
-                                            <li><a href="./blog-details.html">문의내역</a></li>
+                                            <li><a href="order_all">예약확인</a></li>
+                                            <li><a href="cart_list">장바구니</a></li>
+                                            <li><a href="qna_list">문의내역</a></li>
+											<li><a href="update_member_form">회원정보 수정</a></li>
                                         </ul>
                                     </li>
                                 </ul>

@@ -17,7 +17,7 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	/*
-	 * "공지사항" 출력
+	 * "공지사항" 화면
 	 */
 	@RequestMapping(value = "/notice_list")
 	public String noticeList(Model model) {
@@ -29,7 +29,7 @@ public class NoticeController {
 	}
 	
 	/*
-	 * "공지사항 상세" 출력
+	 * "공지사항 상세" 화면
 	 */
 	@RequestMapping(value = "/notice_detail")
 	public String noticeDetail(NoticeVO vo, Model model) {

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.green.biz.cart.CartService;
 import com.green.biz.dto.CartVO;
@@ -20,6 +21,7 @@ import com.green.biz.member.MemberService;
 import com.green.biz.order.OrderService;
 
 @Controller
+@SessionAttributes("loginUser")
 public class MypageController {
 	
 	@Autowired
@@ -29,6 +31,9 @@ public class MypageController {
 	@Autowired
 	private MemberService memberService;
 	
+	/*
+	 * "장바구니" 추가
+	 */
 	@RequestMapping(value = "/cart_insert", method = RequestMethod.POST)
 	public String CartInsert(CartVO vo, Model model, HttpSession session) {
 		// 세션에 저장된 사용자 정보를 읽어온다.
@@ -172,7 +177,7 @@ public class MypageController {
 				
 				orderList.add(vo3);
 			}
-			model.addAttribute("title", "진행중인 주문 내역");
+			model.addAttribute("title", "(진행중인 주문 내역)");
 			model.addAttribute("orderList", orderList);
 		}
 		
@@ -227,16 +232,12 @@ public class MypageController {
 			// 사용자의 전체 주문 조회
 			vo.setId(loginUser.getId());
 			vo.setResult("");	// 처리결과를 지정하지 않음
-			
 			List<Integer> oseqList = orderService.selectSeqOrdering(vo);
 			
 			// 요약정보 목록 저장용 List변수
 			List<OrderVO> orderList = new ArrayList<>();
-			List<OrderVO> orderListNext = new ArrayList<>();
-			
 			for(int oseq : oseqList) {
-				// 주문목록 조회를 위한 입력 설정				
-				
+				// 주문목록 조회를 위한 입력 설정
 				OrderVO vo2 = new OrderVO();
 				vo2.setId(loginUser.getId());
 				vo2.setResult("");
@@ -247,81 +248,85 @@ public class MypageController {
 				// 주문 요약정보 생성
 				OrderVO vo3 = new OrderVO();
 				vo3 = orderList2.get(0);
-				if(vo3.getResult().equals("2")) {
-					if(orderList2.size() > 1) {
-						vo3.setPname(vo3.getPname() + " 외 " + (orderList2.size() -1) + "건");
-					} else {
-						vo3.setPname(vo3.getPname());
-					}
-					
-					int totalPrice = 0;
-					for(OrderVO vo4 : orderList2) {
-						totalPrice += vo4.getQuantity() * vo4.getPrice2();
-					}
-					vo3.setPrice2(totalPrice);
-					
-					// 주문요약정보를 요약 리스트에 저장
-					orderList.add(vo3);
-				} else if (vo3.getResult().equals("1")) {
-					if(orderList2.size() > 1) {
-						vo3.setPname(vo3.getPname() + " 외 " + (orderList2.size() -1) + "건");
-					} else {
-						vo3.setPname(vo3.getPname());
-					}
-					
-					int totalPrice = 0;
-					for(OrderVO vo4 : orderList2) {
-						totalPrice += vo4.getQuantity() * vo4.getPrice2();
-					}
-					vo3.setPrice2(totalPrice);
-					
-					// 주문요약정보를 요약 리스트에 저장
-					orderListNext.add(vo3);
-				}				
+				if(orderList2.size() > 1) {
+					vo3.setPname(vo3.getPname() + " 외 " + (orderList2.size() -1) + "건");
+				} else {
+					vo3.setPname(vo3.getPname());
+				}
+				
+				int totalPrice = 0;
+				for(OrderVO vo4 : orderList2) {
+					totalPrice += vo4.getQuantity() * vo4.getPrice2();
+				}
+				vo3.setPrice2(totalPrice);
+				
+				// 주문요약정보를 요약 리스트에 저장
+				orderList.add(vo3);
 			}
-			
-			model.addAttribute("orderList1", orderList);
-			model.addAttribute("orderList2", orderListNext);
+			model.addAttribute("title", "(총 주문 내역)");
+			model.addAttribute("orderList", orderList);
 		}
 		
-		return "mypage/mypage2";
+		return "mypage/mypage";
 	}
-
-	@RequestMapping(value = "/update_member", method = RequestMethod.GET)
-	public String updateMemverView(HttpSession session, Model model) {
+	
+	/*
+	 * "회원정보 수정" 로그인 화면
+	 */
+	@RequestMapping(value = "/mypage_login", method = RequestMethod.POST)
+	public String mypageLogin(MemberVO vo, Model model) {
+		int result = memberService.loginID(vo);
+		MemberVO loginUser = null;
+		
+		if(result == 1) { // 사용자 인증 성공
+			loginUser = memberService.getMember(vo.getId());
+			
+			model.addAttribute("loginUser", loginUser);
+			
+			return "redirect:update_member_form";
+		} else {
+			return "member/loginFail";		
+		}
+	}
+	
+	/*
+	 * "회원정보 수정" 화면
+	 */
+	@RequestMapping(value = "/update_member_form", method = RequestMethod.GET)
+	public String updateMemverView(HttpSession session,  Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
 			return "member/login";
 		} else {
-			model.addAttribute("loginUser", loginUser);			
-		}
-		return "mypage/updateMember";
-	}
+			MemberVO memberVO = memberService.getMember(loginUser.getId());
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updateMember(@RequestParam(value = "addr1")String addr1, MemberVO vo, Model model) {
-		vo.setAddress(addr1);
-		memberService.updateMember(vo);
-		String id = vo.getId();
-		MemberVO memberVO = new MemberVO();
-		memberVO = memberService.getMember(id);
-		model.addAttribute("loginUser", memberVO);		
-		
-		return "mypage/mypage";
-	}	
-		
-	@RequestMapping(value = "/match_pwd", method = RequestMethod.GET)
-	public String matchPassword(HttpSession session, Model model) {
-		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-		String OriginPwd = loginUser.getPwd();
-		model.addAttribute("originPwd", OriginPwd);
-		return "mypage/matchPassword";
+			model.addAttribute("memberVO", memberVO);
+
+			return "mypage/updateMember";		
+		}
 	}
 	
-	@RequestMapping(value = "/password_check", method = RequestMethod.GET)
-	public String passwordCheck() {	
-		return "mypage/updateMember";		
-	}
+	/*
+	 * "회원정보 수정" 업데이트
+	 */
+	@RequestMapping(value = "/update_member", method = RequestMethod.POST)
+	public String updateMember(HttpSession session, @RequestParam(value = "default_pwd")String default_pwd,
+			@RequestParam(value = "addr1")String addr1, @RequestParam(value = "addr2")String addr2, MemberVO vo, Model model) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		if(loginUser == null) {
+			return "member/login";
+		} else {
+			if(vo.getPwd().isEmpty()) {
+				vo.setPwd(default_pwd);
+			}
+			
+			vo.setAddress(addr1 + " " + addr2);
+
+			memberService.updateMember(vo);
+			
+			return "redirect:update_member_form";
+		}
+	}	
 	
 }

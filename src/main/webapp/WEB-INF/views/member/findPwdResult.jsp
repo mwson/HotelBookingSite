@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>아이디 찾기</title>
+	<title>비밀번호 찾기</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
 	<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
@@ -15,21 +15,28 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-	<div class="findIdResult">
-		<h3 class="mb-5">아이디 찾기</h3>
-        <div class="findIdResult_form col-lg-3 col-md-3">
-			<form method="POST" name=formm>
+	<div class="findPwdResult col-lg-4 col-md-4">
+		<h3 class="mb-5">비밀번호 찾기</h3>
+        <div class="findPwdResult_form">
+			<form method="post" name="formm" id="pwd_form">
+				<input type="hidden" name="id" value="${id}">
 				<c:if test="${message == 1}">
-					<script type="text/javascript">
-						opener.document.formm.id.value="${id}";
-					</script>
-					<p class="mb-3">조회된 아이디는 ${id}입니다.</p>
-				</c:if>
-				<c:if test="${message == -1}">
+					<h5 class="mb-4" style="text-align: center; color: #E9AD28;">비밀번호 변경</h5>
+					<div class="mb-4">
+	                    <label for="pwd">비밀번호</label>
+	                    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호">
+                	</div>
+                	<div class="mb-4">
+	                    <label for="pwdCheck">비밀번호 확인</label>
+	                    <input type="password" class="form-control" id="pwdCheck" name="pwdCheck" placeholder="비밀번호 확인">
+                	</div>
+                	<input type="button" class="btn btn-warning btn-lg btn-block" value="확인" onclick="changePassword()">
+                </c:if>
+                <c:if test="${message == -1}">
 					<p class="mb-3">입력하신 정보를 찾을 수 없습니다.</p>
+					<input type="button" class="btn btn-warning btn-lg btn-block" value="확인" onclick="idok()">
 				</c:if>
-			<input type="button" class="btn btn-warning btn-lg btn-block" value="확인" onclick="idok()">
-		</form>
+            </form>
         </div>
     </div>
 	
@@ -40,6 +47,8 @@
     <script type="text/javascript" src="js/jquery.slicknav.js"></script>
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    
+	<script type="text/javascript" src="member/findIdAndPassword.js"></script>
 	
 	<script type="text/javascript">
 		function idok() {

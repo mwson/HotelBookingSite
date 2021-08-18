@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberDAO">
-	<select id="getMember" resultType="member">
+	<select id="getMember" parameterType="String" resultType="member">
 		SELECT *
 		FROM member
 		WHERE id=#{id}
 	</select>
 	
-	<select id="confirmID" resultType="String">
+	<select id="confirmID" parameterType="String" resultType="String">
 		SELECT pwd
 		FROM member
 		WHERE id=#{id}

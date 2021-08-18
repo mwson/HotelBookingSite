@@ -24,7 +24,6 @@ import com.green.biz.dto.QnaVO;
 import com.green.biz.dto.SalesQuantity;
 import com.green.biz.dto.WorkerVO;
 import com.green.biz.member.MemberService;
-import com.green.biz.notice.NoticeService;
 import com.green.biz.order.OrderService;
 import com.green.biz.product.ProductService;
 import com.green.biz.qna.QnaService;
