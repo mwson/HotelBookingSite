@@ -49,12 +49,13 @@
 	<!-- 페이지 번호 별 상품목록 조회 -->
 	<select id="listWithPaging" parameterType="HashMap" resultType="product">
 		<![CDATA[
-		SELECT pseq, name, kind, price1, price2, useyn, bestyn
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY name) rn, pseq, name, kind, price1, price2, useyn, bestyn
+		SELECT pseq, name, kind, price1, price2, useyn, bestyn, regdate
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY name) rn, pseq, name, kind, price1, price2, useyn, bestyn, regdate
 		    FROM product
 		    WHERE name LIKE '%' || #{key} || '%')
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+		ORDER BY pseq DESC
 		]]>
 	</select>
 	

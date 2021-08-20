@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
 html,
 body {
 	height: 100%;
@@ -2506,6 +2507,8 @@ ol {
 .orderList .orderList_form .orderList_form_table,
 .orderDetail .orderDetail_form .orderDetail_form_empty,
 .orderDetail .orderDetail_form .orderDetail_form_table,
+.orderComplete .orderComplete_form .orderComplete_form_empty,
+.orderComplete .orderComplete_form .orderComplete_form_color,
 .cartList .cartList_form .cartList_form_empty,
 .cartList .cartList_form .cartList_form_color,
 .qnaList .qnaList_form .qnaList_form_empty,
@@ -2591,22 +2594,32 @@ ol {
  * order
  */
 .orderList .orderList_form,
-.orderDetail .orderDetail_form {
+.orderDetail .orderDetail_form,
+.orderComplete .orderComplete_form {
 	padding: 20px;
 }
 .orderList .orderList_form .orderList_form_table .orderList_form_table_now,
 .orderList .orderList_form .orderList_form_table .orderList_form_table_now_past,
 .orderDetail .orderDetail_form .orderDetail_form_table .orderDetail_form_table_now,
-.orderDetail .orderDetail_form .orderDetail_form_table .orderDetail_form_table_now_past {
+.orderDetail .orderDetail_form .orderDetail_form_table .orderDetail_form_table_now_past,
+.orderComplete .orderComplete_form .orderComplete_form_table {
 	padding: 10px;
 }
-.orderDetail .orderDetail_form .orderDetail_button .orderList_button_list {
+.orderDetail .orderDetail_form .orderDetail_button .orderList_button_list,
+.orderComplete .orderComplete_form .orderComplete_form_total .orderComplete_form_total_text,
+.orderComplete .orderCompletet_form .orderComplete_form_total .orderComplete_form_total_number {
 	float: left;
+}
+.orderComplete .orderComplete_form .orderComplete_form_total_clear,
+.orderComplete .orderComplete_form .orderComplete_form_table_clear {
+	clear: both;
 }
 .orderList .orderList_form .orderList_form_empty_button,
 .orderList .orderList_form .orderList_button_booking,
 .orderDetail .orderDetail_form .orderDetail_form_empty_button,
-.orderDetail .orderDetail_form .orderDetail_button .orderDetail_button_booking {
+.orderDetail .orderDetail_form .orderDetail_button .orderDetail_button_booking,
+.orderComplete .orderComplete_form .orderComplete_form_empty_button,
+.orderComplete .orderComplete_form .orderComplete_form_button {
 	float: right;
 }
 
@@ -2666,3 +2679,4 @@ ol {
 .updateMember_form .updateMember_form_button .updateMember_form_button_submit {
 	float: right;
 }
+

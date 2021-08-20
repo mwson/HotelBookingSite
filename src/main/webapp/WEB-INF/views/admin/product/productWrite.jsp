@@ -1,70 +1,102 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@include file="../sideMenu.jsp"%>
 <%@include file="../header.jsp"%>
-<%@include file="../sub_menu.jsp"%>
 
-<script type="text/javascript">
-	function go_admin_product_list() {
-		var theForm = document.frm;
-		theForm.action = "admin_product_list";
-		theForm.submit();
-	}
-</script>
-<article>
-	<h1>상품등록</h1>  
-	<!-- [1] 파일을 업로드 하기 위해서는 폼태그를 post 방식으로 전송하고, 인코딩 타입을 multipart/form-data 로 지정해야 한다. -->
-	<form name="frm" id="write_form" method="post" enctype="multipart/form-data">
-		<table id="list">
-			<tr>
-				<th>상품분류</th>
-				<td colspan="5">
-					<select name="kind" id="kind">
-						<c:forEach items="${kindList}" var="kind" varStatus="status">
-							<option value="${status.count}">${kind}</option>
-						</c:forEach>
-					</select>
-			<!--
-				</td>
-			</tr>
-			-->
-			<tr>
-				<th>상품명</th>
-				<td width="343" colspan="5">
-					<input type="text" name="name" id="name" size="47" maxlength="100" value="킬힐">
-				</td>
-			</tr>
-			<tr>
-				<th>원가[A]</th>
-				<td width="70">
-					<input type="text" name="price1" id="price1" size="11" onKeyUp='NumFormat(this)' value="10000">
-				</td>
-				<th>판매가[B]</th>
-				<td width="70">
-					<input type="text" name="price2" id="price2" size="11" onBlur="go_ab()" onKeyUp='NumFormat(this)' value="20000">
-				</td>
-				<th>[B-A]</th>
-				<td width="72">
-					<input type="text" name="price3" id="price3" size="11" readonly onKeyUp='NumFormat(this)'>
-				</td>
-			</tr>
-			<tr>
-				<th>상세설명</th>
-				<td colspan="5">
-					<textarea name="content" id="content" rows="8" cols="70">이뻐요</textarea>
-				</td>
-			</tr>
-			<tr>
-				<th>상품이미지</th>
-				<td width="343" colspan="5">
-					<!-- [2] 파일 업로드를 하기 위한 input 태그는 타입 속성 값을 file로 지정해야 한다. -->
-					<input type="file" name="product_image" id="product_image">
-				</td>
-			</tr>    
-		</table>
+<main class="content">
+	<div class="container-fluid p-0">
+		<div class="mb-3">
+			<h1 class="h3 d-inline align-middle">상품등록</h1>
+		</div>
 		
-		<input class="btn" type="button" value="등록" onClick="go_save()">           
-		<input class="btn" type="button" value="취소" onClick="go_admin_product_list()">
-	</form> 
-</article>
-
+		<form method="post" id="product_write_form" name="product_write_form" enctype="multipart/form-data">
+			<input type="hidden" id="price1" name="price1" value="1000000">
+			<input type="hidden" id="price3" name="price3" onKeyUp='NumFormat(this)'>
+			<div class="row">
+				<div class="col-8 col-lg-9">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="card-title">상품등록</h5>
+							<h6 class="card-subtitle text-muted">상품등록 화면입니다.</h6>
+						</div>
+						
+						<div class="card-body text-center">
+							<table class="table table-striped" style="text-align: left">
+								<tr>
+									<th style="width: 15%">상품분류</th>
+									<td>
+										<select name="kind" id="kind">
+											<c:forEach items="${kindList}" var="kind" varStatus="status">
+												<option value="${status.count}">${kind}</option>
+											</c:forEach>
+										</select> 
+									</td>
+								</tr>
+								<tr>
+									<th style="width: 15%">상품명</th>
+									<td>
+										<input type="text" class="form-control" id="name" name="name">
+									</td>
+								</tr>
+								<tr>
+									<th style="width: 15%">가격</th>
+									<td>
+										<input type="text" class="form-control" id="price2" name="price2" onBlur="go_ab()" onKeyUp='NumFormat(this)'>
+									</td>
+								</tr>
+								<tr>
+									<th style="width: 15%">상세설명</th>
+									<td>
+										<textarea id="content" class="form-control" name="content" rows="6"></textarea>
+									</td>
+								</tr>								
+								<tr>
+									<th style="width: 15%">상품이미지</th>
+									<td>
+										<input type="file" name="product_image" id="product_image">
+									</td>
+								</tr>
+							</table>
+						</div>
+						
+					</div>
+				</div>
+	
+				<div class="col-4 col-lg-3">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="card-title">상품취소</h5>
+							<h6 class="card-subtitle text-muted">상품등록을 취소하세요.</h6>
+						</div>
+						<div class="card-body">
+							<div class="btn-group col-12 col-lg-12">
+								<input type="reset" class="btn btn-secondary" value="취소">
+							</div>
+						</div>
+						<hr>
+						<div class="card-header">
+							<h5 class="card-title">상품등록</h5>
+							<h6 class="card-subtitle text-muted">상품을 등록하세요.</h6>
+						</div>
+						<div class="card-body">
+							<div class="btn-group col-12 col-lg-12">
+								<input type="button" class="btn btn-primary" value="등록" onClick="go_order_write()">
+							</div>
+						</div>
+						<hr>
+						<div class="card-header">
+							<h5 class="card-title">상품목록</h5>
+							<h6 class="card-subtitle text-muted">목록으로 이동하세요.</h6>
+						</div>
+						<div class="card-body">
+							<div class="btn-group col-12 col-lg-12">
+								<input type="button" class="btn btn-secondary btn-lg" value="상품목록" onClick="admin_product_list1()">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</main>
 <%@include file="../footer.jsp"%>

@@ -47,7 +47,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin_login_form")
 	public String adminLoginView() {
-		return "admin/main";
+		return "admin/login";
 	}
 	
 	@RequestMapping(value = "/admin_login")
@@ -69,7 +69,7 @@ public class AdminController {
 				model.addAttribute("message", "아이디를 확인하세요!");
 			}
 			
-			return "admin/main";
+			return "admin/login";
 		}
 	}
 	
@@ -77,19 +77,22 @@ public class AdminController {
 	public String adminLogout(SessionStatus status) {
 		status.setComplete();
 		
-		return "admin/main";
+		return "admin/login";
 	}
 	
+	/*
+	 * "상품목록" 처리
+	 */
 	@RequestMapping(value = "/admin_product_list")
 	public String adminProductList(HttpSession session, Criteria criteria,
 			@RequestParam(value = "key", defaultValue = "")String key, Model model) {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			//List<ProductVO> productList = productService.listProduct(key);
-			List<ProductVO> productList = productService.getListWithPaging(criteria, key);
+			List<ProductVO> productList = productService.listWithPaging(criteria, key);
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(criteria); // 현재 페이지와 페이지당 항목 수 설정
@@ -112,7 +115,7 @@ public class AdminController {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			String[] kindList = {"Heels", "Boots", "Sandals", "Slipers", "Sneekers", "Sale"};
 			
@@ -131,7 +134,7 @@ public class AdminController {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			String fileName = "";
 			
@@ -159,18 +162,19 @@ public class AdminController {
 		}
 	}
 	
+
 	@RequestMapping(value = "/admin_product_detail")
 	public String adminProductDetail(HttpSession session, ProductVO vo, Model model) {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			String[] kind = {"", "Heels", "Boots", "Sandals", "Slipers", "Sneekers", "Sale"};
 			
 			ProductVO productVO = productService.getProduct(vo);
 			model.addAttribute("productVO", productVO);	// 화면에 전달할 상품상세정보
-
+			
 			int index = (Integer.parseInt(productVO.getKind())); // 상품 분류코드를 읽어온다.
 			model.addAttribute("kind", kind[index]);
 			
@@ -183,7 +187,7 @@ public class AdminController {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			String[] kindList = {"Heels", "Boots", "Sandals", "Slipers", "Sneekers", "Sale"};
 			ProductVO productVO = productService.getProduct(vo);
@@ -201,7 +205,7 @@ public class AdminController {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			String fileName = "";
 			
@@ -236,17 +240,27 @@ public class AdminController {
 		}
 	}
 	
+	/*
+	 * "주문목록" 조회(검색), 페이징  처리
+	 */
 	@RequestMapping(value = "/admin_order_list")
-	public String adminOrderList(HttpSession session,
+	public String adminOrderList(HttpSession session, Criteria criteria,
 			@RequestParam(value = "key", defaultValue = "")String key, Model model) {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
-			List<OrderVO> orderList = orderService.listOrder(key);
+			List<OrderVO> orderList = orderService.listOrderwithPaging(criteria, key);
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(criteria);
+			
+			int totalCount = orderService.countOrderList(key);
+			pageMaker.setTotalCount(totalCount);
 			
 			model.addAttribute("orderList", orderList);
+			model.addAttribute("pageMaker", pageMaker);
 			
 			return "admin/order/orderList";
 		}
@@ -261,7 +275,7 @@ public class AdminController {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			for(int i = 0; i<odseq.length; i++) {
 				orderService.updateOrderResult(odseq[i]);
@@ -272,7 +286,7 @@ public class AdminController {
 	}
 	
 	/*
-	 * 회원목록 조회 처리
+	 * "회원목록" 조회 처리
 	 */
 	@RequestMapping(value = "/admin_member_list")
 	public String adminMemberList(HttpSession session,
@@ -280,7 +294,7 @@ public class AdminController {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			List<MemberVO> memberList = memberService.listMember(key);
 			
@@ -298,7 +312,7 @@ public class AdminController {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			List<QnaVO> qnaList = qnaService.listAllQna();
 			
@@ -316,7 +330,7 @@ public class AdminController {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			QnaVO qnaVO = qnaService.getQna(vo.getQseq());
 			
@@ -334,7 +348,7 @@ public class AdminController {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			qnaService.updateQna(vo);
 			
@@ -350,7 +364,7 @@ public class AdminController {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
-			return "admin/main";
+			return "admin/login";
 		} else {
 			return "admin/order/salesRecords";
 		}

@@ -32,7 +32,7 @@ public class MypageController {
 	private MemberService memberService;
 	
 	/*
-	 * "장바구니" 추가
+	 * "장바구니" 추가 처리
 	 */
 	@RequestMapping(value = "/cart_insert", method = RequestMethod.POST)
 	public String CartInsert(CartVO vo, Model model, HttpSession session) {
@@ -51,6 +51,9 @@ public class MypageController {
 		return "redirect:cart_list";	// 장바구니 목록을 조회하여 장바구니 목록 화면 표시
 	}
 	
+	/*
+	 * "장바구니" 목록 출력
+	 */
 	@RequestMapping(value = "/cart_list")
 	public String CartList(HttpSession session, Model model) {
 		// 세션에 저장된 로그인 정보를 읽어옴
@@ -74,10 +77,13 @@ public class MypageController {
 		return "mypage/cartList";
 	}
 	
+	/*
+	 * "장바구니" 삭제 처리
+	 */
 	@RequestMapping(value = "/cart_delete")
 	public String CartDelete(@RequestParam(value = "cseq")int[] cseq) {
 		for(int i=0; i<cseq.length; i++) {
-			System.out.println("삭제할 cart seq = " + cseq[i]);
+			//System.out.println("삭제할 cart seq = " + cseq[i]);
 			cartService.deleteCart(cseq[i]);
 		}
 		
@@ -99,13 +105,13 @@ public class MypageController {
 			model.addAttribute("oseq", oseq);
 		}
 		
-		return "redirect:order_list";
+		return "redirect:order_complete";
 	}
 	
 	/*
-	 * 주문내역 출력
+	 * "예약하기" 처리 (장바구니에서 -> 예약)
 	 */
-	@RequestMapping(value = "/order_list")
+	@RequestMapping(value = "/order_complete")
 	public String orderListAction(@RequestParam(value = "oseq")int oseq, HttpSession session, OrderVO vo, Model model) {
 		// 세션에 저장된 로그인 정보를 읽어옴
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -129,10 +135,10 @@ public class MypageController {
 			model.addAttribute("totalPrice", totalPrice);
 		}
 		
-		return "mypage/orderList";
+		return "mypage/orderComplete";
 	}
 	
-	@RequestMapping(value = "/mypage")
+	@RequestMapping(value = "/orderList")
 	public String myPageView(HttpSession session, Model model) {
 		// 세션에 저장된 로그인 정보를 읽어옴
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -181,9 +187,12 @@ public class MypageController {
 			model.addAttribute("orderList", orderList);
 		}
 		
-		return "mypage/mypage";
+		return "mypage/orderList";
 	}
 	
+	/*
+	 * "예약내역 상세" 화면
+	 */
 	@RequestMapping(value = "/order_detail")
 	public String orderDetailView(HttpSession session, OrderVO vo, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -267,7 +276,7 @@ public class MypageController {
 			model.addAttribute("orderList", orderList);
 		}
 		
-		return "mypage/mypage";
+		return "mypage/orderList";
 	}
 	
 	/*

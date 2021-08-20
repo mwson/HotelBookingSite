@@ -57,7 +57,7 @@ public class ProductDAO {
 		mybatis.update("ProductDAO.updateProduct", vo);
 	}
 	
-	public List<ProductVO> getListWithPaging(Criteria criteria, String key) {
+	public List<ProductVO> listWithPaging(Criteria criteria, String key) {
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("criteria", criteria);

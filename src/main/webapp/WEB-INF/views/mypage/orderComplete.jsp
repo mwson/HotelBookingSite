@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h1>장바구니</h1>
+                    <h1>주문완료</h1>
                     <div class="breadcrumb__links">
                         <a href="index">메인</a>
                         <span>마이페이지</span>
@@ -35,33 +35,33 @@
                     </div>
                 </div>
             </div>
-            <div class="cartList col-lg-9 col-md-9">
-                <h2 class="mb-4">장바구니</h2>
+            <div class="orderComplete col-lg-9 col-md-9">
+                <h2 class="mb-4">결제완료</h2>
                 <form method="post" id="formm" name="formm">
-                    <div class="cartList_form col-lg-12 col-md-12">
+                    <div class="orderComplete_form col-lg-12 col-md-12">
                         <c:choose>
-							<c:when test="${cartList.size()==0}">
-								<div class="cartList_form_empty">
+							<c:when test="${orderList.size()==0}">
+								<div class="orderComplete_form_empty">
 							   		<h4 style="text-align: center;">장바구니가 비어있습니다.</h4>
 								</div>
 								<br>
-								<div class="cartList_form_empty_button col-lg-3 col-md-3">
+								<div class="orderComplete_form_empty_button col-lg-3 col-md-3">
 							    	<input type="button" class="btn btn-warning btn-lg btn-block" value="예약하기" onclick="location.href='index'">
 								</div>
 							</c:when>
                             
                             <c:otherwise>
-								<div class="cartList_form_color">
-	                            	<div class="cartList_form_total">
-	                 	            	<div class="cartList_form_total_text">
-	                                		<h5 class="mb-4">총 결제예정 금액　</h5>
+								<div class="orderComplete_form_color">
+	                            	<div class="orderComplete_form_total">
+	                 	            	<div class="orderComplete_form_total_text">
+	                                		<h5 class="mb-4">총 결제 금액　</h5>
 	                                	</div>
-	                                	<div class="cartList_form_total_number">
+	                                	<div class="orderComplete_form_total_number">
 	                                		<fmt:formatNumber value="${totalPrice}" type="currency"/>
 	                                	</div>
-	                                	<div class="cartList_form_total_clear"></div>
+	                                	<div class="orderComplete_form_total_clear"></div>
 	                                </div>
-	                                <div class="cartList_form_table">
+	                                <div class="orderComplete_form_table">
 	                                    <table class="table table-striped" style="text-align: center;">
 	                                        <thead>
 	                                            <tr>
@@ -69,41 +69,39 @@
 	                                                <th style="width: 10%">수량</th>
 	                                                <th style="width: 20%">가격</th>
 	                                                <th style="width: 15%">주문일</th>
-	                                                <th style="width: 20%">삭제</th>    
+	                                                <th style="width: 20%">진행상태</th>    
 	                                            </tr>
 	                                        </thead>
 	                                        <tbody>
-	                                            <c:forEach items="${cartList}" var="cartVO">
+	                                            <c:forEach items="${orderList}" var="orderVO">
 	                                                    <tr>  
 	                                                        <td>
-	                                                            <a href="product_detail?pseq=${cartVO.pseq}">${cartVO.pname}</a>    
+	                                                            <a href="product_detail?pseq=${cartVO.pseq}">${orderVO.pname}</a>    
 	                                                        </td>    
 	                                                        <td>
-	                                                            ${cartVO.quantity}
+	                                                            ${orderVO.quantity}
 	                                                        </td>      
 	                                                        <td>
-	                                                            <fmt:formatNumber value="${cartVO.price2*cartVO.quantity}" type="currency"/>
+	                                                            <fmt:formatNumber value="${orderVO.price2*orderVO.quantity}" type="currency"/>
 	                                                        </td>
 	                                                        <td> 
-	                                                            <fmt:formatDate value="${cartVO.indate}" type="date"/>
+	                                                            <fmt:formatDate value="${orderVO.indate}" type="date"/>
 	                                                        </td>
 	                                                        <td>
-	                                                            <input type="checkbox" id="cseq" name="cseq" value="${cartVO.cseq}"> 
+																진행 중 
 	                                                        </td>
 	                                                    </tr>
 	                                            </c:forEach>
-	                                            <tr> 
-	                                                <td colspan="4"></td>
-	                                                <td><input type="button" class="btn btn-secondary btn-sm btn-block" value="삭제" onclick="go_cart_delete()"></td>
-	                                            </tr>
 	                                        </tbody>
 	                                    </table>
-										<div class="cartList_form_table_clear"></div>
+	                                    <hr>
+	                                    <div class="orderComplete_form_complete_text"><h5>주문이 완료되었습니다!</h5></div>
+										<div class="orderComplete_form_table_clear"></div>
 	                                </div>
 								</div>
 	   	                        <br>
-								<div class="cartList_form_table_button col-lg-3 col-md-3">
-								    <input type="button" class="btn btn-warning btn-lg btn-block" value="주문하기" onclick="go_order_insert()">
+								<div class="orderComplete_form_button col-lg-3 col-md-3">
+								    <input type="button" class="btn btn-warning btn-lg btn-block" value="예약확인" onclick="location.href='order_all'">
 								</div>
                             </c:otherwise>
                         </c:choose>

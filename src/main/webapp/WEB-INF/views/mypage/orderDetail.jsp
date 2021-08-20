@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h1>예약상세</h1>
+                    <h1>예약내역 상세</h1>
                     <div class="breadcrumb__links">
                         <a href="index">메인</a>
                         <span>마이페이지</span>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="orderDetail col-lg-9 col-md-9">
-                <h2 class="mb-4">예약상세</h2>
+                <h2 class="mb-4">예약내역 상세</h2>
                 <form method="post" id="formm" name="formm">
                     <div class="orderDetail_form col-lg-12 col-md-12">
                         <c:choose>
@@ -75,7 +75,7 @@
                                         </table>
                                     </div>
                                     <hr class="mb-5">
-                                    <h5 class="mb-4">예약 상세</h5>
+                                    <h5 class="mb-4">예약내역 상세</h5>
                                     <div class="orderDetail_form_table_now_past">
                                         <table class="table table-striped" style="text-align: center;">
                                             <thead>
@@ -99,7 +99,7 @@
                                                             <td>
                                                                 <c:choose>
 																	<c:when test='${orderVO.result=="1"}'>
-																		예약중
+																		예약 중
 																	</c:when>
 																	<c:otherwise>
 																		<h5>예약완료</h5>
@@ -115,7 +115,7 @@
                                 <br>
                                	<div class="orderDetail_button col-lg-12 col-md-12">
 			                        <div class="orderList_button_list col-lg-3 col-md-3">
-			                            <input type="button" class="btn btn-secondary btn-lg btn-block" value="예약목록" onclick="location.href='order_all'">
+			                            <input type="button" class="btn btn-secondary btn-lg btn-block" value="예약확인" onclick="location.href='order_all'">
 			                        </div>
 		                            <div class="orderDetail_button_booking col-lg-3 col-md-3">
 		                                <input type="button" class="btn btn-warning btn-lg btn-block" value="예약 계속하기" onclick="location.href='index'">

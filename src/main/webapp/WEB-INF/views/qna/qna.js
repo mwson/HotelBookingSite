@@ -1,5 +1,5 @@
 /*
- * "문의하기" 체크 및 전송
+ * "문의하기" 처리
  */
 function go_qna_write() {
 	if($("#subject").val() == "") {

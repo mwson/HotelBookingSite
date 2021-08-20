@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.green.biz.dto.NoticeVO;
 
-@Repository("noardDAO")
+@Repository("noticeDAO")
 public class NoticeDAO {
 	
 	@Autowired

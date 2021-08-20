@@ -52,7 +52,7 @@
 
                             <c:otherwise>
                                 <div class="orderList_form_table">
-                                    <h5 class="mb-4">현재 주문내역</h5>
+                                    <h5 class="mb-4">현재 예약내역</h5>
                                     <div class="orderList_form_table_now">
                                         <table class="table table-striped" style="text-align: center;">
                                             <thead>
@@ -84,7 +84,7 @@
                                         </table>
                                     </div>
                                     <hr class="mb-5">
-                                    <h5 class="mb-4">이전 주문내역</h5>
+                                    <h5 class="mb-4">이전 예약내역</h5>
                                     <div class="orderList_form_table_now_past">
                                         <table class="table table-striped" style="text-align: center;">
                                             <thead>
