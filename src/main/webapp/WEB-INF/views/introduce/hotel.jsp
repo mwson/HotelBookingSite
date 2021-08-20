@@ -90,7 +90,7 @@
                 <div class="chooseus__text">
                     <div class="section-title">
                         <h5>지금 예약하세요!</h5>
-                        <h2>최상의 프로모션 혜택, 예약을 잡으시려면<br>지금 연락주세요.</h2>
+                        <h2>최상의 프로모션 혜택<br>지금 연락주세요.</h2>
                     </div>
                     <a href="#" class="primary-btn">예약하기</a>
                 </div>
