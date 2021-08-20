@@ -14,7 +14,6 @@
 		WHERE pseq=#{pseq}
 	</select>
 	
-	<!-- 페이징 처리 상품평 조회 -->
 	<select id="getCommentListWithPaging" parameterType="HashMap" resultType="comment">
 		<![CDATA[
 		SELECT comment_seq, pseq, content, writer, regdate, modifydate

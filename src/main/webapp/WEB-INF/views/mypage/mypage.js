@@ -1,75 +1,45 @@
-/**
- * 
+/*
+ * "장바구니" 삭제 처리
  */
-// 계약서 동의 여부 확인
-function go_next() {
-	if($(".agree")[0].checked == true) { // 동의함에 체크되어 있으면 '회원가입'을 요청함
-		$("#join").attr("action", "join_form").submit();
-	} else if($(".agree")[1].checked == true) {
-		alert("약관에 동의해 주셔야 합니다.");
-		return false;
-	}
-}
+function go_cart_delete() {
+	var count = 0;
 
-// id 중복확인 화면 출력
-function idcheck() {
-	if($("#id").val() == "") {
-		alert("아이디를 입력해 주세요!");
-		$("#id").focus();
-		return false;
+	if(document.formm.cseq.length == undefined) {
+		if(document.formm.cseq.checked == true) {
+			count++;
+		}
 	}
-	// 아이디 중복 체크를 위한 윈도우 오픈 요청
-	var url = "id_check_form?id=" + $("#id").val();
 	
-	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=300");
+	for(var i=0; i<document.formm.cseq.length; i++) {
+		if(document.formm.cseq[i].checked == true) {
+			count++;
+		}
+	}
+	
+	if(count == 0) {
+		alert("삭제할 항목을 선택해 주세요!");
+	} else {
+		document.formm.action = "cart_delete";
+		document.formm.submit();
+	}
 }
 
-// 사용가능한 아이디를 사용
 /*
-function idok() {
-	$("#theform").attr("action", "id_check_confirmed").submit();
-}
-*/
-
-/*
- * 회원가입 시, 필수 입력 사항 체크
- * action url: join
+ * "장바구니" 주문 처리
  */
-function go_save() {
-	if($("#id").val() == "") {
-		alert("아이디를 입력해주세요!");
-		$("#id").focus();
-		return false;
-	} else if($("#id").val() != $("#reid").val()) {
-		alert("아이디 중복 확인을 해주세요!");
-		$("#id").focus();
-		return false;
-	} else if ($("#pwd").val() == "") {
-		alert("비밀번호를 입력해 주세요!");
-		$("#pwd").focus();
-		return false;
-	} else if ($("#pwdCheck").val() == "") {
-		alert("비밀번호 확인을 입력해 주세요!");
-		$("#pwdcheck").focus();
-		return false;
-	} else if($("#pwd").val() != $("#pwdCheck").val()) {
+function go_order_insert() {
+	$("#formm").attr("action", "order_insert").submit();
+}
+
+/*
+ * "회원정보 관리" 수정 처리
+ */
+function go_update_member() {
+	if($("#pwd").val() != $("#pwdCheck").val()) {
 		alert("비밀번호가 일치하지 않습니다!");
 		$("#pwdcheck").focus();
 		return false;
-	} else if($("#name").val() == "") {
-		alert("이름을 입력해 주세요!");
-		$("#name").focus();
-		return false;
 	} else {
-		$("#join").attr("action", "join").submit();
+	   $("#update").attr("action", "update_member").submit();
 	}
-}
-
-/*
- * 우편번호 찾기 창 오픈
- */
-function post_zip() {
-	var url = "find_zip_num";
-	
-	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
 }

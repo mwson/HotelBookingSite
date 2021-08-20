@@ -1,5 +1,5 @@
-/**
- * 아이디, 비밀번호 찾기 관련 스크립트 함수
+/*
+ * "아이디, 비밀번호 찾기" 화면 팝업 창
  */
 function find_id_form() {
 	var url = "find_id_form";
@@ -8,11 +8,9 @@ function find_id_form() {
 }
 
 /*
- * 아이디를 찾기 위해 find_id URL 요청 전송
- * 이름, 이메일이 입력되어있는지 확인
+ * "아이디 찾기" 처리
  */
 function findMemberId() {
-	/* 이름과 이메일 입력 확인 */
 	if($("#nameId").val() == "") {
 		alert("이름을 입력해 주세요!");
 		$("#nameId").focus();
@@ -26,6 +24,9 @@ function findMemberId() {
 	}
 }
 
+/*
+ * "비밀번호 찾기" 처리
+ */
 function findPassword() {
 	if($("#idPw").val() == "") {
 		alert("아이디를 입력해 주세요!");
@@ -44,6 +45,9 @@ function findPassword() {
 	}
 }
 
+/*
+ * "아이디 변경" 처리
+ */
 function changePassword() {
 	if($("#pwd").val() == "") {
 		alert("비밀번호를 입력해 주세요!");

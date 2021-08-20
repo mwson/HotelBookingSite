@@ -1,45 +1,71 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@include file="../sideMenu.jsp"%>
 <%@include file="../header.jsp"%>
-<%@include file="../sub_menu.jsp"%>
 
-<article>
-	<h1>상품 상세 보기</h1> 
-	<form name="frm" id="detail_form" method="post">
-		<table id="list">
-			<tr>
-				<th>상품분류</th>
-				<td colspan="5">${kind}</td>    
-			</tr>    
-			<tr>
-				<th align="center">상품 명</th>
-				<td colspan="5">${productVO.name}</td>
-			</tr>
-			<tr>
-				<th>원가 [A]</th>
-				<td width="60">${productVO.price1}</td>
-				<th>판매가 [B]</th>
-				<td width="60">${productVO.price2}</td>
-				<th>[B-A]</th><td>${productVO.price3}</td>
-			</tr>
-			<tr>
-				<th>상세설명</th>
-				<td colspan="5">${productVO.content}</td>
-			</tr>
-			<tr>
-				<th>상품이미지</th>
-				<td colspan="5" align="center">
-					<!-- [7] 상품 이미지를 출력하기 -->     
-					<img src="product_images/${productVO.image}" width="200pt">
-				</td>
-			</tr>
-		</table>
+<main class="content">
+	<div class="container-fluid p-0">
+		<div class="mb-3">
+			<h1 class="h3 d-inline align-middle">상품상세</h1>
+		</div>
 		
-		<!-- [8] 수정 버튼이 눌리면 상품 수정 페이지로 이동하되 현재 페이지와 상품 일련번호 값을 전달해 준다. --> 
-		<input class="btn" type="button" value="수정" onClick="go_mod('${productVO.pseq}')">
-		<!-- [9] 목록 버튼이 눌리면 상품 리스트 페이지로 이동하되 현재 페이지를 전달해 준다. --> 
-		<input class="btn" type="button" value="목록" onClick="go_list('${criteria.pageNum}', '${criteria.numPerPage}')">        
-	</form>
-</article>
+		<form method="post" id="product_detail_form" name="product_detail_form">         
+			<div class="row">
+				<div class="col-8 col-lg-9">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="card-title">상품상세</h5>
+							<h6 class="card-subtitle text-muted">선택한 상품의 상세내용입니다.</h6>
+						</div>
+						<div class="card-body text-center">
+							<table class="table table-striped" style="text-align: left">
+								<tr>
+									<th style="width: 15%">상품명</th>
+									<td>${productVO.name}</td>
+								</tr>
+								<tr>
+									<th style="width: 15%">가격</th>
+									<td><fmt:formatNumber value="${productVO.price2}"/></td>
+								</tr>
+								<tr>
+									<th style="width: 15%">상세설명</th>
+									<td>${productVO.content}</td>
+								</tr>								
+								<tr>
+									<th style="width: 15%; height: center">상품이미지</th>
+									<td><img class="card-img-top" src="product_images/${productVO.image}"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+	
+				<div class="col-4 col-lg-3">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="card-title">상품수정</h5>
+							<h6 class="card-subtitle text-muted">상품을 수정하세요.</h6>
+						</div>
+						<div class="card-body">
+							<div class="btn-group col-12 col-lg-12">
+								<input type="button" class="btn btn-primary" value="수정" onClick="go_order_update_form('${productVO.pseq}')">
+							</div>
+						</div>
+						<hr>
+						<div class="card-header">
+							<h5 class="card-title">상품목록</h5>
+							<h6 class="card-subtitle text-muted">목록으로 이동하세요.</h6>
+						</div>
+						<div class="card-body">
+							<div class="btn-group col-12 col-lg-12">
+								<input type="button" class="btn btn-secondary btn-lg" value="상품목록" onClick="go_order_list('${criteria.pageNum}', '${criteria.numPerPage}')">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</main>
 
 <%@include file="../footer.jsp"%>

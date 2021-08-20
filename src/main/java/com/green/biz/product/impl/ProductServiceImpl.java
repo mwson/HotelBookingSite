@@ -63,8 +63,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVO> getListWithPaging(Criteria criteria, String key) {
-		return productDao.getListWithPaging(criteria, key);
+	public List<ProductVO> listWithPaging(Criteria criteria, String key) {
+		return productDao.listWithPaging(criteria, key);
 	}
 
 	@Override

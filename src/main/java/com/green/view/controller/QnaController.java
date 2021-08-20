@@ -21,7 +21,7 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	/*
-	 * "문의목록" 화면
+	 * "문의목록" 출력
 	 */
 	@RequestMapping(value = "/qna_list", method = RequestMethod.GET)
 	public String qnaList(HttpSession session, Model model) {
@@ -39,9 +39,9 @@ public class QnaController {
 	}
 	
 	/*
-	 * "문의목록 상세" 화면 
+	 * "문의목록 상세" 출력 
 	 */
-	@RequestMapping(value = "/qna_view", method = RequestMethod.GET)
+	@RequestMapping(value = "/qna_detail", method = RequestMethod.GET)
 	public String qnaView(HttpSession session, QnaVO vo, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
@@ -53,12 +53,12 @@ public class QnaController {
 			
 			model.addAttribute("qnaVO", qnaVO);
 			
-			return "qna/qnaView";
+			return "qna/qnaDetail";
 		}
 	}
 	
 	/*
-	 * "문의하기" 폼 화면 
+	 * "문의하기" 폼 출력 
 	 */
 	@RequestMapping(value = "/qna_write_form", method = RequestMethod.GET)
 	public String qnaWriteView(HttpSession session) {
@@ -72,7 +72,7 @@ public class QnaController {
 	}
 	
 	/*
-	 * "문의하기" 화면 
+	 * "문의하기" 출력 
 	 */
 	@RequestMapping(value = "/qna_write", method = RequestMethod.POST)
 	public String qnaWriteAction(HttpSession session, QnaVO vo) {

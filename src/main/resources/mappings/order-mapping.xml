@@ -37,12 +37,41 @@
 		ORDER BY oseq DESC
 	</select>
 	
+	<!-- 주문내역 총 개수 조회  -->
+	<select id="countOrderList" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY m.name) rn, od.odseq, o.oseq, o.id, o.indate, od.pseq, od.quantity,
+		        m.name mname, m.zip_num, m.address, m.phone, p.name pname, p.price2, od.result
+		    FROM orders o, order_detail od, member m, product p
+		    WHERE od.oseq = o.oseq
+		        AND od.pseq = p.pseq
+		        AND o.id = m.id
+		        AND m.name LIKE '%' || #{key} || '%')
+	</select>
+	
 	<!-- 전체 주문내역 조회 -->
 	<select id="listOrder" parameterType="String" resultType="order">
 		SELECT *
 		FROM order_view
 		WHERE mname LIKE '%' || #{key} || '%'
 		ORDER BY result, oseq DESC
+	</select>
+	
+	<!-- 주문내역 조회, 페이징 -->
+	<select id="listOrderwithPaging" parameterType="HashMap" resultType="order">
+		<![CDATA[
+		SELECT odseq, oseq, id, indate, pseq, quantity, mname, zip_num, address, phone, pname, price2, result
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY m.name) rn, od.odseq, o.oseq, o.id, o.indate, od.pseq, od.quantity,
+	            m.name mname, m.zip_num, m.address, m.phone, p.name pname, p.price2, od.result
+	        FROM orders o, order_detail od, member m, product p
+	        WHERE od.oseq = o.oseq
+	            AND od.pseq = p.pseq
+	            AND o.id = m.id
+	            AND m.name LIKE '%' || #{key} || '%')
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+		ORDER BY result, oseq DESC
+		]]>
 	</select>
 	
 	<!-- 주문완료 처리 수정 -->

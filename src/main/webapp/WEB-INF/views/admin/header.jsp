@@ -1,28 +1,22 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Nonage Admin</title>
-<link rel="stylesheet" href="admin/css/admin.css">
-<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="admin/product/product.js"></script>
-<script type="text/javascript" src="admin/board/board.js"></script>
-</head>
-<body onload="go_ab()">	<!-- 페이지 로드시에 제품의 순매출 계산 -->
-	<div id="wrap">
-		<header>			
-			<div id="logo">
-				<a href="admin_login_form"> 
-					<img style="width: 800px" src="admin/images/bar_01.gif">
-					<img src="admin/images/text.gif">
-				</a>
-			</div>
-			
-			<input class="btn" type="button" value="logout" style="float: right;" onClick="location.href='admin_logout'">			
-		</header>
 
-		<div class="clear"></div>
+<div class="main">
+    <nav class="navbar navbar-expand navbar-light navbar-bg">
+        <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+        </a>
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                        <span class="text-dark"><i class="align-middle me-1" data-feather="user"></i> 관리자</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="log-out"></i> 로그아웃</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>

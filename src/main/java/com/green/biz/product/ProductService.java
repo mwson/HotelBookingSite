@@ -26,7 +26,7 @@ public interface ProductService {
 	
 	public void updateProduct(ProductVO vo);
 	
-	public List<ProductVO> getListWithPaging(Criteria criteria, String key);
+	public List<ProductVO> listWithPaging(Criteria criteria, String key);
 	
 	public List<SalesQuantity> getProductSales();
 }

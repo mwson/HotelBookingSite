@@ -54,7 +54,7 @@
 								<div class="cartList_form_color">
 	                            	<div class="cartList_form_total">
 	                 	            	<div class="cartList_form_total_text">
-	                                		<h5 class="mb-4">총 주문금액　</h5>
+	                                		<h5 class="mb-4">총 결제예정 금액　</h5>
 	                                	</div>
 	                                	<div class="cartList_form_total_number">
 	                                		<fmt:formatNumber value="${totalPrice}" type="currency"/>
@@ -65,11 +65,11 @@
 	                                    <table class="table table-striped" style="text-align: center;">
 	                                        <thead>
 	                                            <tr>
-	                                                <th style="width: 45%">상품명</th>
+	                                                <th style="width: 35%">상품명</th>
 	                                                <th style="width: 10%">수량</th>
 	                                                <th style="width: 20%">가격</th>
 	                                                <th style="width: 15%">주문일</th>
-	                                                <th style="width: 10%">삭제</th>    
+	                                                <th style="width: 20%">삭제</th>    
 	                                            </tr>
 	                                        </thead>
 	                                        <tbody>
@@ -93,10 +93,7 @@
 	                                                    </tr>
 	                                            </c:forEach>
 	                                            <tr> 
-	                                                <td></td>
-	                                                <td></td>
-	                                                <td></td>
-	                                                <td></td>
+	                                                <td colspan="4"></td>
 	                                                <td><input type="button" class="btn btn-secondary btn-sm btn-block" value="삭제" onclick="go_cart_delete()"></td>
 	                                            </tr>
 	                                        </tbody>

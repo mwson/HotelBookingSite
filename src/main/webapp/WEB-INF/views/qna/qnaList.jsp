@@ -64,7 +64,7 @@
                                                     <tr>  
                                                         <td>${qnaVO.qseq}</td>    
                                                         <td>
-                                                            <a href="qna_view?qseq=${qnaVO.qseq}">${qnaVO.subject}</a>
+                                                            <a href="qna_detail?qseq=${qnaVO.qseq}">${qnaVO.subject}</a>
                                                         </td>      
                                                         <td>
                                                             <fmt:formatDate value="${qnaVO.indate}" type="date"/>

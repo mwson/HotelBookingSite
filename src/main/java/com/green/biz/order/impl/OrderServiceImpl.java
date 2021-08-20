@@ -10,6 +10,7 @@ import com.green.biz.dao.OrderDAO;
 import com.green.biz.dto.CartVO;
 import com.green.biz.dto.OrderVO;
 import com.green.biz.order.OrderService;
+import com.green.biz.utils.Criteria;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
@@ -71,12 +72,22 @@ public class OrderServiceImpl implements OrderService {
 	public List<Integer> selectSeqOrdering(OrderVO vo) {
 		return orderDao.selectSeqOrdering(vo);
 	}
-
+	
+	@Override
+	public int countOrderList(String name) {
+		return orderDao.countOrderList(name);
+	}
+	
 	@Override
 	public List<OrderVO> listOrder(String key) {
 		return orderDao.listOrder(key);
 	}
 
+	@Override
+	public List<OrderVO> listOrderwithPaging(Criteria criteria, String key) {
+		return orderDao.listOrderwithPaging(criteria, key);
+	}
+	
 	@Override
 	public void updateOrderResult(int odseq) {
 		orderDao.updateOrderResult(odseq);

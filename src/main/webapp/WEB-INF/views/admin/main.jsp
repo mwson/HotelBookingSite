@@ -1,65 +1,107 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Nonage Admin</title>
-<link rel="stylesheet" href="admin/css/admin.css">
-<script type="text/javascript">
-	function worker_check() {
-		if(document.frm.workerId.value=="") {
-			alert("아이디를 입력하세요.");
-			return false;
-		} else if(document.frm.workerPwd.value=="") {
-			alert("비밀번호를 입력하세요.");
-			return false;
-		}
-		return true;
-	}
-</script>
-</head>
-<body>
-	<div id="wrap">
-		<header>      
-			<div id="logo">
-				<a href="admin_login_form"> 
-					<img src="admin/images/bar_01.gif" style="float: left">
-					<img src="admin/images/text.gif">
-				</a>
-			</div>      
-		</header>
-		
-		<div class="clear"></div>
-		
-		<article>
-			<div id="loginform">
-				<form name="frm" method="post" action="admin_login">
-					<table>
-						<tr>
-							<td>아 이 디</td>
-							<td>
-								<input type="text" name="workerId" size="10" value="admin">
-							</td>
-						</tr>
-						<tr>
-							<td>비밀번호</td>
-							<td> 
-								<input type="password" name="workerPwd" size="10" value="admin">
-							</td>
-						</tr>
-						<tr align="center">
-							<td colspan="2">          
-								<input class="btn" type="submit" value="업무 로그인" onclick="return worker_check()">
-								<br><br>
-								<h4 style="color: red">${message}</h4>
-							</td>
-						</tr>
+
+<%@include file="sideMenu.jsp"%>
+<%@include file="header.jsp"%>
+
+<main class="content">
+	<div class="container-fluid p-0">
+		<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+		<div class="row">
+				<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+					<div class="card flex-fill">
+					<div class="card-header">
+					<h5 class="card-title mb-0">Latest Projects</h5>
+					</div>
+					<table class="table table-hover my-0">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th class="d-none d-xl-table-cell">Start Date</th>
+								<th class="d-none d-xl-table-cell">End Date</th>
+								<th>Status</th>
+								<th class="d-none d-md-table-cell">Assignee</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Project Apollo</td>
+								<td class="d-none d-xl-table-cell">01/01/2021</td>
+								<td class="d-none d-xl-table-cell">31/06/2021</td>
+								<td><span class="badge bg-success">Done</span></td>
+								<td class="d-none d-md-table-cell">Vanessa Tucker</td>
+							</tr>
+							<tr>
+								<td>Project Fireball</td>
+								<td class="d-none d-xl-table-cell">01/01/2021</td>
+								<td class="d-none d-xl-table-cell">31/06/2021</td>
+								<td><span class="badge bg-danger">Cancelled</span></td>
+								<td class="d-none d-md-table-cell">William Harris</td>
+							</tr>
+							<tr>
+								<td>Project Hades</td>
+								<td class="d-none d-xl-table-cell">01/01/2021</td>
+								<td class="d-none d-xl-table-cell">31/06/2021</td>
+								<td><span class="badge bg-success">Done</span></td>
+								<td class="d-none d-md-table-cell">Sharon Lessman</td>
+							</tr>
+							<tr>
+								<td>Project Nitro</td>
+								<td class="d-none d-xl-table-cell">01/01/2021</td>
+								<td class="d-none d-xl-table-cell">31/06/2021</td>
+								<td><span class="badge bg-warning">In progress</span></td>
+								<td class="d-none d-md-table-cell">Vanessa Tucker</td>
+							</tr>
+							<tr>
+								<td>Project Phoenix</td>
+								<td class="d-none d-xl-table-cell">01/01/2021</td>
+								<td class="d-none d-xl-table-cell">31/06/2021</td>
+								<td><span class="badge bg-success">Done</span></td>
+								<td class="d-none d-md-table-cell">William Harris</td>
+							</tr>
+							<tr>
+								<td>Project X</td>
+								<td class="d-none d-xl-table-cell">01/01/2021</td>
+								<td class="d-none d-xl-table-cell">31/06/2021</td>
+								<td><span class="badge bg-success">Done</span></td>
+								<td class="d-none d-md-table-cell">Sharon Lessman</td>
+							</tr>
+							<tr>
+								<td>Project Romeo</td>
+								<td class="d-none d-xl-table-cell">01/01/2021</td>
+								<td class="d-none d-xl-table-cell">31/06/2021</td>
+								<td><span class="badge bg-success">Done</span></td>
+								<td class="d-none d-md-table-cell">Christina Mason</td>
+							</tr>
+							<tr>
+								<td>Project Wombat</td>
+								<td class="d-none d-xl-table-cell">01/01/2021</td>
+								<td class="d-none d-xl-table-cell">31/06/2021</td>
+								<td><span class="badge bg-warning">In progress</span></td>
+								<td class="d-none d-md-table-cell">William Harris</td>
+							</tr>
+						</tbody>
 					</table>
-				</form>
+				</div>
 			</div>
-		</article>
+			<div class="col-12 col-lg-4 col-xxl-3 d-flex">
+				<div class="card flex-fill w-100">
+					<div class="card-header">
+					
+					<h5 class="card-title mb-0">Monthly Sales</h5>
+					
+						234
+					</div>
+					
+					<div class="card-body d-flex w-100">
+						<div class="align-self-center chart chart-lg">
+							ㄴㄹㅇ
+							<canvas id="chartjs-dashboard-bar"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</body>
-</html>
+</main>
+
+<%@include file="footer.jsp"%>
