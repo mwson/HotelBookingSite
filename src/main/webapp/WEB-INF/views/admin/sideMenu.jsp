@@ -16,53 +16,74 @@
 	<link rel="stylesheet" href="css/admin/admin.css" type="text/css">
 </head>
 <body>
-	<main class="d-flex w-100">
-		<div class="container d-flex flex-column">
-			<div class="row vh-100">
-				<div class="col-sm-10 col-md-8 col-lg-5 mx-auto d-table h-100">
-					<div class="d-table-cell align-middle">
-						<div class="card">
-							<div class="card-body">
-								<div class="m-sm-5">
-									<div class="text-center">
-										<img src="img/avatars/avatar.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
-									</div>
-									
-									<form 	method="post" id="formm" name="formm" action="admin_login">
-										<div class="mb-3">
-											<label class="form-label">아이디</label>
-											<input type="text" class="form-control form-control-lg" id="workerId" name="workerId" placeholder="아이디" value="admin">
-										</div>
-										<div class="mb-3">
-											<label class="form-label">비밀번호</label>
-											<input type="password" class="form-control form-control-lg" id="workerPwd" name="workerPwd" placeholder="비밀번호" value="admin">
-										</div>
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar js-sidebar">
+            <div class="sidebar-content js-simplebar">
+                <a class="sidebar-brand" href="#">
+                    <span class="align-middle">관리자</span>
+                </a>
 
-										<div class="text-center mt-4">
-											<input type="button" class="btn btn-primary btn-lg" value="로그인" onclick="worker_check()">
-											<br><br>
-											<h4 style="color: red">${message}</h4>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+						예약 및 상품
+                    </li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="#">
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="admin_order_list">
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">예약목록</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="admin_product_list">
+							<i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">상품목록</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="#">
+							<i class="align-middle" data-feather="trending-up"></i> <span class="align-middle">예약실적</span>
+						</a>
+					</li>
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
+                    <li class="sidebar-header">
+						고객센터
+                    </li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="#">
+							<i class="align-middle" data-feather="list"></i> <span class="align-middle">공지사항목록</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="#">
+							<i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Q&A목록</span>
+						</a>
+					</li>
 
-	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/jquery.slicknav.js"></script>
-    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/admin/admin.min.js"></script>
-    
-    <script type="text/javascript" src="admin/admin.js"></script>
-</body>
-</html>
+                    <li class="sidebar-header">
+						회원관리
+                    </li>
+					<li class="sidebar-item">
+                        <a class="sidebar-link" href="admin_member_list">
+                            <i class="align-middle" data-feather="users"></i> <span class="align-middle">회원목록</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-cta">
+                    <div class="sidebar-cta-content">
+                        <strong class="d-inline-block mb-2">그린호텔</strong>
+                        <div class="mb-3 text-sm">
+                           	메인으로 돌아가시려면
+							<br>
+							아래버튼을 클릭하세요.
+                        </div>
+                        <div class="d-grid">
+                            <a href="upgrade-to-pro.html" class="btn btn-primary">로그아웃</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
