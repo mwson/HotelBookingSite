@@ -1,38 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="NoticeDAO">	
+<mapper namespace="NoticeDAO">
+	<!-- "사용자 및 관리자, 공지사항" 조회 -->
 	<select id="listNotice" resultType="notice">
 		SELECT *
 		FROM notice
 		ORDER BY nseq DESC
 	</select>
 	
-	<!-- 공지사항 디테일 하단에 3개 표시 SQL -->
-	<select id="listNoticeView" resultType="notice">
-		SELECT *
-		FROM list_notice_view
+	<!-- "사용자 및 관리자, 공지사항" 총 개수 조회 -->
+	<select id="countNoticeList" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM notice
+		WHERE subject LIKE '%' || #{subject} || '%'
 	</select>
 	
+	<!-- "사용자 및 관리자, 공지사항" 조회 및 페이징 -->
+	<select id="listNoticewithPaging" parameterType="HashMap" resultType="notice">
+		<![CDATA[
+		SELECT nseq, kind, subject, indate
+		FROM(SELECT ROW_NUMBER() OVER(ORDER BY subject) rn, nseq, kind, subject, indate
+			FROM notice
+			WHERE subject LIKE '%' || #{key} || '%')
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+		ORDER BY nseq DESC
+		]]>
+	</select>
+	
+	<!-- "사용자 및 관리자, 공지사항" 상세 조회 -->
 	<select id="getNotice" parameterType="int" resultType="notice">
 		SELECT *
 		FROM notice
 		WHERE nseq=#{nseq}
 	</select>
 	
+	<!-- "사용자, 공지사항" 상세에서 하단 조회 -->
+	<select id="getNoticeBottomList" resultType="notice">
+		<![CDATA[
+		SELECT *
+		FROM notice
+		WHERE ROWNUM <= 4
+		ORDER BY nseq DESC
+	    ]]>
+	</select>
+	
+	<!-- "관리자, 공지사항목록" 등록 -->
 	<insert id="insertNotice">
-		INSERT INTO notice(bseq, kind, subject, content, image)
+		INSERT INTO notice(nseq, kind, subject, content, image)
 		VALUES(notice_seq.NEXTVAL, #{kind}, #{subject}, #{content}, #{image})
 	</insert>
 	
+	<!-- "관리자, 공지사항목록" 수정 -->
 	<update id="updateNotice">
 		UPDATE notice
 		SET kind=#{kind}, subject=#{subject}, content=#{content}, image=#{image}
 		WHERE nseq=#{nseq}
 	</update>
 	
+	<!-- "관리자, 공지사항목록" 삭제 -->
 	<delete id="deleteNotice" parameterType="int">
 		DELETE FROM notice
 		WHERE nseq=#{nseq}
 	</delete>
-
 </mapper>

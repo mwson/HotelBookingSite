@@ -31,13 +31,6 @@
 		ORDER BY name
 	</select>
 	
-	<!-- 조회한 총 상품의 갯수 -->
-	<select id="countProductList" parameterType="String" resultType="int">
-		SELECT COUNT(*)
-		FROM product
-		WHERE name LIKE '%' || #{name} || '%'
-	</select>
-	
 	<!-- 상품 목록 조회 -->
 	<select id="listProduct"  parameterType="String" resultType="product">
 		SELECT pseq, regdate, name, price1, price2, useyn, bestyn
@@ -46,8 +39,15 @@
 		ORDER BY pseq DESC
 	</select>
 	
+	<!-- 조회한 총 상품의 갯수 -->
+	<select id="countProductList" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM product
+		WHERE name LIKE '%' || #{name} || '%'
+	</select>
+	
 	<!-- 페이지 번호 별 상품목록 조회 -->
-	<select id="listWithPaging" parameterType="HashMap" resultType="product">
+	<select id="listProductWithPaging" parameterType="HashMap" resultType="product">
 		<![CDATA[
 		SELECT pseq, name, kind, price1, price2, useyn, bestyn, regdate
 		FROM (SELECT ROW_NUMBER() OVER(ORDER BY name) rn, pseq, name, kind, price1, price2, useyn, bestyn, regdate
@@ -65,13 +65,19 @@
 		VALUES(product_seq.NEXTVAL, #{name}, #{kind}, #{price1}, #{price2}, #{price3}, #{content}, #{image})
 	</insert>
 	
-	<!-- 상품정보 수정 -->
+	<!-- 상품 수정 -->
 	<update id="updateProduct">
 		UPDATE product
 		SET name=#{name}, kind=#{kind}, price1=#{price1}, price2=#{price2}, price3=#{price3},
 			content=#{content}, image=#{image}, useyn=#{useyn}, bestyn=#{bestyn}
 		WHERE pseq=#{pseq}
 	</update>
+	
+	<!-- 상품 삭제 -->
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM product
+		WHERE pseq=#{pseq}
+	</delete>
 	
 	<resultMap type="com.green.biz.dto.SalesQuantity" id="salesMap">
 		<result column="pname" property="pname"/>

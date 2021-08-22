@@ -18,8 +18,8 @@
 				<div class="col-8 col-lg-9">
 					<div class="card">
 						<div class="card-header">
-							<h5 class="card-title">상품수정</h5>
-							<h6 class="card-subtitle text-muted">선택한 상품수정입니다.</h6>
+							<h5 class="card-title">상품 수정</h5>
+							<h6 class="card-subtitle text-muted">선택한 상품을 수정하세요.</h6>
 						</div>
 						
 						<div class="card-body text-center">
@@ -114,17 +114,17 @@
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
-								<input type="button" class="btn btn-primary" value="수정" onClick="go_order_update('${productVO.pseq}')">
+								<input type="button" class="btn btn-primary" value="수정" onClick="go_product_update('${productVO.pseq}')">
 							</div>
 						</div>
 						<hr>
 						<div class="card-header">
 							<h5 class="card-title">상품목록</h5>
-							<h6 class="card-subtitle text-muted">목록으로 이동하세요.</h6>
+							<h6 class="card-subtitle text-muted">상품목록으로 이동하세요.</h6>
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
-								<input type="button" class="btn btn-secondary btn-lg" value="상품목록" onClick="admin_product_list2()">
+								<input type="button" class="btn btn-secondary btn-lg" value="상품목록" onClick="go_product_list2()">
 							</div>
 						</div>
 					</div>
@@ -133,4 +133,5 @@
 		</form>
 	</div>
 </main>
+
 <%@include file="../footer.jsp"%>

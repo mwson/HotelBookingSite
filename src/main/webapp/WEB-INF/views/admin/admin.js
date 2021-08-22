@@ -1,6 +1,4 @@
-/*
- * "관리자 로그인" 처리 
- */
+// "관리자" 로그인
 function worker_check() {
 	if($("#workerId").val() == "") {
 		alert("아이디를 입력해 주세요!");

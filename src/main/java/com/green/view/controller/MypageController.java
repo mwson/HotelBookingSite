@@ -31,15 +31,12 @@ public class MypageController {
 	@Autowired
 	private MemberService memberService;
 	
-	/*
-	 * "장바구니" 추가 처리
-	 */
+	// "사용자, 장바구니" 추가
 	@RequestMapping(value = "/cart_insert", method = RequestMethod.POST)
 	public String CartInsert(CartVO vo, Model model, HttpSession session) {
-		// 세션에 저장된 사용자 정보를 읽어온다.
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
-		if(loginUser == null) { // 현재 로그인 안된 상태임
+		if(loginUser == null) {
 			return "member/login";
 		} else {
 			vo.setId(loginUser.getId());
@@ -48,15 +45,12 @@ public class MypageController {
 			cartService.insertCart(vo);
 		}
 		
-		return "redirect:cart_list";	// 장바구니 목록을 조회하여 장바구니 목록 화면 표시
+		return "redirect:cart_list";
 	}
 	
-	/*
-	 * "장바구니" 목록 출력
-	 */
+	// "사용자, 장바구니" 목록 조회
 	@RequestMapping(value = "/cart_list")
 	public String CartList(HttpSession session, Model model) {
-		// 세션에 저장된 로그인 정보를 읽어옴
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
@@ -77,13 +71,10 @@ public class MypageController {
 		return "mypage/cartList";
 	}
 	
-	/*
-	 * "장바구니" 삭제 처리
-	 */
+	// "사용자, 장바구니" 삭제
 	@RequestMapping(value = "/cart_delete")
 	public String CartDelete(@RequestParam(value = "cseq")int[] cseq) {
 		for(int i=0; i<cseq.length; i++) {
-			//System.out.println("삭제할 cart seq = " + cseq[i]);
 			cartService.deleteCart(cseq[i]);
 		}
 		

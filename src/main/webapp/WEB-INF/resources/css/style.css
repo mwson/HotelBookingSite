@@ -1915,16 +1915,16 @@ ol {
 }
 
 .blog__sidebar__search form {
-	width: 350px;
+	width: 95%;
 	position: relative;
 }
 
 .blog__sidebar__search form input {
 	height: 48px;
-	width: 100%;
+	width: 65%;
 	font-size: 16px;
 	color: #777C81;
-	padding: 0 90px 0 20px;
+	padding: 0 20px;
 	border: 1px solid #777C81;
 	background: #ffffff;
 }
@@ -1949,15 +1949,15 @@ ol {
 	color: #8d8d8d;
 }
 
-.blog__sidebar__search form button {
+.blog__sidebar__search form .notice_form_button {
+	width: 35%;
 	font-size: 16px;
 	color: #ffffff;
 	background: #E9AD28;
 	border: none;
 	font-weight: 500;
 	letter-spacing: 2px;
-	padding: 0 15px 0 20px;
-	border-left: 1px solid #777C81;
+	padding: 0 20px;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -2490,8 +2490,8 @@ ol {
 }
 
 /*
- * join, login, findIdAndPassword, updateMember,
- * order, cart, qna
+ * join, login, findIdAndPassword, fna,
+ * order, cart, qna, updateMember
  */
 .contract .contract_form .contract_form_text,
 .join .join_form .join_form_input,
@@ -2502,7 +2502,7 @@ ol {
 .findIdAndPassword .findPw_form,
 .findIdResult .findIdResult_form,
 .findPwdResult .findPwdResult_form,
-.updateMember_form .updateMember_form_input,
+.faqList .faqList_form .faqList_form_table,
 .orderList .orderList_form .orderList_form_empty,
 .orderList .orderList_form .orderList_form_table,
 .orderDetail .orderDetail_form .orderDetail_form_empty,
@@ -2515,7 +2515,8 @@ ol {
 .qnaList .qnaList_form .qnaList_form_table,
 .qnaView .qnaView_form .qnaView_form_q,
 .qnaView .qnaView_form .qnaView_form_a,
-.qnaWrite .qnaWrite_form .qnaWrite_form_q {
+.qnaWrite .qnaWrite_form .qnaWrite_form_q,
+.updateMember_form .updateMember_form_input {
 	border-radius: 10px;
 	background-color: #F8F9FA;
 	padding: 25px;
@@ -2588,6 +2589,13 @@ ol {
 }
 .findZipNum .findZipNum_result {
 	padding: 10px;
+}
+
+/*
+ * faq
+ */
+.faqList .faqList_form {
+	padding: 20px;
 }
 
 /*
@@ -2679,4 +2687,3 @@ ol {
 .updateMember_form .updateMember_form_button .updateMember_form_button_submit {
 	float: right;
 }
-

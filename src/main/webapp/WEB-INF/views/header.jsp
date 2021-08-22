@@ -30,7 +30,7 @@
                     <div class="col-lg-7">
                         <ul class="header__top__widget">
                             <li><span class="icon_pin_alt"></span> 서울시 용산구 OOO</li>
-                            <li><span class="icon_phone"></span> (02) 1234-5678</li>
+                            <li><span class="icon_phone"></span> 02-1234-5678</li>
                         </ul>
                     </div>
                     <div class="col-lg-5">
@@ -46,7 +46,7 @@
 										
 										<c:otherwise>
 											<li>
-												<a href="#">
+												<a href="order_all">
 													${sessionScope.loginUser.name}(${sessionScope.loginUser.id})
 												</a>
 											</li>
@@ -73,16 +73,16 @@
                             <nav class="header__menu">
                                 <ul class="menu__class">
                                     <li class="active"><a href="index">메인</a></li>
-                                    <li><a href="introduce_hotel">호텔 소개</a>
+                                    <li><a href="introduce_hotel">호텔소개</a>
                                         <ul class="dropdown">
-                                            <li><a href="introduce_hotel">호텔 개요</a></li>
-                                            <li><a href="introduce_room">객실 안내</a></li>
+                                            <li><a href="introduce_hotel">호텔개요</a></li>
+                                            <li><a href="introduce_room">객실안내</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">고객센터</a>
                                         <ul class="dropdown">
                                             <li><a href="notice_list">공지사항</a></li>
-                                            <li><a href="#">자주하는 질문</a></li>
+                                            <li><a href="faq_list">자주하는 질문</a></li>
                                             <li><a href="qna_write_form">문의하기</a></li>
                                         </ul>
                                     </li>

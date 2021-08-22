@@ -24,11 +24,12 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-5">
-									<div class="text-center">
-										<img src="img/avatars/avatar.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
+									<div class="text-center mb-5">
+										<img src="img/avatars/avatar.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />										
 									</div>
 									
-									<form 	method="post" id="formm" name="formm" action="admin_login">
+									<form method="post" id="formm" name="formm" action="admin_login">
+										<p class="text-danger" style="text-align: center">${message}</p>
 										<div class="mb-3">
 											<label class="form-label">아이디</label>
 											<input type="text" class="form-control form-control-lg" id="workerId" name="workerId" placeholder="아이디" value="admin">
@@ -37,11 +38,8 @@
 											<label class="form-label">비밀번호</label>
 											<input type="password" class="form-control form-control-lg" id="workerPwd" name="workerPwd" placeholder="비밀번호" value="admin">
 										</div>
-
 										<div class="text-center mt-4">
-											<input type="button" class="btn btn-primary btn-lg" value="로그인" onclick="worker_check()">
-											<br><br>
-											<h4 style="color: red">${message}</h4>
+											<input type="button" class="btn btn-primary btn-lg" value="로그인" onclick="worker_check()">											
 										</div>
 									</form>
 								</div>

@@ -3,6 +3,7 @@ package com.green.biz.dto;
 import java.util.Date;
 
 public class ProductCommentVO {
+	
 	private int comment_seq;
 	private int pseq;
 	private String content;

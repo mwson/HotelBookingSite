@@ -21,13 +21,13 @@
 <section class="blog spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-3 col-md-3">
                 <div class="blog__sidebar">
                     <div class="blog__sidebar__search">
                         <h4>검색</h4>
-                        <form action="#">
-                            <input type="text" placeholder="입력">
-                            <button type="submit">검색</button>
+                        <form method="post" id="notice_form" name="notice_form">
+                            <input type="text" id="key" name="key" placeholder="입력">
+                            <input type="button" class="notice_form_button" value="검색" onclick="go_search_notice()">
                         </form>
                     </div>
                     <div class="blog__sidebar__categories">
@@ -35,14 +35,14 @@
                         <hr>
                         <ul>
                             <li><a href="notice_list">공지사항</a></li>
-                            <li><a href="#">자주하는 질문</a></li>
-                            <li><a href="#">문의하기</a></li>
+                            <li><a href="faq_list">자주하는 질문</a></li>
+                            <li><a href="qna_write_form">문의하기</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-8 col-md-8">
+            <div class="col-lg-9 col-md-9">
                 <div class="row">
                 	<c:forEach items="${noticeList}" var="noticeVO">
 	                    <div class="col-lg-6 col-md-6">
@@ -64,13 +64,9 @@
 	                        </div>
 	                    </div>
 	                </c:forEach>
-                    <div class="col-lg-12">
-                        <div class="pagination__number blog__pagination">
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">Next <span class="arrow_right"></span></a>
-                        </div>
-                    </div>
+					
+					<%@include file="noticePageArea.jsp"%>
+					 
                 </div>
             </div>
         </div>

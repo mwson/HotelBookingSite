@@ -74,15 +74,15 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public int countOrderList(String name) {
-		return orderDao.countOrderList(name);
-	}
-	
-	@Override
 	public List<OrderVO> listOrder(String key) {
 		return orderDao.listOrder(key);
 	}
 
+	@Override
+	public int countOrderList(String name) {
+		return orderDao.countOrderList(name);
+	}
+	
 	@Override
 	public List<OrderVO> listOrderwithPaging(Criteria criteria, String key) {
 		return orderDao.listOrderwithPaging(criteria, key);

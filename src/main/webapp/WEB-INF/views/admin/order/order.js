@@ -3,9 +3,8 @@
  */
 function go_order_save() {
 	var count = 0;
-	var orderConfirm = confirm("주문처리 하시겠습니까?");
 	
-	if(orderConfirm) {
+	if(confirm("주문처리 하시겠습니까?")) {
 		if(document.order_form.result.length == undefined) {
 			if(document.order_form.result.checked == true) {
 				count++;

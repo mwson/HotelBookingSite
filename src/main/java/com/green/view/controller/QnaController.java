@@ -20,9 +20,7 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
-	/*
-	 * "문의목록" 출력
-	 */
+	// "사용자, Q&A" 목록 조회
 	@RequestMapping(value = "/qna_list", method = RequestMethod.GET)
 	public String qnaList(HttpSession session, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -38,9 +36,7 @@ public class QnaController {
 		}
 	}
 	
-	/*
-	 * "문의목록 상세" 출력 
-	 */
+	// "사용자, Q&A" 상세 조회
 	@RequestMapping(value = "/qna_detail", method = RequestMethod.GET)
 	public String qnaView(HttpSession session, QnaVO vo, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -57,9 +53,7 @@ public class QnaController {
 		}
 	}
 	
-	/*
-	 * "문의하기" 폼 출력 
-	 */
+	// "사용자, Q&A" 등록 폼 이동
 	@RequestMapping(value = "/qna_write_form", method = RequestMethod.GET)
 	public String qnaWriteView(HttpSession session) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -71,9 +65,7 @@ public class QnaController {
 		}		
 	}
 	
-	/*
-	 * "문의하기" 출력 
-	 */
+	// "사용자, Q&A" 등록
 	@RequestMapping(value = "/qna_write", method = RequestMethod.POST)
 	public String qnaWriteAction(HttpSession session, QnaVO vo) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -82,9 +74,11 @@ public class QnaController {
 			return "member/login";
 		} else {
 			vo.setId(loginUser.getId());
+			vo.setName(loginUser.getName());
 		
 			qnaService.insertQna(vo);
 			
+			// "사용자, Q&A" 등록 후 목록 이동
 			return "redirect:qna_list";
 		}
 	}

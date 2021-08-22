@@ -4,35 +4,44 @@ import java.util.List;
 
 import com.green.biz.dto.AddressVO;
 import com.green.biz.dto.MemberVO;
+import com.green.biz.utils.Criteria;
 
 public interface MemberService {
 	
-	// 회원 로그인
-	public int loginID(MemberVO vo);
-	
-	// 회원 상세정보 조회
+	// "사용자, 회원정보" 조회
 	public MemberVO getMember(String id);
 	
-	// 회원ID 인증
+	// "사용자, 로그인" 조회(아이디, 비밀번호 일치)
+	public int loginID(MemberVO vo);
+	
+	// "사용자, 회원가입 및 로그인" 조회(아이디 및 비밀번호)
 	public int confirmID(String id);
 	
-	// 회원추가
-	public void insertMember(MemberVO vo);
-	
-	// 우편번호 찾기
+	// "사용자, 회원가입" 우편번호 조회
 	public List<AddressVO> selectAddressByDong(String dong);
 	
-	// 사용자이름과 이메일을 조건으로 사용자정보 조회
+	// "사용자, 회원가입" 등록(가입)
+	public void insertMember(MemberVO vo);
+	
+	// "사용자, 아이디 및 비밀번호 찾기" 아이디 조회
 	public MemberVO getMemberByNameAndEmail(MemberVO vo);
 	
-	// 사용자 아이디와 이름, 이메일을 조건으로 사용자정보 조회
+	// "사용자, 아이디 및 비밀번호 찾기" 비밀번호 조회 
 	public MemberVO findPassword(MemberVO vo);
 	
-	// 사용자 암호 변경
+	// "사용자, 아이디 및 비밀번호 찾기" 비밀번호 수정
 	public void changePassword(MemberVO vo);
 	
-	// 회원목록 조회
-	public List<MemberVO> listMember(String key);
-	
+	// "사용자, 회원정보" 수정
 	public void updateMember(MemberVO vo);
+	
+	// "관리자, 회원목록" 조회
+	public List<MemberVO> listMember(String key);
+
+	// "관리자, 회원목록" 총 개수 조회
+	public int countMemberList(String name);
+	
+	// "관리자, 회원목록" 조회 및 페이징
+	public List<MemberVO> listMemberwithPaging(Criteria criteria, String key);
+	
 }

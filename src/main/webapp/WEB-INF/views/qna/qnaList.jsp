@@ -49,7 +49,7 @@
 
                             <c:otherwise>
                                 <div class="qnaList_form_table">
-                                	<h5 class="mb-4">${sessionScope.loginUser.name}님의 문의내역</h5>
+                                	<h5 class="mb-4">${sessionScope.loginUser.name}(${sessionScope.loginUser.id})님의 문의내역</h5>
                                     <table class="table table-striped" style="text-align: center;">
                                         <thead>
                                             <tr>

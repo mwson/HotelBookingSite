@@ -15,7 +15,7 @@
 					<div class="card">
 						<div class="card-header">
 							<h5 class="card-title">회원목록</h5>
-							<h6 class="card-subtitle text-muted">가입한 회원들의 목록입니다.</h6>
+							<h6 class="card-subtitle text-muted">전체 회원들의 목록입니다.</h6>
 						</div>
 						<div class="card-body text-center">
 							<table class="table table-striped" style="text-align: center;">
@@ -37,11 +37,11 @@
 											<td>
 												<c:choose>
 													<c:when test='${memberVO.useyn == "n"}'>
-														<input type="checkbox" id="useyn" name="useyn" disabled="disabled"> 탈퇴
+														<input type="checkbox" id="useyn" name="useyn" disabled="disabled"> <span style="color: #dc3545">탈퇴회원</span>
 													</c:when>
 							
 													<c:otherwise>
-														<input type="checkbox" id="useyn" name="useyn" checked="checked" disabled="disabled"> 회원
+														<input type="checkbox" id="useyn" name="useyn" checked="checked" disabled="disabled"> <span style="color: #3b7ddd">회원</span>
 													</c:otherwise>
 												</c:choose>			
 											</td>    
@@ -58,7 +58,7 @@
 							</table>
 						</div>
 						
-						<%--  <%@include file="memberPageArea.jsp"%> --%>
+						<%@include file="memberPageArea.jsp"%>
 						
 					</div>
 				</div>
