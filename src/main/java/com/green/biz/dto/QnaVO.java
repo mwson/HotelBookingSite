@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 public class QnaVO {
 	
 	private int qseq;
+	private String name;
 	private String subject;
 	private String content;
 	private String reply;
@@ -17,6 +18,13 @@ public class QnaVO {
 	}
 	public void setQseq(int qseq) {
 		this.qseq = qseq;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public String getSubject() {
@@ -63,8 +71,8 @@ public class QnaVO {
 	
 	@Override
 	public String toString() {
-		return "QnaVO [qseq=" + qseq + ", subject=" + subject + ", content=" + content + ", reply=" + reply + ", id="
-				+ id + ", rep=" + rep + ", indate=" + indate + "]";
+		return "QnaVO [qseq=" + qseq + ", name=" + name + ", subject=" + subject + ", content=" + content + ", reply="
+				+ reply + ", id=" + id + ", rep=" + rep + ", indate=" + indate + "]";
 	}
 	
 }

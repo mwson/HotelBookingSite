@@ -15,7 +15,7 @@
 					<div class="card">
 						<div class="card-header">
 							<h5 class="card-title">상품목록</h5>
-							<h6 class="card-subtitle text-muted">등록한 상품목록입니다.</h6>
+							<h6 class="card-subtitle text-muted">전체 상품목록입니다.</h6>
 						</div>
 						<div class="card-body text-center">
 							<table class="table table-striped" style="text-align: center;">
@@ -52,12 +52,12 @@
                                                     <td><fmt:formatDate value="${productVO.regdate}"/></td>
                                                     <td>
                                                         <c:choose>
-                                                            <c:when test='${productVO.useyn=="n"}'>
-																<input type="checkbox" id="useyn" name="useyn" disabled="disabled"> 미 사용
+                                                            <c:when test='${productVO.useyn=="y"}'>
+																<input type="checkbox" id="useyn" name="useyn" checked="checked" disabled="disabled"> <span style="color: #3b7ddd">사용</span>
 															</c:when>
 															
                                                             <c:otherwise>
-                                                            	<input type="checkbox" checked="checked" disabled="disabled"> 사용
+                                                            	<input type="checkbox" id="useyn" name="useyn" disabled="disabled"> <span style="color: #dc3545">미 사용</span>
                                                             </c:otherwise>
                                                         </c:choose>	
                                                     </td>
@@ -77,13 +77,13 @@
 				<div class="col-4 col-lg-3">
 					<div class="card">
 						<div class="card-header">
-							<h5 class="card-title">검색</h5>
+							<h5 class="card-title">상품 검색</h5>
 							<h6 class="card-subtitle text-muted">상품을 입력하세요.</h6>
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
 								<input type="text" class="form-control" id="key" name="key">
-                                <input type="button" class="btn btn-secondary" value="검색" onclick="go_search_product()">
+                                <input type="button" class="btn btn-secondary" value="검색" onclick="go_product_search()">
 							</div>
 						</div>
                         <hr>
@@ -93,7 +93,7 @@
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
-                                <input type="button" class="btn btn-primary btn-lg" value="상품등록" onclick="go_search_write()">
+                                <input type="button" class="btn btn-primary btn-lg" value="상품등록" onclick="go_product_write_form()">
 							</div>
 						</div>
 					</div>

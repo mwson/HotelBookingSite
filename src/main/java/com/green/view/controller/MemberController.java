@@ -22,14 +22,13 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	/*
-	 * "로그인" 화면
-	 */
+	// "사용자, 로그인" 폼 이동
 	@RequestMapping(value = "/login_form", method = RequestMethod.GET)
 	public String loginView() {
 		return "member/login";
 	}
 	
+	// "사용자, 로그인" 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginAction(MemberVO vo, Model model) {
 		int result = memberService.loginID(vo);
@@ -42,29 +41,24 @@ public class MemberController {
 			
 			return "redirect:/index";
 		} else {
+			// "사용자, 로그인" 로그인 실패
 			return "member/loginFail";
 		}
 	}
 	
-	/*
-	 * 사용자 약정 표시 
-	 */
+	// "사용자, 회원가입" 약관 이동
 	@RequestMapping(value = "/contract", method = RequestMethod.GET)
 	public String contractView() {
 		return "member/contract";
 	}
 	
-	/*
-	 * 회원 가입 화면 출력
-	 */
+	// "사용자, 회원가입" 회원가입 폼 이동
 	@RequestMapping(value = "/join_form", method = RequestMethod.POST)
 	public String joinView() {
 		return "member/join";
 	}
 
-	/*
-	 * ID 중복 체크 화면 출력
-	 */
+	// "사용자, 회원가입" 아이디 중복 폼 이동
 	@RequestMapping(value = "/id_check_form", method = RequestMethod.GET)
 	public String idCheckView(@RequestParam(value = "id", defaultValue = "", required = true)String id, Model model) {
 		model.addAttribute("id", id);
@@ -72,35 +66,24 @@ public class MemberController {
 		return "member/idCheck";
 	}
 	
-	/*
-	 * 사용자 ID 중복 체크
-	 * POST 방식 처리
-	 * URL : /id_check_form
-	 */
+	// "사용자, 회원가입" 아이디 중복 조회
 	@RequestMapping(value = "/id_check_form", method = RequestMethod.POST)
 	public String idCheckAction(@RequestParam(value = "id", defaultValue = "", required = true)String id, Model model) {
-		// 입력된 ID를 가지고 getMember() 서비스로 조회한 후
-		// 데이터가 있으면 message 속성에 1을 설정
-		// 데이터가 없으면 message 속성에 -1을 설정
-		// id값을 model에 저장하여 member/idcheck.jsp 화면 리턴
 		MemberVO user = memberService.getMember(id);
 		
-		// 데이터가 있으면 message 속성에 1을 설정
-		// 데이터가 없으면 message 속성에 -1을 설정
 		if(user != null) {
 			model.addAttribute("message", 1);
 		} else {
 			model.addAttribute("message", -1);
 		}
 		
-		// id값을 model에 저장하여
 		model.addAttribute("id", id);
 		
-		// member/idcheck.jsp 화면 리턴
 		return "member/idCheck";
 	}
 	
 	/*
+	// "사용자, 회원가입" 아이디 중복없음 전송
 	@RequestMapping(value = "/id_check_confirmed", method = RequestMethod.GET)
 	public String idCheckConfirmed(MemberVO vo, Model model) {
 		model.addAttribute("id", vo.getId());
@@ -110,25 +93,13 @@ public class MemberController {
 	}
 	*/
 	
-	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinAction(@RequestParam(value = "addr1")String addr1, @RequestParam(value = "addr2")String addr2, MemberVO vo) {
-		vo.setAddress(addr1 + " " + addr2);
-		memberService.insertMember(vo);
-		
-		return "member/login";
-	}
-	
-	/*
-	 * 우편번호 찾기 화면 요청 처리
-	 */
+	// "사용자, 회원가입" 우편번호 조회 폼 이동
 	@RequestMapping(value = "/find_zip_num", method = RequestMethod.GET)
 	public String findZipNumView() {
 		return "member/findZipNum";
 	}
 	
-	/*
-	 * 동이름으로 우편번호 찾기 조회처리
-	 */
+	// "사용자, 회원가입" 우편번호 조회
 	@RequestMapping(value = "/find_zip_num", method = RequestMethod.POST)
 	public String findZipNumAction(AddressVO vo, Model model) {
 		List<AddressVO> addressList = memberService.selectAddressByDong(vo.getDong());
@@ -138,6 +109,16 @@ public class MemberController {
 		return "member/findZipNum";
 	}
 	
+	// "사용자, 회원가입" 등록(가입)
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
+	public String joinAction(@RequestParam(value = "addr1")String addr1, @RequestParam(value = "addr2")String addr2, MemberVO vo) {
+		vo.setAddress(addr1 + " " + addr2);
+		memberService.insertMember(vo);
+		
+		return "member/login";
+	}
+	
+	// "사용자" 로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(SessionStatus status) {
 		status.setComplete();	// 현재 세션을 종료
@@ -145,16 +126,18 @@ public class MemberController {
 		return "member/login";
 	}
 	
-	@RequestMapping(value = "/find_id_form", method = RequestMethod.GET)
+	// "사용자, 아이디 및 비밀번호 찾기" 폼 이동
+	@RequestMapping(value = "/find_idAndPwd_form", method = RequestMethod.GET)
 	public String findIdView() {
 		return "member/findIdAndPassword";
 	}
 	
+	// "사용자, 아이디 및 비밀번호 찾기" 아이디 조회
 	@RequestMapping(value = "/find_id", method = RequestMethod.GET)
 	public String findIdAction(MemberVO vo, Model model) {
 		MemberVO vo2 = memberService.getMemberByNameAndEmail(vo);
 		
-		if(vo2 != null) {	// 아이디가 존재하는 경우
+		if(vo2 != null) {
 			model.addAttribute("message", 1);
 			model.addAttribute("id", vo2.getId());
 		} else {
@@ -164,11 +147,12 @@ public class MemberController {
 		return "member/findIdResult";
 	}
 	
+	// "사용자, 아이디 및 비밀번호 찾기" 비밀번호 조회 
 	@RequestMapping(value = "/find_password", method = RequestMethod.GET)
 	public String findPassword(MemberVO vo, Model model) {
 		MemberVO vo2 = memberService.findPassword(vo);
 		
-		if(vo2 != null) {	// 아이디가 존재하는 경우
+		if(vo2 != null) {
 			model.addAttribute("message", 1);
 			model.addAttribute("id", vo2.getId());
 		} else {
@@ -178,10 +162,13 @@ public class MemberController {
 		return "member/findPwdResult";
 	}
 	
+	// "사용자, 아이디 및 비밀번호 찾기" 비밀번호 수정
 	@RequestMapping(value = "/change_Password", method = RequestMethod.POST)
 	public String changePassword(MemberVO vo) {
 		memberService.changePassword(vo);
 		
+		// "사용자, 아이디 및 비밀번호 찾기" 비밀번호 수정 후 팝업 닫기		
 		return "member/close";
 	}
+	
 }

@@ -1,8 +1,28 @@
-function go_board_write_form() {
-	$("#board_list").attr("action", "admin_board_write_form").submit();
+/*
+ * "공지사항 목록" 에서 상세 이동 
+ */
+function go_notice_detail(nseq) {
+	$("#notice_form").attr("action", "admin_notice_detail?nseq=" + nseq).submit();
 }
 
-function go_board_write() {
+/*
+ * "공지사항 목록" 검색 처리 
+ */
+function go_search_notice() {
+	$("#notice_form").attr("action", "admin_notice_list").submit();
+}
+
+/*
+ * "공지사항 목록" 에서 등록 이동 
+ */
+function go_notice_write_form() {
+	$("#notice_form").attr("action", "admin_notice_write_form").submit();
+}
+
+/*
+ * "공지사항" 등록 처리
+ */
+function go_notice_write() {
 	if($("#subject").val() == "") {
 		alert("제목을 입력해 주세요!");
 		$("#subject").focus();
@@ -11,26 +31,61 @@ function go_board_write() {
 		alert("내용을 입력해 주세요!");
 		$("#content").focus();
 		return false;
-	} else if($("#board_image").val() == "") {
+	} else if($("#notice_image").val() == "") {
 		alert("이미지를 등록해 주세요!");
-		$("#board_image").focus();
+		$("#notice_image").focus();
 		return false;
 	} else {
-		$("#board_write_form").attr("encoding", "multipart/form-data");
-		$("#board_write_form").attr("action", "admin_board_write").submit();
+		$("#notice_write_form").attr("encoding", "multipart/form-data");
+		$("#notice_write_form").attr("action", "admin_notice_write").submit();
 	}
 }
 
-function go_board_detail(bseq) {
-	$("#board_list").attr("action", "admin_board_detail?bseq=" + bseq).submit();
+/*
+ * "공지사항 등록" 에서 목록 이동 
+ */
+function go_notice_list1() {
+	$("#notice_write_form").attr("action", "admin_notice_list").submit();
 }
 
-function go_board_update_form(bseq) {
-	$("#board_detail_form").attr("action", "admin_board_update_form?bseq=" + bseq).submit();
+/*
+ * "공지사항 상세" 에서 수정 이동 
+ */
+function go_notice_update_form(nseq) {
+	$("#notice_detail_form").attr("action", "admin_notice_update_form?nseq=" + nseq).submit();
 }
 
-function go_board_update(bseq) {
-	if($("#subject").val() == "") {
+/*
+ * "공지사항 상세" 삭제 처리 
+ */
+function go_notice_delete() {
+	if(confirm("삭제 하시겠습니까?")) {
+		$("#notice_detail_form").attr("action", "admin_notice_delete").submit();
+		
+		alert("삭제가 완료되었습니다.");
+	} else {
+		alert("삭제가 취소되었습니다.");
+		
+		return false;
+	}
+}
+
+/*
+ * "공지사항 상세" 에서 목록 이동 
+ */
+function go_notice_list2() {
+	$("#notice_detail_form").attr("action", "admin_notice_list").submit();
+}
+
+/*
+ * "공지사항 수정" 처리 
+ */
+function go_notice_update(nseq) {
+	if($("#kind").val() == "") {
+		alert("종류를 입력해 주세요!");
+		$("#kind").focus();
+		return false;
+	} else if($("#subject").val() == "") {
 		alert("제목을 입력해 주세요!");
 		$("#subject").focus();
 		return false;
@@ -40,15 +95,21 @@ function go_board_update(bseq) {
 		return false;
 	} else {
 		if(confirm("수정하시겠습니까?")) {
-			$("#board_update_form").attr("encoding", "multipart/form-data");
-			$("#board_update_form").attr("action", "admin_board_update").submit();
-		}
+			$("#notice_update_form").attr("encoding", "multipart/form-data");
+			$("#notice_update_form").attr("action", "admin_notice_update").submit();
+			
+			alert("수정이 완료되었습니다.");
+		} else {
+			alert("수정이 취소되었습니다.");
+			
+			return false;
+		} 
 	}
 }
 
-function go_board_delete(bseq) {
-	if(confirm("삭제하시겠습니까?")) {
-		$("#board_detail_form").attr("action", "admin_board_delete").submit();
-	}
-
+/*
+ * "공지사항 수정" 에서 목록 이동 
+ */
+function go_notice_list3() {
+	$("#notice_update_form").attr("action", "admin_notice_list").submit();
 }

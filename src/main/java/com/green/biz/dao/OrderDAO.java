@@ -36,14 +36,14 @@ public class OrderDAO {
 		return mybatis.selectList("OrderDAO.selectSeqOrdering", vo);
 	}
 	
-	// "주문목록" 총 개수 조회 처리
-	public int countOrderList(String name) {
-		return mybatis.selectOne("OrderDAO.countOrderList", name);
-	}
-	
-	// 전체 주문내역 조회
+	// "주문목록" 조회	
 	public List<OrderVO> listOrder(String key) {
 		return mybatis.selectList("OrderDAO.listOrder", key);
+	}
+	
+	// "주문목록" 총 개수 조회
+	public int countOrderList(String name) {
+		return mybatis.selectOne("OrderDAO.countOrderList", name);
 	}
 	
 	// "예약목록" 조회 및 페이징

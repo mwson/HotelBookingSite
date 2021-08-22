@@ -1,14 +1,12 @@
-/*
- * "상품목록" 검색 
- */
-function go_search_product() {
+// "상품목록" 검색 
+function go_product_search() {
 	$("#product_form").attr("action", "admin_product_list").submit();
 }
 
 /*
- * "상품목록" 등록 처리
+ * "상품목록" 에서 등록 폼 이동
  */
-function go_search_write() {
+function go_product_write_form() {
 	$("#product_form").attr("action", "admin_product_write_form").submit();
 }
 
@@ -53,7 +51,7 @@ function NumFormat(t) {
 /*
  * "상품등록" 처리
  */
-function go_order_write() {
+function go_product_write() {
 	var $price1 = $("#price1");
 	var $price2 = $("#price2");
 	var $price3 = $("#price3");
@@ -95,7 +93,7 @@ function go_order_write() {
 /*
  * "상품등록" 에서 상품목록 이동
  */
-function admin_product_list1() {
+function go_product_list1() {
 	$("#product_write_form").attr("action", "admin_product_list").submit();
 }
 
@@ -107,23 +105,37 @@ function go_detail(pseq) {
 }
 
 /* 
- * "상품목록" 에서 상품수정 이동
+ * "상품상세" 에서 삭제 처리
  */
-function go_order_update_form(pseq) {
+function go_product_delete() {
+	if(confirm("삭제 하시겠습니까?")) {
+		$("#product_detail_form").attr("action", "admin_product_delete").submit();
+		alert("삭제가 완료되었습니다.");
+	} else {
+		alert("삭제가 취소되었습니다.");
+		
+		return false;
+	}
+}
+
+/* 
+ * "상품상세" 에서 상품수정 이동
+ */
+function go_product_update_form(pseq) {
 	$("#product_detail_form").attr("action", "admin_product_update_form?pseq=" + pseq).submit();
 }
 
 /*
  * "상품상세" 에서 상품목록 화면 이동
  */
-function go_order_list(page, items_cnt) {
+function go_product_list(page, items_cnt) {
 	$("#product_detail_form").attr("action", "admin_product_list").submit();
 }
 
 /*
  * "상품수정" 처리
  */
-function go_order_update(pseq) {
+function go_product_update(pseq) {
 	var $price1 = $("#price1");
 	var $price2 = $("#price2");
 	var $price3 = $("#price3");
@@ -149,7 +161,7 @@ function go_order_update(pseq) {
 		$("#content").focus();
 		return false;
 	} else {
-		if(confirm("수정하시겠습니까?")) {
+		if(confirm("수정 하시겠습니까?")) {
 			if($("#useyn").is(":checked")) {
 				$("#useyn").val("y");
 			} else {
@@ -168,13 +180,19 @@ function go_order_update(pseq) {
 	
 			$("#product_update_form").attr("encoding", "multipart/form-data");
 			$("#product_update_form").attr("action", "admin_product_update").submit();
-		}
+			
+			alert("수정이 완료되었습니다.");
+		} else {
+			alert("수정이 취소되었습니다.");
+			
+			return false;
+		} 
 	}
 }
 
 /*
  * "상품수정" 에서 상품목록 화면 이동
  */
-function admin_product_list2() {
+function go_product_list2() {
 	$("#product_update_form").attr("action", "admin_product_list").submit();
 }

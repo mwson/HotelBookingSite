@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="QnaDAO">
+	<!-- "사용자, Q&A" 목록 조회 -->
 	<select id="listQna" parameterType="String" resultType="qna">
 		SELECT *
 		FROM qna
@@ -8,23 +9,47 @@
 		ORDER BY qseq DESC
 	</select>
 	
+	<!-- "사용자 및 관리자 Q&A" 목록 조회 -->
 	<select id="listAllQna" resultType="qna">
 		SELECT *
 		FROM qna
 		ORDER BY indate DESC
 	</select>
 	
+	<!-- "사용자 및 관리자, Q&A" 목록 총 개수 조회 -->
+	<select id="countQnaList" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM qna
+		WHERE name LIKE '%' || #{name} || '%'
+	</select>
+	
+	<!-- "사용자 및 관리자, Q&A" 목록 조회 및 페이징 -->
+	<select id="listQnaWithPaging" parameterType="HashMap" resultType="qna">
+		<![CDATA[
+		SELECT qseq, name, subject, content, id, rep, indate
+		FROM(SELECT ROW_NUMBER() OVER(ORDER BY name) rn, qseq, name, subject, content, id, rep, indate
+			FROM qna
+			WHERE name LIKE '%' || #{key} || '%')
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+		ORDER BY rep, qseq DESC
+		]]>
+	</select>
+	
+	<!-- "사용자, 관리자 Q&A" 상세 조회 -->
 	<select id="getQna" parameterType="int" resultType="qna">
 		SELECT *
 		FROM qna
 		WHERE qseq=#{qseq}
 	</select>
 	
+	<!-- "사용자, Q&A" 등록 -->
 	<insert id="insertQna">
-		INSERT INTO qna(qseq, subject, content, id)
-		VALUES(qna_seq.NEXTVAL, #{subject}, #{content}, #{id})
+		INSERT INTO qna(qseq, name, subject, content, id)
+		VALUES(qna_seq.NEXTVAL, #{name}, #{subject}, #{content}, #{id})
 	</insert>
 	
+	<!-- "관리자, Q&A" 답변 등록 -->
 	<update id="updateQna">
 		UPDATE qna
 		SET reply=#{reply}, rep='2'

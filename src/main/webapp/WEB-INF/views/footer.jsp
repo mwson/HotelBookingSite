@@ -13,11 +13,11 @@
                         <div class="footer__widget">
                             <h4>사이트 맵</h4>
                             <ul>
-                                <li><a href="index">Home</a></li>
-                                <li><a href="introduce_hotel">호텔 소개</a></li>
-                                <li><a href="introduce_room">객실 소개</a></li>
+                                <li><a href="index">메인</a></li>
+                                <li><a href="introduce_hotel">호텔소개</a></li>
+                                <li><a href="introduce_room">객실소개</a></li>
                                 <li><a href="notice_list">공지사항</a></li>
-                                <li><a href="#">자주하는 질문</a></li>
+                                <li><a href="faq_list">자주하는 질문</a></li>
                             </ul>
                             <ul>
                                 <li><a href="qna_write_form">문의하기</a></li>
@@ -31,10 +31,11 @@
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="footer__information">
                             <div class="footer__about">
-                                <h4>(02) 1234-5678</h4>
+                                <h4>02-1234-5678</h4>
                                 <ul>
                                     <li>서울시 용산구 OOO</li>
-                                    <li>thegreenhotel@email.com</li>
+                                    <li>(우 : 12345)</li>
+                                    <li>green.reserve@email.com</li>
                                 </ul>
                             </div>
                             <div class="footer__social">
@@ -75,5 +76,6 @@
 	<script type="text/javascript" src="member/findIdAndPassword.js"></script>
 	<script type="text/javascript" src="mypage/mypage.js"></script>
 	<script type="text/javascript" src="qna/qna.js"></script>
+	<script type="text/javascript" src="serviceCenter/serviceCenter.js"></script>
 </body>
 </html>

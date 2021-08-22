@@ -1,8 +1,8 @@
 /*
  * "아이디, 비밀번호 찾기" 화면 팝업 창
  */
-function find_id_form() {
-	var url = "find_id_form";
+function find_idAndPwd_form() {
+	var url = "find_idAndPwd_form";
 	
 	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
 }

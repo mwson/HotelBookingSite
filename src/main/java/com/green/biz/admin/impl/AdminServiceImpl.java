@@ -13,30 +13,26 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminDAO adminDAO;
 	
-	/*
-	 * 입력 파라메터 :
-	 * id - 사용자 입력 id
-	 * pwd - 사용자 입력 암호
-	 */
+	// "관리자" 아이디로 비밀번호 조회 
 	@Override
 	public int workerCheck(String id, String pwd) {
 		int result = -1;
 		
-		String pwd_id_db = adminDAO.workerCheck(id); // 테이블에 존재하는 관리자id의 pwd반환
+		String pwd_id_db = adminDAO.workerCheck(id);
 		
 		if(pwd_id_db == null) {
-			result = -1; // id가 존재하지 않음
+			result = -1;
 		} else {
-			if(pwd.equals(pwd_id_db)) {	// 입력 pwd와 DB저장 pwd가 일치
+			if(pwd.equals(pwd_id_db)) {
 				result = 1;
 			} else {
 				result = 0;
 			}
 		}
-		
 		return result;
 	}
-
+	
+	// "관리자" 아이디 조회
 	@Override
 	public WorkerVO getEmployee(String id) {
 		return adminDAO.getEmployee(id);

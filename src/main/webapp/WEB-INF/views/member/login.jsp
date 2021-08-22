@@ -52,7 +52,7 @@
                             <hr>
                             <div class="login_form_button mb-4">
                                 <div class="id_pw_find">
-                                    <a href="#" class="a" onclick="find_id_form()">아이디 / 비밀번호 찾기</a>
+                                    <a href="#" class="a" onclick="find_idAndPwd_form()">아이디 / 비밀번호 찾기</a>
                                 </div>
                                 <div class="register">
                                     <a href="#" class="a" onclick="location='contract'">회원가입</a>

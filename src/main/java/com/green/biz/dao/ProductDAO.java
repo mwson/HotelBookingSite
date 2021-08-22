@@ -42,6 +42,16 @@ public class ProductDAO {
 		return mybatis.selectOne("ProductDAO.countProductList", name);
 	}
 	
+	// "상품목록" 
+	public List<ProductVO> listWithPaging(Criteria criteria, String key) {
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("criteria", criteria);
+		map.put("key", key);
+		
+		return mybatis.selectList("ProductDAO.listProductWithPaging", map);
+	}
+	
 	// 상품 목록 조회
 	public List<ProductVO> listProduct(String name) {
 		return mybatis.selectList("ProductDAO.listProduct", name);
@@ -57,13 +67,9 @@ public class ProductDAO {
 		mybatis.update("ProductDAO.updateProduct", vo);
 	}
 	
-	public List<ProductVO> listWithPaging(Criteria criteria, String key) {
-		HashMap<String, Object> map = new HashMap<>();
-		
-		map.put("criteria", criteria);
-		map.put("key", key);
-		
-		return mybatis.selectList("ProductDAO.listWithPaging", map);
+	// 상품 삭제
+	public void deleteProduct(int pseq) {
+		mybatis.delete("ProductDAO.deleteProduct", pseq);
 	}
 	
 	/*

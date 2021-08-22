@@ -42,7 +42,7 @@
                     <div class="updateMember_form_input col-lg-6 col-md-6">
                         <div class="mb-4">
                             <label for="id">아이디</label>
-                            <input type="text" class="form-control" id="id" name="id" value="${memberVO.id}" readonly="readonly">
+                            <input type="text" class="form-control" id="id" name="id" value="${memberVO.id}" readonly>
                         </div>
                         <div class="mb-4">
                             <label for="pwd">비밀번호</label> 
@@ -55,7 +55,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="pwdCheck">이름</label> 
-                            <input type="text" class="form-control" id="name" name="name" value="${memberVO.name}" readonly="readonly">
+                            <input type="text" class="form-control" id="name" name="name" value="${memberVO.name}" readonly>
                         </div>
                         <div class="mb-4">
                             <label for="email">이메일</label> 

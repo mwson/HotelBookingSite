@@ -6,7 +6,7 @@
 <main class="content">
 	<div class="container-fluid p-0">
 		<div class="mb-3">
-			<h1 class="h3 d-inline align-middle">상품등록</h1>
+			<h1 class="h3 d-inline align-middle">상품 등록</h1>
 		</div>
 		
 		<form method="post" id="product_write_form" name="product_write_form" enctype="multipart/form-data">
@@ -16,7 +16,7 @@
 				<div class="col-8 col-lg-9">
 					<div class="card">
 						<div class="card-header">
-							<h5 class="card-title">상품등록</h5>
+							<h5 class="card-title">상품 등록</h5>
 							<h6 class="card-subtitle text-muted">상품등록 화면입니다.</h6>
 						</div>
 						
@@ -65,32 +65,32 @@
 				<div class="col-4 col-lg-3">
 					<div class="card">
 						<div class="card-header">
-							<h5 class="card-title">상품취소</h5>
-							<h6 class="card-subtitle text-muted">상품등록을 취소하세요.</h6>
-						</div>
-						<div class="card-body">
-							<div class="btn-group col-12 col-lg-12">
-								<input type="reset" class="btn btn-secondary" value="취소">
-							</div>
-						</div>
-						<hr>
-						<div class="card-header">
-							<h5 class="card-title">상품등록</h5>
+							<h5 class="card-title">상품 등록</h5>
 							<h6 class="card-subtitle text-muted">상품을 등록하세요.</h6>
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
-								<input type="button" class="btn btn-primary" value="등록" onClick="go_order_write()">
+								<input type="button" class="btn btn-primary" value="등록" onClick="go_product_write()">
+							</div>
+						</div>
+						<hr>
+						<div class="card-header">
+							<h5 class="card-title">상품 등록 취소</h5>
+							<h6 class="card-subtitle text-muted">상품등록을 취소하세요.</h6>
+						</div>
+						<div class="card-body">
+							<div class="btn-group col-12 col-lg-12">
+								<input type="reset" class="btn btn-warning" value="취소">
 							</div>
 						</div>
 						<hr>
 						<div class="card-header">
 							<h5 class="card-title">상품목록</h5>
-							<h6 class="card-subtitle text-muted">목록으로 이동하세요.</h6>
+							<h6 class="card-subtitle text-muted">상품목록으로 이동하세요.</h6>
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
-								<input type="button" class="btn btn-secondary btn-lg" value="상품목록" onClick="admin_product_list1()">
+								<input type="button" class="btn btn-secondary btn-lg" value="상품목록" onClick="go_product_list1()">
 							</div>
 						</div>
 					</div>

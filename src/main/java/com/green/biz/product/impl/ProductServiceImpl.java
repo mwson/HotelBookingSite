@@ -43,15 +43,20 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public int countProductList(String name) {
-		return productDao.countProductList(name);
-	}
-
-	@Override
 	public List<ProductVO> listProduct(String name) {
 		return productDao.listProduct(name);
 	}
 
+	@Override
+	public int countProductList(String name) {
+		return productDao.countProductList(name);
+	}
+	
+	@Override
+	public List<ProductVO> listProductWithPaging(Criteria criteria, String key) {
+		return productDao.listWithPaging(criteria, key);
+	}
+	
 	@Override
 	public void insertProduct(ProductVO vo) {
 		productDao.insertProduct(vo);
@@ -63,8 +68,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVO> listWithPaging(Criteria criteria, String key) {
-		return productDao.listWithPaging(criteria, key);
+	public void deleteProduct(int pseq) {
+		productDao.deleteProduct(pseq);		
 	}
 
 	@Override

@@ -18,15 +18,17 @@ public interface ProductService {
 
 	public List<ProductVO> getProductListByKind(String kind);
 	
+	public List<ProductVO> listProduct(String name);
+	
 	public int countProductList(String name);
 	
-	public List<ProductVO> listProduct(String name);
+	public List<ProductVO> listProductWithPaging(Criteria criteria, String key);
 	
 	public void insertProduct(ProductVO vo);
 	
 	public void updateProduct(ProductVO vo);
 	
-	public List<ProductVO> listWithPaging(Criteria criteria, String key);
+	public void deleteProduct(int pseq);
 	
 	public List<SalesQuantity> getProductSales();
 }

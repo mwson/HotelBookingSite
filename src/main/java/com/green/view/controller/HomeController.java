@@ -17,9 +17,7 @@ public class HomeController {
 	@Autowired
 	private ProductService productService;
 	
-	/*
-	 * "메인" 이동
-	 */
+	// "사용자, 메인" 화면
 	@RequestMapping(value = "/index", method=RequestMethod.GET)
 	public String index(Model model) {
 		// 신상품 조회 서비스 호출
@@ -32,53 +30,47 @@ public class HomeController {
 		
 		return "index";
 	}
-	
-	/*
-	 * "호텔 개요" 이동
-	 */
+
+	// "사용자, 호텔소개" 에서  호텔개요 이동
 	@RequestMapping(value = "/introduce_hotel")
 	public String introduceHotel() {
 		return "introduce/hotel";
 	}
 	
-	/*
-	 * "호텔 객실" 이동
-	 */
+	// "사용자, 호텔소개" 에서  객실안내 이동
 	@RequestMapping(value = "/introduce_room")
 	public String introduceRoom() {
 		return "introduce/room";
 	}
 	
-	/*
-	 * "스위트 룸 상세" 이동
-	 */
+	// "사용자, 객실안내" 에서 스위트 룸 상세 이동
 	@RequestMapping(value = "/suiteRoom_detail")
 	public String suiteRoom() {
 		return "introduce/suiteRoom";
 	}
 	
-	/*
-	 * "슈페리어 룸 상세" 이동
-	 */
+	// "사용자, 객실안내" 에서 슈페리어 룸 상세 이동
 	@RequestMapping(value = "/superior_room")
 	public String superiorRoom() {
 		return "introduce/superiorRoom";
 	}
 	
-	/*
-	 * "디럭스 룸 상세" 이동
-	 */
+	// "사용자, 객실안내" 에서 디럭스 룸 상세 이동
 	@RequestMapping(value = "/deluxe_room")
 	public String deluxeRoom() {
 		return "introduce/deluxeRoom";
 	}
 	
-	/*
-	 * "스탠다드 룸 상세" 이동
-	 */
+	// "사용자, 객실안내" 에서 스탠다드 룸 상세 이동
 	@RequestMapping(value = "/standard_room")
 	public String standardRoom() {
 		return "introduce/standardRoom";
+	}
+	
+	// "사용자, 자주하는 질문" 이동
+	@RequestMapping(value = "/faq_list")
+	public String faqList() {
+		return "serviceCenter/faqList";
 	}
 	
 }

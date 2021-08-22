@@ -7,10 +7,10 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h1>호텔 개요</h1>
+                    <h1>호텔개요</h1>
                     <div class="breadcrumb__links">
                         <a href="index">메인</a>
-                        <span>호텔 소개</span>
+                        <span>호텔소개</span>
                     </div>
                 </div>
             </div>

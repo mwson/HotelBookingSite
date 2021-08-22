@@ -40,6 +40,10 @@
                         <div class="qnaView_form_q mb-3">
                             <h5 class="mb-2">문의내역</h5>
                             <div class="qnaView_q_table">
+								<div class="mb-3">
+                                    <label for="subject">작성자</label>
+                                    <input type="text" class="form-control" value="${sessionScope.loginUser.name}(${sessionScope.loginUser.id})" readonly>
+                                </div>
                                 <div class="mb-3">
                                     <label for="subject">제목</label>
                                     <input type="text" id="subject" name="subject" class="form-control" value="${qnaVO.subject}" readonly="readonly">

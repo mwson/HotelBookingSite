@@ -14,12 +14,14 @@
 	<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 	<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 	<link rel="stylesheet" href="css/admin/admin.css" type="text/css">
+	
+	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
-                <a class="sidebar-brand" href="#">
+                <a class="sidebar-brand" href="admin_order_list">
                     <span class="align-middle">관리자</span>
                 </a>
 
@@ -27,11 +29,6 @@
                     <li class="sidebar-header">
 						예약 및 상품
                     </li>
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-						</a>
-					</li>
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="admin_order_list">
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">예약목록</span>
@@ -43,7 +40,7 @@
 						</a>
 					</li>
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
+						<a class="sidebar-link" href="admin_sales_record_form">
 							<i class="align-middle" data-feather="trending-up"></i> <span class="align-middle">예약실적</span>
 						</a>
 					</li>
@@ -52,13 +49,13 @@
 						고객센터
                     </li>
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
+						<a class="sidebar-link" href="admin_notice_list">
 							<i class="align-middle" data-feather="list"></i> <span class="align-middle">공지사항목록</span>
 						</a>
 					</li>
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Q&A목록</span>
+						<a class="sidebar-link" href="admin_qna_list">
+							<i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Q&amp;A목록</span>
 						</a>
 					</li>
 
@@ -76,12 +73,12 @@
                     <div class="sidebar-cta-content">
                         <strong class="d-inline-block mb-2">그린호텔</strong>
                         <div class="mb-3 text-sm">
-                           	메인으로 돌아가시려면
+                           	그린호텔 메인으로 이동하려면
 							<br>
-							아래버튼을 클릭하세요.
+							아래 버튼을 클릭하세요.
                         </div>
                         <div class="d-grid">
-                            <a href="upgrade-to-pro.html" class="btn btn-primary">로그아웃</a>
+                            <a href="admin_logout_user_index" class="btn btn-primary">로그아웃</a>
                         </div>
                     </div>
                 </div>
