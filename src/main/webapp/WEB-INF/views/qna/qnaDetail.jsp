@@ -42,15 +42,15 @@
                             <div class="qnaView_q_table">
 								<div class="mb-3">
                                     <label for="subject">작성자</label>
-                                    <input type="text" class="form-control" value="${sessionScope.loginUser.name}(${sessionScope.loginUser.id})" readonly>
+                                    <input type="text" class="form-control" value="${sessionScope.loginUser.name}(${sessionScope.loginUser.id})" readonly="readonly">
                                 </div>
                                 <div class="mb-3">
                                     <label for="subject">제목</label>
-                                    <input type="text" id="subject" name="subject" class="form-control" value="${qnaVO.subject}" readonly="readonly">
+                                    <input type="text" class="form-control" id="subject" name="subject" value="${qnaVO.subject}" readonly="readonly">
                                 </div>
                                 <div class="mb-3">
                                     <label for="indate">등록일</label>
-                                    <input type="text" id="indate" id="indate" name="indate" class="form-control" value="<fmt:formatDate value="${qnaVO.indate}" type="date"/>" readonly="readonly">
+                                    <input type="text" class="form-control" id="indate" name="indate" value="<fmt:formatDate value="${qnaVO.indate}" type="date"/>" readonly="readonly">
                                 </div>
                                 <div class="mb-3">
                                     <label for="content">문의내역</label>

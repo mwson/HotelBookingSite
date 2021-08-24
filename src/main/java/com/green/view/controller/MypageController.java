@@ -43,9 +43,9 @@ public class MypageController {
 			
 			// 장바구니 저장을 위해 서비스 호출
 			cartService.insertCart(vo);
+			
+			return "redirect:cart_list";
 		}
-		
-		return "redirect:cart_list";
 	}
 	
 	// "사용자, 장바구니" 목록 조회
@@ -66,9 +66,9 @@ public class MypageController {
 			
 			model.addAttribute("cartList", cartList);
 			model.addAttribute("totalPrice", totalPrice);
+			
+			return "mypage/cartList";
 		}
-		
-		return "mypage/cartList";
 	}
 	
 	// "사용자, 장바구니" 삭제
@@ -94,9 +94,9 @@ public class MypageController {
 						
 			// 주문목록을 표시할 때, 주문번호를 전달
 			model.addAttribute("oseq", oseq);
+			
+			return "redirect:order_complete";
 		}
-		
-		return "redirect:order_complete";
 	}
 	
 	/*
@@ -124,9 +124,9 @@ public class MypageController {
 			
 			model.addAttribute("orderList", orderList);
 			model.addAttribute("totalPrice", totalPrice);
+			
+			return "mypage/orderComplete";
 		}
-		
-		return "mypage/orderComplete";
 	}
 	
 	@RequestMapping(value = "/orderList")
@@ -176,9 +176,9 @@ public class MypageController {
 			}
 			model.addAttribute("title", "(진행중인 주문 내역)");
 			model.addAttribute("orderList", orderList);
+			
+			return "mypage/orderList";
 		}
-		
-		return "mypage/orderList";
 	}
 	
 	/*
@@ -213,9 +213,9 @@ public class MypageController {
 			model.addAttribute("orderList", orderList);
 			model.addAttribute("totalPrice", totalPrice);
 			model.addAttribute("title", "(주문 상세 정보)");
+			
+			return "mypage/orderDetail";
 		}
-		
-		return "mypage/orderDetail";
 	}
 	
 	/*
@@ -265,9 +265,9 @@ public class MypageController {
 			}
 			model.addAttribute("title", "(총 주문 내역)");
 			model.addAttribute("orderList", orderList);
+			
+			return "mypage/orderList";
 		}
-		
-		return "mypage/orderList";
 	}
 	
 	/*

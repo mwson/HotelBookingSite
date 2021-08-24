@@ -3,57 +3,59 @@
 <%@include file="header.jsp"%>
 	
 <section class="hero spad set-bg" data-setbg="img/hero.jpg">
-       <div class="container">
-           <div class="row">
-               <div class="col-lg-12">
-                   <div class="hero__text">
-                       <h5>호텔그린에 오신걸 환영합니다.</h5>
-                       <h2>최고의 추억으로<br>만들어 드리겠습니다.</h2>
-                   </div>
-                   <form action="#" class="filter__form">
-                       <div class="filter__form__item">
-                           <p>체크인</p>
-                           <div class="filter__form__datepicker">
-                               <span class="icon_calendar"></span>
-                               <input type="text" class="datepicker_pop check__in">
-                               <i class="arrow_carrot-down"></i>
-                           </div>
-                       </div>
-                       <div class="filter__form__item">
-                           <p>체크아웃</p>
-                           <div class="filter__form__datepicker">
-                               <span class="icon_calendar"></span>
-                               <input type="text" class="datepicker_pop check__out">
-                               <i class="arrow_carrot-down"></i>
-                           </div>
-                       </div>
-                       <div class="filter__form__item filter__form__item--select">
-                           <p>인원</p>
-                           <div class="filter__form__select">
-                               <span class="icon_group"></span>
-                               <select>
-                                   <option value="">4명</option>
-                                   <option value="">3명</option>
-                                   <option value="">2명</option>
-                                   <option value="">1명</option>
-                               </select>
-                           </div>
-                       </div>
-                       <div class="filter__form__item filter__form__item--select">
-                           <p>객실</p>
-                           <div class="filter__form__select">
-                               <span class="icon_search"></span>
-                               <select>
-                                   <option value="">1</option>
-                               </select>
-                           </div>
-                       </div>
-                       <button type="submit">예약하기</button>
-                   </form>
-               </div>
-           </div>
-       </div>
-   </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hero__text">
+                    <h5>호텔그린에 오신걸 환영합니다.</h5>
+                    <h2>최고의 추억으로<br>만들어 드리겠습니다.</h2>
+                </div>
+                <form method="get" action="booking_search">
+					<div class="filter__form">
+	                    <div class="filter__form__item">
+	                        <p>체크인</p>
+	                        <div class="filter__form__datepicker">
+	                            <span class="icon_calendar"></span>
+	                            <input type="text" class="datepicker_pop check__in" id="checkin" name="checkin">
+	                            <i class="arrow_carrot-down"></i>
+	                        </div>
+	                    </div>
+	                    <div class="filter__form__item">
+	                        <p>체크아웃</p>
+	                        <div class="filter__form__datepicker">
+	                            <span class="icon_calendar"></span>
+	                            <input type="text" class="datepicker_pop check__out" id="checkout" name="checkout">
+	                            <i class="arrow_carrot-down"></i>
+	                        </div>
+	                    </div>
+	                    <div class="filter__form__item filter__form__item--select">
+	                        <p>인원</p>
+	                        <div class="filter__form__select">
+	                            <span class="icon_group"></span>
+	                            <select id="people" name="people">
+	                                <option value="1">1명</option>
+	                                <option value="2">2명</option>
+	                                <option value="3">3명</option>
+	                                <option value="4">4명</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <div class="filter__form__item filter__form__item--select">
+	                        <p>객실</p>
+	                        <div class="filter__form__select">
+	                            <span class="icon_check_alt"></span>
+	                            <select id="room" name="room">
+	                                <option value="1">1</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <input type="submit" class="filter__form__button" value="예약하기">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="home-about">
     <div class="container">
