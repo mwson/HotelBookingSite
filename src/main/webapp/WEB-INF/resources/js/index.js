@@ -1,12 +1,3 @@
-/*  ---------------------------------------------------
-  Template Name: Hiroto
-  Description:  Hiroto Hotel HTML Template
-  Author: Colorlib
-  Author URI: https://colorlib.com
-  Version: 1.0
-  Created: Colorlib
----------------------------------------------------------  */
-
 'use strict';
 
 (function ($) {
@@ -179,15 +170,16 @@
     /*--------------------------
         Datepicker
     ----------------------------*/
+
     var today = new Date(); 
-    var dd = today.getDate(); 
+    var dd = today.getDate();
     var mm = today.getMonth() + 1; 
 
     var yyyy = today.getFullYear(); 
     if (dd < 10) { 
         dd = '0' + dd; 
     }
-    var mS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var mS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
     var month;
 
@@ -197,13 +189,18 @@
             month = mS[i-1];
         }
     }
-    var today = dd + ' ' + month + ' ' + yyyy; 
+    var today = yyyy + '' + month + '' + dd; 
+    var tomorrow = yyyy + '' + month + '' + (dd + 1); 
 
     $(".check__in").val(today);
-    $(".check__out").val(today);
-
-    $( ".datepicker_pop" ).datepicker({ 
-        dateFormat: 'dd M yy',
+    $(".check__out").val(tomorrow);
+    
+    $(".datepicker_pop" ).datepicker({
+        showMonthAfterYear: true,
+        yearSuffix: '년',
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        dateFormat: 'yymmdd',
         minDate: 0
     });
 

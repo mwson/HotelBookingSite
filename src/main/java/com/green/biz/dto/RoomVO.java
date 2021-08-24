@@ -4,19 +4,18 @@ import java.sql.Timestamp;
 
 public class RoomVO {
 	
-	private int rid;
+	private String rid;
 	private String name;
 	private int people;
 	private int price;
-	private String content;
 	private String image;
 	private String useyn;
 	private Timestamp regdate;
 	
-	public int getRid() {
+	public String getRid() {
 		return rid;
 	}
-	public void setRid(int rid) {
+	public void setRid(String rid) {
 		this.rid = rid;
 	}
 	
@@ -39,13 +38,6 @@ public class RoomVO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
 	}
 	
 	public String getImage() {
@@ -71,8 +63,8 @@ public class RoomVO {
 	
 	@Override
 	public String toString() {
-		return "RoomVO [rid=" + rid + ", name=" + name + ", people=" + people + ", price=" + price + ", content="
-				+ content + ", image=" + image + ", useyn=" + useyn + ", regdate=" + regdate + "]";
+		return "RoomVO [rid=" + rid + ", name=" + name + ", people=" + people + ", price=" + price + ", image=" + image
+				+ ", useyn=" + useyn + ", regdate=" + regdate + "]";
 	}
 	
 }

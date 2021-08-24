@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BookingDAO">
+	<!-- "사용자, 예약" 룸, 체크인, 체크아웃으로 중복 조회 -->
+	<select id="countBookingCheck" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM booking
+		WHERE rid=#{rid}
+			AND cancel='1'
+			AND checkin <= TO_DATE(#{checkout}, 'yyyyMMdd')
+		    AND checkout >= TO_DATE(#{checkin}, 'yyyyMMdd')
+		]]>
+	</select>
+</mapper>

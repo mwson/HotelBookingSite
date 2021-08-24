@@ -97,7 +97,7 @@
                                 </ul>
                             </nav>
                             <div class="header__nav__widget">
-                                <a href="#">예약하기 <span class="arrow_right"></span></a>
+                                <a href="booking_list">예약하기 <span class="arrow_right"></span></a>
                             </div>
                         </div>
                     </div>

@@ -32,7 +32,7 @@
             <div class="col-lg-6 p-0 order-lg-1 order-md-1 col-md-6">
                 <div class="room__text">
                     <h3>스위트 룸</h3>
-                    <h2><sup>&#8361;</sup>400,000<span> / 1박</span></h2>
+                    <h2><sup>&#8361; </sup>400,000<span> / 1박</span></h2>
                     <ul>
                         <li><span>크기:</span>30평</li>
                         <li><span>최대인원:</span>4명</li>
@@ -54,7 +54,7 @@
             <div class="col-lg-6 p-0 order-lg-4 order-md-4 col-md-6">
                 <div class="room__text right__text">
                     <h3>슈페리어 룸</h3>
-                    <h2><sup>&#8361;</sup>300,000<span> / 1박</span></h2>
+                    <h2><sup>&#8361; </sup>300,000<span> / 1박</span></h2>
                     <ul>
                         <li><span>크기:</span>20평</li>
                         <li><span>최대인원:</span>3명</li>
@@ -76,7 +76,7 @@
             <div class="col-lg-6 p-0 order-lg-5 order-md-5 col-md-6">
                 <div class="room__text">
                     <h3>디럭스 룸</h3>
-                    <h2><sup>&#8361;</sup>250,000<span> / 1박</span></h2>
+                    <h2><sup>&#8361; </sup>250,000<span> / 1박</span></h2>
                     <ul>
                         <li><span>크기:</span>15평</li>
                         <li><span>최대인원:</span>2명</li>
@@ -98,7 +98,7 @@
             <div class="col-lg-6 p-0 order-lg-8 order-md-8 col-md-6">
                 <div class="room__text right__text">
                     <h3>스탠다드 룸</h3>
-                    <h2><sup>&#8361;</sup>200,000<span> / 1박</span></h2>
+                    <h2><sup>&#8361; </sup>200,000<span> / 1박</span></h2>
                     <ul>
                         <li><span>크기:</span>12평</li>
                         <li><span>최대인원:</span>2명</li>

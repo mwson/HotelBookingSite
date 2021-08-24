@@ -69,8 +69,9 @@
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.slicknav.js"></script>
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-
+    <script type="text/javascript" src="js/index.js"></script>
+	
+	<script type="text/javascript" src="booking/booking.js"></script>
 	<script type="text/javascript" src="member/member.js"></script>
 	<script type="text/javascript" src="product/product.js"></script>
 	<script type="text/javascript" src="member/findIdAndPassword.js"></script>
