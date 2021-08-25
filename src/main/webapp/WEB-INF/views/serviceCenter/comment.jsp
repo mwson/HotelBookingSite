@@ -24,7 +24,7 @@
     	
     	<div class="pagination__number blog__pagination" id = "pagination"></div>
     	
-    	<br/><br/><br/><br/>
+    	<br/><br/>
     	
         <div class="row">
             <div class="col-lg-6">
