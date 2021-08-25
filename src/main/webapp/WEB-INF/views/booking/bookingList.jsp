@@ -2,13 +2,18 @@
 
 <%@include file="../header.jsp"%>
 
-<div class="room-details-slider">
+<div class="breadcrumb-option set-bg" data-setbg="img/breadcrumb-bg.jpg">
     <div class="container">
-        <div class="room__details__pic__slider owl-carousel">
-            <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-1.jpg"></div>
-            <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-2.jpg"></div>
-            <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-3.jpg"></div>
-            <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-4.jpg"></div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h1>예약하기</h1>
+                    <div class="breadcrumb__links">
+                        <a href="index">메인</a>
+                        <span>예약</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -23,12 +28,13 @@
                             <h2>예약하기</h2>
                         </div>
                         <hr>
+                        <div class="col-lg-11" style="margin: 0 5%;">
                         <div class="filter__form">
                             <div class="filter__form__item">
                                 <p>체크인</p>
                                 <div class="filter__form__datepicker">
                                     <span class="icon_calendar"></span>
-                                    <input type="text" class="datepicker_pop check__in" id="checkin" name="checkin">
+                                    <input type="text" class="datepicker_pop" id="checkin" name="checkin" value="${bookingVO.checkin}">
                                     <i class="arrow_carrot-down"></i>
                                 </div>
                             </div>
@@ -36,7 +42,7 @@
                                 <p>체크아웃</p>
                                 <div class="filter__form__datepicker">
                                     <span class="icon_calendar"></span>
-                                    <input type="text" class="datepicker_pop check__out" id="checkout" name="checkout">
+                                    <input type="text" class="datepicker_pop" id="checkout" name="checkout" value="${bookingVO.checkout}">
                                     <i class="arrow_carrot-down"></i>
                                 </div>
                             </div>
@@ -45,28 +51,42 @@
                                 <div class="filter__form__select">
                                     <span class="icon_group"></span>
                                     <select id="people" name="people">
-		                                <option value="1">1명</option>
-		                                <option value="2">2명</option>
-		                                <option value="3">3명</option>
-		                                <option value="4">4명</option>
+										<c:choose>
+											<c:when test='${bookingVO.people==1}'>
+												<option value="1" selected="selected">1명</option>
+				                                <option value="2">2명</option>
+				                                <option value="3">3명</option>
+				                                <option value="4">4명</option>
+											</c:when>
+											<c:when test='${bookingVO.people==2}'>
+												<option value="1">1명</option>
+				                                <option value="2" selected="selected">2명</option>
+				                                <option value="3">3명</option>
+				                                <option value="4">4명</option>
+											</c:when>
+											<c:when test='${bookingVO.people==3}'>
+												<option value="1">1명</option>
+				                                <option value="2">2명</option>
+				                                <option value="3" selected="selected">3명</option>
+				                                <option value="4">4명</option>
+											</c:when>
+											<c:otherwise>
+												<option value="1">1명</option>
+				                                <option value="2">2명</option>
+				                                <option value="3">3명</option>
+				                                <option value="4" selected="selected">4명</option>
+											</c:otherwise>
+										</c:choose>
                                     </select>
                                 </div>
                             </div>
-                            <div class="filter__form__item filter__form__item--select">
-                                <p>객실</p>
-                                <div class="filter__form__select">
-                                    <span class="icon_check_alt"></span>
-                                    <select id="room" name="room">
-                                        <option value="1">1</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <input type="submit" class="filter__form__button" value="검색하기">
+                            <input type="button" class="filter__form__button" onclick="booking_search()" value="검색하기">
+                        </div>
                         </div>
                         <hr>
                         <div style="text-align: center;">
                         	----------------------------------------수정예정----------------------------------------<br>
-                        	[체크인 : ${bookingVO.checkin}, 체크아웃 : ${bookingVO.checkout}, 인원 : ${bookingVO.people}, 객실 : ${room}]
+                        	[체크인 : ${bookingVO.checkin}, 체크아웃 : ${bookingVO.checkout}, 인원 : ${bookingVO.people}]
                         </div> 
                         <hr class="mb-5">
                         <div class="suiteRoom" style="display: flex;">
@@ -117,10 +137,10 @@
                                             <a href="#">상세사항 보기</a>
                                             <c:choose>
 												<c:when test='${suiteRoom=="1"}'>
-													<input type="button" class="btn btn-warning" id="suite_room" name="suite_room" onclick="booking_suite_detail" value="예약하기">
+													<input type="button" class="btn btn-warning" id="suite_room" name="suite_room" onclick="booking_suite()" value="예약하기">
 												</c:when>
 												<c:otherwise>
-													<input type="button" class="btn btn-secondary" onclick="booking_n()" value="예약불가">
+													<input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
 												</c:otherwise>
 											</c:choose>
                                         </div>
@@ -177,10 +197,10 @@
                                             <a href="#">상세사항 보기</a>
 											<c:choose>
 												<c:when test='${superiorRoom=="1"}'>
-													<input type="button" class="btn btn-warning" id="superior_room" name="superior_room" onclick="booking_superior_detail" value="예약하기">
+													<input type="button" class="btn btn-warning" id="superior_room" name="superior_room" onclick="booking_superior()" value="예약하기">
 												</c:when>
 												<c:otherwise>
-													<input type="button" class="btn btn-secondary" onclick="booking_n()" value="예약불가">
+													<input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
 												</c:otherwise>
 											</c:choose>
                                         </div>
@@ -237,10 +257,10 @@
                                             <a href="#">상세사항 보기</a>
 											<c:choose>
 												<c:when test='${deluxeRoom=="1"}'>
-													<input type="button" class="btn btn-warning" id="deluxe_room" name="deluxe_room" onclick="booking_deluxe_detail" value="예약하기">
+													<input type="button" class="btn btn-warning" id="deluxe_room" name="deluxe_room" onclick="booking_deluxe()" value="예약하기">
 												</c:when>
 												<c:otherwise>
-													<input type="button" class="btn btn-secondary" onclick="booking_n()" value="예약불가">
+													<input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
 												</c:otherwise>
 											</c:choose>
                                         </div>
@@ -297,10 +317,10 @@
                                             <a href="#">상세사항 보기</a>
                                             <c:choose>
 												<c:when test='${standardRoom=="1"}'>
-													<input type="button" class="btn btn-warning" id="standard_room" name="standard_room" onclick="booking_standard_detail" value="예약하기">
+													<input type="button" class="btn btn-warning" id="standard_room" name="standard_room" onclick="booking_standard()" value="예약하기">
 												</c:when>
 												<c:otherwise>
-													<input type="button" class="btn btn-secondary" onclick="booking_n()" value="예약불가">
+													<input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
 												</c:otherwise>
 											</c:choose>
                                         </div>

@@ -488,13 +488,13 @@ ol {
 }
 
 .filter__form__item {
-	width: 230px;
+	width: 272px;
 	float: left;
 	margin-right: 30px;
 }
 
 .filter__form__item.filter__form__item--select {
-	width: 190px;
+	width: 200px;
 }
 
 .filter__form__item p {
@@ -3280,13 +3280,12 @@ ol {
 .findIdAndPassword .findPw_form,
 .findIdResult .findIdResult_form,
 .findPwdResult .findPwdResult_form,
-.bookingDetail__left .bookingDetail__left__detail,
-.bookingDetail__right .bookingDetail__right__detail,
+.bookingPayment__left .bookingPayment__left__detail,
+.bookingPayment__right .bookingPayment__right__detail,
 .faqList .faqList_form .faqList_form_table,
 .orderList .orderList_form .orderList_form_empty,
 .orderList .orderList_form .orderList_form_table,
 .orderDetail .orderDetail_form .orderDetail_form_empty,
-.orderDetail .orderDetail_form .orderDetail_form_table,
 .orderComplete .orderComplete_form .orderComplete_form_empty,
 .orderComplete .orderComplete_form .orderComplete_form_color,
 .cartList .cartList_form .cartList_form_empty,
@@ -3374,8 +3373,8 @@ ol {
 /*
  * booking
  */
-.bookingDetail__left,
-.bookingDetail__right {
+.bookingPayment__left,
+.bookingPayment__right {
 	padding: 20px;
 }
 
@@ -3417,6 +3416,19 @@ ol {
 .orderComplete .orderComplete_form .orderComplete_form_empty_button,
 .orderComplete .orderComplete_form .orderComplete_form_button {
 	float: right;
+}
+
+.bookingPayment__right__button {
+	text-align: center;
+}
+
+.orderComplete .orderComplete_button {
+	padding: 30px;
+	text-align: center;
+}
+.bookingPayment__right__button .left,
+.orderComplete .orderComplete_button .left {
+	margin-right: 15%;
 }
 
 /*

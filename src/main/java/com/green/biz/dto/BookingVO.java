@@ -10,9 +10,15 @@ public class BookingVO {
 	private String checkin;
 	private String checkout;
 	private int people;
-	private String cancle;
+	private String cancel;
 	private String result;
 	private Timestamp indate;
+	// "MemberVO" name
+	private String name;
+	// "RoomVO" type
+	private String type;
+	// "RoomVO" type
+	private int price;
 	
 	public int getBseq() {
 		return bseq;
@@ -56,11 +62,11 @@ public class BookingVO {
 		this.people = people;
 	}
 	
-	public String getCancle() {
-		return cancle;
+	public String getCancel() {
+		return cancel;
 	}
-	public void setCancle(String cancle) {
-		this.cancle = cancle;
+	public void setCancel(String cancel) {
+		this.cancel = cancel;
 	}
 	
 	public String getResult() {
@@ -77,11 +83,32 @@ public class BookingVO {
 		this.indate = indate;
 	}
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
 	@Override
 	public String toString() {
 		return "BookingVO [bseq=" + bseq + ", id=" + id + ", rid=" + rid + ", checkin=" + checkin + ", checkout="
-				+ checkout + ", people=" + people + ", cancle=" + cancle + ", result=" + result + ", indate=" + indate
-				+ "]";
+				+ checkout + ", people=" + people + ", cancel=" + cancel + ", result=" + result + ", indate=" + indate
+				+ ", name=" + name + ", type=" + type + ", price=" + price + "]";
 	}
 	
 }
