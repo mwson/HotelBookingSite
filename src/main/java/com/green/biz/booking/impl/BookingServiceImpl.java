@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.green.biz.booking.BookingService;
 import com.green.biz.dao.BookingDAO;
 import com.green.biz.dto.BookingVO;
+import com.green.biz.dto.RoomVO;
 
 @Service("bookingService")
 public class BookingServiceImpl implements BookingService {
@@ -16,6 +17,21 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public int countBookingCheck(BookingVO vo) {
 		return bookingDao.countBookingCheck(vo);
+	}
+
+	@Override
+	public RoomVO getRoom(String rid) {
+		return bookingDao.getRoom(rid);
+	}
+
+	@Override
+	public int insertBooking(BookingVO vo) {
+		return bookingDao.insertBooking(vo);
+	}
+
+	@Override
+	public BookingVO getBooking(int bseq) {
+		return bookingDao.getBooking(bseq);
 	}
 
 }

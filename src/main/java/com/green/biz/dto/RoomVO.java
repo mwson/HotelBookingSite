@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class RoomVO {
 	
 	private String rid;
-	private String name;
+	private String type;
 	private int people;
 	private int price;
 	private String image;
@@ -19,11 +19,11 @@ public class RoomVO {
 		this.rid = rid;
 	}
 	
-	public String getName() {
-		return name;
+	public String getType() {
+		return type;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	public int getPeople() {
@@ -63,7 +63,7 @@ public class RoomVO {
 	
 	@Override
 	public String toString() {
-		return "RoomVO [rid=" + rid + ", name=" + name + ", people=" + people + ", price=" + price + ", image=" + image
+		return "RoomVO [rid=" + rid + ", type=" + type + ", people=" + people + ", price=" + price + ", image=" + image
 				+ ", useyn=" + useyn + ", regdate=" + regdate + "]";
 	}
 	

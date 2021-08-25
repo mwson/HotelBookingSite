@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BookingDAO">
-	<!-- "사용자, 예약" 룸, 체크인, 체크아웃으로 중복 조회 -->
+	<!-- "사용자, 예약" 체크인, 체크아웃으로 객실 중복 조회 -->
 	<select id="countBookingCheck" resultType="int">
 		<![CDATA[
 		SELECT COUNT(*)
@@ -12,4 +12,62 @@
 		    AND checkout >= TO_DATE(#{checkin}, 'yyyyMMdd')
 		]]>
 	</select>
+	
+	<!-- "사용자, 예약" 객실 조회 -->
+	<select id="getRoom" parameterType="String" resultType="room">
+		SELECT *
+		FROM room
+		WHERE rid=#{rid}
+	</select>
+	
+	<!-- "사용자, 예약" 예약완료 -->
+	<insert id="insertBooking">
+		INSERT INTO booking(bseq, id, rid, checkin, checkout, people)
+		VALUES(booking_seq.NEXTVAL, #{id}, #{rid}, #{checkin}, #{checkout}, #{people})
+		
+		<selectKey keyProperty="bseq" resultType="int" order="AFTER">
+			SELECT booking_seq.CURRVAL
+			FROM DUAL
+        </selectKey>
+	</insert>
+	
+	<!-- "사용자, 예약" 결제완료, 예약확인 resultMap -->
+	<select id="getBooking" parameterType="int" resultType="booking">
+		SELECT *
+		FROM getBooking_view
+		WHERE bseq=#{bseq}
+	</select>
+	
+	<!-- "사용자, 예약" 결제완료, 예약확인 resultMap(BookingVO, MemberVO, RoomVO)
+	<resultMap id="BookingVO" type="booking">
+		<result column="bseq" property="bseq"/>
+		<result column="id" property="id"/>
+		<result column="checkin" property="checkin"/>
+		<result column="checkout" property="checkout"/>
+		<result column="people" property="people"/>
+		<result column="cancel" property="cancel"/>
+		<result column="result" property="result"/>
+		<result column="indate" property="indate"/>
+		
+		<collection property="name" resultMap="MemberVO"/>
+		<collection property="type" resultMap="RoomVO"/>
+		<collection property="price" resultMap="RoomVO"/>
+	</resultMap>
+	<resultMap id="MemberVO" type="member">
+		<result column="name" property="name"/>
+	</resultMap>
+	<resultMap id="RoomVO" type="room">
+		<result column="type" property="type"/>
+		<result column="price" property="price"/>
+	</resultMap>
+	
+	<select id="getBooking" parameterType="int" resultMap="BookingVO">
+		SELECT b.bseq, b.id, m.name, b.checkin, b.checkout, r.type,
+			b.people, r.price, b.cancel, b.result, b.indate
+		FROM booking b, member m, room r
+		WHERE b.bseq=#{bseq}
+		    AND b.id = m.id
+		    AND b.rid = r.rid
+	</select>
+	-->
 </mapper>
