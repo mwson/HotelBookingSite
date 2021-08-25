@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.green.biz.comment.CommentService;
 import com.green.biz.dto.MemberVO;
+import com.green.biz.dto.NoticeCommentVO;
 import com.green.biz.dto.ProductCommentVO;
 import com.green.biz.utils.Criteria;
 import com.green.biz.utils.PageMaker;
@@ -27,19 +28,20 @@ public class CommentController {
 	CommentService commentService;
 	
 	@GetMapping(value = "/list", produces="application/json; charset=UTF-8")
-	public Map<String, Object> commentList(Criteria criteria, @RequestParam(value = "pseq")int pseq) {
-		Map<String, Object> commentInfo = new HashMap<>();
-		
-	  //List<ProductCommentVO> commentList = commentService.getCommentList(pseq);
-		List<ProductCommentVO> commentList = commentService.getCommentListWithPaging(criteria, pseq);
-		
+	public Map<String, Object> commentList(@RequestParam(value="nseq") int nseq, Criteria criteria) {
+		Map<String, Object> commentInfo = new HashMap<>();		
+	    
+	    List<NoticeCommentVO> commentList = commentService.getCommentListWithPaging(criteria, nseq);
+	    
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(criteria);
 		
-		int totalComment = commentService.countCommentList(pseq);
+		int totalComment = commentService.countCommentList(nseq);
 		pageMaker.setTotalCount(totalComment);
 		
-		commentInfo.put("pageInfo", pageMaker);
+		System.out.println(pageMaker.toString());
+		
+		commentInfo.put("pageInfo", pageMaker);		
 		commentInfo.put("commentList", commentList);
 		commentInfo.put("total", totalComment);
 		
@@ -47,7 +49,7 @@ public class CommentController {
 	}
 	
 	@PostMapping(value = "/save")
-	public String saveComment(HttpSession session, ProductCommentVO vo) {
+	public String saveComment(HttpSession session, NoticeCommentVO vo) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {

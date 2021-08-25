@@ -10,24 +10,24 @@
 	
 	<select id="countCommentList" parameterType="int" resultType="int">
 		SELECT COUNT(*)
-		FROM product_comment
-		WHERE pseq=#{pseq}
+		FROM notice_comment
+		WHERE nseq=#{nseq}
 	</select>
 	
-	<select id="getCommentListWithPaging" parameterType="HashMap" resultType="comment">
+	<select id="getCommentListWithPaging" parameterType="HashMap" resultType="noticeComment">
 		<![CDATA[
-		SELECT comment_seq, pseq, content, writer, regdate, modifydate
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY regdate) rn, comment_seq, pseq, content, writer, regdate, modifydate
-			FROM product_comment
-			WHERE pseq=#{pseq})
+		SELECT notice_comment_seq, nseq, content, writer, regdate, modifydate
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY regdate) rn, notice_comment_seq, nseq, content, writer, regdate, modifydate
+			FROM notice_comment
+			WHERE nseq=#{nseq})
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
 		]]>
 	</select>
 	
 	<insert id="saveComment">
-		INSERT INTO product_comment(comment_seq, pseq, content, writer)
-		VALUES(prod_comment_seq.NEXTVAL, #{pseq}, #{content}, #{writer})
+		INSERT INTO notice_comment(notice_comment_seq, nseq, content, writer)
+		VALUES(notice_comment_seq.NEXTVAL, #{nseq}, #{content}, #{writer})
 	</insert>
 	
 	<update id="updateComment">
