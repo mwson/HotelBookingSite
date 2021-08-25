@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.green.biz.comment.CommentService;
 import com.green.biz.dao.CommentDAO;
+import com.green.biz.dto.NoticeCommentVO;
 import com.green.biz.dto.ProductCommentVO;
 import com.green.biz.utils.Criteria;
 
@@ -22,7 +23,7 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public int saveComment(ProductCommentVO vo) {
+	public int saveComment(NoticeCommentVO vo) {
 		return commentDao.saveComment(vo);
 	}
 
@@ -37,13 +38,13 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public int countCommentList(int pseq) {
-		return commentDao.countCommentList(pseq);
+	public int countCommentList(int nseq) {
+		return commentDao.countCommentList(nseq);
 	}
 
 	@Override
-	public List<ProductCommentVO> getCommentListWithPaging(Criteria criteria, int pseq) {
-		return commentDao.getCommentListWithPaging(criteria, pseq);
+	public List<NoticeCommentVO> getCommentListWithPaging(Criteria criteria, int nseq) {
+		return commentDao.getCommentListWithPaging(criteria, nseq);
 	}
 
 }

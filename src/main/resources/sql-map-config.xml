@@ -13,6 +13,7 @@
 		<typeAlias type="com.green.biz.dto.QnaVO" alias="qna"/>
 		<typeAlias type="com.green.biz.dto.RoomVO" alias="room"/>
 		<typeAlias type="com.green.biz.dto.WorkerVO" alias="worker"/>
+		<typeAlias type="com.green.biz.dto.NoticeCommentVO" alias="noticeComment"/>
 	</typeAliases>
 	
 	<mappers>

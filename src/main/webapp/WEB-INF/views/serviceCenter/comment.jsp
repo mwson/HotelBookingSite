@@ -9,46 +9,50 @@
     <h3 id="cCnt"></h3>
     <div class="blog__details__comment__item">
 	    <form id="commentListForm" name="commentListForm" method="post">
+	    	<!-- 
 	        <div class="blog__details__comment__item__pic">
 	            <img src="img/blog/details/comment-1.png" alt="">
 	        </div>
+	         -->
 			<div id="commentList"></div>
 		</form>
-    </div>
-    <input type="hidden" id="pseq" name="pseq" value="${productVO.pseq}"/>
+    </div>    
 </div>
 <div class="blog__details__comment__form">
-    <form action="#">
+    <form action="#" id="commentForm" name="commentForm">
+    	<input type="hidden" id="nseq" name="nseq" value="${noticeVO.nseq}"/>
+    	
+    	<div class="pagination__number blog__pagination" id = "pagination"></div>
+    	
+    	<br/><br/>
+    	
         <div class="row">
             <div class="col-lg-6">
-                <input type="text" placeholder="Name">
+                <input type="text" placeholder = "ID" id = "userId" value = "${sessionScope.loginUser.id}" readonly>
             </div>
+        </div>        
+            
+        <!-- 
             <div class="col-lg-6">
                 <input type="text" placeholder="Email">
             </div>
-        </div>
         <input type="text" placeholder="Website">
-        <textarea placeholder="Messages"></textarea>
-        <button type="submit">Send Messages</button>
+         -->
+         
+        <textarea  rows="3" cols="80" id="content" name="content" placeholder="댓글을 입력하세요"></textarea>
+
+        <button onClick="save_comment('${noticeVO.nseq }')">Send Messages</button> 
+     
     </form>
 </div>
-
-<div class="col-lg-12">
-    <div class="pagination__number blog__pagination">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">Next <span class="arrow_right"></span></a>
-    </div>
-</div>
-
 <div class="container">
-	
-	
-	<!-- 페이지 처리 영역 -->
-	<div>
-		<ul id="pagination"></ul>
-	</div>
+    <form id="commentListForm" name="commentListForm" method="post">
+        <div id="commentList">
+        </div>
+    </form>
 </div>
+ 
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script> 
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -72,7 +76,7 @@
 				showHTML(pageMaker, commentList, totalCount);
 			},
 			error: function() {
-				alert("상품평 목록을 조회하지 못했습니다.");
+				alert("댓글 목록을 조회하지 못했습니다.");
 			}
 		});
 	}
@@ -80,7 +84,7 @@
 	/* 
 	 * 상품평 페이지별 목록 요청
 	 */
-	function getCommentPaging(pagenum, rowsperpage, pseq) {
+	function getCommentPaging(pagenum, rowsperpage, nseq) {
 		$.ajax({
 			type: 'GET',
 			url: 'comments/list',
@@ -88,7 +92,7 @@
 			data: {
 				"pageNum": pagenum,
 				"rowsPerPage": rowsperpage,
-				"pseq": pseq
+				"nseq": nseq
 			},
 			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 			success: function(data) {
@@ -99,7 +103,7 @@
 				showHTML(pageMaker, commentList, totalCount);
 			},
 			error: function() {
-				alert("상품평 목록을 조회하지 못했습니다.");
+				alert("댓글 목록을 조회하지 못했습니다.");
 			}
 		});
 	}
@@ -107,6 +111,8 @@
 	function showHTML(pageMaker, commentList, totalCount) {
 		var html = "";
 		var p_html = "";
+		var prev = "Prev";
+		var next = "Next";
 
 		if(commentList.length > 0) {
 			// 상품평의 각 항목별로 HTML 생성
@@ -114,55 +120,33 @@
 				html += "<div class=\"blog__details__comment__item__text\">";
 				html += "<span>" + displayTime(item.regDate) + "</span>";
 				html += "<h5>" + item.writer + "</h5>";
-				html += "<p>" + item.content + "<p>";
+				html += "<p>" + item.content + "</p>";
+				html += "<hr/>"
+				html += "<hr/>"
 				html += "</div>";
+				
 			});
 			
 			// 페이징 버튼 출력
-			if(pageMaker.prev == true) {
-				p_html += "<li class=\"paginate_button previous\">";
+			if(pageMaker.cri.prev == true) {
+				p_html += "<div class=\"col-lg-12\">"
 				p_html += "<a href='javascript:getCommentPaging("
-	                 + (pageMaker.startPage - 1) + "," + pageMaker.cri.rowsPerPage + "," + ${productVO.pseq}+")'>[이전]</a>"
-				p_html += "</li>";
-				
-				/*
-				p_html += "<li class=\"paginate_button previous\">";
-				p_html += "<a href=\"comment_paging?pageNum=" + (pageMaker.startPage - 1) +
-					"&rowsPerPage=" + pageMaker.cri.rowsPerPage +
-					"&pseq=${productVO.pseq}\">[이전]</a>";
-				p_html += "</li>";
-				*/
+	                 + (pageMaker.startPage - 1) + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq} +")'>" + prev + "<span class=\"arrow_left\"></span></a>"
 			}
 			 
 			for(var i = pageMaker.startPage; i <= pageMaker.endPage; i++) {
 				p_html += "<a href='javascript:getCommentPaging("
-	                 + i + "," + pageMaker.cri.rowsPerPage + "," + ${productVO.pseq} + ")'>[" + i + "]</a>"
-				p_html += "</li>";
-	                 
-	            /*
-				p_html += "<a href=\"comment_paging?pageNum=" + i + 
-					"&rowsPerPage=" + pageMaker.cri.rowsPerPage +
-					"&pseq=${productVO.pseq}\">[" + i + "]</a>";
-				*/
+	                 + i + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq} + ")'>[" + i + "]</a>"
 			}
 			
-			if(pageMaker.next == true) {
-				p_html += "<li class=\"paginate_button next\">";
-	            p_html += "<a href='javascript:getCommentPaging("
-	                 + (pageMaker.endPage + 1) + "," + pageMaker.cri.rowsPerPage + "," + ${productVO.pseq} + ")'>[다음]</a>"
-	            p_html += "</li>";
-	                 
-	            /*
-				p_html += "<li class=\"paginate_button next\">";
-				p_html += "<a href=\"comment_paging?pageNum=" + (pageMaker.endPage + 1) +
-					"&rowsPerPage=" + pageMaker.cri.rowsPerPage +
-					"&pseq=${productVO.pseq}\">[다음]</a>";
-				p_html += "</li>";
-				*/
+			if(pageMaker.cri.next == true) {
+				p_html += "<a href='javascript:getCommentPaging("
+	                 + (pageMaker.endPage + 1) + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq} + ")'>" + next + "<span class=\"arrow_right\"></span></a>"
+	            p_html += "</div>";
 			}
 		} else { // 조회된 상품평이 없을 경우
 			html += "<div>";
-			html += "<h5>등록된 상품평이 없습니다.</h5>";
+			html += "<h5>등록된 댓글이 없습니다.</h5>";
 			html += "</div>";
 		}
 		
@@ -219,9 +203,9 @@
 	}
 	
 	/*
-	 * 상품 등록
+	 * 댓글 등록
 	 */
-	function save_comment(pseq) {
+	function save_comment(nseq) {
 		$.ajax({
 			type: 'POST',
 			url: 'comments/save',
@@ -231,9 +215,10 @@
 					getCommentList();	// 상품평 목록 요청함수 호출
 					$("#content").val("");
 				} else if(data == 'fail') {
-					alert("상품평 등록이 실패하였습니다. 다시 시도해 주세요.");
+					alert("댓글 등록이 실패하였습니다. 다시 시도해 주세요.");
 				} else if(data == 'not_logedin') {
-					alert("상품평 등록은 로그인이 필요합니다.");
+					alert("댓글 등록은 로그인이 필요합니다.");
+					location.href="/biz/login_form"
 				}
 			},
 			error: function(request, status, error) {

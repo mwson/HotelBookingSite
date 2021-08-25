@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.green.biz.dto.NoticeCommentVO;
 import com.green.biz.dto.ProductCommentVO;
 import com.green.biz.utils.Criteria;
 
@@ -21,7 +22,7 @@ public class CommentDAO {
 		return mybatis.selectList("CommentDAO.getCommentList", pseq);
 	}
 	
-	public int saveComment(ProductCommentVO vo) {
+	public int saveComment(NoticeCommentVO vo) {
 		return mybatis.insert("CommentDAO.saveComment", vo);
 	}
 	
@@ -33,15 +34,15 @@ public class CommentDAO {
 		return mybatis.delete("CommentDAO.deleteComment", comment_seq);
 	}
 	
-	public int countCommentList(int pseq) {
-		return mybatis.selectOne("CommentDAO.countCommentList", pseq);
+	public int countCommentList(int nseq) {
+		return mybatis.selectOne("CommentDAO.countCommentList", nseq);
 	}
 	
-	public List<ProductCommentVO> getCommentListWithPaging(Criteria criteria, int pseq) {
+	public List<NoticeCommentVO> getCommentListWithPaging(Criteria criteria, int nseq) {
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("criteria", criteria);
-		map.put("pseq", pseq);
+		map.put("nseq", nseq);
 		
 		return mybatis.selectList("CommentDAO.getCommentListWithPaging", map);
 	}
