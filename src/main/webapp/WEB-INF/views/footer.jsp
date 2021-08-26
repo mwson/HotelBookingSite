@@ -13,7 +13,6 @@
                         <div class="footer__widget">
                             <h4>사이트 맵</h4>
                             <ul>
-                                <li><a href="index">메인</a></li>
                                 <li><a href="introduce_hotel">호텔소개</a></li>
                                 <li><a href="introduce_room">객실소개</a></li>
                                 <li><a href="notice_list">공지사항</a></li>
@@ -21,8 +20,7 @@
                             </ul>
                             <ul>
                                 <li><a href="qna_write_form">문의하기</a></li>
-								<li><a href="#">예약확인</a></li>
-                                <li><a href="cart_list">장바구니</a></li>
+								<li><a href="booking_list">예약확인</a></li>
                                 <li><a href="qna_list">문의내역</a></li>
 								<li><a href="update_member_form">회원정보 수정</a></li>
                             </ul>
@@ -72,10 +70,11 @@
     <script type="text/javascript" src="js/index.js"></script>
 	
 	<script type="text/javascript" src="booking/booking.js"></script>
-	<script type="text/javascript" src="member/member.js"></script>
-	<script type="text/javascript" src="product/product.js"></script>
 	<script type="text/javascript" src="member/findIdAndPassword.js"></script>
+	<script type="text/javascript" src="member/member.js"></script>
+	<script type="text/javascript" src="mypage/findPassword.js"></script>
 	<script type="text/javascript" src="mypage/mypage.js"></script>
+	<script type="text/javascript" src="product/product.js"></script>
 	<script type="text/javascript" src="qna/qna.js"></script>
 	<script type="text/javascript" src="serviceCenter/serviceCenter.js"></script>
 </body>

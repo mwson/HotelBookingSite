@@ -88,8 +88,7 @@
                                     </li>
                                     <li><a href="#">마이페이지</a>
                                         <ul class="dropdown">
-                                            <li><a href="order_all">예약확인</a></li>
-                                            <li><a href="cart_list">장바구니</a></li>
+                                            <li><a href="booking_list">예약확인</a></li>
                                             <li><a href="qna_list">문의내역</a></li>
 											<li><a href="update_member_form">회원정보 수정</a></li>
                                         </ul>
@@ -97,7 +96,7 @@
                                 </ul>
                             </nav>
                             <div class="header__nav__widget">
-                                <a href="booking_list">예약하기 <span class="arrow_right"></span></a>
+                                <a href="booking_button">예약하기 <span class="arrow_right"></span></a>
                             </div>
                         </div>
                     </div>

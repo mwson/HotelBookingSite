@@ -27,10 +27,9 @@
                         <h4>마이페이지</h4>
                         <hr>
                         <ul>
-                        	<li><a href="order_all">예약확인</a></li>
-							<li><a href="cart_list">장바구니</a></li>
+                        	<li><a href="booking_list">예약확인</a></li>
 							<li><a href="qna_list">문의내역</a></li>
-                            <li><a href="login_form">회원정보 수정</a></li>
+                            <li><a href="update_member_form">회원정보 수정</a></li>
                         </ul>
                     </div>
                 </div>
@@ -69,11 +68,15 @@
                                                         <td>
                                                             <fmt:formatDate value="${qnaVO.indate}" type="date"/>
                                                         </td>
-                                                        <td> 
+                                                        <td>
                                                         <c:choose>
-                                                            <c:when test="${qnaVO.rep==1}">미 답변</c:when>
-                                                            <c:when test="${qnaVO.rep==2}">답변</c:when>
-                                                        </c:choose>
+				                                            <c:when test="${qnaVO.rep==1}">
+				                                                <span class="review" style="color: #f44336">답변대기</span>
+				                                            </c:when>
+				                                            <c:when test="${qnaVO.rep==2}">
+				                                                <span class="review" style="color: #007BFF">답변완료</span>
+				                                            </c:when>
+				                                        </c:choose>
                                                         </td>    
                                                     </tr>
                                             </c:forEach> 
@@ -84,6 +87,9 @@
                         </c:choose>
                     </div>
                     <br>
+                    
+                    <%@include file="qnaPageArea.jsp"%>
+                    
                     <div class="qnaList_form_button col-lg-3 col-md-3">
                         <input type="button" class="btn btn-warning btn-lg btn-block" value="문의하기" onclick="location.href='qna_write_form'">
                     </div>

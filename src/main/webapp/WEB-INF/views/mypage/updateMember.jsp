@@ -27,10 +27,9 @@
                         <h4>마이페이지</h4>
                         <hr>
                         <ul>
-                        	<li><a href="order_all">예약확인</a></li>
-							<li><a href="cart_list">장바구니</a></li>
+                        	<li><a href="booking_list">예약확인</a></li>
 							<li><a href="qna_list">문의내역</a></li>
-                            <li><a href="login_form">회원정보 수정</a></li>
+                            <li><a href="update_member_form">회원정보 수정</a></li>
                         </ul>
                     </div>
                 </div>
@@ -41,7 +40,7 @@
                 <form method="post" action="update" id="update" name="formm">
                     <div class="updateMember_form_input col-lg-6 col-md-6">
                         <div class="mb-4">
-                            <label for="id">아이디</label>
+                            <label for="id">아이디 <span class="review" style="color: #f44336">*</span></label>
                             <input type="text" class="form-control" id="id" name="id" value="${memberVO.id}" readonly>
                         </div>
                         <div class="mb-4">
@@ -54,13 +53,18 @@
                             <input type="password" class="form-control" id="pwdCheck" name="pwdCheck" placeholder="비밀번호 확인">
                         </div>
                         <div class="mb-4">
-                            <label for="pwdCheck">이름</label> 
+                            <label for="pwdCheck">이름 <span class="review" style="color: #f44336">*</span></label> 
                             <input type="text" class="form-control" id="name" name="name" value="${memberVO.name}" readonly>
                         </div>
+						<div class="mb-4">
+                            <label for="phone">휴대폰번호 <span class="review" style="color: #f44336">*</span></label> 
+                            <input type="text" class="form-control" id="phone" name="phone" value="${memberVO.phone}">
+                        </div>
                         <div class="mb-4">
-                            <label for="email">이메일</label> 
+                            <label for="email">이메일 <span class="review" style="color: #f44336">*</span></label> 
                             <input type="text" class="form-control" id="email" name="email" value="${memberVO.email}">
                         </div>
+                        <hr>
                         <div class="mb-4">
                             <label for="id">우편번호</label>
                             <input type="text" class="form-control mb-1" id="zip_num" name="zip_num" value="${memberVO.zip_num}">
@@ -73,17 +77,13 @@
                         <div class="mb-4">
                             <input type="text" class="form-control" id="addr2" name="addr2">
                         </div>
-                        <div>
-                            <label for="phone">휴대폰번호</label> 
-                            <input type="text" class="form-control" id="phone" name="phone" value="${memberVO.phone}">
-                        </div>
                     </div>
                     <br>
                     <div class="updateMember_form_button col-lg-6 col-md-6">
-                        <div class="updateMember_form_button_reset">
+                        <div class="updateMember_form_button_reset col-lg-4 col-md-4">
                             <input type="reset" class="btn btn-secondary btn-lg btn-block" value="취소">
                         </div>
-                        <div class="updateMember_form_button_submit">
+                        <div class="updateMember_form_button_submit col-lg-4 col-md-4">
                             <input type="button" class="btn btn-warning btn-lg btn-block" value="수정" onclick="go_update_member()">
                         </div>
                     </div>
