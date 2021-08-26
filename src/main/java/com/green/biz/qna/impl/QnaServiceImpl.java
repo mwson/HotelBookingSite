@@ -18,24 +18,38 @@ public class QnaServiceImpl implements QnaService {
 	
 	// "사용자, Q&A" 목록 조회
 	@Override
-	public List<QnaVO> listQna(String id) {
-		return qnaDao.listQna(id);
+	public List<QnaVO> userQnaList(String id) {
+		return qnaDao.userQnaList(id);
 	}
 	
-	// "사용자 및 관리자 Q&A" 목록 조회
+	// "사용자, Q&A" 목록 수 조회
 	@Override
-	public List<QnaVO> listAllQna() {
-		return qnaDao.listAllQna();
+	public int userCountQnaList(String id) {
+		return qnaDao.userCountQnaList(id);
 	}
 	
-	// "사용자 및 관리자, Q&A" 목록 총 개수 조회
-	public int countQnaList(String name) {
-		return qnaDao.countQnaList(name);
+	// "사용자, Q&A" 목록 조회 및 페이징
+	@Override
+	public List<QnaVO> userQnaListWithPaging(Criteria criteria, String id) {
+		return qnaDao.userQnaListWithPaging(criteria, id);
 	}
-		
-	// "사용자 및 관리자, Q&A" 목록 조회 및 페이징
-	public List<QnaVO> listQnaWithPaging(Criteria criteria, String key) {
-		return qnaDao.listQnaWithPaging(criteria, key);
+	
+	// "관리자 Q&A" 목록 조회
+	@Override
+	public List<QnaVO> adminQnaList() {
+		return qnaDao.adminQnaList();
+	}
+	
+	// "관리자, Q&A" 목록 수 조회
+	@Override
+	public int adminCountQnaList(String name) {
+		return qnaDao.adminCountQnaList(name);
+	}
+	
+	// "관리자, Q&A" 목록 조회 및 페이징
+	@Override
+	public List<QnaVO> adminQnaListWithPaging(Criteria criteria, String key) {
+		return qnaDao.adminQnaListWithPaging(criteria, key);
 	}
 	
 	// "사용자, 관리자 Q&N" 상세 조회	

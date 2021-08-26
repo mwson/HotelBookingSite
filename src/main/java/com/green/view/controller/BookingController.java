@@ -1,6 +1,5 @@
 package com.green.view.controller;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,266 +22,23 @@ public class BookingController {
 	
 	@Autowired
 	private BookingService bookingService;
-		
-	// "사용자, 메인(예약하기)" 인원, 체크인, 체크아웃으로 중복 조회
+	
+	// "사용자, 메인(예약하기)" 예약 검색
 	@RequestMapping(value = "/booking_search")
 	public String bookingSearch(BookingVO vo, Model model) {
-		// 방 마다 중복 조회
-		int suiteRoom = 0;
-		int superiorRoom = 0;
-		int deluxeRoom = 0;
-		int standardRoom = 0;
+		String url = bookingCheck(vo, model);
 		
-		// 날짜, 인원, 객실 조회
-		model.addAttribute("bookingVO", vo);
-		
-		// 인원 4명 조회
-		if(vo.getPeople() >= 4) {
-			// 스위트 룸(4명), rid: 1
-			// 체크인, 체크아웃으로 중복 조회
-			vo.setRid("1");	
-			suiteRoom = bookingService.countBookingCheck(vo);
-			
-			if(suiteRoom >= 1) {
-				// 예약불가(2)
-				model.addAttribute("suiteRoom", "2");
-				model.addAttribute("superiorRoom", "2");
-				model.addAttribute("deluxeRoom", "2");
-				model.addAttribute("standardRoom", "2");
-				
-				return "booking/bookingList";
-			} else {
-				// 예약가능(1)
-				model.addAttribute("suiteRoom", "1");
-				model.addAttribute("superiorRoom", "2");
-				model.addAttribute("deluxeRoom", "2");
-				model.addAttribute("standardRoom", "2");
-				
-				return "booking/bookingList";
-			}
-		// 인원 3명 조회			
-		} if(vo.getPeople() == 3) {
-			// 스위트 룸(4명), rid: 1
-			vo.setRid("1");	
-			suiteRoom = bookingService.countBookingCheck(vo);
-			if(suiteRoom >= 1) {
-				model.addAttribute("suiteRoom", "2");
-				
-				// 슈페리어 룸(3명), rid: 2
-				vo.setRid("2");	
-				superiorRoom = bookingService.countBookingCheck(vo);
-				if(superiorRoom >= 1) {
-					model.addAttribute("superiorRoom", "2");
-					model.addAttribute("deluxeRoom", "2");
-					model.addAttribute("standardRoom", "2");
-					
-					return "booking/bookingList";
-				} else {
-					model.addAttribute("superiorRoom", "1");
-					model.addAttribute("deluxeRoom", "2");
-					model.addAttribute("standardRoom", "2");
-					
-					return "booking/bookingList";
-				}
-			} else {
-				model.addAttribute("suiteRoom", "1");
-				
-				// 슈페리어 룸(3명), rid: 2
-				vo.setRid("2");	
-				superiorRoom = bookingService.countBookingCheck(vo);
-				if(superiorRoom >= 1) {
-					model.addAttribute("superiorRoom", "2");
-					model.addAttribute("deluxeRoom", "2");
-					model.addAttribute("standardRoom", "2");
-					
-					return "booking/bookingList";
-				} else {
-					model.addAttribute("superiorRoom", "1");
-					model.addAttribute("deluxeRoom", "2");
-					model.addAttribute("standardRoom", "2");
-					
-					return "booking/bookingList";
-				}
-			}
-		// 인원 2명 이하		
-		} else {
-			// 스위트 룸(4명), rid: 1
-			vo.setRid("1");	
-			suiteRoom = bookingService.countBookingCheck(vo);
-			if(suiteRoom >= 1) {
-				model.addAttribute("suiteRoom", "2");
-				
-				// 슈페리어 룸(3명), rid: 2
-				vo.setRid("2");	
-				superiorRoom = bookingService.countBookingCheck(vo);
-				if(superiorRoom >= 1) {
-					model.addAttribute("superiorRoom", "2");
-					
-					// 디럭스 룸(2명), rid: 3
-					vo.setRid("3");	
-					deluxeRoom = bookingService.countBookingCheck(vo);
-					if(deluxeRoom >= 1) {
-						model.addAttribute("deluxeRoom", "2");
-						
-						// 스탠다드 룸(2명), rid: 4
-						vo.setRid("4");	
-						standardRoom = bookingService.countBookingCheck(vo);
-						if(standardRoom >= 1) {
-							model.addAttribute("standardRoom", "2");
-							
-							return "booking/bookingList";
-						} else {
-							model.addAttribute("standardRoom", "1");
-							
-							return "booking/bookingList";
-						}
-					} else {
-						model.addAttribute("deluxeRoom", "1");
-						
-						// 스탠다드 룸(2명), rid: 4
-						vo.setRid("4");	
-						standardRoom = bookingService.countBookingCheck(vo);
-						if(standardRoom >= 1) {
-							model.addAttribute("standardRoom", "2");
-							
-							return "booking/bookingList";
-						} else {
-							model.addAttribute("standardRoom", "1");
-							
-							return "booking/bookingList";
-						}
-					}
-				} else {
-					model.addAttribute("superiorRoom", "1");
-					
-					// 디럭스 룸(2명), rid: 3
-					vo.setRid("3");	
-					deluxeRoom = bookingService.countBookingCheck(vo);
-					if(deluxeRoom >= 1) {
-						model.addAttribute("deluxeRoom", "2");
-						
-						// 스탠다드 룸(2명), rid: 4
-						vo.setRid("4");	
-						standardRoom = bookingService.countBookingCheck(vo);
-						if(standardRoom >= 1) {
-							model.addAttribute("standardRoom", "2");
-							
-							return "booking/bookingList";
-						} else {
-							model.addAttribute("standardRoom", "1");
-							
-							return "booking/bookingList";
-						}
-					} else {
-						model.addAttribute("deluxeRoom", "1");
-						
-						// 스탠다드 룸(2명), rid: 4
-						vo.setRid("4");	
-						standardRoom = bookingService.countBookingCheck(vo);
-						if(standardRoom >= 1) {
-							model.addAttribute("standardRoom", "2");
-							
-							return "booking/bookingList";
-						} else {
-							model.addAttribute("standardRoom", "1");
-							
-							return "booking/bookingList";
-						}
-					}
-				}
-			} else {
-				model.addAttribute("suiteRoom", "1");
-				
-				// 슈페리어 룸(3명), rid: 2
-				vo.setRid("2");	
-				superiorRoom = bookingService.countBookingCheck(vo);
-				if(superiorRoom >= 1) {
-					model.addAttribute("superiorRoom", "2");
-					
-					// 디럭스 룸(2명), rid: 3
-					vo.setRid("3");	
-					deluxeRoom = bookingService.countBookingCheck(vo);
-					if(deluxeRoom >= 1) {
-						model.addAttribute("deluxeRoom", "2");
-						
-						// 스탠다드 룸(2명), rid: 4
-						vo.setRid("4");	
-						standardRoom = bookingService.countBookingCheck(vo);
-						if(standardRoom >= 1) {
-							model.addAttribute("standardRoom", "2");
-							
-							return "booking/bookingList";
-						} else {
-							model.addAttribute("standardRoom", "1");
-							
-							return "booking/bookingList";
-						}
-					} else {
-						model.addAttribute("deluxeRoom", "1");
-						
-						// 스탠다드 룸(2명), rid: 4
-						vo.setRid("4");	
-						standardRoom = bookingService.countBookingCheck(vo);
-						if(standardRoom >= 1) {
-							model.addAttribute("standardRoom", "2");
-							
-							return "booking/bookingList";
-						} else {
-							model.addAttribute("standardRoom", "1");
-							
-							return "booking/bookingList";
-						}
-					}
-				} else {
-					model.addAttribute("superiorRoom", "1");
-					
-					// 디럭스 룸(2명), rid: 3
-					vo.setRid("3");	
-					deluxeRoom = bookingService.countBookingCheck(vo);
-					if(deluxeRoom >= 1) {
-						model.addAttribute("deluxeRoom", "2");
-						
-						// 스탠다드 룸(2명), rid: 4
-						vo.setRid("4");	
-						standardRoom = bookingService.countBookingCheck(vo);
-						if(standardRoom >= 1) {
-							model.addAttribute("standardRoom", "2");
-							
-							return "booking/bookingList";
-						} else {
-							model.addAttribute("standardRoom", "1");
-							
-							return "booking/bookingList";
-						}
-					} else {
-						model.addAttribute("deluxeRoom", "1");
-						
-						// 스탠다드 룸(2명), rid: 4
-						vo.setRid("4");	
-						standardRoom = bookingService.countBookingCheck(vo);
-						if(standardRoom >= 1) {
-							model.addAttribute("standardRoom", "2");
-							
-							return "booking/bookingList";
-						} else {
-							model.addAttribute("standardRoom", "1");
-							
-							return "booking/bookingList";
-						}
-					}
-				}
-			}
-		}
+		return url;
 	}
 	
-	// "사용자" 예약하기 화면 이동	
-	@RequestMapping(value = "/booking_list")
-	public String bookingList(BookingVO vo, Model model) {
+	// "사용자, 예약하기(버튼)" 클릭으로 이동
+	@RequestMapping(value = "/booking_button")
+	public String bookingButton(BookingVO vo, Model model) {
 		// "체크인, 체크아웃, 인원" 기본값 전달
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         Calendar cal = Calendar.getInstance();
         
-        // "체크인"오늘
+        // "체크인" 오늘
         String today = sdf.format(cal.getTime());
         vo.setCheckin(today);
         
@@ -293,10 +49,9 @@ public class BookingController {
         
         // "인원" 1명
         vo.setPeople(1);
-        
-        model.addAttribute("bookingVO", vo);
+        String url = bookingCheck(vo, model);
 		
-		return "booking/bookingList";
+		return url;
 	}
 	
 	// "사용자, 예약" 스위트 룸 결제
@@ -308,9 +63,9 @@ public class BookingController {
 			return "member/login";
 		} else {
 			vo.setRid("1");
-			int suiteRoom = bookingService.countBookingCheck(vo);
+			int bookingCheck = bookingService.countBookingCheck(vo);
 			
-			if(suiteRoom >= 1) {
+			if(bookingCheck >= 1) {
 				return "booking/bookingFail";
 			} else {
 				// 예약자 조회
@@ -338,9 +93,9 @@ public class BookingController {
 			return "member/login";
 		} else {
 			vo.setRid("2");
-			int suiteRoom = bookingService.countBookingCheck(vo);
+			int bookingCheck = bookingService.countBookingCheck(vo);
 			
-			if(suiteRoom >= 1) {
+			if(bookingCheck >= 1) {
 				return "booking/bookingFail";
 			} else {
 				// 예약자 조회
@@ -368,9 +123,9 @@ public class BookingController {
 			return "member/login";
 		} else {
 			vo.setRid("3");
-			int suiteRoom = bookingService.countBookingCheck(vo);
+			int bookingCheck = bookingService.countBookingCheck(vo);
 			
-			if(suiteRoom >= 1) {
+			if(bookingCheck >= 1) {
 				return "booking/bookingFail";
 			} else {
 				// 예약자 조회
@@ -446,10 +201,297 @@ public class BookingController {
 		}
 	}
 	
-	
 	/*
 	 * 모듈화
 	 */
+	// "사용자, 메인(예약하기)" 인원, 체크인, 체크아웃으로 중복 조회
+	public String bookingCheck(BookingVO vo, Model model) {
+		// 방 마다 중복 조회
+		int suiteRoom = 0;
+		int superiorRoom = 0;
+		int deluxeRoom = 0;
+		int standardRoom = 0;
+		
+		// 날짜, 인원, 객실 조회
+		model.addAttribute("bookingVO", vo);
+		
+		// 인원 4명 조회
+		if(vo.getPeople() >= 4) {
+			// 스위트 룸(4명), rid: 1
+			// 체크인, 체크아웃으로 중복 조회
+			vo.setRid("1");	
+			suiteRoom = bookingService.countBookingCheck(vo);
+			
+			if(suiteRoom >= 1) {
+				// 예약불가(2)
+				model.addAttribute("suiteRoom", "2");
+				model.addAttribute("superiorRoom", "2");
+				model.addAttribute("deluxeRoom", "2");
+				model.addAttribute("standardRoom", "2");
+				
+				return "booking/bookingSearch";
+			} else {
+				// 예약가능(1)
+				model.addAttribute("suiteRoom", "1");
+				model.addAttribute("superiorRoom", "2");
+				model.addAttribute("deluxeRoom", "2");
+				model.addAttribute("standardRoom", "2");
+				
+				return "booking/bookingSearch";
+			}
+		// 인원 3명 조회			
+		} if(vo.getPeople() == 3) {
+			// 스위트 룸(4명), rid: 1
+			vo.setRid("1");	
+			suiteRoom = bookingService.countBookingCheck(vo);
+			
+			if(suiteRoom >= 1) {
+				// 슈페리어 룸(3명), rid: 2
+				vo.setRid("2");	
+				superiorRoom = bookingService.countBookingCheck(vo);
+				
+				if(superiorRoom >= 1) {
+					model.addAttribute("suiteRoom", "2");
+					model.addAttribute("superiorRoom", "2");
+					model.addAttribute("deluxeRoom", "2");
+					model.addAttribute("standardRoom", "2");
+					
+					return "booking/bookingSearch";
+				} else {
+					model.addAttribute("suiteRoom", "2");
+					model.addAttribute("superiorRoom", "1");
+					model.addAttribute("deluxeRoom", "2");
+					model.addAttribute("standardRoom", "2");
+					
+					return "booking/bookingSearch";
+				}
+			} else {
+				// 슈페리어 룸(3명), rid: 2
+				vo.setRid("2");	
+				superiorRoom = bookingService.countBookingCheck(vo);
+				
+				if(superiorRoom >= 1) {
+					model.addAttribute("suiteRoom", "1");
+					model.addAttribute("superiorRoom", "2");
+					model.addAttribute("deluxeRoom", "2");
+					model.addAttribute("standardRoom", "2");
+					
+					return "booking/bookingSearch";
+				} else {
+					model.addAttribute("suiteRoom", "1");
+					model.addAttribute("superiorRoom", "1");
+					model.addAttribute("deluxeRoom", "2");
+					model.addAttribute("standardRoom", "2");
+					
+					return "booking/bookingSearch";
+				}
+			}
+		// 인원 2명 이하		
+		} else {
+			// 스위트 룸(4명), rid: 1
+			vo.setRid("1");	
+			suiteRoom = bookingService.countBookingCheck(vo);
+			
+			if(suiteRoom >= 1) {
+				// 슈페리어 룸(3명), rid: 2
+				vo.setRid("2");	
+				superiorRoom = bookingService.countBookingCheck(vo);
+				
+				if(superiorRoom >= 1) {
+					// 디럭스 룸(2명), rid: 3
+					vo.setRid("3");	
+					deluxeRoom = bookingService.countBookingCheck(vo);
+					
+					if(deluxeRoom >= 1) {
+						// 스탠다드 룸(2명), rid: 4
+						vo.setRid("4");	
+						standardRoom = bookingService.countBookingCheck(vo);
+						
+						if(standardRoom >= 1) {
+							model.addAttribute("suiteRoom", "2");
+							model.addAttribute("superiorRoom", "2");
+							model.addAttribute("deluxeRoom", "2");
+							model.addAttribute("standardRoom", "2");
+							
+							return "booking/bookingSearch";
+						} else {
+							model.addAttribute("suiteRoom", "2");
+							model.addAttribute("superiorRoom", "2");
+							model.addAttribute("deluxeRoom", "2");
+							model.addAttribute("standardRoom", "1");
+							
+							return "booking/bookingSearch";
+						}
+					} else {						
+						// 스탠다드 룸(2명), rid: 4
+						vo.setRid("4");	
+						standardRoom = bookingService.countBookingCheck(vo);
+						
+						if(standardRoom >= 1) {
+							model.addAttribute("suiteRoom", "2");
+							model.addAttribute("superiorRoom", "2");
+							model.addAttribute("deluxeRoom", "1");
+							model.addAttribute("standardRoom", "2");
+							
+							return "booking/bookingSearch";
+						} else {
+							model.addAttribute("suiteRoom", "2");
+							model.addAttribute("superiorRoom", "2");
+							model.addAttribute("deluxeRoom", "1");						
+							model.addAttribute("standardRoom", "1");
+							
+							return "booking/bookingSearch";
+						}
+					}
+				} else {
+					// 디럭스 룸(2명), rid: 3
+					vo.setRid("3");	
+					deluxeRoom = bookingService.countBookingCheck(vo);
+					
+					if(deluxeRoom >= 1) {						
+						// 스탠다드 룸(2명), rid: 4
+						vo.setRid("4");	
+						standardRoom = bookingService.countBookingCheck(vo);
+						
+						if(standardRoom >= 1) {
+							model.addAttribute("suiteRoom", "2");
+							model.addAttribute("superiorRoom", "1");
+							model.addAttribute("deluxeRoom", "2");
+							model.addAttribute("standardRoom", "2");
+							
+							return "booking/bookingSearch";
+						} else {
+							model.addAttribute("suiteRoom", "2");
+							model.addAttribute("superiorRoom", "1");
+							model.addAttribute("deluxeRoom", "2");
+							model.addAttribute("standardRoom", "1");
+							
+							return "booking/bookingSearch";
+						}
+					} else {
+						// 스탠다드 룸(2명), rid: 4
+						vo.setRid("4");	
+						standardRoom = bookingService.countBookingCheck(vo);
+						
+						if(standardRoom >= 1) {
+							model.addAttribute("suiteRoom", "2");
+							model.addAttribute("superiorRoom", "1");							
+							model.addAttribute("deluxeRoom", "1");
+							model.addAttribute("standardRoom", "2");
+							
+							return "booking/bookingSearch";
+						} else {
+							model.addAttribute("suiteRoom", "2");
+							model.addAttribute("superiorRoom", "1");
+							model.addAttribute("deluxeRoom", "1");
+							model.addAttribute("standardRoom", "1");
+							
+							return "booking/bookingSearch";
+						}
+					}
+				}
+			} else {
+				// 슈페리어 룸(3명), rid: 2
+				vo.setRid("2");	
+				superiorRoom = bookingService.countBookingCheck(vo);
+				
+				if(superiorRoom >= 1) {
+					// 디럭스 룸(2명), rid: 3
+					vo.setRid("3");	
+					deluxeRoom = bookingService.countBookingCheck(vo);
+					
+					if(deluxeRoom >= 1) {
+						// 스탠다드 룸(2명), rid: 4
+						vo.setRid("4");	
+						standardRoom = bookingService.countBookingCheck(vo);
+						
+						if(standardRoom >= 1) {
+							model.addAttribute("suiteRoom", "1");
+							model.addAttribute("superiorRoom", "2");
+							model.addAttribute("deluxeRoom", "2");
+							model.addAttribute("standardRoom", "2");
+							
+							return "booking/bookingSearch";
+						} else {
+							model.addAttribute("suiteRoom", "1");
+							model.addAttribute("superiorRoom", "2");
+							model.addAttribute("deluxeRoom", "2");
+							model.addAttribute("standardRoom", "1");
+							
+							return "booking/bookingSearch";
+						}
+					} else {
+						// 스탠다드 룸(2명), rid: 4
+						vo.setRid("4");	
+						standardRoom = bookingService.countBookingCheck(vo);
+						
+						if(standardRoom >= 1) {
+							model.addAttribute("suiteRoom", "1");
+							model.addAttribute("superiorRoom", "2");
+							model.addAttribute("deluxeRoom", "1");
+							model.addAttribute("standardRoom", "2");
+							
+							return "booking/bookingSearch";
+						} else {
+							model.addAttribute("suiteRoom", "1");
+							model.addAttribute("superiorRoom", "2");
+							model.addAttribute("deluxeRoom", "1");
+							model.addAttribute("standardRoom", "1");
+							
+							return "booking/bookingSearch";
+						}
+					}
+				} else {
+					// 디럭스 룸(2명), rid: 3
+					vo.setRid("3");	
+					deluxeRoom = bookingService.countBookingCheck(vo);
+					
+					if(deluxeRoom >= 1) {
+						// 스탠다드 룸(2명), rid: 4
+						vo.setRid("4");	
+						standardRoom = bookingService.countBookingCheck(vo);
+						
+						if(standardRoom >= 1) {
+							model.addAttribute("suiteRoom", "1");
+							model.addAttribute("superiorRoom", "1");
+							model.addAttribute("deluxeRoom", "2");
+							model.addAttribute("standardRoom", "2");
+							
+							return "booking/bookingSearch";
+						} else {
+							model.addAttribute("suiteRoom", "1");
+							model.addAttribute("superiorRoom", "1");
+							model.addAttribute("deluxeRoom", "2");
+							model.addAttribute("standardRoom", "1");
+							
+							return "booking/bookingSearch";
+						}
+					} else {
+						// 스탠다드 룸(2명), rid: 4
+						vo.setRid("4");	
+						standardRoom = bookingService.countBookingCheck(vo);
+						
+						if(standardRoom >= 1) {
+							model.addAttribute("suiteRoom", "1");
+							model.addAttribute("superiorRoom", "1");
+							model.addAttribute("deluxeRoom", "1");
+							model.addAttribute("standardRoom", "2");
+							
+							return "booking/bookingSearch";
+						} else {
+							model.addAttribute("suiteRoom", "1");
+							model.addAttribute("superiorRoom", "1");
+							model.addAttribute("deluxeRoom", "1");
+							model.addAttribute("standardRoom", "1");
+							
+							return "booking/bookingSearch";
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	// "체크인, 체크아웃" (yyyyMMdd) 자르기
 	public String checkSubstring(String checkinout) {		
 		String yyyy = checkinout.substring(0, 4);
@@ -492,8 +534,10 @@ public class BookingController {
 	// "문자열, 요금" 계산 및 출력 
 	public void checkSubPriceCal(String checkin, String checkout, int dayPrice, Model model) {
 		// "체크인, 체크아웃" (yyyyMMdd) 자르기
-		if(checkin.length() != 8 || checkout.length() != 8) {
+		if(checkin.length() != 8) {
 			checkin = checkSubstring(checkin);
+		}
+		if(checkout.length() != 8) {
 			checkout = checkSubstring(checkout);
 		}
 		
@@ -519,45 +563,5 @@ public class BookingController {
 		long totalPrice = (long)(roomPrice + vat);
 		model.addAttribute("totalPrice", totalPrice);		
 	}
-	
-	/*
-	// "사용자, 예약" 예약 결제
-	public void bookingDetail(HttpSession session, BookingVO vo, Model model) {
-		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-
-		// 예약자 조회
-		model.addAttribute("loginUser", loginUser);
-		model.addAttribute("bookingVO", vo);
-		
-		// 룸 조회
-		RoomVO roomVO = bookingService.getRoom(vo.getRid());
-		model.addAttribute("roomVO", roomVO);
-		
-		String checkin = vo.getCheckin();
-		String checkout = vo.getCheckout();
-		
-		// "체크인, 체크아웃" 문자열 출력 
-		String checkin_sub = checkSubstring(checkin);
-		String checkout_sub = checkSubstring(checkout);
-		model.addAttribute("checkin", checkin_sub);
-		model.addAttribute("checkout", checkout_sub);
-		
-		// "체크인, 체크아웃" 날짜 계산 
-		long checkinout_cal = checkCalculation(checkin, checkout);
-		model.addAttribute("checkinout_cal", checkinout_cal);
-
-		// 객실 요금(1박 요금 * 날짜) 계산
-		long roomPrice = (long)(roomVO.getPrice() * checkinout_cal);
-		model.addAttribute("roomPrice", roomPrice);
-		
-		// 부가가치세 계산(객실요금 * 0.1)
-		long vat = (long)(roomPrice * 0.1);
-		model.addAttribute("vat", vat);
-		
-		// 총 요금 계산(객실요금 * 0.1)
-		long totalPrice = (long)(roomPrice + vat);
-		model.addAttribute("totalPrice", totalPrice);
-	}
-	*/
 	
 }

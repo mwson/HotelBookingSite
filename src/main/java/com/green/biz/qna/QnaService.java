@@ -8,16 +8,22 @@ import com.green.biz.utils.Criteria;
 public interface QnaService {
 	
 	// "사용자, Q&A" 목록 조회
-	public List<QnaVO> listQna(String id);
+	public List<QnaVO> userQnaList(String id);
+	
+	// "사용자, Q&A" 목록 수 조회
+	public int userCountQnaList(String id);
+	
+	// "사용자, Q&A" 목록 조회 및 페이징
+	public List<QnaVO> userQnaListWithPaging(Criteria criteria, String id);
 
-	// "사용자 및 관리자 Q&A" 목록 조회
-	public List<QnaVO> listAllQna();
+	// "관리자 Q&A" 목록 조회
+	public List<QnaVO> adminQnaList();
 	
-	// "사용자 및 관리자, Q&A" 목록 총 개수 조회
-	public int countQnaList(String name);
+	// "관리자, Q&A" 목록 수 조회
+	public int adminCountQnaList(String name);
 	
-	// "사용자 및 관리자, Q&A" 목록 조회 및 페이징
-	public List<QnaVO> listQnaWithPaging(Criteria criteria, String key);
+	// "관리자, Q&A" 목록 조회 및 페이징
+	public List<QnaVO> adminQnaListWithPaging(Criteria criteria, String key);
 	
 	// "사용자, 관리자 Q&N" 상세 조회	
 	public QnaVO getQna(int qseq);

@@ -61,6 +61,14 @@ function go_save() {
 		alert("이름을 입력해 주세요!");
 		$("#name").focus();
 		return false;
+	} else if ($("#phone").val() == "") {
+		alert("휴대폰번호를 입력해 주세요!");
+		$("#phone").focus();
+		return false;
+	} else if ($("#email").val() == "") {
+		alert("이메일을 입력해 주세요!");
+		$("#email").focus();
+		return false;
 	} else {
 		$("#join").attr("action", "join").submit();
 	}

@@ -491,12 +491,12 @@ public class AdminController {
 		if(adminUser == null) {
 			return "admin/login";
 		} else {
-			List<QnaVO> qnaList = qnaService.listQnaWithPaging(criteria, key);
+			List<QnaVO> qnaList = qnaService.adminQnaListWithPaging(criteria, key);
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(criteria);
 			
-			int totalCount = qnaService.countQnaList(key);
+			int totalCount = qnaService.adminCountQnaList(key);
 			pageMaker.setTotalCount(totalCount);
 			
 			model.addAttribute("qnaList", qnaList);

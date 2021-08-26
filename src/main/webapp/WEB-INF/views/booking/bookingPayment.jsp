@@ -30,12 +30,12 @@
                             <input type="text" class="form-control" value="${loginUser.name}" readonly="readonly">
                         </div>
                         <div class="mb-3">
-                            <label for="subject">이메일</label>
-                            <input type="text" class="form-control" value="${loginUser.email}" readonly="readonly">
-                        </div>
-                        <div class="mb-3">
                             <label for="indate">휴대폰번호</label>
                             <input type="text" class="form-control" value="${loginUser.phone}" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject">이메일</label>
+                            <input type="text" class="form-control" value="${loginUser.email}" readonly="readonly">
                         </div>
                     </div>
                 </div>
@@ -115,8 +115,8 @@
                         </div>
                     </div>
                     <div class="bookingPayment__right__button">
-                            <input type="button" class="btn btn-secondary btn-lg left" onclick="booking_payment_list()" value="목록으로">
-                            <input type="button" class="btn btn-warning btn-lg right" onclick="booking_complete()" value="결제하기">
+						<input type="button" class="btn btn-secondary btn-lg left" onclick="location.href='booking_button'" value="목록으로">
+						<input type="button" class="btn btn-warning btn-lg right" onclick="booking_complete()" value="결제하기">
 					</div>
                 </form>
             </div>

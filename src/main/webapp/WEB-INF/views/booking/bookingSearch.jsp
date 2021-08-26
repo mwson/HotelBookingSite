@@ -22,72 +22,67 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <form method="get" id="booking_form" name="booking_form" action="booking_search">
+                <form method="get" id="booking_form" name="booking_form">
                     <div class="room__details__content">
                         <div class="room__details__title">
                             <h2>예약하기</h2>
                         </div>
                         <hr>
                         <div class="col-lg-11" style="margin: 0 5%;">
-                        <div class="filter__form">
-                            <div class="filter__form__item">
-                                <p>체크인</p>
-                                <div class="filter__form__datepicker">
-                                    <span class="icon_calendar"></span>
-                                    <input type="text" class="datepicker_pop" id="checkin" name="checkin" value="${bookingVO.checkin}">
-                                    <i class="arrow_carrot-down"></i>
-                                </div>
-                            </div>
-                            <div class="filter__form__item">
-                                <p>체크아웃</p>
-                                <div class="filter__form__datepicker">
-                                    <span class="icon_calendar"></span>
-                                    <input type="text" class="datepicker_pop" id="checkout" name="checkout" value="${bookingVO.checkout}">
-                                    <i class="arrow_carrot-down"></i>
-                                </div>
-                            </div>
-                            <div class="filter__form__item filter__form__item--select">
-                                <p>인원</p>
-                                <div class="filter__form__select">
-                                    <span class="icon_group"></span>
-                                    <select id="people" name="people">
-										<c:choose>
-											<c:when test='${bookingVO.people==1}'>
-												<option value="1" selected="selected">1명</option>
-				                                <option value="2">2명</option>
-				                                <option value="3">3명</option>
-				                                <option value="4">4명</option>
-											</c:when>
-											<c:when test='${bookingVO.people==2}'>
-												<option value="1">1명</option>
-				                                <option value="2" selected="selected">2명</option>
-				                                <option value="3">3명</option>
-				                                <option value="4">4명</option>
-											</c:when>
-											<c:when test='${bookingVO.people==3}'>
-												<option value="1">1명</option>
-				                                <option value="2">2명</option>
-				                                <option value="3" selected="selected">3명</option>
-				                                <option value="4">4명</option>
-											</c:when>
-											<c:otherwise>
-												<option value="1">1명</option>
-				                                <option value="2">2명</option>
-				                                <option value="3">3명</option>
-				                                <option value="4" selected="selected">4명</option>
-											</c:otherwise>
-										</c:choose>
-                                    </select>
-                                </div>
-                            </div>
-                            <input type="button" class="filter__form__button" onclick="booking_search()" value="검색하기">
+	                        <div class="filter__form">
+	                            <div class="filter__form__item">
+	                                <p>체크인</p>
+	                                <div class="filter__form__datepicker">
+	                                    <span class="icon_calendar"></span>
+	                                    <input type="text" class="datepicker_pop" id="checkin" name="checkin" value="${bookingVO.checkin}">
+	                                    <i class="arrow_carrot-down"></i>
+	                                </div>
+	                            </div>
+	                            <div class="filter__form__item">
+	                                <p>체크아웃</p>
+	                                <div class="filter__form__datepicker">
+	                                    <span class="icon_calendar"></span>
+	                                    <input type="text" class="datepicker_pop" id="checkout" name="checkout" value="${bookingVO.checkout}">
+	                                    <i class="arrow_carrot-down"></i>
+	                                </div>
+	                            </div>
+	                            <div class="filter__form__item filter__form__item--select">
+	                                <p>인원</p>
+	                                <div class="filter__form__select">
+	                                    <span class="icon_group"></span>
+	                                    <select id="people" name="people">
+											<c:choose>
+												<c:when test='${bookingVO.people==1}'>
+													<option value="1" selected="selected">1명</option>
+					                                <option value="2">2명</option>
+					                                <option value="3">3명</option>
+					                                <option value="4">4명</option>
+												</c:when>
+												<c:when test='${bookingVO.people==2}'>
+													<option value="1">1명</option>
+					                                <option value="2" selected="selected">2명</option>
+					                                <option value="3">3명</option>
+					                                <option value="4">4명</option>
+												</c:when>
+												<c:when test='${bookingVO.people==3}'>
+													<option value="1">1명</option>
+					                                <option value="2">2명</option>
+					                                <option value="3" selected="selected">3명</option>
+					                                <option value="4">4명</option>
+												</c:when>
+												<c:otherwise>
+													<option value="1">1명</option>
+					                                <option value="2">2명</option>
+					                                <option value="3">3명</option>
+					                                <option value="4" selected="selected">4명</option>
+												</c:otherwise>
+											</c:choose>
+	                                    </select>
+	                                </div>
+	                            </div>
+	                            <input type="button" class="filter__form__button" onclick="booking_search()" value="검색하기">
+	                        </div>
                         </div>
-                        </div>
-                        <hr>
-                        <div style="text-align: center;">
-                        	----------------------------------------수정예정----------------------------------------<br>
-                        	[체크인 : ${bookingVO.checkin}, 체크아웃 : ${bookingVO.checkout}, 인원 : ${bookingVO.people}]
-                        </div> 
                         <hr class="mb-5">
                         <div class="suiteRoom" style="display: flex;">
                             <div class="col-lg-8 col-md-8" style="height: 370px;">

@@ -68,7 +68,7 @@
                     </div>
                     <div class="qnaView_form_button col-lg-12 col-md-12">
                         <div class="qnaView_form_button_list col-lg-3 col-md-3">
-                            <input type="button" class="btn btn-warning btn-lg btn-block" value="문의내역 목록" onclick="location.href='qna_list'">
+                            <input type="button" class="btn btn-secondary btn-lg btn-block" value="문의내역 목록" onclick="location.href='qna_list'">
                         </div>
                     </div>
                 </form>
