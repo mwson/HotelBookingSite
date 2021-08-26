@@ -4,11 +4,6 @@ $("#room").change(function() {
     alert("예약 당 1개의 객실만 가능합니다.");
 });
 
-// "사용자" 예약하기 화면 이동	
-function booking_list() {
-	$("#booking_form").attr("action", "booking_list").submit();
-}
-
 //"사용자" 예약하기 화면 이동	
 function booking_search() {
 	$("#booking_form").attr("action", "booking_search").submit();
@@ -36,15 +31,18 @@ function booking_standard() {
 
 // "사용자, 예약" 예약불가
 function booking_fail() {
-	alert("예약이 불가합니다. 다른 조건으로 검색하세요.");
-}
-
-//"사용자" 예약하기 화면 이동	
-function booking_payment_list() {
-	$("#booking_payment_form").attr("action", "booking_list").submit();
+	alert("예약이 불가합니다. 다른 조건으로 예약을 검색하세요.");
 }
 
 //"사용자" 결제완료 화면 이동	
 function booking_complete() {
-	$("#booking_payment_form").attr("action", "booking_complete").submit();
+	if(confirm("결제 하시겠습니까?")) {
+		$("#booking_payment_form").attr("action", "booking_complete").submit();
+		
+		alert("결제가 완료되었습니다.");
+	} else {
+		alert("결제가 취소되었습니다.");
+		
+		return false;
+	}
 }

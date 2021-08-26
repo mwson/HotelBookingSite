@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.green.biz.dto.MemberVO;
 import com.green.biz.dto.QnaVO;
 import com.green.biz.qna.QnaService;
+import com.green.biz.utils.Criteria;
+import com.green.biz.utils.PageMaker;
 
 @Controller
 public class QnaController {
@@ -20,17 +22,43 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	/*
 	// "사용자, Q&A" 목록 조회
 	@RequestMapping(value = "/qna_list", method = RequestMethod.GET)
-	public String qnaList(HttpSession session, Model model) {
+	public String userQnaList(HttpSession session, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
 			return "member/login";
 		} else {
-			List<QnaVO> qnaList = qnaService.listQna(loginUser.getId());
+			List<QnaVO> qnaList = qnaService.userQnaList(loginUser.getId());
 			
 			model.addAttribute("qnaList", qnaList);
+			
+			return "qna/qnaList";
+		}
+	}
+	*/
+	
+	// "사용자, Q&A" 목록 조회 및 페이징
+	@RequestMapping(value = "/qna_list", method = RequestMethod.GET)
+	public String userQnaListWithPaging(HttpSession session, Criteria criteria, Model model) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		
+		if(loginUser == null) {
+			return "member/login";
+		} else {
+			String id = loginUser.getId();
+			List<QnaVO> qnaList = qnaService.userQnaListWithPaging(criteria, id);
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(criteria);
+			
+			int totalCount = qnaService.userCountQnaList(id);
+			pageMaker.setTotalCount(totalCount);
+			
+			model.addAttribute("qnaList", qnaList);
+			model.addAttribute("pageMaker", pageMaker);
 			
 			return "qna/qnaList";
 		}

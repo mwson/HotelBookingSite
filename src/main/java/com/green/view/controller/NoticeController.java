@@ -34,7 +34,6 @@ public class NoticeController {
 		model.addAttribute("pageMaker", pageMaker);
 
 		return "serviceCenter/noticeList";
-		
 	}
 	
 	// "사용자, 공지사항" 상세 조회 및 하단 조회

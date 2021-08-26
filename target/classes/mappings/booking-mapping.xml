@@ -6,8 +6,8 @@
 		<![CDATA[
 		SELECT COUNT(*)
 		FROM booking
-		WHERE rid=#{rid}
-			AND cancel='1'
+		WHERE rid = #{rid}
+			AND cancel = '1'
 			AND checkin <= TO_DATE(#{checkout}, 'yyyyMMdd')
 		    AND checkout >= TO_DATE(#{checkin}, 'yyyyMMdd')
 		]]>
@@ -17,7 +17,7 @@
 	<select id="getRoom" parameterType="String" resultType="room">
 		SELECT *
 		FROM room
-		WHERE rid=#{rid}
+		WHERE rid = #{rid}
 	</select>
 	
 	<!-- "사용자, 예약" 예약완료 -->
@@ -31,43 +31,48 @@
         </selectKey>
 	</insert>
 	
-	<!-- "사용자, 예약" 결제완료, 예약확인 resultMap -->
+	<!-- "사용자, 예약" 결제완료 -->
 	<select id="getBooking" parameterType="int" resultType="booking">
 		SELECT *
 		FROM getBooking_view
-		WHERE bseq=#{bseq}
+		WHERE bseq = #{bseq}
 	</select>
 	
-	<!-- "사용자, 예약" 결제완료, 예약확인 resultMap(BookingVO, MemberVO, RoomVO)
-	<resultMap id="BookingVO" type="booking">
-		<result column="bseq" property="bseq"/>
-		<result column="id" property="id"/>
-		<result column="checkin" property="checkin"/>
-		<result column="checkout" property="checkout"/>
-		<result column="people" property="people"/>
-		<result column="cancel" property="cancel"/>
-		<result column="result" property="result"/>
-		<result column="indate" property="indate"/>
-		
-		<collection property="name" resultMap="MemberVO"/>
-		<collection property="type" resultMap="RoomVO"/>
-		<collection property="price" resultMap="RoomVO"/>
-	</resultMap>
-	<resultMap id="MemberVO" type="member">
-		<result column="name" property="name"/>
-	</resultMap>
-	<resultMap id="RoomVO" type="room">
-		<result column="type" property="type"/>
-		<result column="price" property="price"/>
-	</resultMap>
-	
-	<select id="getBooking" parameterType="int" resultMap="BookingVO">
-		SELECT b.bseq, b.id, m.name, b.checkin, b.checkout, r.type,
-			b.people, r.price, b.cancel, b.result, b.indate
-		FROM booking b, member m, room r
-		WHERE b.bseq=#{bseq}
-		    AND b.id = m.id
-		    AND b.rid = r.rid
+	<!-- "사용자, 예약" 예약 조회 -->
+	<select id="getBookingList" parameterType="string" resultType="booking">
+		SELECT *
+		FROM getBooking_view
+		WHERE id = #{id}
 	</select>
-	-->
+	
+	<!-- "사용자, 예약" 목록 수 조회 -->
+	<select id="userCountBookingList" parameterType="string" resultType="int">
+		SELECT COUNT(*)
+		FROM getBooking_view
+		WHERE id = #{id}
+	</select>
+	
+	<!--"사용자, 예약" 예약 조회 및 페이징 -->
+	<select id="userBookingListWithPaging" parameterType="HashMap" resultType="booking">
+		<![CDATA[
+		SELECT bseq, id, name, checkin, checkout, type, people, price, cancel, result, indate
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY b.bseq) rn, b.bseq, b.id, m.name, b.checkin, b.checkout, r.type,
+		    	b.people, r.price, b.cancel, b.result, b.indate
+			FROM booking b, member m, room r
+			WHERE b.id = m.id
+			    AND b.rid = r.rid
+			    AND b.id = #{id})
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+		ORDER BY bseq
+		]]>
+	</select>
+	
+	<!-- "사용자, 예약" 상세 조회 -->
+	<select id="getBookingDetail" resultType="booking">
+		SELECT *
+		FROM getBooking_view
+		WHERE id = #{id}
+			AND bseq = #{bseq}
+	</select>
 </mapper>

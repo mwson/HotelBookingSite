@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.green.biz.comment.CommentService;
 import com.green.biz.dto.MemberVO;
 import com.green.biz.dto.NoticeCommentVO;
-import com.green.biz.dto.ProductCommentVO;
 import com.green.biz.utils.Criteria;
 import com.green.biz.utils.PageMaker;
 
