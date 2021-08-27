@@ -46,22 +46,30 @@ function findPassword() {
 }
 
 /*
- * "아이디 변경" 처리
+ * "비밀번호 변경" 처리
  */
 function changePassword() {
-	if($("#pwd").val() == "") {
-		alert("비밀번호를 입력해 주세요!");
-		$("#pwd").focus();
-		return false;
-	} else if($("#pwdCheck").val() == "") {
-		alert("비밀번호 확인을 입력해 주세요!");
-		$("#pwdCheck").focus();
-		return false;
-	} else if($("#pwd").val() != $("#pwdCheck").val()) {
-		alert("비밀번호가 일치하지 않습니다!");
-		$("#pwdcheck").focus();
-		return false;
+	if(confirm("비밀번호를 변경 하시겠습니까?")) {
+		if($("#pwd").val() == "") {
+			alert("비밀번호를 입력해 주세요!");
+			$("#pwd").focus();
+			return false;
+		} else if($("#pwdCheck").val() == "") {
+			alert("비밀번호 확인을 입력해 주세요!");
+			$("#pwdCheck").focus();
+			return false;
+		} else if($("#pwd").val() != $("#pwdCheck").val()) {
+			alert("비밀번호가 일치하지 않습니다!");
+			$("#pwdcheck").focus();
+			return false;
+		} else {
+			$("#pwd_form").attr("action", "change_Password").submit();
+			
+			alert("비밀번호 변경이 완료되었습니다.");
+		}
 	} else {
-		$("#pwd_form").attr("action", "change_Password").submit();
+		alert("비밀번호 변경이 취소되었습니다.");
+		
+		return false;
 	}
 }

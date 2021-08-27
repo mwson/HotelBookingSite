@@ -17,41 +17,45 @@
 	<div class="findIdAndPassword col-lg-4 col-md-4">
         <div class="findId">
 			<h3 class="mb-5">아이디 찾기</h3>
-        	<div class="findId_form">
-	            <form method="get" id="findId" name="findId" action="find_id">
-	                <div class="mb-4">
-	                    <label for="id">이름</label>
-	                    <input type="text" class="form-control" id="nameId" name="name" placeholder="이름">
-	                </div>
-	                <div class="mb-4">
-	                    <label for="email">이메일</label> 
-	                    <input type="text" class="form-control" id="emailId" name="email" placeholder="이메일">
-	                </div>
-	                <input type="button" class="btn btn-warning btn-lg btn-block" value="아이디 찾기" onclick="findMemberId()">
-	            </form>
+			<div style="padding: 0 5%;">
+	        	<div class="findId_form">
+		            <form method="get" id="findId" name="findId" action="find_id">
+		                <div class="mb-4">
+		                    <label for="id">이름</label>
+		                    <input type="text" class="form-control" id="nameId" name="name" placeholder="이름">
+		                </div>
+		                <div class="mb-4">
+		                    <label for="email">이메일</label> 
+		                    <input type="text" class="form-control" id="emailId" name="email" placeholder="이메일">
+		                </div>
+		                <input type="button" class="btn btn-warning btn-lg btn-block" value="아이디 찾기" onclick="findMemberId()">
+		            </form>
+				</div>
 			</div>
         </div>
         <br>
         <hr class="mb-4">
         <div class="findPw col-lg-3 col-md-3">
             <h3 class="mb-5">비밀번호 찾기</h3>
-			<div class="findPw_form">
-	            <form name="findPw" id="findPw" action="find_password" method="get">
-	                <div class="mb-4">
-	                    <label for="id">아이디</label>
-	                    <input type="text" class="form-control" id="idPw" name="id" placeholder="아이디">
-	                </div>
-	                <div class="mb-4">
-	                    <label for="email">이름</label> 
-	                    <input type="text" class="form-control" id="namePw" name="name" placeholder="이름">
-	                </div>
-	                <div class="mb-4">
-	                    <label for="email">이메일</label> 
-	                    <input type="text" class="form-control" id="emailPw" name="email" placeholder="이메일">
-	                </div>
-	                <input type="button" class="btn btn-warning btn-lg btn-block" value="비밀번호 찾기" onclick="findPassword()">
-	            </form>
-            </div>
+			<div style="padding: 0 5%;">
+				<div class="findPw_form">
+		            <form name="findPw" id="findPw" action="find_password" method="get">
+		                <div class="mb-4">
+		                    <label for="id">아이디</label>
+		                    <input type="text" class="form-control" id="idPw" name="id" placeholder="아이디">
+		                </div>
+		                <div class="mb-4">
+		                    <label for="email">이름</label> 
+		                    <input type="text" class="form-control" id="namePw" name="name" placeholder="이름">
+		                </div>
+		                <div class="mb-4">
+		                    <label for="email">이메일</label> 
+		                    <input type="text" class="form-control" id="emailPw" name="email" placeholder="이메일">
+		                </div>
+		                <input type="button" class="btn btn-warning btn-lg btn-block" value="비밀번호 찾기" onclick="findPassword()">
+		            </form>
+	            </div>
+			</div>
         </div>
     </div>
 	

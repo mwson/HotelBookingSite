@@ -36,7 +36,7 @@
 
             <div class="contract col-lg-9 col-md-9">
 				<h2 class="mb-4">호텔그린에 오신 것을 환영합니다.</h2>
-				<form method="post" action="join_form" id="join" name="formm">
+				<form method="post" id="contract" name="contract">
 				    <div class="contract_form col-lg-12 col-md-12">
                         <div class="contract_form_text">
                             <p>약관 및 개인정보 수집, 이용 사항을 확인하시고 동의여부에 체크해주시기 바랍니다.</p>
@@ -228,7 +228,7 @@
 			    	</div>
                     <br>
 			    	<div class="contract_form_button col-lg-12 col-md-12">
-			    		<input type="button" class="btn btn-warning btn-lg btn-block" value="다음" onclick="go_next()">
+			    		<input type="button" class="btn btn-warning btn-lg btn-block" value="다음" onclick="join_form()">
 			    	</div>
 				</form>
 			</div>

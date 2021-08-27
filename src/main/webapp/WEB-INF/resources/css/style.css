@@ -3268,11 +3268,11 @@ ol {
 }
 
 /*
- * join, login, findIdAndPassword, booking
- * fna, order, cart, qna, updateMember
+ * join, updateMember, login, findIdAndPassword, booking
+ * fna, order, cart, qna
  */
 .contract .contract_form .contract_form_text,
-.join .join_form .join_form_input,
+.joinAndupdateMember .joinAndupdateMember_form .joinAndupdateMember_form_input,
 .idCheck .idCheck_form,
 .findZipNum .findZipNum_form,
 .login .login_form,
@@ -3296,8 +3296,7 @@ ol {
 .qnaList .qnaList_form .qnaList_form_table,
 .qnaView .qnaView_form .qnaView_form_q,
 .qnaView .qnaView_form .qnaView_form_a,
-.qnaWrite .qnaWrite_form .qnaWrite_form_q,
-.updateMember_form .updateMember_form_input {
+.qnaWrite .qnaWrite_form .qnaWrite_form_q {
 	border-radius: 10px;
 	background-color: #F8F9FA;
 	padding: 25px;
@@ -3332,12 +3331,12 @@ ol {
 }
 
 /*
- * join_form
+ * join_form, updateMember
  */
-.join_form .join_form_button .join_form_button_reset {
+.joinAndupdateMember_form .joinAndupdateMember_form_button .joinAndupdateMember_form_button_reset {
 	float: left;
 }
-.join_form .join_form_button .join_form_button_submit {
+.joinAndupdateMember_form .joinAndupdateMember_form_button .joinAndupdateMember_form_button_submit {
 	float: right;
 }
 
@@ -3497,14 +3496,4 @@ ol {
 }
 .qnaWrite .qnaWrite_form_button .qnaWrite_form_button_reset {
 	float: left;
-}
-
-/*
- * updateMember
- */
-.updateMember_form .updateMember_form_button .updateMember_form_button_reset {
-	float: left;
-}
-.updateMember_form .updateMember_form_button .updateMember_form_button_submit {
-	float: right;
 }

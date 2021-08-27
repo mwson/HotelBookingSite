@@ -17,43 +17,45 @@
 <body>
 	<div class="idCheck col-lg-4 col-md-4">
 	    <h3 class="mb-5">아이디 중복확인</h3>
-	    <div class="idCheck_form">
-	        <form method="post" name="formm" id="theform" action="id_check_form">
-	            <div class="idSearch">
-	                <div class="idSearch_input">
-						아이디 <input type="text" name="id" value="${id}"> 
+	    <div style="padding: 0 5%;">
+	        <div class="idCheck_form">
+	            <form method="post" name="formm" id="theform" action="id_check_form">
+	                <div class="idSearch">
+	                    <div class="idSearch_input">
+							아이디 <input type="text" name="id" size="19" value="${id}"> 
+	                    </div>
+	                    <div class="idSearch_button">
+	                        <input type="submit" class="btn btn-primary btn-sm btn-block" value="검색">
+	                    </div>
+	                    <div class="idSearch_clear"></div>
 	                </div>
-	                <div class="idSearch_button">
-	                    <input type="submit" class="btn btn-primary btn-sm btn-block" value="검색">
-	                </div>
-					<div class="idSearch_clear"></div>
-	            </div>
-                <c:if test="${message == 1}">
-					<div class="idSearch_result">
-	                    <div class="idSearch_result_fail">
-	                        <script type="text/javascript">
-	                            opener.document.formm.id.value="";
-	                        </script>
+	                <c:if test="${message == 1}">
+	                    <div class="idSearch_result">
+	                        <div class="idSearch_result_fail">
+	                            <script type="text/javascript">
+	                                opener.document.formm.id.value="";
+	                            </script>
+	                            <br>
+	                            ${id}는 이미 사용 중인 아이디입니다.
+	                            <br>
+	                        </div>
+	                    </div>
+	                </c:if>
+	                <c:if test="${message == -1}">
+	                    <div class="idSearch_result">
 	                        <br>
-	                        ${id}는 이미 사용 중인 아이디입니다.
+	                        <div class="idSearch_result_success">
+	                            ${id}은(는) 사용 가능한 아이디입니다.
+	                        </div>
+	                        <div class="idSearch_result_success_button">
+	                            <input type="button" class="btn btn-warning btn-sm btn-block" value="사용" onclick="idok()">
+	                        </div>
 	                        <br>
 	                    </div>
-	                </div>
-                </c:if>
-                <c:if test="${message == -1}">
-					<div class="idSearch_result">
-						<br>
-	                    <div class="idSearch_result_success">
-	                        ${id}은(는) 사용 가능한 아이디입니다.
-	                    </div>
-	                    <div class="idSearch_result_success_button">
-	                        <input type="button" class="btn btn-warning btn-sm btn-block" value="사용" onclick="idok()">
-	                    </div>
-	                    <br>
-	                </div>
-					<div class="idSearch_clear"></div>
-                </c:if>
-	        </form>
+	                    <div class="idSearch_clear"></div>
+	                </c:if>
+	            </form>
+	        </div>
 	    </div>
 	</div>
 	
