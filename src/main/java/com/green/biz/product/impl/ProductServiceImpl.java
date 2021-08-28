@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.green.biz.dao.ProductDAO;
 import com.green.biz.dto.ProductVO;
+import com.green.biz.dto.RoomVO;
 import com.green.biz.dto.SalesQuantity;
 import com.green.biz.product.ProductService;
 import com.green.biz.utils.Criteria;
@@ -53,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public List<ProductVO> listProductWithPaging(Criteria criteria, String key) {
+	public List<RoomVO> listProductWithPaging(Criteria criteria, String key) {
 		return productDao.listWithPaging(criteria, key);
 	}
 	

@@ -3,6 +3,7 @@ package com.green.biz.product;
 import java.util.List;
 
 import com.green.biz.dto.ProductVO;
+import com.green.biz.dto.RoomVO;
 import com.green.biz.dto.SalesQuantity;
 import com.green.biz.utils.Criteria;
 
@@ -22,7 +23,7 @@ public interface ProductService {
 	
 	public int countProductList(String name);
 	
-	public List<ProductVO> listProductWithPaging(Criteria criteria, String key);
+	public List<RoomVO> listProductWithPaging(Criteria criteria, String key);
 	
 	public void insertProduct(ProductVO vo);
 	

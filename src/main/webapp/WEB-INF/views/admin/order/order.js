@@ -4,7 +4,7 @@
 function go_order_save() {
 	var count = 0;
 	
-	if(confirm("주문처리 하시겠습니까?")) {
+	if(confirm("예약처리 하시겠습니까?")) {
 		if(document.order_form.result.length == undefined) {
 			if(document.order_form.result.checked == true) {
 				count++;
@@ -18,15 +18,15 @@ function go_order_save() {
 		}
 		
 		if (count == 0) {
-			alert("주문을 처리 할 항목을 선택해 주세요.");
+			alert("예약을 처리 할 항목을 선택해 주세요.");
 		} else {
 			document.order_form.action = "admin_order_save";
 			document.order_form.submit();
 			
-			alert("주문처리가 완료되었습니다.");
+			alert("예약처리가 완료되었습니다.");
 		}
 	} else {
-		alert("주문처리가 취소되었습니다.");
+		alert("예약처리가 취소되었습니다.");
 		
 		return false;
 	}

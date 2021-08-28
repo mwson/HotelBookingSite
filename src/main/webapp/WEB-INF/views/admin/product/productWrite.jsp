@@ -6,7 +6,7 @@
 <main class="content">
 	<div class="container-fluid p-0">
 		<div class="mb-3">
-			<h1 class="h3 d-inline align-middle">상품 등록</h1>
+			<h1 class="h3 d-inline align-middle">객실 등록</h1>
 		</div>
 		
 		<form method="post" id="product_write_form" name="product_write_form" enctype="multipart/form-data">
@@ -16,14 +16,15 @@
 				<div class="col-8 col-lg-9">
 					<div class="card">
 						<div class="card-header">
-							<h5 class="card-title">상품 등록</h5>
-							<h6 class="card-subtitle text-muted">상품등록 화면입니다.</h6>
+							<h5 class="card-title">객실 등록</h5>
+							<h6 class="card-subtitle text-muted">객실등록 화면입니다.</h6>
 						</div>
 						
 						<div class="card-body text-center">
 							<table class="table table-striped" style="text-align: left">
+								<!-- 
 								<tr>
-									<th style="width: 15%">상품분류</th>
+									<th style="width: 15%">객실분류</th>
 									<td>
 										<select name="kind" id="kind">
 											<c:forEach items="${kindList}" var="kind" varStatus="status">
@@ -32,26 +33,35 @@
 										</select> 
 									</td>
 								</tr>
-								<tr>
-									<th style="width: 15%">상품명</th>
+								 -->
+								 <tr>
+									<th style="width: 15%">등록 번호</th>
 									<td>
-										<input type="text" class="form-control" id="name" name="name">
+										<input type="text" class="form-control" id="rid" name="rid">
+									</td>
+								</tr>
+								<tr>
+									<th style="width: 15%">객실명</th>
+									<td>
+										<input type="text" class="form-control" id="type" name="type">
 									</td>
 								</tr>
 								<tr>
 									<th style="width: 15%">가격</th>
 									<td>
-										<input type="text" class="form-control" id="price2" name="price2" onBlur="go_ab()" onKeyUp='NumFormat(this)'>
+										<input type="text" class="form-control" id="price" name="price" onBlur="go_ab()" onKeyUp='NumFormat(this)'>
 									</td>
 								</tr>
+								<!-- 
 								<tr>
 									<th style="width: 15%">상세설명</th>
 									<td>
 										<textarea id="content" class="form-control" name="content" rows="6"></textarea>
 									</td>
-								</tr>								
+								</tr>
+								 -->								
 								<tr>
-									<th style="width: 15%">상품이미지</th>
+									<th style="width: 15%">객실이미지</th>
 									<td>
 										<input type="file" name="product_image" id="product_image">
 									</td>
@@ -65,8 +75,8 @@
 				<div class="col-4 col-lg-3">
 					<div class="card">
 						<div class="card-header">
-							<h5 class="card-title">상품 등록</h5>
-							<h6 class="card-subtitle text-muted">상품을 등록하세요.</h6>
+							<h5 class="card-title">객실 등록</h5>
+							<h6 class="card-subtitle text-muted">객실을 등록하세요.</h6>
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
@@ -75,8 +85,8 @@
 						</div>
 						<hr>
 						<div class="card-header">
-							<h5 class="card-title">상품 등록 취소</h5>
-							<h6 class="card-subtitle text-muted">상품등록을 취소하세요.</h6>
+							<h5 class="card-title">객실 등록 취소</h5>
+							<h6 class="card-subtitle text-muted">객실등록을 취소하세요.</h6>
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
@@ -85,12 +95,12 @@
 						</div>
 						<hr>
 						<div class="card-header">
-							<h5 class="card-title">상품목록</h5>
-							<h6 class="card-subtitle text-muted">상품목록으로 이동하세요.</h6>
+							<h5 class="card-title">객실목록</h5>
+							<h6 class="card-subtitle text-muted">객실목록으로 이동하세요.</h6>
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
-								<input type="button" class="btn btn-secondary btn-lg" value="상품목록" onClick="go_product_list1()">
+								<input type="button" class="btn btn-secondary btn-lg" value="객실목록" onClick="go_product_list1()">
 							</div>
 						</div>
 					</div>

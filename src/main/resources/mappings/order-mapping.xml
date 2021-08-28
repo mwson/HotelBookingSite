@@ -38,46 +38,44 @@
 	</select>
 	
 	<!-- 전체 주문내역 조회 -->
-	<select id="listOrder" parameterType="String" resultType="order">
+	<select id="listOrder" parameterType="String" resultType="booking">
 		SELECT *
-		FROM order_view
-		WHERE mname LIKE '%' || #{key} || '%'
-		ORDER BY result, oseq DESC
+		FROM getBooking_View
+		WHERE rid LIKE '%' || #{key} || '%'
+		ORDER BY result, bseq DESC
 	</select>
 	
 	<!-- 주문내역 총 개수 조회  -->
 	<select id="countOrderList" parameterType="String" resultType="int">
 		SELECT COUNT(*)
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY m.name) rn, od.odseq, o.oseq, o.id, o.indate, od.pseq, od.quantity,
-		        m.name mname, m.zip_num, m.address, m.phone, p.name pname, p.price2, od.result
-		    FROM orders o, order_detail od, member m, product p
-		    WHERE od.oseq = o.oseq
-		        AND od.pseq = p.pseq
-		        AND o.id = m.id
-		        AND m.name LIKE '%' || #{key} || '%')
+		from (SELECT ROW_NUMBER() OVER(ORDER BY m.name) rn, m.* 
+			FROM (SELECT * 
+					  FROM getBooking_View) m 
+			where m.name LIKE '%' || #{key} || '%')
 	</select>
 	
 	<!-- 주문내역 조회, 페이징 -->
-	<select id="listOrderwithPaging" parameterType="HashMap" resultType="order">
+	<select id="listOrderwithPaging" parameterType="HashMap" resultType="booking"> 
 		<![CDATA[
-		SELECT odseq, oseq, id, indate, pseq, quantity, mname, zip_num, address, phone, pname, price2, result
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY m.name) rn, od.odseq, o.oseq, o.id, o.indate, od.pseq, od.quantity,
-	            m.name mname, m.zip_num, m.address, m.phone, p.name pname, p.price2, od.result
-	        FROM orders o, order_detail od, member m, product p
-	        WHERE od.oseq = o.oseq
-	            AND od.pseq = p.pseq
-	            AND o.id = m.id
-	            AND m.name LIKE '%' || #{key} || '%')
-		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
-			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
-		ORDER BY result, odseq DESC
+ SELECT * 
+ 
+	from (SELECT ROW_NUMBER() OVER(ORDER BY m.name) rn, m.* 
+			FROM (SELECT * 
+					  FROM getBooking_View) m 
+			where m.name LIKE '%' || #{key} || '%')
+			
+	WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+	AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+			
+	ORDER BY result, bseq DESC
 		]]>
+		
 	</select>
 	
 	<!-- 주문완료 처리 수정 -->
 	<update id="updateOrderResult" parameterType="int">
-		UPDATE order_detail
+		UPDATE booking
 		SET result='2'
-		WHERE odseq=#{odseq}
+		WHERE bseq=#{bseq}
 	</update>
 </mapper>

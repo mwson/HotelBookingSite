@@ -47,15 +47,18 @@
 	</select>
 	
 	<!-- 페이지 번호 별 상품목록 조회 -->
-	<select id="listProductWithPaging" parameterType="HashMap" resultType="product">
+	<select id="listProductWithPaging" parameterType="HashMap" resultType="room">		
 		<![CDATA[
-		SELECT pseq, name, kind, price1, price2, useyn, bestyn, regdate
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY name) rn, pseq, name, kind, price1, price2, useyn, bestyn, regdate
-		    FROM product
-		    WHERE name LIKE '%' || #{key} || '%')
-		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
-			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
-		ORDER BY pseq DESC
+SELECT * 
+ 
+	from (SELECT ROW_NUMBER() OVER(ORDER BY r.type) rn, r.* 
+		  	from room r 
+    		where r.type LIKE '%' || #{key} || '%')
+			
+	WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+	AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+			
+	ORDER BY rid DESC
 		]]>
 	</select>
 	
@@ -80,15 +83,15 @@
 	</delete>
 	
 	<resultMap type="com.green.biz.dto.SalesQuantity" id="salesMap">
-		<result column="pname" property="pname"/>
+		<result column="type" property="type"/>
 		<result column="sales_count" property="quantity"/>
 	</resultMap>
 	
 	<!-- 제품 판매 실적 조회 -->
 	<select id="getProductSales" resultMap="salesMap">
-		SELECT pname, SUM(quantity) AS sales_count
-		FROM order_view
-		WHERE result='2'
-		GROUP BY pname
+		SELECT type, count (*) as sales_count 
+ 		  FROM getbooking_view
+ 		 WHERE result='2'
+ 		 GROUP BY type
 	</select>
 </mapper>

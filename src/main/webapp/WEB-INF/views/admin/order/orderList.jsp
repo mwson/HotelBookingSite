@@ -21,22 +21,23 @@
 							<table class="table table-striped" style="text-align: center;">
 								<thead>
 									<tr>
-										<th style="width: 15%">처리여부</th> 
+										<th style="width: 10%">처리여부</th> 
 										<th style="width: 10%">예약번호</th>
 										<th style="width: 10%">예약자</th>
-										<th style="width: 20%">상품명</th>
-										<th style="width: 10%">수량</th>
-										<th style="width: 20%">전화</th>
-										<th style="width: 15%">주문일</th>
+										<th style="width: 20%">객실명</th>
+										<th style="width: 5%">인원수</th> 
+										<th style="width: 10%">체크인 날짜</th>
+										<th style="width: 20%">체크아웃 날짜</th>
+										<th style="width: 15%">예약일</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${orderList}" var="orderVO">
+									<c:forEach items="${orderList}" var="bookingVO">
 										<tr>  
 											<td>
 												<c:choose>
-													<c:when test='${orderVO.result=="1"}'>
-														<input type="checkbox" id="result" name="result" value="${orderVO.odseq}"> <span style="color: #dc3545">미 처리</span>
+													<c:when test='${bookingVO.result=="1"}'>
+														<input type="checkbox" id="result" name="result" value="${bookingVO.bseq}"> <span style="color: #dc3545">미 처리</span>
 													</c:when>
 							
 													<c:otherwise>
@@ -44,12 +45,13 @@
 													</c:otherwise>
 												</c:choose>			
 											</td>    
-											<td>${orderVO.odseq}</td>      
-											<td>${orderVO.mname}</td>
-											<td>${orderVO.pname}</td>
-											<td>${orderVO.quantity}</td>
-											<td>${orderVO.phone}</td>
-											<td><fmt:formatDate value="${orderVO.indate}"/></td>
+											<td>${bookingVO.bseq}</td>      
+											<td>${bookingVO.name}</td>
+											<td>${bookingVO.type}</td>
+											<td>${bookingVO.people}</td>
+											<td>${bookingVO.checkin}</td>
+											<td>${bookingVO.checkout}</td>																						      											
+											<td><fmt:formatDate value="${bookingVO.indate}"/></td>
 										</tr>
 									</c:forEach>
 								</tbody>

@@ -26,5 +26,6 @@
 		<mapper resource="mappings/order-mapping.xml"/>
 		<mapper resource="mappings/product-mapping.xml"/>
 		<mapper resource="mappings/qna-mapping.xml"/>
+
 	</mappers>
 </configuration>

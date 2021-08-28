@@ -2,26 +2,23 @@ package com.green.biz.dto;
 
 public class SalesQuantity {
 	
-	private String pname;
+	private String type;
 	private int quantity;
-	
-	public String getPname() {
-		return pname;
+	public String getType() {
+		return type;
 	}
-	public void setPname(String pname) {
-		this.pname = pname;
+	public void setType(String type) {
+		this.type = type;
 	}
-	
 	public int getQuantity() {
 		return quantity;
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
 	@Override
 	public String toString() {
-		return "SalesQuantity [pname=" + pname + ", quantity=" + quantity + "]";
+		return "SalesQuantity [type=" + type + ", quantity=" + quantity + "]";
 	}
-	
+
 }

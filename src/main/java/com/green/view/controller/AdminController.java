@@ -22,6 +22,7 @@ import com.green.biz.dto.NoticeVO;
 import com.green.biz.dto.OrderVO;
 import com.green.biz.dto.ProductVO;
 import com.green.biz.dto.QnaVO;
+import com.green.biz.dto.RoomVO;
 import com.green.biz.dto.SalesQuantity;
 import com.green.biz.dto.WorkerVO;
 import com.green.biz.member.MemberService;
@@ -48,6 +49,7 @@ public class AdminController {
 	private QnaService qnaService;
 	@Autowired
 	private MemberService memberService;
+
 	
 	// "관리자" 로그인 폼 이동
 	@RequestMapping(value = "/admin_login_form")
@@ -145,7 +147,7 @@ public class AdminController {
 		if(adminUser == null) {
 			return "admin/login";
 		} else {
-			List<ProductVO> productList = productService.listProductWithPaging(criteria, key);
+			List<RoomVO> roomList = productService.listProductWithPaging(criteria, key);
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(criteria);
@@ -153,8 +155,8 @@ public class AdminController {
 			int totalCount = productService.countProductList(key);
 			pageMaker.setTotalCount(totalCount);
 			
-			model.addAttribute("productListSize", productList.size());
-			model.addAttribute("productList", productList);
+			model.addAttribute("roomListSize", roomList.size());
+			model.addAttribute("roomList", roomList);
 			model.addAttribute("pageMaker", pageMaker);
 			
 			return "admin/product/productList";

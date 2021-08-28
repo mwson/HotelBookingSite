@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.green.biz.dto.ProductVO;
+import com.green.biz.dto.RoomVO;
 import com.green.biz.dto.SalesQuantity;
 import com.green.biz.utils.Criteria;
 
@@ -43,7 +44,7 @@ public class ProductDAO {
 	}
 	
 	// "상품목록" 
-	public List<ProductVO> listWithPaging(Criteria criteria, String key) {
+	public List<RoomVO> listWithPaging(Criteria criteria, String key) {
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("criteria", criteria);

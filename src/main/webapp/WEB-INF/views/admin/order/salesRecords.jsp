@@ -12,8 +12,8 @@
 			<div class="col-12 col-lg-6">
 				<div class="card flex-fill w-100">
 					<div class="card-header">
-						<h5 class="card-title">상품별 예약실적</h5>
-						<h6 class="card-subtitle text-muted">상품별 예약실적을 바차트로 보여줍니다.</h6>
+						<h5 class="card-title">객실별 예약실적</h5>
+						<h6 class="card-subtitle text-muted">객실별 예약실적을 바차트로 보여줍니다.</h6>
 					</div>
 					<div class="card-body">
 						<div class="chart">
@@ -26,8 +26,8 @@
 			<div class="col-12 col-lg-6">
 				<div class="card">
 					<div class="card-header">
-						<h5 class="card-title">상품별 예약실적</h5>
-						<h6 class="card-subtitle text-muted">상품별 예약실적을 파이차트로 보여줍니다.</h6>
+						<h5 class="card-title">객실별 예약실적</h5>
+						<h6 class="card-subtitle text-muted">객실별 예약실적을 파이차트로 보여줍니다.</h6>
 					</div>
 					<div class="card-body text-center">
 						<div class="chart">
@@ -69,7 +69,7 @@
 		// 차트 그리는데 사용할 데이터 객체 생성
 		var data = new google.visualization.DataTable();
 		
-		data.addColumn("string", "pname");
+		data.addColumn("string", "type");
 		data.addColumn("number", "quantity");
 		
 		// Controller에서 json타입으로 전달된 데이터를 자바스크립트의 배열로 저장
@@ -83,7 +83,7 @@
 		
 		// 바 차트 그리기
 		var barchart_option = {
-			title: '제품별 판매 실적',
+			title: '객실별 예약 실적',
 			width: '700',
 			height: '450',
 			legend: {position: 'bottom'}
@@ -95,7 +95,7 @@
 		
 		// 파이 차트 그리기
 		var piechart_option = {
-			title: '제품별 판매 실적',
+			title: '객실별 예약 실적',
 			width: '700',
 			height: '450',
 			legend: {position: 'bottom'}
