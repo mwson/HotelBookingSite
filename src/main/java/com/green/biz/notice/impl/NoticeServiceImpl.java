@@ -30,8 +30,8 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	// "사용자 및 관리자, 공지사항" 조회 및 페이징
 	@Override
-	public List<NoticeVO> listNoticewithPaging(Criteria criteria, String key) {
-		return noticeDAO.listNoticewithPaging(criteria, key);
+	public List<NoticeVO> noticeListWithPaging(Criteria criteria, String key) {
+		return noticeDAO.noticeListWithPaging(criteria, key);
 	}
 	
 	// "사용자 및 관리자, 공지사항" 상세 조회

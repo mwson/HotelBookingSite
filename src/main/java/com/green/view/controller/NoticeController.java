@@ -19,10 +19,13 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
-	// "사용자, 공지사항" 조회 및 페이징
+	// "사용자, 메인" 공지사항 하단 조회
+
+	
+	// "사용자 및 관리자 공지사항" 조회 및 페이징
 	@RequestMapping(value = "/notice_list")
-	public String adminNoticeList(Criteria criteria, @RequestParam(value = "key", defaultValue = "")String key, Model model) {
-		List<NoticeVO> noticeList = noticeService.listNoticewithPaging(criteria, key);
+	public String noticeListWithPaging(Criteria criteria, @RequestParam(value = "key", defaultValue = "")String key, Model model) {
+		List<NoticeVO> noticeList = noticeService.noticeListWithPaging(criteria, key);
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(criteria);

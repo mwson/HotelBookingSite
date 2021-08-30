@@ -14,7 +14,7 @@ public interface NoticeService {
 	public int countNoticeList(String subject);
 	
 	// "사용자 및 관리자, 공지사항" 조회 및 페이징
-	public List<NoticeVO> listNoticewithPaging(Criteria criteria, String key);
+	public List<NoticeVO> noticeListWithPaging(Criteria criteria, String key);
 
 	// "사용자 및 관리자, 공지사항" 상세 조회
 	public NoticeVO getNotice(int nseq);

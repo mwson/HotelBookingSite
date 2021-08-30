@@ -13,13 +13,6 @@
 		]]>
 	</select>
 	
-	<!-- "사용자, 예약" 객실 조회 -->
-	<select id="getRoom" parameterType="String" resultType="room">
-		SELECT *
-		FROM room
-		WHERE rid = #{rid}
-	</select>
-	
 	<!-- "사용자, 예약" 예약완료 -->
 	<insert id="insertBooking">
 		INSERT INTO booking(bseq, id, rid, checkin, checkout, people)

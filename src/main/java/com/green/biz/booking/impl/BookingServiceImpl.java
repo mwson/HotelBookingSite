@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.green.biz.booking.BookingService;
 import com.green.biz.dao.BookingDAO;
 import com.green.biz.dto.BookingVO;
-import com.green.biz.dto.RoomVO;
 import com.green.biz.utils.Criteria;
 
 @Service("bookingService")
@@ -21,12 +20,6 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public int countBookingCheck(BookingVO vo) {
 		return bookingDao.countBookingCheck(vo);
-	}
-	
-	// "사용자, 예약" 객실 조회
-	@Override
-	public RoomVO getRoom(String rid) {
-		return bookingDao.getRoom(rid);
 	}
 	
 	// "사용자, 예약" 예약완료

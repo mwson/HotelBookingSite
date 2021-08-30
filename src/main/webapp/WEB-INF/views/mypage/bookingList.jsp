@@ -77,7 +77,7 @@
                                                         </td>
                                                         <td>${bookingVO.type}</td>
 														<td> 
-                                                            <fmt:formatDate value="${bookingVO.indate}" type="date"/>
+                                                            <fmt:formatDate type="date" value="${bookingVO.indate}"/>
                                                         </td>      
                                                         <td>
                                                             <a href="booking_detail?bseq=${bookingVO.bseq}">조회</a>

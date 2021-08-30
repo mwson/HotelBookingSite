@@ -3,16 +3,12 @@ package com.green.biz.booking;
 import java.util.List;
 
 import com.green.biz.dto.BookingVO;
-import com.green.biz.dto.RoomVO;
 import com.green.biz.utils.Criteria;
 
 public interface BookingService {
 	
 	// "사용자, 예약" 체크인, 체크아웃으로 중복 조회
 	public int countBookingCheck(BookingVO vo);
-	
-	// "사용자, 예약" 객실 조회
-	public RoomVO getRoom(String rid);
 	
 	// "사용자, 예약" 예약완료	
 	public void insertBooking(BookingVO vo);

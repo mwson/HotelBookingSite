@@ -16,7 +16,7 @@
 	</select>
 	
 	<!-- "사용자 및 관리자, 공지사항" 조회 및 페이징 -->
-	<select id="listNoticewithPaging" parameterType="HashMap" resultType="notice">
+	<select id="noticeListWithPaging" parameterType="HashMap" resultType="notice">
 		<![CDATA[
 		SELECT nseq, kind, subject, indate
 		FROM(SELECT ROW_NUMBER() OVER(ORDER BY subject) rn, nseq, kind, subject, indate

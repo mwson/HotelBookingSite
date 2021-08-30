@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class RoomVO {
 	
-	private String rid;
+	private int rid;
 	private String type;
 	private int people;
 	private int price;
@@ -12,10 +12,10 @@ public class RoomVO {
 	private String useyn;
 	private Timestamp regdate;
 	
-	public String getRid() {
+	public int getRid() {
 		return rid;
 	}
-	public void setRid(String rid) {
+	public void setRid(int rid) {
 		this.rid = rid;
 	}
 	

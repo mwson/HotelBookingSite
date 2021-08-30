@@ -16,12 +16,15 @@ import com.green.biz.booking.BookingService;
 import com.green.biz.dto.BookingVO;
 import com.green.biz.dto.MemberVO;
 import com.green.biz.dto.RoomVO;
+import com.green.biz.room.RoomService;
 
 @Controller
 public class BookingController {
 	
 	@Autowired
 	private BookingService bookingService;
+	@Autowired
+	private RoomService roomService;
 	
 	// "»ç¿ëÀÚ, ¸ÞÀÎ(¿¹¾àÇÏ±â)" ¿¹¾à °Ë»ö
 	@RequestMapping(value = "/booking_search")
@@ -62,7 +65,7 @@ public class BookingController {
 		if(loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setRid("1");
+			vo.setRid(1);
 			int bookingCheck = bookingService.countBookingCheck(vo);
 			
 			if(bookingCheck >= 1) {
@@ -73,7 +76,7 @@ public class BookingController {
 				model.addAttribute("bookingVO", vo);
 				
 				// ·ë Á¶È¸
-				RoomVO roomVO = bookingService.getRoom(vo.getRid());
+				RoomVO roomVO = roomService.getRoom(vo.getRid());
 				model.addAttribute("roomVO", roomVO);
 				
 				checkSubPriceCal(vo.getCheckin(), vo.getCheckout(), roomVO.getPrice(), model);
@@ -92,7 +95,7 @@ public class BookingController {
 		if(loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setRid("2");
+			vo.setRid(2);
 			int bookingCheck = bookingService.countBookingCheck(vo);
 			
 			if(bookingCheck >= 1) {
@@ -103,7 +106,7 @@ public class BookingController {
 				model.addAttribute("bookingVO", vo);
 				
 				// ·ë Á¶È¸
-				RoomVO roomVO = bookingService.getRoom(vo.getRid());
+				RoomVO roomVO = roomService.getRoom(vo.getRid());
 				model.addAttribute("roomVO", roomVO);
 				
 				checkSubPriceCal(vo.getCheckin(), vo.getCheckout(), roomVO.getPrice(), model);
@@ -122,7 +125,7 @@ public class BookingController {
 		if(loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setRid("3");
+			vo.setRid(3);
 			int bookingCheck = bookingService.countBookingCheck(vo);
 			
 			if(bookingCheck >= 1) {
@@ -133,7 +136,7 @@ public class BookingController {
 				model.addAttribute("bookingVO", vo);
 				
 				// ·ë Á¶È¸
-				RoomVO roomVO = bookingService.getRoom(vo.getRid());
+				RoomVO roomVO = roomService.getRoom(vo.getRid());
 				model.addAttribute("roomVO", roomVO);
 				
 				checkSubPriceCal(vo.getCheckin(), vo.getCheckout(), roomVO.getPrice(), model);
@@ -152,7 +155,7 @@ public class BookingController {
 		if(loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setRid("4");
+			vo.setRid(4);
 			int bookingCheck = bookingService.countBookingCheck(vo);
 			
 			if(bookingCheck >= 1) {
@@ -163,7 +166,7 @@ public class BookingController {
 				model.addAttribute("bookingVO", vo);
 				
 				// ·ë Á¶È¸
-				RoomVO roomVO = bookingService.getRoom(vo.getRid());
+				RoomVO roomVO = roomService.getRoom(vo.getRid());
 				model.addAttribute("roomVO", roomVO);
 				
 				checkSubPriceCal(vo.getCheckin(), vo.getCheckout(), roomVO.getPrice(), model);
@@ -219,7 +222,7 @@ public class BookingController {
 		if(vo.getPeople() >= 4) {
 			// ½ºÀ§Æ® ·ë(4¸í), rid: 1
 			// Ã¼Å©ÀÎ, Ã¼Å©¾Æ¿ôÀ¸·Î Áßº¹ Á¶È¸
-			vo.setRid("1");	
+			vo.setRid(1);	
 			suiteRoom = bookingService.countBookingCheck(vo);
 			
 			if(suiteRoom >= 1) {
@@ -242,12 +245,12 @@ public class BookingController {
 		// ÀÎ¿ø 3¸í Á¶È¸			
 		} if(vo.getPeople() == 3) {
 			// ½ºÀ§Æ® ·ë(4¸í), rid: 1
-			vo.setRid("1");	
+			vo.setRid(1);	
 			suiteRoom = bookingService.countBookingCheck(vo);
 			
 			if(suiteRoom >= 1) {
 				// ½´Æä¸®¾î ·ë(3¸í), rid: 2
-				vo.setRid("2");	
+				vo.setRid(2);	
 				superiorRoom = bookingService.countBookingCheck(vo);
 				
 				if(superiorRoom >= 1) {
@@ -267,7 +270,7 @@ public class BookingController {
 				}
 			} else {
 				// ½´Æä¸®¾î ·ë(3¸í), rid: 2
-				vo.setRid("2");	
+				vo.setRid(2);	
 				superiorRoom = bookingService.countBookingCheck(vo);
 				
 				if(superiorRoom >= 1) {
@@ -289,22 +292,22 @@ public class BookingController {
 		// ÀÎ¿ø 2¸í ÀÌÇÏ		
 		} else {
 			// ½ºÀ§Æ® ·ë(4¸í), rid: 1
-			vo.setRid("1");	
+			vo.setRid(1);	
 			suiteRoom = bookingService.countBookingCheck(vo);
 			
 			if(suiteRoom >= 1) {
 				// ½´Æä¸®¾î ·ë(3¸í), rid: 2
-				vo.setRid("2");	
+				vo.setRid(2);	
 				superiorRoom = bookingService.countBookingCheck(vo);
 				
 				if(superiorRoom >= 1) {
 					// µð·°½º ·ë(2¸í), rid: 3
-					vo.setRid("3");	
+					vo.setRid(3);	
 					deluxeRoom = bookingService.countBookingCheck(vo);
 					
 					if(deluxeRoom >= 1) {
 						// ½ºÅÄ´Ùµå ·ë(2¸í), rid: 4
-						vo.setRid("4");	
+						vo.setRid(4);	
 						standardRoom = bookingService.countBookingCheck(vo);
 						
 						if(standardRoom >= 1) {
@@ -324,7 +327,7 @@ public class BookingController {
 						}
 					} else {						
 						// ½ºÅÄ´Ùµå ·ë(2¸í), rid: 4
-						vo.setRid("4");	
+						vo.setRid(4);	
 						standardRoom = bookingService.countBookingCheck(vo);
 						
 						if(standardRoom >= 1) {
@@ -345,12 +348,12 @@ public class BookingController {
 					}
 				} else {
 					// µð·°½º ·ë(2¸í), rid: 3
-					vo.setRid("3");	
+					vo.setRid(3);	
 					deluxeRoom = bookingService.countBookingCheck(vo);
 					
 					if(deluxeRoom >= 1) {						
 						// ½ºÅÄ´Ùµå ·ë(2¸í), rid: 4
-						vo.setRid("4");	
+						vo.setRid(4);	
 						standardRoom = bookingService.countBookingCheck(vo);
 						
 						if(standardRoom >= 1) {
@@ -370,7 +373,7 @@ public class BookingController {
 						}
 					} else {
 						// ½ºÅÄ´Ùµå ·ë(2¸í), rid: 4
-						vo.setRid("4");	
+						vo.setRid(4);	
 						standardRoom = bookingService.countBookingCheck(vo);
 						
 						if(standardRoom >= 1) {
@@ -392,17 +395,17 @@ public class BookingController {
 				}
 			} else {
 				// ½´Æä¸®¾î ·ë(3¸í), rid: 2
-				vo.setRid("2");	
+				vo.setRid(2);	
 				superiorRoom = bookingService.countBookingCheck(vo);
 				
 				if(superiorRoom >= 1) {
 					// µð·°½º ·ë(2¸í), rid: 3
-					vo.setRid("3");	
+					vo.setRid(3);	
 					deluxeRoom = bookingService.countBookingCheck(vo);
 					
 					if(deluxeRoom >= 1) {
 						// ½ºÅÄ´Ùµå ·ë(2¸í), rid: 4
-						vo.setRid("4");	
+						vo.setRid(4);	
 						standardRoom = bookingService.countBookingCheck(vo);
 						
 						if(standardRoom >= 1) {
@@ -422,7 +425,7 @@ public class BookingController {
 						}
 					} else {
 						// ½ºÅÄ´Ùµå ·ë(2¸í), rid: 4
-						vo.setRid("4");	
+						vo.setRid(4);	
 						standardRoom = bookingService.countBookingCheck(vo);
 						
 						if(standardRoom >= 1) {
@@ -443,12 +446,12 @@ public class BookingController {
 					}
 				} else {
 					// µð·°½º ·ë(2¸í), rid: 3
-					vo.setRid("3");	
+					vo.setRid(3);	
 					deluxeRoom = bookingService.countBookingCheck(vo);
 					
 					if(deluxeRoom >= 1) {
 						// ½ºÅÄ´Ùµå ·ë(2¸í), rid: 4
-						vo.setRid("4");	
+						vo.setRid(4);	
 						standardRoom = bookingService.countBookingCheck(vo);
 						
 						if(standardRoom >= 1) {
@@ -468,7 +471,7 @@ public class BookingController {
 						}
 					} else {
 						// ½ºÅÄ´Ùµå ·ë(2¸í), rid: 4
-						vo.setRid("4");	
+						vo.setRid(4);	
 						standardRoom = bookingService.countBookingCheck(vo);
 						
 						if(standardRoom >= 1) {

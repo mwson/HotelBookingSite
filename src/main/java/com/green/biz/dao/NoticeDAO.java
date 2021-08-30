@@ -27,13 +27,13 @@ public class NoticeDAO {
 	}
 	
 	// "사용자 및 관리자, 공지사항" 조회 및 페이징
-	public List<NoticeVO> listNoticewithPaging(Criteria criteria, String key) {
+	public List<NoticeVO> noticeListWithPaging(Criteria criteria, String key) {
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("criteria", criteria);
 		map.put("key", key);
 		
-		return mybatis.selectList("NoticeDAO.listNoticewithPaging", map);
+		return mybatis.selectList("NoticeDAO.noticeListWithPaging", map);
 	}
 	
 	// "사용자 및 관리자, 공지사항" 상세 조회

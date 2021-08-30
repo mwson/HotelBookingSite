@@ -20,8 +20,8 @@ import com.green.biz.admin.AdminService;
 import com.green.biz.dto.MemberVO;
 import com.green.biz.dto.NoticeVO;
 import com.green.biz.dto.OrderVO;
-import com.green.biz.dto.ProductVO;
 import com.green.biz.dto.QnaVO;
+import com.green.biz.dto.RoomVO;
 import com.green.biz.dto.SalesQuantity;
 import com.green.biz.dto.WorkerVO;
 import com.green.biz.member.MemberService;
@@ -29,6 +29,7 @@ import com.green.biz.notice.NoticeService;
 import com.green.biz.order.OrderService;
 import com.green.biz.product.ProductService;
 import com.green.biz.qna.QnaService;
+import com.green.biz.room.RoomService;
 import com.green.biz.utils.Criteria;
 import com.green.biz.utils.PageMaker;
 
@@ -39,15 +40,17 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	@Autowired
+	private MemberService memberService;
+	@Autowired
+	private NoticeService noticeService;
+	@Autowired
 	private OrderService orderService;
 	@Autowired
 	private ProductService productService;
 	@Autowired
-	private NoticeService noticeService;
-	@Autowired
 	private QnaService qnaService;
 	@Autowired
-	private MemberService memberService;
+	private RoomService roomService;
 	
 	// "관리자" 로그인 폼 이동
 	@RequestMapping(value = "/admin_login_form")
@@ -136,51 +139,65 @@ public class AdminController {
 		}
 	}
 	
-	// "관리자, 상품목록" 조회
-	@RequestMapping(value = "/admin_product_list")
-	public String adminProductList(HttpSession session, Criteria criteria,
+	// "관리자, 객실목록" 조회
+	@RequestMapping(value = "/admin_room_list")
+	public String adminRoomList(HttpSession session, Criteria criteria,
 			@RequestParam(value = "key", defaultValue = "")String key, Model model) {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
 			return "admin/login";
 		} else {
-			List<ProductVO> productList = productService.listProductWithPaging(criteria, key);
+			List<RoomVO> roomList = roomService.adminRoomListWithPaging(criteria, key);
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(criteria);
 			
-			int totalCount = productService.countProductList(key);
+			int totalCount = roomService.adminCountRoomList(key);
 			pageMaker.setTotalCount(totalCount);
 			
-			model.addAttribute("productListSize", productList.size());
-			model.addAttribute("productList", productList);
+			model.addAttribute("roomListSize", roomList.size());
+			model.addAttribute("roomList", roomList);
 			model.addAttribute("pageMaker", pageMaker);
 			
-			return "admin/product/productList";
+			return "admin/room/roomList";
 		}
 	}
 	
-	// "관리자, 상품목록" 등록 폼 이동
-	@RequestMapping(value = "/admin_product_write_form")
-	public String adminProductWriteView(HttpSession session, Model model) {
+	// "관리자, 객실목록" 상세 조회 
+	@RequestMapping(value = "/admin_room_detail")
+	public String adminRoomDetail(HttpSession session, RoomVO vo, Model model) {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
 			return "admin/login";
 		} else {
-			String[] kindList = {"Heels", "Boots", "Sandals", "Slipers", "Sneekers", "Sale"};
+			RoomVO roomVO = roomService.getRoom(vo.getRid());
+			model.addAttribute("roomVO", roomVO);
 			
-			model.addAttribute("kindList", kindList);
-			
-			return "admin/product/productWrite";
+			return "admin/room/roomDetail";
 		}
 	}
 	
-	// "관리자, 상품목록" 등록
-	@RequestMapping(value = "/admin_product_write")
-	public String adminProductWrite(HttpSession session,
-			@RequestParam(value = "product_image")MultipartFile uploadFile, ProductVO vo) {
+	// "관리자, 객실목록" 수정 폼 이동 
+	@RequestMapping(value = "/admin_room_update_form")
+	public String adminRoomUpdateForm(HttpSession session, RoomVO vo, Model model) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/login";
+		} else {
+			RoomVO roomVO = roomService.getRoom(vo.getRid());
+			model.addAttribute("roomVO", roomVO);
+			
+			return "admin/room/roomUpdate";
+		}
+	}
+	
+	// "관리자, 객실목록" 수정
+	@RequestMapping(value = "/admin_room_update")
+	public String adminRoomUpdate(HttpSession session,
+			@RequestParam(value = "room_image")MultipartFile uploadFile, RoomVO vo) {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
@@ -192,90 +209,7 @@ public class AdminController {
 				fileName = uploadFile.getOriginalFilename();
 				vo.setImage(fileName);
 				
-				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/product_images/");
-				
-				try {
-					File file = new File(image_path + fileName);
-					uploadFile.transferTo(file);
-				} catch (IllegalStateException | IOException e) {
-					e.printStackTrace();
-				}
-			}
-			
-			productService.insertProduct(vo);
-			
-			return "redirect:admin_product_list";
-		}
-	}
-	
-	// "관리자, 상품목록" 상세 조회 
-	@RequestMapping(value = "/admin_product_detail")
-	public String adminProductDetail(HttpSession session, ProductVO vo, Model model) {
-		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
-		
-		if(adminUser == null) {
-			return "admin/login";
-		} else {
-			String[] kind = {"", "Heels", "Boots", "Sandals", "Slipers", "Sneekers", "Sale"};
-			
-			ProductVO productVO = productService.getProduct(vo);
-			model.addAttribute("productVO", productVO);
-			
-			int index = (Integer.parseInt(productVO.getKind()));
-			model.addAttribute("kind", kind[index]);
-			
-			return "admin/product/productDetail";
-		}
-	}
-	
-	// "관리자, 상품목록" 삭제 
-	@RequestMapping(value = "/admin_product_delete")
-	public String adminProductDelete(HttpSession session, ProductVO vo) {
-		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
-		
-		if(adminUser == null) {
-			return "admin/login";
-		} else {
-			productService.deleteProduct(vo.getPseq());
-			
-			return "redirect:admin_product_list";
-		}
-	}
-
-	// "관리자, 상품목록" 수정 폼 이동 
-	@RequestMapping(value = "/admin_product_update_form")
-	public String adminProductUpdateView(HttpSession session, ProductVO vo, Model model) {
-		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
-		
-		if(adminUser == null) {
-			return "admin/login";
-		} else {
-			String[] kindList = {"Heels", "Boots", "Sandals", "Slipers", "Sneekers", "Sale"};
-			ProductVO productVO = productService.getProduct(vo);
-			
-			model.addAttribute("productVO", productVO);	// 화면에 전달할 상품상세정보
-			model.addAttribute("kindList", kindList);
-			
-			return "admin/product/productUpdate";
-		}
-	}
-	
-	// "관리자, 상품목록" 수정 
-	@RequestMapping(value = "/admin_product_update")
-	public String adminProductUpdate(HttpSession session,
-			@RequestParam(value = "product_image")MultipartFile uploadFile, ProductVO vo) {
-		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
-		
-		if(adminUser == null) {
-			return "admin/login";
-		} else {
-			String fileName = "";
-			
-			if(!uploadFile.isEmpty()) {
-				fileName = uploadFile.getOriginalFilename();
-				vo.setImage(fileName);
-				
-				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/product_images/");			
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/room_images/");			
 				
 				try {
 					File file = new File(image_path + fileName);
@@ -289,13 +223,66 @@ public class AdminController {
 				vo.setUseyn("n");
 			}
 			
-			if(vo.getBestyn() == null) {
-				vo.setBestyn("n");
+			roomService.updateRoom(vo);
+			
+			return "redirect:admin_room_detail?rid=" + vo.getRid();
+		}
+	}
+	
+	// "관리자, 객실목록" 객실 삭제 
+	@RequestMapping(value = "/admin_room_delete")
+	public String adminRoomDelete(HttpSession session, RoomVO vo) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/login";
+		} else {
+			roomService.deleteRoom(vo.getRid());
+			
+			return "redirect:admin_room_list";
+		}
+	}
+	
+	// "관리자, 객실목록" 등록 폼 이동
+	@RequestMapping(value = "/admin_room_write_form")
+	public String adminRoomWriteForm(HttpSession session, Model model) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/login";
+		} else {			
+			return "admin/room/roomWrite";
+		}
+	}
+	
+	// "관리자, 상품목록" 등록
+	@RequestMapping(value = "/admin_room_write")
+	public String adminRoomWrite(HttpSession session,
+			@RequestParam(value = "room_image")MultipartFile uploadFile, RoomVO vo) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/login";
+		} else {
+			String fileName = "";
+			
+			if(!uploadFile.isEmpty()) {
+				fileName = uploadFile.getOriginalFilename();
+				vo.setImage(fileName);
+				
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/room_images/");
+				
+				try {
+					File file = new File(image_path + fileName);
+					uploadFile.transferTo(file);
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
 			}
+
+			roomService.insertRoom(vo);
 			
-			productService.updateProduct(vo);
-			
-			return "redirect:admin_product_detail?pseq=" + vo.getPseq();
+			return "redirect:admin_room_list";
 		}
 	}
 	
@@ -329,7 +316,7 @@ public class AdminController {
 		if(adminUser == null) {
 			return "admin/login";
 		} else {
-			List<NoticeVO> noticeList = noticeService.listNoticewithPaging(criteria, key);
+			List<NoticeVO> noticeList = noticeService.noticeListWithPaging(criteria, key);
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(criteria);

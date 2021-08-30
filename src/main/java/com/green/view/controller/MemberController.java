@@ -2,6 +2,8 @@ package com.green.view.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,7 @@ public class MemberController {
 	
 	// "사용자, 로그인" 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginAction(MemberVO vo, Model model) {
+	public String loginAction(MemberVO vo, HttpServletRequest request, Model model) {
 		int result = memberService.loginID(vo);
 		MemberVO loginUser = null;
 		
@@ -39,7 +41,10 @@ public class MemberController {
 			
 			model.addAttribute("loginUser", loginUser);
 			
-			return "redirect:/index";
+			// 이전 페이지에 대한 정보 저장
+			String referer = request.getHeader("Referer");
+			
+			return "redirect:" + referer;
 		} else {
 			// "사용자, 로그인" 로그인 실패
 			return "member/loginFail";

@@ -8,26 +8,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.green.biz.dto.ProductVO;
-import com.green.biz.product.ProductService;
+import com.green.biz.dto.NoticeVO;
+import com.green.biz.notice.NoticeService;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	private ProductService productService;
+	private NoticeService noticeService;
 	
 	// "사용자, 메인" 화면
 	@RequestMapping(value = "/index", method=RequestMethod.GET)
 	public String index(Model model) {
-		// 신상품 조회 서비스 호출
-		List<ProductVO> newProductList = productService.getNewProductList();
-		model.addAttribute("newProductList", newProductList);
-
-		// 베스트상품 조회 서비스 호출		
-		List<ProductVO> bestProductList = productService.getBestProductList();
-		model.addAttribute("bestProductList", bestProductList);
+		List<NoticeVO> noticeList = noticeService.getNoticeBottomList();
+		int count = 1;
 		
+		for(NoticeVO vo : noticeList) {
+			model.addAttribute(("noticeVO" + count), vo);
+			count++;
+		}
+
 		return "index";
 	}
 

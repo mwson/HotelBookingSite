@@ -6,7 +6,7 @@ public class BookingVO {
 	
 	private int bseq;
 	private String id;
-	private String rid;
+	private int rid;
 	private String checkin;
 	private String checkout;
 	private int people;
@@ -34,10 +34,10 @@ public class BookingVO {
 		this.id = id;
 	}
 	
-	public String getRid() {
+	public int getRid() {
 		return rid;
 	}
-	public void setRid(String rid) {
+	public void setRid(int rid) {
 		this.rid = rid;
 	}
 	

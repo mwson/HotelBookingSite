@@ -35,8 +35,8 @@
 						</a>
 					</li>
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="admin_product_list">
-							<i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">상품목록</span>
+						<a class="sidebar-link" href="admin_room_list">
+							<i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">객실목록</span>
 						</a>
 					</li>
 					<li class="sidebar-item">

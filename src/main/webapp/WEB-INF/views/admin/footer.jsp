@@ -33,7 +33,7 @@
     <script type="text/javascript" src="admin/member/member.js"></script>
     <script type="text/javascript" src="admin/notice/notice.js"></script>
     <script type="text/javascript" src="admin/order/order.js"></script>
-    <script type="text/javascript" src="admin/product/product.js"></script>
     <script type="text/javascript" src="admin/qna/qna.js"></script>
+    <script type="text/javascript" src="admin/room/room.js"></script>
 </body>
 </html>

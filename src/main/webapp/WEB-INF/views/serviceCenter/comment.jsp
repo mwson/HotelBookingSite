@@ -218,7 +218,7 @@
 					alert("댓글 등록이 실패하였습니다. 다시 시도해 주세요.");
 				} else if(data == 'not_logedin') {
 					alert("댓글 등록은 로그인이 필요합니다.");
-					location.href="/biz/login_form"
+					location.href="login_form"
 				}
 			},
 			error: function(request, status, error) {
