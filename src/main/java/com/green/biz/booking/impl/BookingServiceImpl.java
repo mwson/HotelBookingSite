@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.green.biz.booking.BookingService;
 import com.green.biz.dao.BookingDAO;
 import com.green.biz.dto.BookingVO;
+import com.green.biz.dto.SalesBooking;
 import com.green.biz.utils.Criteria;
 
 @Service("bookingService")
@@ -34,6 +35,12 @@ public class BookingServiceImpl implements BookingService {
 		return bookingDao.getBooking(bseq);
 	}
 	
+	// "사용자, 예약 및 관리자, 예약목록" 상세 조회
+	@Override
+	public BookingVO getBookingDetail(int bseq) {
+		return bookingDao.getBookingDetail(bseq);
+	}
+	
 	//  "사용자, 예약" 목록 조회
 	@Override
 	public List<BookingVO> getBookingList(String id) {
@@ -52,10 +59,33 @@ public class BookingServiceImpl implements BookingService {
 		return bookingDao.userBookingListWithPaging(criteria, id);
 	}
 	
-	// "사용자, 예약" 상세 조회
+	// "관리자, 예약목록" 목록 수 조회
 	@Override
-	public BookingVO getBookingDetail(BookingVO vo) {
-		return bookingDao.getBookingDetail(vo);
+	public int adminCountBookingList(String name) {
+		return bookingDao.adminCountBookingList(name);
 	}
-
+	
+	// "관리자, 예약목록" 조회 및 페이징
+	@Override
+	public List<BookingVO> adminBookingListWithPaging(Criteria criteria, String name) {
+		return bookingDao.adminBookingListWithPaging(criteria, name);
+	}
+	
+	// "관리자, 예약목록" 예약 승인
+	@Override
+	public void updateBookingResult(int bseq) {
+		bookingDao.updateBookingResult(bseq);
+	}
+	// "관리자, 예약목록" 예약 취소
+	@Override
+	public void updateBookingCancel(int bseq) {
+		bookingDao.updateBookingCancel(bseq);
+	}
+	
+	// "관리자, 예약실적" 조회
+	@Override
+	public List<SalesBooking> getBookingSales() {
+		return bookingDao.getBookingSales();
+	}
+	
 }

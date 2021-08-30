@@ -28,8 +28,8 @@
                         <hr>
                         <ul>
                             <li><a href="notice_list">공지사항</a></li>
-                            <li><a href="#">자주하는 질문</a></li>
-                            <li><a href="#">문의하기</a></li>
+                            <li><a href="faq_list">자주하는 질문</a></li>
+                            <li><a href="qna_write_form">문의하기</a></li>
                         </ul>
                     </div>
                 </div>

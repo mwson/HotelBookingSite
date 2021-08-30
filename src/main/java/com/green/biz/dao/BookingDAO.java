@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.green.biz.dto.BookingVO;
+import com.green.biz.dto.SalesBooking;
 import com.green.biz.utils.Criteria;
 
 @Repository("bookingDAO")
@@ -31,6 +32,11 @@ public class BookingDAO {
 		return mybatis.selectOne("BookingDAO.getBooking", bseq);
 	}
 	
+	// "사용자, 예약 및 관리자, 예약목록" 상세 조회
+	public BookingVO getBookingDetail(int bseq) {
+		return mybatis.selectOne("BookingDAO.getBookingDetail", bseq);
+	}
+	
 	//  "사용자, 예약" 목록 조회
 	public List<BookingVO> getBookingList(String id) {
 		return mybatis.selectList("BookingDAO.getBookingList", id);
@@ -41,7 +47,7 @@ public class BookingDAO {
 		return mybatis.selectOne("BookingDAO.userCountBookingList", id);
 	}
 	
-	//  "사용자, 예약" 목록 조회 및 페이징	
+	// "사용자, 예약" 목록 조회 및 페이징	
 	public List<BookingVO> userBookingListWithPaging(Criteria criteria, String id) {
 		HashMap<String, Object> map = new HashMap<>();
 		
@@ -51,9 +57,34 @@ public class BookingDAO {
 		return mybatis.selectList("BookingDAO.userBookingListWithPaging", map);
 	}
 	
-	//  "사용자, 예약" 상세 조회
-	public BookingVO getBookingDetail(BookingVO vo) {
-		return mybatis.selectOne("BookingDAO.getBookingDetail", vo);
+	// "관리자, 예약목록" 목록 수 조회
+	public int adminCountBookingList(String name) {
+		return mybatis.selectOne("BookingDAO.adminCountBookingList", name);
+	}
+	
+	// "관리자, 예약목록" 조회 및 페이징
+	public List<BookingVO> adminBookingListWithPaging(Criteria criteria, String name) {
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("criteria", criteria);
+		map.put("name", name);
+		
+		return mybatis.selectList("BookingDAO.adminBookingListWithPaging", map);
+	}
+	
+	// "관리자, 예약목록" 예약 승인
+	public void updateBookingResult(int bseq) {
+		mybatis.update("BookingDAO.updateBookingResult", bseq);
+	}
+	
+	// "관리자, 예약목록" 예약 취소
+	public void updateBookingCancel(int bseq) {
+		mybatis.update("BookingDAO.updateBookingCancel", bseq);
+	}
+	
+	// "관리자, 예약실적" 조회
+	public List<SalesBooking> getBookingSales() {
+		return mybatis.selectList("BookingDAO.getBookingSales");
 	}
 	
 }

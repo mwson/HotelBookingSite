@@ -2,6 +2,9 @@ package com.green.view.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,17 +20,16 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.green.biz.admin.AdminService;
+import com.green.biz.booking.BookingService;
+import com.green.biz.dto.BookingVO;
 import com.green.biz.dto.MemberVO;
 import com.green.biz.dto.NoticeVO;
-import com.green.biz.dto.OrderVO;
 import com.green.biz.dto.QnaVO;
 import com.green.biz.dto.RoomVO;
-import com.green.biz.dto.SalesQuantity;
+import com.green.biz.dto.SalesBooking;
 import com.green.biz.dto.WorkerVO;
 import com.green.biz.member.MemberService;
 import com.green.biz.notice.NoticeService;
-import com.green.biz.order.OrderService;
-import com.green.biz.product.ProductService;
 import com.green.biz.qna.QnaService;
 import com.green.biz.room.RoomService;
 import com.green.biz.utils.Criteria;
@@ -40,13 +42,11 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	@Autowired
+	private BookingService bookingService;
+	@Autowired
 	private MemberService memberService;
 	@Autowired
 	private NoticeService noticeService;
-	@Autowired
-	private OrderService orderService;
-	@Autowired
-	private ProductService productService;
 	@Autowired
 	private QnaService qnaService;
 	@Autowired
@@ -70,7 +70,7 @@ public class AdminController {
 			
 			model.addAttribute("adminUser", adminUser);
 			
-			return "redirect:admin_order_list";
+			return "redirect:admin_booking_list";
 		} else {
 			if(result == 0) {
 				model.addAttribute("message", "비밀번호를 확인하세요!");
@@ -99,7 +99,7 @@ public class AdminController {
 	}
 	
 	// "관리자, 예약목록" 조회(검색) 및 페이징 
-	@RequestMapping(value = "/admin_order_list")
+	@RequestMapping(value = "/admin_booking_list")
 	public String adminOrderList(HttpSession session, Criteria criteria,
 			@RequestParam(value = "key", defaultValue = "")String key, Model model) {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
@@ -107,35 +107,80 @@ public class AdminController {
 		if(adminUser == null) {
 			return "admin/login";
 		} else {
-			List<OrderVO> orderList = orderService.listOrderwithPaging(criteria, key);
+			List<BookingVO> bookingList = bookingService.adminBookingListWithPaging(criteria, key);
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(criteria);
 			
-			int totalCount = orderService.countOrderList(key);
+			int totalCount = bookingService.adminCountBookingList(key);
 			pageMaker.setTotalCount(totalCount);
 			
-			model.addAttribute("orderList", orderList);
+			model.addAttribute("bookingList", bookingList);
 			model.addAttribute("pageMaker", pageMaker);
 			
-			return "admin/order/orderList";
+			return "admin/booking/bookingList";
 		}
 	}
 	
-	// "관리자, 예약목록" 예약처리
-	@RequestMapping(value = "/admin_order_save")
-	public String admin_order_save(HttpSession session,
-			@RequestParam(value = "result")int[] odseq) {
+	// "관리자, 예약목록" 예약 승인
+	@RequestMapping(value = "/admin_booking_approve")
+	public String adminBookingApprove(HttpSession session,
+			@RequestParam(value = "result")int[] bseq) {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if(adminUser == null) {
 			return "admin/login";
 		} else {
-			for(int i = 0; i<odseq.length; i++) {
-				orderService.updateOrderResult(odseq[i]);
+			for(int i = 0; i<bseq.length; i++) {
+				bookingService.updateBookingResult(bseq[i]);
 			}
 			
-			return "redirect:admin_order_list";
+			return "redirect:admin_booking_list";
+		}
+	}
+	
+	// "사용자, 예약" 상세 조회
+	@RequestMapping(value = "/admin_booking_detail")
+	public String adminBookingDetail(HttpSession session, BookingVO vo, Model model) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/login";
+		} else {
+			BookingVO bookingVO = bookingService.getBookingDetail(vo.getBseq());
+			model.addAttribute("bookingVO", bookingVO);
+			
+			checkSubPriceCal(bookingVO.getCheckin(), bookingVO.getCheckout(), bookingVO.getPrice(), model);
+			
+			return "admin/booking/bookingDetail";
+		}
+	}
+	
+	// "관리자, 예약목록" 예약 상세 승인
+	@RequestMapping(value = "/admin_booking_detail_approve")
+	public String adminBookingDetailApprove(HttpSession session, BookingVO vo) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/login";
+		} else {
+			bookingService.updateBookingResult(vo.getBseq());
+			
+			return "redirect:admin_booking_list";
+		}
+	}
+	
+	// "관리자, 예약목록" 예약 취소
+	@RequestMapping(value = "/admin_booking_detail_cancel")
+	public String adminBookingDetailCancel(HttpSession session, BookingVO vo) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if(adminUser == null) {
+			return "admin/login";
+		} else {
+			bookingService.updateBookingCancel(vo.getBseq());
+			
+			return "redirect:admin_booking_list";
 		}
 	}
 	
@@ -294,17 +339,17 @@ public class AdminController {
 		if(adminUser == null) {
 			return "admin/login";
 		} else {
-			return "admin/order/salesRecords";
+			return "admin/booking/salesRecords";
 		}
 	}
 	
 	// "관리자, 예약실적" 조회 및 전송(JSON 데이터 포맷 전송)
 	@RequestMapping(value = "/sales_record_chart", produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public List<SalesQuantity> salesRecordChart() {
-		List<SalesQuantity> listSales = productService.getProductSales();
+	public List<SalesBooking> salesRecordChart() {
+		List<SalesBooking> salesList = bookingService.getBookingSales();
 		
-		return listSales;
+		return salesList;
 	}
 	
 	// "관리자, 공지사항목록" 조회 및 페이징
@@ -565,6 +610,81 @@ public class AdminController {
 			
 			return "admin/member/memberList";
 		}
+	}
+	
+	/*
+	 * 모듈화
+	 */
+	// "체크인, 체크아웃" (yyyyMMdd) 자르기
+	public String checkSubstring(String checkinout) {		
+		String yyyy = checkinout.substring(0, 4);
+		String MM = checkinout.substring(5, 7);
+		String dd = checkinout.substring(8, 10);
+		
+		String checkinout_sub = (yyyy + "" + MM + "" + dd + "");
+		
+		return checkinout_sub;
+	}
+	
+	// "체크인, 체크아웃" (년, 월, 일) 변환
+	public String checkConversion(String checkinout) {
+		String yyyy = checkinout.substring(0, 4);
+		String MM = checkinout.substring(4, 6);
+		String dd = checkinout.substring(6);
+		
+		String checkinout_con = (yyyy + "년 " + MM + "월 " + dd + "일");
+		
+		return checkinout_con;
+	}
+	
+	// "체크인, 체크아웃" 날짜 계산 
+	public long checkCalculation(String checkin, String checkout) {
+		long checkinout_cal = 0;
+		
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        try {
+            Date sdf_checkin = sdf.parse(checkin);
+            Date sdf_checkout = sdf.parse(checkout);
+            
+            checkinout_cal = (sdf_checkout.getTime() - sdf_checkin.getTime()) / (24 * 60 * 60 * 1000);
+        } catch(ParseException e) {
+            e.printStackTrace();
+        }
+
+        return checkinout_cal;
+	}
+	
+	// "문자열, 요금" 계산 및 출력 
+	public void checkSubPriceCal(String checkin, String checkout, int dayPrice, Model model) {
+		// "체크인, 체크아웃" (yyyyMMdd) 자르기
+		if(checkin.length() != 8) {
+			checkin = checkSubstring(checkin);
+		}
+		if(checkout.length() != 8) {
+			checkout = checkSubstring(checkout);
+		}
+		
+		// "체크인, 체크아웃" (년, 월, 일) 변환
+		String checkin_con = checkConversion(checkin);
+		String checkout_con = checkConversion(checkout);
+		model.addAttribute("checkin", checkin_con);
+		model.addAttribute("checkout", checkout_con);
+		
+		// "체크인, 체크아웃" 날짜 계산 
+		long checkinout_cal = checkCalculation(checkin, checkout);
+		model.addAttribute("checkinout_cal", checkinout_cal);
+		
+		// 객실 요금(1박 요금 * 날짜) 계산
+		long roomPrice = (long)(dayPrice * checkinout_cal);
+		model.addAttribute("roomPrice", roomPrice);
+		
+		// 부가가치세 계산(객실요금 * 0.1)
+		long vat = (long)(roomPrice * 0.1);
+		model.addAttribute("vat", vat);
+		
+		// 총 요금 계산(객실요금 * 0.1)
+		long totalPrice = (long)(roomPrice + vat);
+		model.addAttribute("totalPrice", totalPrice);		
 	}
 	
 }

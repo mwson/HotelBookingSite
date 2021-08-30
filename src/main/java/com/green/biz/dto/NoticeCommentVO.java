@@ -10,6 +10,7 @@ public class NoticeCommentVO {
 	private String writer;
 	private Date regDate;
 	private Date modifyDate;
+	
 	public int getNotice_comment_seq() {
 		return notice_comment_seq;
 	}

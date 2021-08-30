@@ -14,9 +14,6 @@
 	<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 	<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
-	<!--
-	<link rel="stylesheet" href="css/shopping.css">
-	-->
 </head>
 <body>
 	<div id="preloder">
@@ -46,7 +43,7 @@
 										
 										<c:otherwise>
 											<li>
-												<a href="order_all">
+												<a href="booking_list">
 													${sessionScope.loginUser.name}(${sessionScope.loginUser.id})
 												</a>
 											</li>

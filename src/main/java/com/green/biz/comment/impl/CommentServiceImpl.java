@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.green.biz.comment.CommentService;
 import com.green.biz.dao.CommentDAO;
 import com.green.biz.dto.NoticeCommentVO;
-import com.green.biz.dto.ProductCommentVO;
 import com.green.biz.utils.Criteria;
 
 @Service("commentService")
@@ -16,20 +15,10 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Autowired
 	private CommentDAO commentDao;
-	
-	@Override
-	public List<ProductCommentVO> getCommentList(int pseq) {
-		return commentDao.getCommentList(pseq);
-	}
 
 	@Override
 	public int saveComment(NoticeCommentVO vo) {
 		return commentDao.saveComment(vo);
-	}
-
-	@Override
-	public int updateComment(ProductCommentVO vo) {
-		return commentDao.updateComment(vo);
 	}
 
 	@Override

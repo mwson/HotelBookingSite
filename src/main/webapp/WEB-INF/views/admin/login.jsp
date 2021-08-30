@@ -25,7 +25,7 @@
 							<div class="card-body">
 								<div class="m-sm-5">
 									<div class="text-center mb-5">
-										<img src="img/avatars/avatar.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />										
+										<img src="img/logo.png" width="132" height="132" />										
 									</div>
 									
 									<form method="post" id="formm" name="formm" action="admin_login">

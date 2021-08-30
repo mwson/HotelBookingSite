@@ -66,14 +66,14 @@ public class MypageController {
 			int totalCount = bookingService.userCountBookingList(id);
 			pageMaker.setTotalCount(totalCount);
 			
-			model.addAttribute("pageMaker", pageMaker);
 			model.addAttribute("bookingList", bookingList);
+			model.addAttribute("pageMaker", pageMaker);
 			
 			return "mypage/bookingList";
 		}
 	}
 	
-	//  "사용자, 예약" 상세조회
+	// "사용자, 예약" 상세조회
 	@RequestMapping(value = "/booking_detail")
 	public String bookingDetail(HttpSession session, BookingVO vo, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -81,9 +81,7 @@ public class MypageController {
 		if(loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setId(loginUser.getId());
-			
-			BookingVO bookingVO = bookingService.getBookingDetail(vo);
+			BookingVO bookingVO = bookingService.getBookingDetail(vo.getBseq());
 			model.addAttribute("bookingVO", bookingVO);
 			
 			checkSubPriceCal(bookingVO.getCheckin(), bookingVO.getCheckout(), bookingVO.getPrice(), model);
@@ -92,9 +90,7 @@ public class MypageController {
 		}
 	}
 
-	/*
-	 * "회원정보 수정" 비밀번호 확인 화면 이동
-	 */
+	// "사용자, 회원정보 수정" 비밀번호 확인 화면 이동
 	@RequestMapping(value = "/update_member_form", method = RequestMethod.GET)
 	public String updateMemberForm(HttpSession session,  Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -106,9 +102,8 @@ public class MypageController {
 		}
 	}
 	
-	/*
-	 * "회원정보 수정" 비밀번호 찾기 폼 팝업
-	 */
+
+	// "사용자, 회원정보 수정" 비밀번호 찾기 폼 팝업
 	@RequestMapping(value = "/pwdCheck_find_pwd_form", method = RequestMethod.GET)
 	public String pwdCheckFindPwdForm(HttpSession session) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -120,9 +115,7 @@ public class MypageController {
 		}
 	}
 	
-	/*
-	 * "회원정보 수정" 비밀번호 확인 후 이동
-	 */
+	// "사용자, 회원정보 수정" 비밀번호 확인 후 이동
 	@RequestMapping(value = "/update_member_form_pwdCheck", method = RequestMethod.POST)
 	public String updateMemberFormPwdCheck(HttpSession session, MemberVO vo, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -144,9 +137,7 @@ public class MypageController {
 		}
 	}
 	
-	/*
-	 * "회원정보 수정" 업데이트
-	 */
+	// "사용자, 회원정보 수정" 업데이트
 	@RequestMapping(value = "/update_member", method = RequestMethod.POST)
 	public String updateMember(HttpSession session, @RequestParam(value = "default_pwd")String default_pwd,
 			@RequestParam(value = "addr1")String addr1, @RequestParam(value = "addr2")String addr2, MemberVO vo, Model model) {

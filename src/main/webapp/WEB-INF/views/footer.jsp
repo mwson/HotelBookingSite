@@ -74,7 +74,6 @@
 	<script type="text/javascript" src="member/member.js"></script>
 	<script type="text/javascript" src="mypage/findPassword.js"></script>
 	<script type="text/javascript" src="mypage/mypage.js"></script>
-	<script type="text/javascript" src="product/product.js"></script>
 	<script type="text/javascript" src="qna/qna.js"></script>
 	<script type="text/javascript" src="serviceCenter/serviceCenter.js"></script>
 </body>

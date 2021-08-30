@@ -30,7 +30,7 @@
 						예약 및 상품
                     </li>
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="admin_order_list">
+						<a class="sidebar-link" href="admin_booking_list">
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">예약목록</span>
 						</a>
 					</li>

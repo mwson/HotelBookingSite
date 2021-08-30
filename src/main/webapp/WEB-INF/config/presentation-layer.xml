@@ -17,7 +17,6 @@
 	<mvc:resources location="/WEB-INF/resources/img/" mapping="/img/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/js/" mapping="/js/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/notice_images/" mapping="/notice_images/**"></mvc:resources>
-	<mvc:resources location="/WEB-INF/resources/product_images/" mapping="/product_images/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/room_images/" mapping="/room_images/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/sass/" mapping="/sass/**"></mvc:resources>
 	
@@ -26,7 +25,6 @@
 	<mvc:resources location="/WEB-INF/views/introduce/" mapping="/introduce/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/member/" mapping="/member/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/mypage/" mapping="/mypage/**"></mvc:resources>
-	<mvc:resources location="/WEB-INF/views/product/" mapping="/product/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/qna/" mapping="/qna/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/serviceCenter/" mapping="/serviceCenter/**"></mvc:resources>
 	

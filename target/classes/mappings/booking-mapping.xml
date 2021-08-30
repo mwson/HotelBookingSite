@@ -31,6 +31,13 @@
 		WHERE bseq = #{bseq}
 	</select>
 	
+	<!-- "사용자, 예약 및 관리자, 예약목록" 상세 조회 -->
+	<select id="getBookingDetail" parameterType="int" resultType="booking">
+		SELECT *
+		FROM getBooking_view
+		WHERE bseq = #{bseq}
+	</select>
+	
 	<!-- "사용자, 예약" 예약 조회 -->
 	<select id="getBookingList" parameterType="string" resultType="booking">
 		SELECT *
@@ -57,15 +64,58 @@
 			    AND b.id = #{id})
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
-		ORDER BY bseq
+		ORDER BY bseq DESC
 		]]>
 	</select>
 	
-	<!-- "사용자, 예약" 상세 조회 -->
-	<select id="getBookingDetail" resultType="booking">
-		SELECT *
+	<!-- "관리자, 예약목록" 목록 수 조회 -->
+	<select id="adminCountBookingList" parameterType="string" resultType="int">
+		SELECT COUNT(*)
 		FROM getBooking_view
-		WHERE id = #{id}
-			AND bseq = #{bseq}
+		WHERE name LIKE '%' || #{name} || '%'
+	</select>
+	
+	<!-- "관리자, 예약목록" 조회 및 페이징 -->
+	<select id="adminBookingListWithPaging" parameterType="HashMap" resultType="booking">
+		<![CDATA[
+		SELECT bseq, id, name, checkin, checkout, type, people, price, cancel, result, indate
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY m.name) rn, b.bseq, b.id, m.name, b.checkin, b.checkout, r.type,
+		    	b.people, r.price, b.cancel, b.result, b.indate
+			FROM booking b, member m, room r
+			WHERE b.id = m.id
+			    AND b.rid = r.rid
+			    AND m.name LIKE '%' || #{name} || '%')
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+		ORDER BY bseq DESC
+		]]>
+	</select>
+	
+	<!-- "관리자, 예약목록" 예약 승인 -->
+	<update id="updateBookingResult" parameterType="int">
+		UPDATE booking
+		SET result='2'
+		WHERE bseq = #{bseq}
+	</update>
+	
+	<!-- "관리자, 예약목록" 예약 취소 -->
+	<update id="updateBookingCancel" parameterType="int">
+		UPDATE booking
+		SET cancel='2'
+		WHERE bseq = #{bseq}
+	</update>
+	
+	<resultMap type="com.green.biz.dto.SalesBooking" id="salesMap">
+		<result column="type" property="type"/>
+		<result column="sales_count" property="booking"/>
+	</resultMap>
+	
+	<!-- "관리자, 예약실적" 조회 -->
+	<select id="getBookingSales" resultMap="salesMap">
+		SELECT type, COUNT(type) AS sales_count
+		FROM getBooking_view
+		WHERE cancel='1'
+		    AND result='2'
+		GROUP BY type
 	</select>
 </mapper>

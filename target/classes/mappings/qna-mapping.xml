@@ -52,7 +52,7 @@
 			WHERE name LIKE '%' || #{key} || '%')
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 			AND rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
-		ORDER BY rep, qseq DESC
+		ORDER BY qseq DESC
 		]]>
 	</select>
 	
