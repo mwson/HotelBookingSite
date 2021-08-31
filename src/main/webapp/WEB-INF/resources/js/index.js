@@ -171,9 +171,9 @@
         Datepicker
     ----------------------------*/
 
-    var today = new Date(); 
+    var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth() + 1; 
+    var mm = today.getMonth() + 1;
 
     var yyyy = today.getFullYear(); 
     if (dd < 10) { 
@@ -189,11 +189,31 @@
             month = mS[i-1];
         }
     }
-    var today = yyyy + '' + month + '' + dd; 
-    var tomorrow = yyyy + '' + month + '' + (dd + 1); 
 
-    $(".check__in").val(today);
-    $(".check__out").val(tomorrow);
+    var tomorrow = new Date(Date.parse(today) + 1 * 24 * 60 * 60 * 1000);
+    var dd_t = tomorrow.getDate();
+    var mm_t = tomorrow.getMonth() + 1;
+
+    var yyyy_t = tomorrow.getFullYear(); 
+    if (dd_t < 10) { 
+        dd_t = '0' + dd_t; 
+    }
+    var mS_t = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+
+    var month_t;
+
+    for (let i = 0; i <= 12; i++) {
+        const element = mS_t[i];
+        if (mm_t == mS_t.indexOf(mS_t[i])) {
+            month_t = mS_t[i-1];
+        }
+    }
+
+    var today_val = yyyy + '' + month + '' + dd;
+    var tomorrow_val = yyyy_t + '' + month_t + '' + dd_t ; 
+
+    $(".check__in").val(today_val);
+    $(".check__out").val(tomorrow_val);
     
     $(".datepicker_pop" ).datepicker({
         showMonthAfterYear: true,
@@ -201,7 +221,8 @@
         monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
         dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
         dateFormat: 'yymmdd',
-        minDate: 0
+        minDate: 0,
     });
-
+    
 })(jQuery);
+

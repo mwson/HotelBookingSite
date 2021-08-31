@@ -228,7 +228,7 @@
 		});
 	}
 	
-	// 댓글 수정
+	// 댓글 삭제
 	function delete_comment(nseq) {
 		$.ajax({
 			type: 'POST',

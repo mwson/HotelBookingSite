@@ -21,7 +21,7 @@
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
-                <a class="sidebar-brand" href="admin_order_list">
+                <a class="sidebar-brand" href="admin_booking_list">
                     <span class="align-middle">관리자</span>
                 </a>
 

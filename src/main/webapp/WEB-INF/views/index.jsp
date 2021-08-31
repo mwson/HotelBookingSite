@@ -11,7 +11,7 @@
                     <h2>최고의 추억으로<br>만들어 드리겠습니다.</h2>
                 </div>
 				<div class="col-lg-11" style="margin: 0 5%;">
-	                <form method="get" action="booking_search">
+	                <form method="get" id="index_booking_form" name="index_booking_form">
 						<div class="filter__form">
 		                    <div class="filter__form__item">
 		                        <p>체크인</p>
@@ -41,7 +41,7 @@
 		                            </select>
 		                        </div>
 		                    </div>
-		                    <input type="submit" class="filter__form__button" value="예약하기">
+		                    <input type="button" class="filter__form__button" onclick="index_booking_search()" value="예약하기">
 	                    </div>
 	                </form>
                 </div>
