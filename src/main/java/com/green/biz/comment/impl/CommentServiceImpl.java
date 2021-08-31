@@ -15,25 +15,41 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Autowired
 	private CommentDAO commentDao;
-
+	
+	// "사용자, 공지사항 댓글" 조회
 	@Override
-	public int saveComment(NoticeCommentVO vo) {
-		return commentDao.saveComment(vo);
+	public List<NoticeCommentVO> getCommentList(int nseq) {
+		return commentDao.getCommentList(nseq);
 	}
-
-	@Override
-	public int deleteComment(int comment_seq) {
-		return commentDao.deleteComment(comment_seq);
-	}
-
+	
+	// "사용자, 공지사항 댓글" 총 개수 조회
 	@Override
 	public int countCommentList(int nseq) {
 		return commentDao.countCommentList(nseq);
 	}
-
+	
+	// "사용자, 공지사항 댓글" 조회 및 페이징
 	@Override
 	public List<NoticeCommentVO> getCommentListWithPaging(Criteria criteria, int nseq) {
 		return commentDao.getCommentListWithPaging(criteria, nseq);
+	}
+	
+	// "사용자, 공지사항 댓글" 등록
+	@Override
+	public int saveComment(NoticeCommentVO vo) {
+		return commentDao.saveComment(vo);
+	}
+	
+	// "사용자, 공지사항 댓글" 수정
+	@Override
+	public int updateComment(NoticeCommentVO vo) {
+		return commentDao.updateComment(vo);
+	}
+	
+	// "사용자, 공지사항 댓글" 삭제
+	@Override
+	public int deleteComment(int ncseq) {
+		return commentDao.deleteComment(ncseq);
 	}
 
 }

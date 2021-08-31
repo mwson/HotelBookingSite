@@ -5,8 +5,8 @@
 		<typeAlias type="com.green.biz.dto.AddressVO" alias="address"/>
 		<typeAlias type="com.green.biz.dto.BookingVO" alias="booking"/>
 		<typeAlias type="com.green.biz.dto.MemberVO" alias="member"/>
-		<typeAlias type="com.green.biz.dto.NoticeVO" alias="notice"/>
 		<typeAlias type="com.green.biz.dto.NoticeCommentVO" alias="noticeComment"/>
+		<typeAlias type="com.green.biz.dto.NoticeVO" alias="notice"/>
 		<typeAlias type="com.green.biz.dto.QnaVO" alias="qna"/>
 		<typeAlias type="com.green.biz.dto.RoomVO" alias="room"/>
 		<typeAlias type="com.green.biz.dto.WorkerVO" alias="worker"/>

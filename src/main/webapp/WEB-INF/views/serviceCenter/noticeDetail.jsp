@@ -64,7 +64,7 @@
                         </div>
                     </div>
 
-                    <%@include file="comment.jsp"%>
+                    <%@include file="noticeComment.jsp"%>
 
                 </div>
             </div>

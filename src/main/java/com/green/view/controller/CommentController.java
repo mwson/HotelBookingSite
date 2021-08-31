@@ -26,10 +26,12 @@ public class CommentController {
 	@Autowired
 	CommentService commentService;
 	
+	// "사용자, 공지사항 댓글" 조회 및 페이징
 	@GetMapping(value = "/list", produces="application/json; charset=UTF-8")
 	public Map<String, Object> commentList(@RequestParam(value="nseq") int nseq, Criteria criteria) {
 		Map<String, Object> commentInfo = new HashMap<>();		
 	    
+		// List<NoticeCommentVO> commentList = commentService.getCommentList(nseq);
 	    List<NoticeCommentVO> commentList = commentService.getCommentListWithPaging(criteria, nseq);
 	    
 		PageMaker pageMaker = new PageMaker();
@@ -38,8 +40,6 @@ public class CommentController {
 		int totalComment = commentService.countCommentList(nseq);
 		pageMaker.setTotalCount(totalComment);
 		
-		System.out.println(pageMaker.toString());
-		
 		commentInfo.put("pageInfo", pageMaker);		
 		commentInfo.put("commentList", commentList);
 		commentInfo.put("total", totalComment);
@@ -47,6 +47,7 @@ public class CommentController {
 		return commentInfo;
 	}
 	
+	// "사용자, 공지사항 댓글" 등록
 	@PostMapping(value = "/save")
 	public String saveComment(HttpSession session, NoticeCommentVO vo) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
@@ -54,10 +55,42 @@ public class CommentController {
 		if(loginUser == null) {
 			return "not_logedin";
 		} else {
-			// 작성자는 화면에서 입력되지 않으므로 로그인정보에서 추출함
-			vo.setWriter(loginUser.getId());
+			String writer = loginUser.getName() + "(" + loginUser.getId() + ")";
+			vo.setWriter(writer);
 			
 			if(commentService.saveComment(vo) == 1) {
+				return "success";
+			} else {
+				return "fail";
+			}
+		}
+	}
+	
+	// "사용자, 공지사항 댓글" 수정
+	@PostMapping(value = "/update")
+	public String updateComment(HttpSession session, NoticeCommentVO vo) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		
+		if(loginUser == null) {
+			return "not_logedin";
+		} else {
+			if(commentService.updateComment(vo) == 1) {
+				return "success";
+			} else {
+				return "fail";
+			}
+		}
+	}
+	
+	// "사용자, 공지사항 댓글" 삭제
+	@PostMapping(value = "/delete")
+	public String deleteComment(HttpSession session, NoticeCommentVO vo) {
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		
+		if(loginUser == null) {
+			return "not_logedin";
+		} else {
+			if(commentService.deleteComment(vo.getNcseq()) == 1) {
 				return "success";
 			} else {
 				return "fail";
