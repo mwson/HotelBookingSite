@@ -23,8 +23,8 @@
 <hr class="mb-5">
 <div class="blog__details__comment__form">
     <h3>댓글 입력</h3>
-    <div class="blog__details__comment__form__item">
-        <form id="commentForm" name="commentForm">
+    <form id="commentForm" name="commentForm">
+        <div class="blog__details__comment__form__item">
             <input type="hidden" id="nseq" name="nseq" value="${noticeVO.nseq}"/>
             <div class="row">
                 <div class="col-lg-4">
@@ -32,11 +32,9 @@
                 </div>
             </div>        
             <textarea rows="3" cols="80" id="content" name="content" placeholder="댓글을 입력하세요."></textarea>
-            <div class="col-lg-2" style="float: right;">
-                <input type="button" class="btn btn-warning btn-lg" onclick="save_comment('${noticeVO.nseq}')" value="등록">
-            </div>
-        </form>
-    </div>
+            <input type="button" class="btn btn-warning btn-lg" onclick="save_comment()" value="등록 ">
+        </div>
+    </form>
     <div style="clear: both;"></div>
 </div>
 
@@ -98,23 +96,24 @@
 	function showHTML(pageMaker, commentList, totalCount) {
 		var html = "";
 		var p_html = "";
-		var prev = "Prev";
-		var next = "Next";
 
 		if(commentList.length > 0) {
 			// 상품평의 각 항목별로 HTML 생성
 			$.each(commentList, function(index, item) {
-				html += "<span>" + displayTime(item.regDate) + "</span>";
 				html += "<h5>" + item.writer + "</h5>";
+				html += "<span>" + displayTime(item.regDate) + "</span>";
+				html += "<div style='float: right;'>"
+				html += "<a href=''>수정</a><a href='javascript:delete_comment(" + item.ncseq + "," + item.nseq + ")'>삭제</a>";
+				html += "</div>"
 				html += "<p>" + item.content + "</p>";
-				html += "<hr/>"
-				
+				html += "<hr>"
 			});
 			
 			// 페이징 버튼 출력
-			if(pageMaker.cri.prev == true) {
+			if(pageMaker.prev == true) {
 				p_html += "<a href='javascript:getCommentPaging("
-	                 + (pageMaker.startPage - 1) + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq} +")'>" + prev + "<span class=\"arrow_left\"></span></a>";
+					+ (pageMaker.startPage - 1) + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq}
+					+ ")'><span class=\"arrow_left\"></span> 이전</a>";
 			}
 			 
 			for(var i = pageMaker.startPage; i <= pageMaker.endPage; i++) {
@@ -122,14 +121,14 @@
 	                 + i + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq} + ")'>" + i + "</a>";
 			}
 			
-			if(pageMaker.cri.next == true) {
+			if(pageMaker.next == true) {
 				p_html += "<a href='javascript:getCommentPaging("
-	                 + (pageMaker.endPage + 1) + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq} + ")'>" + next + "<span class=\"arrow_right\"></span></a>";
+					+ (pageMaker.endPage + 1) + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq}
+					+ ")'>다음 <span class=\"arrow_right\"></span></a>";
 			}
 		} else { // 조회된 상품평이 없을 경우
-			html += "<div>";
 			html += "<h5>등록된 댓글이 없습니다.</h5>";
-			html += "</div>";
+			html += "<br>";
 		}
 		
 		// 상풍평 갯수 출력
@@ -183,7 +182,7 @@
 	}
 	
 	// 댓글 등록	
-	function save_comment(nseq) {
+	function save_comment() {
 		$.ajax({
 			type: 'POST',
 			url: 'comments/save',
@@ -193,10 +192,9 @@
 					getCommentList();
 					$("#content").val("");
 				} else if(data == 'fail') {
-					alert("댓글 등록이 실패하였습니다.");
-				} else if(data == 'not_logedin') {
-					alert("댓글 등록은 로그인이 필요합니다.");
-					location.href="login_form"
+					alert("등록에 실패하였습니다.");
+				} else if(data == 'not_loggedin') {
+					alert("등록은 로그인이 필요합니다.");
 				}
 			},
 			error: function(request, status, error) {
@@ -206,7 +204,7 @@
 	}
 	
 	// 댓글 수정
-	function update_comment(nseq) {
+	function update_comment() {
 		$.ajax({
 			type: 'POST',
 			url: 'comments/update',
@@ -216,10 +214,9 @@
 					getCommentList();
 					$("#content").val("");
 				} else if(data == 'fail') {
-					alert("댓글 수정이 실패하였습니다.");
-				} else if(data == 'not_logedin') {
-					alert("댓글 수정은 로그인이 필요합니다.");
-					location.href="login_form"
+					alert("수정에 실패하였습니다.");
+				} else if(data == 'not_loggedin') {
+					alert("수정은 로그인이 필요합니다.");
 				}
 			},
 			error: function(request, status, error) {
@@ -228,21 +225,23 @@
 		});
 	}
 	
-	// 댓글 수정
-	function delete_comment(nseq) {
+	// 댓글 삭제
+	function delete_comment(ncseq, nseq) {
 		$.ajax({
 			type: 'POST',
 			url: 'comments/delete',
-			data: $("#commentForm").serialize(),
+			data: {ncseq : ncseq,
+				nseq : nseq},
 			success: function(data) {
 				if(data == 'success') {
-					getCommentList();
-					$("#content").val("");
+					alert("댓글이 삭제 되었습니다.");
+					location.reload();
 				} else if(data == 'fail') {
-					alert("댓글 삭제가 실패하였습니다.");
-				} else if(data == 'not_logedin') {
-					alert("댓글 삭제는 로그인이 필요합니다.");
-					location.href="login_form"
+					alert("삭제에 실패하였습니다.");
+				} else if(data == 'not_loggedin') {
+					alert("삭제는 로그인이 필요합니다.");
+				} else if(data == 'verification_failed') {
+					alert("삭제는 작성한 아이디로 가능합니다.");
 				}
 			},
 			error: function(request, status, error) {

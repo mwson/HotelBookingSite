@@ -50,17 +50,8 @@
                     </div>
                     <div class="blog__details__desc">
                         <div class="blog__details__desc__item">
-                            <h4>${noticeVO.subject}</h4>
+                            <h3>${noticeVO.subject}</h3>
                             <p>${noticeVO.content}</p>
-                        </div>
-                    </div>
-                    <div class="blog__details__widget">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="blog__details__tags">
-                                    <a href="#">공지사항 목록</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
 

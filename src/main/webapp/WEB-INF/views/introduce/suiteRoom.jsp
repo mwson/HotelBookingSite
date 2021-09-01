@@ -43,7 +43,7 @@
                     </div>
                     <div class="room__details__title">
                         <h2>Premium King Room</h2>
-                        <a href="#" class="primary-btn">Booking Now</a>
+                        <a href="introduce_room" class="primary-btn">객실안내 목록</a>
                     </div>
                     <div class="room__details__desc">
                         <h2>Description:</h2>

@@ -29,7 +29,7 @@
                         <ul>
                         	<li><a href="booking_list">예약확인</a></li>
 							<li><a href="qna_list">문의내역</a></li>
-                            <li><a href="login_form">회원정보 수정</a></li>
+                            <li><a href="update_member_form">회원정보 수정</a></li>
                         </ul>
                     </div>
                 </div>

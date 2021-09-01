@@ -1,12 +1,23 @@
-// "사용자, 객실" 선택
-$("#room").change(function() {
-    $("#room").val($(this).val());
-    alert("예약 당 1개의 객실만 가능합니다.");
-});
+// "사용자, 메인" 예약하기 화면 이동	
+function index_booking_search() {
+    if ($("#checkin").val() >= $("#checkout").val()) {
+        alert("날짜가 잘못 입력 되었습니다. 올바른 날짜를 입력해주세요.");
 
-//"사용자" 예약하기 화면 이동	
+		return false;
+    } else {
+    	$("#index_booking_form").attr("action", "booking_search").submit();
+    }
+}
+
+// "사용자" 예약하기 화면 이동	
 function booking_search() {
-	$("#booking_form").attr("action", "booking_search").submit();
+    if ($("#checkin").val() >= $("#checkout").val()) {
+        alert("날짜가 잘못 입력 되었습니다. 올바른 날짜를 입력해주세요.");
+        
+		return false;
+    } else {
+    	$("#booking_form").attr("action", "booking_search").submit();
+    }
 }
 
 //"사용자, 예약" 스위트 룸 예약 

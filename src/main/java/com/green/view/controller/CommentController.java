@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +29,7 @@ public class CommentController {
 	
 	// "사용자, 공지사항 댓글" 조회 및 페이징
 	@GetMapping(value = "/list", produces="application/json; charset=UTF-8")
-	public Map<String, Object> commentList(@RequestParam(value="nseq") int nseq, Criteria criteria) {
+	public Map<String, Object> commentList(@RequestParam(value="nseq") int nseq, Criteria criteria, Model model) {
 		Map<String, Object> commentInfo = new HashMap<>();		
 	    
 		// List<NoticeCommentVO> commentList = commentService.getCommentList(nseq);
@@ -53,7 +54,7 @@ public class CommentController {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
-			return "not_logedin";
+			return "not_loggedin";
 		} else {
 			String writer = loginUser.getName() + "(" + loginUser.getId() + ")";
 			vo.setWriter(writer);
@@ -72,12 +73,19 @@ public class CommentController {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
-			return "not_logedin";
+			return "not_loggedin";
 		} else {
-			if(commentService.updateComment(vo) == 1) {
-				return "success";
+			NoticeCommentVO noticeCommentVO = commentService.getComment(vo);
+			String writer = loginUser.getName() + "(" + loginUser.getId() + ")";
+			
+			if(noticeCommentVO.getWriter().equals(writer)) {
+				if(commentService.updateComment(vo) == 1) {
+					return "success";
+				} else {
+					return "fail";
+				}
 			} else {
-				return "fail";
+				return "verification_failed";
 			}
 		}
 	}
@@ -88,12 +96,19 @@ public class CommentController {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
-			return "not_logedin";
+			return "not_loggedin";
 		} else {
-			if(commentService.deleteComment(vo.getNcseq()) == 1) {
-				return "success";
+			NoticeCommentVO noticeCommentVO = commentService.getComment(vo);
+			String writer = loginUser.getName() + "(" + loginUser.getId() + ")";
+			
+			if(noticeCommentVO.getWriter().equals(writer)) {
+				if(commentService.deleteComment(vo) == 1) {
+					return "success";
+				} else {
+					return "fail";
+				}
 			} else {
-				return "fail";
+				return "verification_failed";
 			}
 		}
 	}

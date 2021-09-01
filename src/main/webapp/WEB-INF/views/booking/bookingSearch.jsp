@@ -129,7 +129,7 @@
                                             </div>
                                         </div>
                                         <div class="room__text">
-                                            <a href="#">상세사항 보기</a>
+                                            <a href="suiteRoom_detail">상세사항 보기</a>
                                             <c:choose>
 												<c:when test='${suiteRoom=="1"}'>
 													<input type="button" class="btn btn-warning" id="suite_room" name="suite_room" onclick="booking_suite()" value="예약하기">
@@ -189,7 +189,7 @@
                                             </div>
                                         </div>
                                         <div class="room__text">
-                                            <a href="#">상세사항 보기</a>
+                                            <a href="superior_room">상세사항 보기</a>
 											<c:choose>
 												<c:when test='${superiorRoom=="1"}'>
 													<input type="button" class="btn btn-warning" id="superior_room" name="superior_room" onclick="booking_superior()" value="예약하기">
@@ -249,7 +249,7 @@
                                             </div>
                                         </div>
                                         <div class="room__text">
-                                            <a href="#">상세사항 보기</a>
+                                            <a href="deluxe_room">상세사항 보기</a>
 											<c:choose>
 												<c:when test='${deluxeRoom=="1"}'>
 													<input type="button" class="btn btn-warning" id="deluxe_room" name="deluxe_room" onclick="booking_deluxe()" value="예약하기">
@@ -309,7 +309,7 @@
                                             </div>
                                         </div>
                                         <div class="room__text">
-                                            <a href="#">상세사항 보기</a>
+                                            <a href="standard_room">상세사항 보기</a>
                                             <c:choose>
 												<c:when test='${standardRoom=="1"}'>
 													<input type="button" class="btn btn-warning" id="standard_room" name="standard_room" onclick="booking_standard()" value="예약하기">

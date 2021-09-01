@@ -17,6 +17,11 @@ public class CommentDAO {
 	private SqlSessionTemplate mybatis;
 	
 	// "사용자, 공지사항 댓글" 조회
+	public NoticeCommentVO getComment(NoticeCommentVO vo) {
+		return mybatis.selectOne("CommentDAO.getComment", vo);
+	}
+	
+	// "사용자, 공지사항 댓글" 목록 조회
 	public List<NoticeCommentVO> getCommentList(int nseq) {
 		return mybatis.selectList("CommentDAO.getCommentList", nseq);
 	}
@@ -26,7 +31,7 @@ public class CommentDAO {
 		return mybatis.selectOne("CommentDAO.countCommentList", nseq);
 	}
 	
-	// "사용자, 공지사항 댓글" 조회 및 페이징
+	// "사용자, 공지사항 댓글" 목록 조회 및 페이징
 	public List<NoticeCommentVO> getCommentListWithPaging(Criteria criteria, int nseq) {
 		HashMap<String, Object> map = new HashMap<>();
 		
@@ -47,8 +52,8 @@ public class CommentDAO {
 	}
 	
 	// "사용자, 공지사항 댓글" 삭제
-	public int deleteComment(int ncseq) {
-		return mybatis.delete("CommentDAO.deleteComment", ncseq);
+	public int deleteComment(NoticeCommentVO vo) {
+		return mybatis.delete("CommentDAO.deleteComment", vo);
 	}
 	
 }
