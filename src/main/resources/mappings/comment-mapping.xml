@@ -2,6 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CommentDAO">
 	<!-- "사용자, 공지사항 댓글" 조회  -->
+	<select id="getComment" resultType="noticeComment">
+		SELECT *
+		FROM notice_comment
+		WHERE ncseq = #{ncseq}
+			AND nseq = #{nseq}
+	</select>
+
+	<!-- "사용자, 공지사항 댓글" 목록 조회  -->
 	<select id="getCommentList" parameterType="int" resultType="noticeComment">
 		SELECT *
 		FROM notice_comment
@@ -16,7 +24,7 @@
 		WHERE nseq = #{nseq}
 	</select>
 	
-	<!-- "사용자, 공지사항 댓글" 조회 및 페이징  -->
+	<!-- "사용자, 공지사항 댓글" 목록 조회 및 페이징  -->
 	<select id="getCommentListWithPaging" parameterType="HashMap" resultType="noticeComment">
 		<![CDATA[
 		SELECT ncseq, nseq, content, writer, regdate, modifydate
@@ -39,12 +47,14 @@
 		UPDATE notice_comment
 		SET content = #{content}, modifyDate = SYSDATE
 		WHERE ncseq = #{ncseq}
+			AND nseq = #{nseq}
 	</update>
 	
 	<!-- "사용자, 공지사항 댓글" 삭제 -->
-	<delete id="deleteComment" parameterType="int">
+	<delete id="deleteComment">
 		DELETE
 		FROM notice_comment
 		WHERE ncseq = #{ncseq}
+			AND nseq = #{nseq}
 	</delete>
 </mapper>

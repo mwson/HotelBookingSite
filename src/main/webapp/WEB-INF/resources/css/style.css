@@ -2138,7 +2138,7 @@ ol {
 	margin-bottom: 0;
 }
 
-.blog__details__desc__item h4 {
+.blog__details__desc__item h3 {
 	color: #1d1c1c;
 	font-weight: 500;
 	margin-bottom: 22px;
@@ -2218,7 +2218,7 @@ ol {
 	overflow: hidden;
 	border-radius: 10px;
 	background-color: #F9F8F6;
-	padding: 25px 25px 5px 25px;
+	padding: 25px 25px 10px 25px;
 }
 
 .blog__details__comment__item.blog__details__comment__item--reply {
@@ -2245,40 +2245,39 @@ ol {
 	overflow: hidden;
 }
 
-.blog__details__comment__item__text span {
-	font-size: 14px;
-	color: #8B9094;
-	display: block;
-}
-
 .blog__details__comment__item__text h5 {
 	color: #1d1c1c;
 	font-weight: 500;
-	margin-top: 8px;
-	margin-bottom: 9px;
+	margin: 0 4px 9px 0;
+	display: inline-block;
+}
+
+.blog__details__comment__item__text span {
+	font-size: 14px;
+	color: #8B9094;
+}
+
+.blog__details__comment__item__text a {
+	font-size: 14px;
+	color: #E9AD28;
+	font-weight: 500;
+	margin-left: 4px;
 }
 
 .blog__details__comment__item__text p {
 	color: #8B9094;
 	line-height: 24px;
-	margin-bottom: 20px;
+	margin-top: 4px;
 }
 
-.blog__details__comment__item__text a {
-	display: inline-block;
-	color: #222222;
-	padding: 4px 22px 2px 32px;
-	border: 1px solid rgba(30, 30, 39, 0.2);
-	text-transform: uppercase;
-	margin-right: 6px;
-	font-family: "Barlow Condensed", sans-serif;
-	font-weight: 500;
-}
-
-.blog__details__comment__item__text a:hover {
-	background: #E9AD28;
-	color: #ffffff;
-	border-color: #E9AD28;
+.blog__details__comment__item__text textarea {
+	color: #777C81;
+	padding-left: 20px;
+	padding-top: 12px;
+	border-radius: 10px;
+	margin: 5px 0 10px 10px;
+	border: 1px solid #F9F8F6;
+	background: #ffffff;
 }
 
 .blog__details__comment__form h3 {
@@ -2342,7 +2341,7 @@ ol {
 	padding-left: 20px;
 	padding-top: 12px;
 	border-radius: 10px;
-	margin-bottom: 42px;
+	margin-bottom: 20px;
 	border: 2px solid transparent;
 	background: #F9F8F6;
 	-webkit-transition: all, 0.3s;
@@ -2384,6 +2383,11 @@ ol {
 
 .blog__details__comment__form .blog__details__comment__form__item {
 	margin: 20px 20px 0 20px;
+}
+
+.blog__details__comment__form .btn {
+	width: 130px;
+	float: right;
 }
 
 /*---------------------

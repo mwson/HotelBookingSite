@@ -18,6 +18,12 @@ public class CommentServiceImpl implements CommentService {
 	
 	// "사용자, 공지사항 댓글" 조회
 	@Override
+	public NoticeCommentVO getComment(NoticeCommentVO vo) {
+		return commentDao.getComment(vo);
+	}
+	
+	// "사용자, 공지사항 댓글" 목록 조회
+	@Override
 	public List<NoticeCommentVO> getCommentList(int nseq) {
 		return commentDao.getCommentList(nseq);
 	}
@@ -28,7 +34,7 @@ public class CommentServiceImpl implements CommentService {
 		return commentDao.countCommentList(nseq);
 	}
 	
-	// "사용자, 공지사항 댓글" 조회 및 페이징
+	// "사용자, 공지사항 댓글" 목록 조회 및 페이징
 	@Override
 	public List<NoticeCommentVO> getCommentListWithPaging(Criteria criteria, int nseq) {
 		return commentDao.getCommentListWithPaging(criteria, nseq);
@@ -48,8 +54,8 @@ public class CommentServiceImpl implements CommentService {
 	
 	// "사용자, 공지사항 댓글" 삭제
 	@Override
-	public int deleteComment(int ncseq) {
-		return commentDao.deleteComment(ncseq);
+	public int deleteComment(NoticeCommentVO vo) {
+		return commentDao.deleteComment(vo);
 	}
 
 }
