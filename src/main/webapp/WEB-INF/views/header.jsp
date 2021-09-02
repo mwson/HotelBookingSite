@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <ul class="header__top__widget">
-                            <li><span class="icon_pin_alt"></span> 서울시 용산구 OOO</li>
+                            <li><span class="icon_pin_alt"></span> 서울시 용산구 호텔그린</li>
                             <li><span class="icon_phone"></span> 02-1234-5678</li>
                         </ul>
                     </div>

@@ -9,7 +9,7 @@
 			<h1 class="h3 d-inline align-middle">Q&amp;A목록</h1>
 		</div>
 		
-		<form method="post" id="qna_form" name="qna_form">        
+		<form method="get" id="qna_form" name="qna_form">        
 			<div class="row">
 				<div class="col-8 col-lg-9">
 					<div class="card">
@@ -30,26 +30,38 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${qnaList}" var="qnaVO">
-										<tr>  
-											<td>
-												<c:choose>
-													<c:when test='${qnaVO.rep=="1"}'>
-														<input type="checkbox" id="rep" name="rep" disabled="disabled"> <span style="color: #dc3545">미 처리</span>
-													</c:when>
-							
-													<c:otherwise>
-														<input type="checkbox" checked="checked" disabled="disabled"> <span style="color: #3b7ddd">처리완료</span>
-													</c:otherwise>
-												</c:choose>			
-											</td>
-											<td>${qnaVO.qseq}</td>
-											<td><a href="admin_qna_detail?qseq=${qnaVO.qseq}">${qnaVO.subject}</a></td>      
-											<td>${qnaVO.name}</td>
-											<td>${qnaVO.id}</td>
-											<td><fmt:formatDate value="${qnaVO.indate}"/></td>
-										</tr>
-									</c:forEach>
+                                	<c:choose>
+                                        <c:when test="${qnaListSize<=0}">
+                                            <tr>
+                                                <td colspan="6">
+													Q&amp;A목록이 없습니다.
+                                                </td>      
+                                            </tr>
+                                        </c:when>
+                                        
+                                        <c:otherwise>
+											<c:forEach items="${qnaList}" var="qnaVO">
+												<tr>  
+													<td>
+														<c:choose>
+															<c:when test='${qnaVO.rep=="1"}'>
+																<input type="checkbox" id="rep" name="rep" disabled="disabled"> <span style="color: #dc3545">미 처리</span>
+															</c:when>
+									
+															<c:otherwise>
+																<input type="checkbox" checked="checked" disabled="disabled"> <span style="color: #3b7ddd">처리완료</span>
+															</c:otherwise>
+														</c:choose>			
+													</td>
+													<td>${qnaVO.qseq}</td>
+													<td><a href="admin_qna_detail?qseq=${qnaVO.qseq}">${qnaVO.subject}</a></td>      
+													<td>${qnaVO.name}</td>
+													<td>${qnaVO.id}</td>
+													<td><fmt:formatDate value="${qnaVO.indate}"/></td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>    
+                                	</c:choose>
 								</tbody>
 							</table>
 						</div>

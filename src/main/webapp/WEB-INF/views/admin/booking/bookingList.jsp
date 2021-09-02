@@ -9,7 +9,7 @@
 			<h1 class="h3 d-inline align-middle">예약목록</h1>
 		</div>
 		
-        <form method="post" id="booking_list_form" name="booking_list_form">         
+        <form method="get" id="booking_list_form" name="booking_list_form">         
 			<div class="row">
 				<div class="col-8 col-lg-9">
 					<div class="card">
@@ -32,42 +32,54 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${bookingList}" var="bookingVO">
-										<tr>  
-											<td>
-												<c:choose>
-													<c:when test='${bookingVO.cancel=="2"}'>
-														<input type="checkbox" checked="checked" disabled="disabled"> <span style="color: #dc3545">예약취소</span>
-													</c:when>
-												
-													<c:otherwise>
+                                	<c:choose>
+                                        <c:when test="${bookingListSize<=0}">
+                                            <tr>
+                                                <td colspan="8">
+													예약목록이 없습니다.
+                                                </td>      
+                                            </tr>
+                                        </c:when>
+                                        
+                                        <c:otherwise>
+											<c:forEach items="${bookingList}" var="bookingVO">
+												<tr>  
+													<td>
 														<c:choose>
-															<c:when test='${bookingVO.result=="1"}'>
-																<input type="checkbox" id="result" name="result" value="${bookingVO.bseq}"> <span style="color: #dc3545">예약대기</span>
+															<c:when test='${bookingVO.cancel=="2"}'>
+																<input type="checkbox" checked="checked" disabled="disabled"> <span style="color: #dc3545">예약취소</span>
 															</c:when>
-									
+														
 															<c:otherwise>
-																<input type="checkbox" checked="checked" disabled="disabled"> <span style="color: #3b7ddd">예약완료</span>
+																<c:choose>
+																	<c:when test='${bookingVO.result=="1"}'>
+																		<input type="checkbox" id="result" name="result" value="${bookingVO.bseq}"> <span style="color: #dc3545">예약대기</span>
+																	</c:when>
+											
+																	<c:otherwise>
+																		<input type="checkbox" checked="checked" disabled="disabled"> <span style="color: #3b7ddd">예약완료</span>
+																	</c:otherwise>
+																</c:choose>			
 															</c:otherwise>
-														</c:choose>			
-													</c:otherwise>
-												</c:choose>
-											</td>    
-											<td>${bookingVO.bseq}</td>      
-											<td>${bookingVO.name}</td>
-											<td>
-												<input type="hidden" value="<fmt:parseDate value="${bookingVO.checkin}" pattern="yyyy-MM-dd HH:mm:ss" var="checkin"/>">
-												<fmt:formatDate value="${checkin}" pattern="yyyy. M. dd"/>
-											</td>
-											<td>
-												<input type="hidden" value="<fmt:parseDate value="${bookingVO.checkout}" pattern="yyyy-MM-dd HH:mm:ss" var="checkout"/>">
-												<fmt:formatDate value="${checkout}" pattern="yyyy. M. dd"/>
-											</td>
-											<td>${bookingVO.type}</td>
-											<td>${bookingVO.people}명</td>
-											<td><a href="admin_booking_detail?bseq=${bookingVO.bseq}">조회</a></td>
-										</tr>
-									</c:forEach>
+														</c:choose>
+													</td>    
+													<td>${bookingVO.bseq}</td>      
+													<td>${bookingVO.name}</td>
+													<td>
+														<input type="hidden" value="<fmt:parseDate value="${bookingVO.checkin}" pattern="yyyy-MM-dd HH:mm:ss" var="checkin"/>">
+														<fmt:formatDate value="${checkin}" pattern="yyyy. M. dd"/>
+													</td>
+													<td>
+														<input type="hidden" value="<fmt:parseDate value="${bookingVO.checkout}" pattern="yyyy-MM-dd HH:mm:ss" var="checkout"/>">
+														<fmt:formatDate value="${checkout}" pattern="yyyy. M. dd"/>
+													</td>
+													<td>${bookingVO.type}</td>
+													<td>${bookingVO.people}명</td>
+													<td><a href="admin_booking_detail?bseq=${bookingVO.bseq}">조회</a></td>
+												</tr>
+											</c:forEach>
+                                        </c:otherwise>    
+                                	</c:choose>
 								</tbody>
 							</table>
 						</div>

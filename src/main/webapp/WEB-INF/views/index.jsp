@@ -146,13 +146,13 @@
             </div>
             <div class="col-lg-3 p-0 order-lg-2 col-md-6 order-md-2">
                 <div class="latest__blog__text">
-                    <div class="label">${noticeVO1.kind}</div>
-                    <h5>${noticeVO1.subject}</h5>
+                    <div class="label">${pList1.kind}</div>
+                    <h5>${pList1.subject}</h5>
 					<p>
                     	<i class="fa fa-clock-o"></i>
-                    	<fmt:formatDate value="${noticeVO1.indate}" type="date"/>
+                    	<fmt:formatDate value="${pList1.indate}" type="date"/>
                     </p>
-                    <a href="notice_detail?nseq=${noticeVO1.nseq}">상세보기</a>
+                    <a href="notice_detail?nseq=${pList1.nseq}">상세보기</a>
                 </div>
             </div>
             <div class="col-lg-3 p-0 order-lg-3 col-md-6 order-md-4">
@@ -160,13 +160,13 @@
             </div>
             <div class="col-lg-3 p-0 order-lg-4 col-md-6 order-md-3">
                 <div class="latest__blog__text">
-                    <div class="label">${noticeVO2.kind}</div>
-                    <h5>${noticeVO2.subject}</h5>
+                    <div class="label">${pList2.kind}</div>
+                    <h5>${pList2.subject}</h5>
                     <p>
                     	<i class="fa fa-clock-o"></i>
-                    	<fmt:formatDate value="${noticeVO2.indate}" type="date"/>
+                    	<fmt:formatDate value="${pList2.indate}" type="date"/>
                     </p>
-                    <a href="notice_detail?nseq=${noticeVO2.nseq}">상세보기</a>
+                    <a href="notice_detail?nseq=${pList2.nseq}">상세보기</a>
                 </div>
             </div>
             <div class="col-lg-3 p-0 order-lg-6 col-md-6 order-md-5">
@@ -175,13 +175,13 @@
             </div>
             <div class="col-lg-3 p-0 order-lg-5 col-md-6 order-md-6">
                 <div class="latest__blog__text">
-                    <div class="label">${noticeVO3.kind}</div>
-                    <h5>${noticeVO3.subject}</h5>
+                    <div class="label">${nList1.kind}</div>
+                    <h5>${nList1.subject}</h5>
 					<p>
                     	<i class="fa fa-clock-o"></i>
-                    	<fmt:formatDate value="${noticeVO3.indate}" type="date"/>
+                    	<fmt:formatDate value="${nList1.indate}" type="date"/>
                     </p>
-                    <a href="notice_detail?nseq=${noticeVO3.nseq}">상세보기</a>
+                    <a href="notice_detail?nseq=${nList1.nseq}">상세보기</a>
                 </div>
             </div>
             <div class="col-lg-3 p-0 order-lg-8 col-md-6 order-md-8">
@@ -190,13 +190,13 @@
             </div>
             <div class="col-lg-3 p-0 order-lg-7 col-md-6 order-md-7">
                 <div class="latest__blog__text">
-                    <div class="label">${noticeVO4.kind}</div>
-                    <h5>${noticeVO4.subject}</h5>
+                    <div class="label">${nList2.kind}</div>
+                    <h5>${nList2.subject}</h5>
 					<p>
                     	<i class="fa fa-clock-o"></i>
-                    	<fmt:formatDate value="${noticeVO4.indate}" type="date"/>
+                    	<fmt:formatDate value="${nList2.indate}" type="date"/>
                     </p>
-                    <a href="notice_detail?nseq=${noticeVO4.nseq}">상세보기</a>
+                    <a href="notice_detail?nseq=${nList2.nseq}">상세보기</a>
                 </div>
             </div>
 		</div>

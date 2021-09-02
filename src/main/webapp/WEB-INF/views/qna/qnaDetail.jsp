@@ -54,15 +54,14 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="content">문의내역</label>
-                                    <textarea class="form-control mb-3" rows="8" id="content" name="content" readonly>${qnaVO.content}</textarea>
+                                    <textarea class="form-control mb-3" id="content" name="content" rows="6" readonly>${qnaVO.content}</textarea>
                                 </div>
                             </div>
                         </div>
-                        <hr class="mb-4">
                         <div class="qnaView_form_a">
                             <h5 class="mb-2">답변내역</h5>
                             <div class="qnaView_a_textarea">
-                                <textarea class="form-control mb-3" rows="8" readonly><c:choose><c:when test="${qnaVO.rep==1}">미 답변 상태입니다.</c:when><c:when test="${qnaVO.rep==2}">${qnaVO.reply}</c:when></c:choose></textarea>
+                                <textarea class="form-control mb-3" rows="6" readonly><c:choose><c:when test="${qnaVO.rep==1}">미 답변 상태입니다.</c:when><c:when test="${qnaVO.rep==2}">${qnaVO.reply}</c:when></c:choose></textarea>
                             </div>
                         </div>
                     </div>

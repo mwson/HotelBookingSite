@@ -182,26 +182,36 @@
 	// "사용자, 공지사항" 댓글 등록	
 	function save_comment() {
 		if(confirm("댓글을 등록 하시겠습니까?")) {
-			$.ajax({
-				type: 'POST',
-				url: 'comments/save',
-				data: $("#commentForm").serialize(),
-				success: function(data) {
-					if(data == 'success') {
-						alert("댓글이 등록 되었습니다.");
-						
-						getCommentList();
-						$("#content").val("");
-					} else if(data == 'fail') {
-						alert("등록에 실패하였습니다.");
-					} else if(data == 'not_logged_in') {
-						alert("등록은 로그인이 필요합니다.");
+			if($("#content").val() == "") {
+				alert("댓글을 입력해주세요.");
+				
+				return false;
+			} else {
+				$.ajax({
+					type: 'POST',
+					url: 'comments/save',
+					data: $("#commentForm").serialize(),
+					success: function(data) {
+						if(data == 'success') {
+							alert("댓글이 등록 되었습니다.");
+							
+							getCommentList();
+							$("#content").val("");
+						} else if(data == 'fail') {
+							alert("등록에 실패하였습니다.");
+							
+							return false;
+						} else if(data == 'not_logged_in') {
+							alert("등록은 로그인이 필요합니다.");
+							
+							return false;
+						}
+					},
+					error: function(request, status, error) {
+						alert("error: " + error);
 					}
-				},
-				error: function(request, status, error) {
-					alert("error: " + error);
-				}
-			});
+				});
+			}
 		} else {
 			alert("댓글 등록이 취소되었습니다.");
 			
@@ -230,32 +240,46 @@
 	}
 	
 	// "사용자, 공지사항" 댓글 수정
-	function update_comment(ncseq, nseq) {		
+	function update_comment(ncseq, nseq) {
 		if(confirm("댓글을 수정 하시겠습니까?")) {
-			$.ajax({
-				type: 'POST',
-				url: 'comments/update',
-				data: {ncseq : ncseq,
-					nseq : nseq,
-					content : $('#update_content').val()},
-				success: function(data) {
-					if(data == 'success') {
-						alert("댓글이 수정 되었습니다.");
-						
-						getCommentList();
-						$("#content").val("");
-					} else if(data == 'fail') {
-						alert("수정에 실패하였습니다.");
-					} else if(data == 'not_logged_in') {
-						alert("수정은 로그인이 필요합니다.");
-					} else if(data == 'verification_failed') {
-						alert("수정은 작성한 아이디로 가능합니다.");
+			if($("#update_content").val() == "") {
+				alert("댓글을 입력해주세요.");
+				
+				return false;
+			} else {
+				$.ajax({
+					type: 'POST',
+					url: 'comments/update',
+					data: {
+						ncseq : ncseq,
+						nseq : nseq,
+						content : $('#update_content').val()
+					},
+					success: function(data) {
+						if(data == 'success') {
+							alert("댓글이 수정 되었습니다.");
+							
+							getCommentList();
+							$("#content").val("");
+						} else if(data == 'fail') {
+							alert("수정에 실패하였습니다.");
+							
+							return false;
+						} else if(data == 'not_logged_in') {
+							alert("수정은 로그인이 필요합니다.");
+							
+							return false;
+						} else if(data == 'verification_failed') {
+							alert("수정은 작성한 아이디로 가능합니다.");
+							
+							return false;
+						}
+					},
+					error: function(request, status, error) {
+						alert("error: " + error);
 					}
-				},
-				error: function(request, status, error) {
-					alert("error: " + error);
-				}
-			});
+				});
+			}
 		} else {
 			alert("댓글 수정이 취소되었습니다.");
 			
@@ -269,8 +293,10 @@
 			$.ajax({
 				type: 'POST',
 				url: 'comments/delete',
-				data: {ncseq : ncseq,
-					nseq : nseq},
+				data: {
+					ncseq : ncseq,
+					nseq : nseq
+				},
 				success: function(data) {
 					if(data == 'success') {
 						alert("댓글이 삭제 되었습니다.");
@@ -279,10 +305,16 @@
 						$("#content").val("");
 					} else if(data == 'fail') {
 						alert("삭제에 실패하였습니다.");
+						
+						return false;
 					} else if(data == 'not_logged_in') {
 						alert("삭제는 로그인이 필요합니다.");
+						
+						return false;
 					} else if(data == 'verification_failed') {
 						alert("삭제는 작성한 아이디로 가능합니다.");
+						
+						return false;
 					}
 				},
 				error: function(request, status, error) {

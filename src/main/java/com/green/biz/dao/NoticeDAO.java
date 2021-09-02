@@ -16,6 +16,16 @@ public class NoticeDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	// "사용자, 메인" 하단 프로모션 조회
+	public List<NoticeVO> getPromotionIndexBottomList() {
+		return mybatis.selectList("NoticeDAO.getPromotionIndexBottomList");
+	}
+	
+	//"사용자, 메인" 하단 공지사항 조회
+	public List<NoticeVO> getNoticeIndexBottomList() {
+		return mybatis.selectList("NoticeDAO.getNoticeIndexBottomList");
+	}
+	
 	// "사용자 및 관리자, 공지사항" 조회
 	public List<NoticeVO> listNotice() {
 		return mybatis.selectList("NoticeDAO.listNotice");

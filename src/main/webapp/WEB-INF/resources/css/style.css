@@ -2528,6 +2528,7 @@ ol {
 		right: 10px;
 	}
 }
+
 @media only screen and (min-width: 1200px) {
 	.container {
 		max-width: 1200px;
@@ -2570,7 +2571,7 @@ ol {
 }
 
 /*
- * join, updateMember, login, findIdAndPassword, booking
+ * join, updateMember, login, findIdAndPassword, notice, booking
  * fna, order, cart, qna
  */
 .contract .contract_form .contract_form_text,
@@ -2582,6 +2583,7 @@ ol {
 .findIdAndPassword .findPw_form,
 .findIdResult .findIdResult_form,
 .findPwdResult .findPwdResult_form,
+.noticeList_form_empty,
 .bookingPayment__left .bookingPayment__left__detail,
 .bookingPayment__right .bookingPayment__right__detail,
 .bookingComplete .bookingComplete_form .bookingComplete_form_color,

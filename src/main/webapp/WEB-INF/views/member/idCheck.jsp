@@ -19,10 +19,10 @@
 	    <h3 class="mb-5">아이디 중복확인</h3>
 	    <div style="padding: 0 5%;">
 	        <div class="idCheck_form">
-	            <form method="post" name="formm" id="theform" action="id_check_form">
+	            <form method="post" action="id_check_form">
 	                <div class="idSearch">
 	                    <div class="idSearch_input">
-							아이디 <input type="text" name="id" size="19" value="${id}"> 
+							아이디 <input type="text" id="id" name="id" size="19" value="${id}"> 
 	                    </div>
 	                    <div class="idSearch_button">
 	                        <input type="submit" class="btn btn-primary btn-sm btn-block" value="검색">
@@ -33,7 +33,7 @@
 	                    <div class="idSearch_result">
 	                        <div class="idSearch_result_fail">
 	                            <script type="text/javascript">
-	                                opener.document.formm.id.value="";
+	                                opener.document.join_form.id.value="";
 	                            </script>
 	                            <br>
 	                            ${id}는 이미 사용 중인 아이디입니다.
@@ -69,8 +69,8 @@
 	
 	<script type="text/javascript">
 		function idok() {
-			opener.formm.id.value="${id}"; 
-			opener.formm.reid.value="${id}";
+			opener.document.join_form.id.value="${id}"; 
+			opener.document.join_form.reid.value="${id}";
 			self.close();
 		}
 	</script>

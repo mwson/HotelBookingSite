@@ -16,6 +16,18 @@ public class NoticeServiceImpl implements NoticeService {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
+	// "사용자, 메인" 하단 프로모션 조회
+	@Override
+	public List<NoticeVO> getPromotionIndexBottomList() {
+		return noticeDAO.getPromotionIndexBottomList();
+	}
+	
+	//"사용자, 메인" 하단 공지사항 조회
+	@Override
+	public List<NoticeVO> getNoticeIndexBottomList() {
+		return noticeDAO.getNoticeIndexBottomList();
+	}
+	
 	// "사용자 및 관리자, 공지사항" 조회
 	@Override
 	public List<NoticeVO> listNotice() {

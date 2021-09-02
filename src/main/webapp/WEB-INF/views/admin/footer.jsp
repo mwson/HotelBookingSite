@@ -26,7 +26,6 @@
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.slicknav.js"></script>
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/admin/admin.min.js"></script>
 
     <script type="text/javascript" src="admin/admin.js"></script>

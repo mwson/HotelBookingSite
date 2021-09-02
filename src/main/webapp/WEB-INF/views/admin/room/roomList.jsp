@@ -9,7 +9,7 @@
 			<h1 class="h3 d-inline align-middle">객실목록</h1>
 		</div>
 		
-        <form method="post" id="room_list_form" name="room_list_form">         
+        <form method="get" id="room_list_form" name="room_list_form">         
 			<div class="row">
 				<div class="col-8 col-lg-9">
 					<div class="card">
@@ -34,8 +34,8 @@
                                 	<c:choose>
                                         <c:when test="${roomListSize<=0}">
                                             <tr>
-                                                <td colspan="5">
-													등록된 상품이 없습니다.
+                                                <td colspan="6">
+													객실목록이 없습니다.
                                                 </td>      
                                             </tr>
                                         </c:when>

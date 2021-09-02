@@ -115,8 +115,10 @@ public class AdminController {
 			int totalCount = bookingService.adminCountBookingList(key);
 			pageMaker.setTotalCount(totalCount);
 			
+			model.addAttribute("bookingListSize", bookingList.size());
 			model.addAttribute("bookingList", bookingList);
 			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("key", key);
 			
 			return "admin/booking/bookingList";
 		}
@@ -204,6 +206,7 @@ public class AdminController {
 			model.addAttribute("roomListSize", roomList.size());
 			model.addAttribute("roomList", roomList);
 			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("key", key);
 			
 			return "admin/room/roomList";
 		}
@@ -369,8 +372,10 @@ public class AdminController {
 			int totalCount = noticeService.countNoticeList(key);
 			pageMaker.setTotalCount(totalCount);
 			
+			model.addAttribute("noticeListSize", noticeList.size());
 			model.addAttribute("noticeList", noticeList);
 			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("key", key);
 
 			return "admin/notice/noticeList";
 		}
@@ -531,8 +536,10 @@ public class AdminController {
 			int totalCount = qnaService.adminCountQnaList(key);
 			pageMaker.setTotalCount(totalCount);
 			
+			model.addAttribute("qnaListSize", qnaList.size());
 			model.addAttribute("qnaList", qnaList);
 			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("key", key);
 			
 			return "admin/qna/qnaList";
 		}
@@ -605,8 +612,10 @@ public class AdminController {
 			int totalCount = memberService.countMemberList(key);
 			pageMaker.setTotalCount(totalCount);
 			
+			model.addAttribute("memberListSize", memberList.size());
 			model.addAttribute("memberList", memberList);
 			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("key", key);
 			
 			return "admin/member/memberList";
 		}

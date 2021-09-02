@@ -51,7 +51,7 @@
                                 </div>
                                 <div>
                                     <label for="content">문의내용</label>
-                                    <textarea class="form-control" id="content" name="content" rows="8"></textarea>
+                                    <textarea class="form-control" id="content" name="content" rows="6"></textarea>
                                 </div>
                             </div>
                         </div>

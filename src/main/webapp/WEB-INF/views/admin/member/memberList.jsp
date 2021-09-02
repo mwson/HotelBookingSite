@@ -9,7 +9,7 @@
 			<h1 class="h3 d-inline align-middle">회원목록</h1>
 		</div>
 		
-        <form method="post" id="member_form" name="member_form">         
+        <form method="get" id="member_form" name="member_form">         
 			<div class="row">
 				<div class="col-8 col-lg-9">
 					<div class="card">
@@ -32,28 +32,40 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${memberList}" var="memberVO">
-										<tr>  
-											<td>
-												<c:choose>
-													<c:when test='${memberVO.useyn == "n"}'>
-														<input type="checkbox" id="useyn" name="useyn" disabled="disabled"> <span style="color: #dc3545">탈퇴회원</span>
-													</c:when>
-							
-													<c:otherwise>
-														<input type="checkbox" id="useyn" name="useyn" checked="checked" disabled="disabled"> <span style="color: #3b7ddd">회원</span>
-													</c:otherwise>
-												</c:choose>			
-											</td>    
-											<td>${memberVO.id}</td>      
-											<td>${memberVO.name}</td>
-											<td>${memberVO.email}</td>
-											<td>${memberVO.zip_num}</td>
-											<td>${memberVO.address}</td>
-											<td>${memberVO.phone}</td>
-											<td><fmt:formatDate value="${memberVO.regdate}"/></td>
-										</tr>
-									</c:forEach>
+									<c:choose>
+                                        <c:when test="${memberListSize<=0}">
+                                            <tr>
+                                                <td colspan="8">
+													회원목록이 없습니다.
+                                                </td>      
+                                            </tr>
+                                        </c:when>
+                                        
+                                        <c:otherwise>
+											<c:forEach items="${memberList}" var="memberVO">
+												<tr>  
+													<td>
+														<c:choose>
+															<c:when test='${memberVO.useyn == "n"}'>
+																<input type="checkbox" id="useyn" name="useyn" disabled="disabled"> <span style="color: #dc3545">탈퇴회원</span>
+															</c:when>
+									
+															<c:otherwise>
+																<input type="checkbox" id="useyn" name="useyn" checked="checked" disabled="disabled"> <span style="color: #3b7ddd">회원</span>
+															</c:otherwise>
+														</c:choose>			
+													</td>    
+													<td>${memberVO.id}</td>      
+													<td>${memberVO.name}</td>
+													<td>${memberVO.email}</td>
+													<td>${memberVO.zip_num}</td>
+													<td>${memberVO.address}</td>
+													<td>${memberVO.phone}</td>
+													<td><fmt:formatDate value="${memberVO.regdate}"/></td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>    
+                                	</c:choose>
 								</tbody>
 							</table>
 						</div>

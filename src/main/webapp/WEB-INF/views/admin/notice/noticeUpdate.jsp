@@ -75,7 +75,7 @@
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
-								<input type="button" class="btn btn-secondary btn-lg" value="상품목록" onClick="go_notice_list3()">
+								<input type="button" class="btn btn-secondary btn-lg" value="공지사항 목록" onClick="go_notice_list3()">
 							</div>
 						</div>
 					</div>

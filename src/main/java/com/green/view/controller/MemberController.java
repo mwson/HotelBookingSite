@@ -43,8 +43,14 @@ public class MemberController {
 			
 			// 이전 페이지에 대한 정보 저장
 			String referer = request.getHeader("Referer");
+			// 이전 정보가 로그인폼일 경우
+			String loginForm = "http://localhost:8181/biz/login_form";
 			
-			return "redirect:" + referer;
+			if(referer.equals(loginForm) || referer == null) {	
+				return "index";
+			} else {
+				return "redirect:" + referer;
+			}
 		} else {
 			// "사용자, 로그인" 로그인 실패
 			return "member/loginFail";

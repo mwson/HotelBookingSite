@@ -9,7 +9,7 @@
 			<h1 class="h3 d-inline align-middle">공지사항목록</h1>
 		</div>
 					
-		<form method="post" id="notice_form" name="notice_form">         
+		<form method="get" id="notice_form" name="notice_form">
 			<div class="row">
 				<div class="col-8 col-lg-9">
 					<div class="card">
@@ -28,14 +28,26 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${noticeList}" var="noticeVO">
-										<tr>  
-											<td>${noticeVO.nseq}</td>
-											<td>${noticeVO.kind}</td> 
-											<td><a href="admin_notice_detail?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></td>      
-											<td><fmt:formatDate value="${noticeVO.indate}"/></td>
-										</tr>
-									</c:forEach>
+                                	<c:choose>
+                                        <c:when test="${noticeListSize<=0}">
+                                            <tr>
+                                                <td colspan="4">
+													공지사항목록이 없습니다.
+                                                </td>      
+                                            </tr>
+                                        </c:when>
+                                        
+                                        <c:otherwise>
+											<c:forEach items="${noticeList}" var="noticeVO">
+												<tr>  
+													<td>${noticeVO.nseq}</td>
+													<td>${noticeVO.kind}</td> 
+													<td><a href="admin_notice_detail?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></td>      
+													<td><fmt:formatDate value="${noticeVO.indate}"/></td>
+												</tr>
+											</c:forEach>
+                                        </c:otherwise>    
+                                	</c:choose>
 								</tbody>
 							</table>
 						</div>
@@ -53,7 +65,7 @@
 						</div>
 						<div class="card-body">
 							<div class="btn-group col-12 col-lg-12">
-								<input type="text" class="form-control" id="key" name="key">
+								<input type="text" class="form-control" id="key" name="key" value="${key}">
 								<input type="button" class="btn btn-secondary" value="검색" onclick="go_search_notice()">
 							</div>
 						</div>

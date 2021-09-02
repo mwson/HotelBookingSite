@@ -20,14 +20,24 @@ public class HomeController {
 	// "사용자, 메인" 화면
 	@RequestMapping(value = "/index", method=RequestMethod.GET)
 	public String index(Model model) {
-		List<NoticeVO> noticeList = noticeService.getNoticeBottomList();
-		int count = 1;
+		// "사용자, 메인" 하단 프로모션 조회
+		List<NoticeVO> promotionList = noticeService.getPromotionIndexBottomList();
+		int pCount = 1;
 		
-		for(NoticeVO vo : noticeList) {
-			model.addAttribute(("noticeVO" + count), vo);
-			count++;
+		for(NoticeVO pList : promotionList) {
+			model.addAttribute(("pList" + pCount), pList);
+			pCount++;
 		}
-
+		
+		// "사용자, 메인" 하단 공지사항 조회
+		List<NoticeVO> noticeList = noticeService.getNoticeIndexBottomList();
+		int nCount = 1;
+		
+		for(NoticeVO nList : noticeList) {
+			model.addAttribute(("nList" + nCount), nList);
+			nCount++;
+		}
+		
 		return "index";
 	}
 

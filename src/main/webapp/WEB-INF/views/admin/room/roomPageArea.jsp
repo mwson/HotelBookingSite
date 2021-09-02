@@ -5,18 +5,18 @@
 	<ul>
 		<c:if test="${pageMaker.prev}">
 			<li class="paginate_button previous">
-				<a href="admin_room_list${pageMaker.makeQuery(pageMaker.startPage-1)}">[이전]</a>
+				<a href="admin_room_list${pageMaker.makeQuery(pageMaker.startPage-1)}&key=${key}">[이전]</a>
 			</li>
 		</c:if>
 		
 		<!-- [1][2][3].. 처리 -->
 		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
-			<a href="admin_room_list${pageMaker.makeQuery(index)}">[${index}]</a>
+			<a href="admin_room_list${pageMaker.makeQuery(index)}&key=${key}">[${index}]</a>
 		</c:forEach>
 		
 		<c:if test="${pageMaker.next}">
 			<li class="paginate_button next">
-				<a href="admin_room_list${pageMaker.makeQuery(pageMaker.endPage+1)}">[다음]</a>
+				<a href="admin_room_list${pageMaker.makeQuery(pageMaker.endPage+1)}&key=${key}">[다음]</a>
 			</li>
 		</c:if>		
 	</ul>

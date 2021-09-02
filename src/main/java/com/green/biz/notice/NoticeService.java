@@ -7,6 +7,12 @@ import com.green.biz.utils.Criteria;
 
 public interface NoticeService {
 	
+	// "사용자, 메인" 하단 프로모션 조회
+	public List<NoticeVO> getPromotionIndexBottomList();
+	
+	//"사용자, 메인" 하단 공지사항 조회
+	public List<NoticeVO> getNoticeIndexBottomList();
+	
 	// "사용자 및 관리자, 공지사항" 조회
 	public List<NoticeVO> listNotice();
 	

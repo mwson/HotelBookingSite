@@ -33,8 +33,10 @@ public class NoticeController {
 		int totalCount = noticeService.countNoticeList(key);
 		pageMaker.setTotalCount(totalCount);
 		
+		model.addAttribute("noticeListSize", noticeList.size());
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("key", key);
 
 		return "serviceCenter/noticeList";
 	}

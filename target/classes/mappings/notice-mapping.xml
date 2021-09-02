@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="NoticeDAO">
+	<!-- "사용자, 메인" 하단 프로모션 조회 -->
+	<select id="getPromotionIndexBottomList" resultType="notice">
+		<![CDATA[
+		SELECT *
+		FROM notice
+		WHERE kind='프로모션'
+		    AND ROWNUM <= 2
+		ORDER BY nseq DESC
+		]]>
+	</select>
+	
+	<!-- "사용자, 메인" 하단 공지사항 조회 -->
+	<select id="getNoticeIndexBottomList" resultType="notice">
+		<![CDATA[
+		SELECT *
+		FROM notice
+		WHERE kind='공지사항'
+		    AND ROWNUM <= 2
+		ORDER BY nseq DESC
+		]]>
+	</select>
+	
 	<!-- "사용자 및 관리자, 공지사항" 조회 -->
 	<select id="listNotice" resultType="notice">
 		SELECT *

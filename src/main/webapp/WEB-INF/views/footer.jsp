@@ -31,19 +31,10 @@
                             <div class="footer__about">
                                 <h4>02-1234-5678</h4>
                                 <ul>
-                                    <li>서울시 용산구 OOO</li>
+                                    <li>서울시 용산구 호텔그린</li>
                                     <li>(우 : 12345)</li>
                                     <li>green.reserve@email.com</li>
                                 </ul>
-                            </div>
-                            <div class="footer__social">
-                                <h5>SOCIAL</h5>
-                                <div class="footer__social__links">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-	                                <a href="#"><i class="fa fa-twitter"></i></a>
-	                                <a href="#"><i class="fa fa-linkedin"></i></a>
-	                                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,7 +44,7 @@
                 <div class="row">
                     <div class="col-lg-7 col-md-7">
                         <div class="footer__copyright__text">
-                            <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made by Colorlib</p>
+							<p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> The Green. All rights reserved</p>
                         </div>
                     </div>
                 </div>
