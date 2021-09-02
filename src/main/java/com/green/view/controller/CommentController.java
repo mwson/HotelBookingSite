@@ -54,7 +54,7 @@ public class CommentController {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
-			return "not_loggedin";
+			return "not_logged_in";
 		} else {
 			String writer = loginUser.getName() + "(" + loginUser.getId() + ")";
 			vo.setWriter(writer);
@@ -73,7 +73,7 @@ public class CommentController {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
-			return "not_loggedin";
+			return "not_logged_in";
 		} else {
 			NoticeCommentVO noticeCommentVO = commentService.getComment(vo);
 			String writer = loginUser.getName() + "(" + loginUser.getId() + ")";
@@ -96,7 +96,7 @@ public class CommentController {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
-			return "not_loggedin";
+			return "not_logged_in";
 		} else {
 			NoticeCommentVO noticeCommentVO = commentService.getComment(vo);
 			String writer = loginUser.getName() + "(" + loginUser.getId() + ")";
