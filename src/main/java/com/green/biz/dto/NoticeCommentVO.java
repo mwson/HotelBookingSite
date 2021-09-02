@@ -6,10 +6,9 @@ public class NoticeCommentVO {
 	
 	private int ncseq;
 	private int nseq;
-	private String content;
 	private String writer;
-	private Date regDate;
-	private Date modifyDate;
+	private String content;
+	private Date regdate;
 	
 	public int getNcseq() {
 		return ncseq;
@@ -25,13 +24,6 @@ public class NoticeCommentVO {
 		this.nseq = nseq;
 	}
 	
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	
 	public String getWriter() {
 		return writer;
 	}
@@ -39,24 +31,24 @@ public class NoticeCommentVO {
 		this.writer = writer;
 	}
 	
-	public Date getRegDate() {
-		return regDate;
+	public String getContent() {
+		return content;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	
-	public Date getModifyDate() {
-		return modifyDate;
+	public Date getRegdate() {
+		return regdate;
 	}
-	public void setModifyDate(Date modifyDate) {
-		this.modifyDate = modifyDate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 	
 	@Override
 	public String toString() {
-		return "NoticeCommentVO [ncseq=" + ncseq + ", nseq=" + nseq + ", content=" + content + ", writer=" + writer
-				+ ", regDate=" + regDate + ", modifyDate=" + modifyDate + "]";
+		return "NoticeCommentVO [ncseq=" + ncseq + ", nseq=" + nseq + ", writer=" + writer + ", content=" + content
+				+ ", regdate=" + regdate + "]";
 	}
 
 }

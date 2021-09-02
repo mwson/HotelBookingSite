@@ -45,7 +45,7 @@
 		getCommentList();
 	});
 	
-	// 상품평 목록 불러오기
+	// "사용자, 공지사항" 댓글 목록 조회
 	function getCommentList() {
 		$.ajax({
 			type: 'GET',
@@ -66,9 +66,7 @@
 		});
 	}
 	
-	/* 
-	 * 상품평 페이지별 목록 요청
-	 */
+	// "사용자, 공지사항" 댓글 목록 페이징
 	function getCommentPaging(pagenum, rowsperpage, nseq) {
 		$.ajax({
 			type: 'GET',
@@ -92,43 +90,43 @@
 			}
 		});
 	}
-	 
+	
+	// "사용자, 공지사항" 댓글 목록 조회, 페이징 HTML
 	function showHTML(pageMaker, commentList, totalCount) {
 		var html = "";
 		var p_html = "";
 
 		if(commentList.length > 0) {
 			// 상품평의 각 항목별로 HTML 생성
-			$.each(commentList, function(index, item) {
+			$.each(commentList, function(index, item) {			
+				html += "<div id=ncseq" + item.ncseq + ">";
 				html += "<h5>" + item.writer + "</h5>";
-				html += "<span>" + displayTime(item.regDate) + "</span>";
-				html += "<div style='float: right;'>"
-				html += "<a href=''>수정</a><a href='javascript:delete_comment(" + item.ncseq + "," + item.nseq + ")'>삭제</a>";
-				html += "</div>"
+				html += "<span>" + displayTime(item.regdate) + "</span>";
+				html += "<div style='float: right;'>";
+				html += "<a href='javascript:update_comment_form(" + item.ncseq + "," + item.nseq + ",\"" + item.writer + "\"," + item.regdate + "," + item.content + ")'>수정</a>";
+				html += "<a href='javascript:delete_comment(" + item.ncseq + "," + item.nseq + ")'>삭제</a>";
+				html += "</div>";
 				html += "<p>" + item.content + "</p>";
-				html += "<hr>"
+				html += "<hr>";
+				html += "</div>";
 			});
 			
 			// 페이징 버튼 출력
 			if(pageMaker.prev == true) {
-				p_html += "<a href='javascript:getCommentPaging("
-					+ (pageMaker.startPage - 1) + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq}
-					+ ")'><span class=\"arrow_left\"></span> 이전</a>";
+				p_html += "<a href='javascript:getCommentPaging(" + (pageMaker.startPage - 1) + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq} + ")'>";
+				p_html += "<span class=\"arrow_left\"></span> 이전</a>";
 			}
 			 
 			for(var i = pageMaker.startPage; i <= pageMaker.endPage; i++) {
-				p_html += "<a href='javascript:getCommentPaging("
-	                 + i + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq} + ")'>" + i + "</a>";
+				p_html += "<a href='javascript:getCommentPaging(" + i + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq} + ")'>" + i + "</a>";
 			}
 			
 			if(pageMaker.next == true) {
-				p_html += "<a href='javascript:getCommentPaging("
-					+ (pageMaker.endPage + 1) + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq}
-					+ ")'>다음 <span class=\"arrow_right\"></span></a>";
+				p_html += "<a href='javascript:getCommentPaging(" + (pageMaker.endPage + 1) + "," + pageMaker.cri.rowsPerPage + "," + ${noticeVO.nseq} + ")'>";
+				p_html += "다음 <span class=\"arrow_right\"></span></a>";
 			}
 		} else { // 조회된 상품평이 없을 경우
-			html += "<h5>등록된 댓글이 없습니다.</h5>";
-			html += "<br>";
+			html += "<p>등록된 댓글이 없습니다.</p>";
 		}
 		
 		// 상풍평 갯수 출력
@@ -181,72 +179,119 @@
 		}
 	}
 	
-	// 댓글 등록	
+	// "사용자, 공지사항" 댓글 등록	
 	function save_comment() {
-		$.ajax({
-			type: 'POST',
-			url: 'comments/save',
-			data: $("#commentForm").serialize(),
-			success: function(data) {
-				if(data == 'success') {
-					getCommentList();
-					$("#content").val("");
-				} else if(data == 'fail') {
-					alert("등록에 실패하였습니다.");
-				} else if(data == 'not_loggedin') {
-					alert("등록은 로그인이 필요합니다.");
+		if(confirm("댓글을 등록 하시겠습니까?")) {
+			$.ajax({
+				type: 'POST',
+				url: 'comments/save',
+				data: $("#commentForm").serialize(),
+				success: function(data) {
+					if(data == 'success') {
+						alert("댓글이 등록 되었습니다.");
+						
+						getCommentList();
+						$("#content").val("");
+					} else if(data == 'fail') {
+						alert("등록에 실패하였습니다.");
+					} else if(data == 'not_logged_in') {
+						alert("등록은 로그인이 필요합니다.");
+					}
+				},
+				error: function(request, status, error) {
+					alert("error: " + error);
 				}
-			},
-			error: function(request, status, error) {
-				alert("error: " + error);
-			}
-		});
+			});
+		} else {
+			alert("댓글 등록이 취소되었습니다.");
+			
+			return false;
+		}
 	}
 	
-	// 댓글 수정
-	function update_comment() {
-		$.ajax({
-			type: 'POST',
-			url: 'comments/update',
-			data: $("#commentForm").serialize(),
-			success: function(data) {
-				if(data == 'success') {
-					getCommentList();
-					$("#content").val("");
-				} else if(data == 'fail') {
-					alert("수정에 실패하였습니다.");
-				} else if(data == 'not_loggedin') {
-					alert("수정은 로그인이 필요합니다.");
-				}
-			},
-			error: function(request, status, error) {
-				alert("error: " + error);
-			}
-		});
+	// "사용자, 공지사항" 댓글 수정 폼
+	function update_comment_form(ncseq, nseq, writer, regdate, content) {
+		var html = "";
+		
+		html += "<div id=ncseq" + ncseq + ">";
+		html += "<h5>" + writer + "</h5>";
+		html += "<span>" + displayTime(regdate) + "</span>";
+		html += "<div style='float: right;'>";
+		html += "<a href='javascript:update_comment(" + ncseq + "," + nseq + ")'>수정</a>";
+		html += "<a href='javascript:getCommentList()'>취소</a>";
+		html += "</div>";
+		html += "<textarea id='update_content' name='update_content' rows='3' cols='90' placeholder='댓글을 입력하세요.'>" + content + "</textarea>";
+		html += "<hr>";
+		html += "</div>";
+		
+		$("#ncseq" + ncseq).replaceWith(html);
+		$("#ncseq" + ncseq + " " + "#content").focus();
 	}
 	
-	// 댓글 삭제
+	// "사용자, 공지사항" 댓글 수정
+	function update_comment(ncseq, nseq) {		
+		if(confirm("댓글을 수정 하시겠습니까?")) {
+			$.ajax({
+				type: 'POST',
+				url: 'comments/update',
+				data: {ncseq : ncseq,
+					nseq : nseq,
+					content : $('#update_content').val()},
+				success: function(data) {
+					if(data == 'success') {
+						alert("댓글이 수정 되었습니다.");
+						
+						getCommentList();
+						$("#content").val("");
+					} else if(data == 'fail') {
+						alert("수정에 실패하였습니다.");
+					} else if(data == 'not_logged_in') {
+						alert("수정은 로그인이 필요합니다.");
+					} else if(data == 'verification_failed') {
+						alert("수정은 작성한 아이디로 가능합니다.");
+					}
+				},
+				error: function(request, status, error) {
+					alert("error: " + error);
+				}
+			});
+		} else {
+			alert("댓글 수정이 취소되었습니다.");
+			
+			return false;
+		}
+	}
+	
+	// "사용자, 공지사항" 댓글 삭제
 	function delete_comment(ncseq, nseq) {
-		$.ajax({
-			type: 'POST',
-			url: 'comments/delete',
-			data: {ncseq : ncseq,
-				nseq : nseq},
-			success: function(data) {
-				if(data == 'success') {
-					alert("댓글이 삭제 되었습니다.");
-					location.reload();
-				} else if(data == 'fail') {
-					alert("삭제에 실패하였습니다.");
-				} else if(data == 'not_loggedin') {
-					alert("삭제는 로그인이 필요합니다.");
-				} else if(data == 'verification_failed') {
-					alert("삭제는 작성한 아이디로 가능합니다.");
+		if(confirm("댓글을 삭제 하시겠습니까?")) {
+			$.ajax({
+				type: 'POST',
+				url: 'comments/delete',
+				data: {ncseq : ncseq,
+					nseq : nseq},
+				success: function(data) {
+					if(data == 'success') {
+						alert("댓글이 삭제 되었습니다.");
+						
+						getCommentList();
+						$("#content").val("");
+					} else if(data == 'fail') {
+						alert("삭제에 실패하였습니다.");
+					} else if(data == 'not_logged_in') {
+						alert("삭제는 로그인이 필요합니다.");
+					} else if(data == 'verification_failed') {
+						alert("삭제는 작성한 아이디로 가능합니다.");
+					}
+				},
+				error: function(request, status, error) {
+					alert("error: " + error);
 				}
-			},
-			error: function(request, status, error) {
-				alert("error: " + error);
-			}
-		});
+			});
+		} else {
+			alert("댓글 삭제가 취소되었습니다.");
+			
+			return false;
+		}
 	}
 </script>

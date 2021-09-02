@@ -27,8 +27,8 @@
 	<!-- "사용자, 공지사항 댓글" 목록 조회 및 페이징  -->
 	<select id="getCommentListWithPaging" parameterType="HashMap" resultType="noticeComment">
 		<![CDATA[
-		SELECT ncseq, nseq, content, writer, regdate, modifydate
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY regdate) rn, ncseq, nseq, content, writer, regdate, modifydate
+		SELECT ncseq, nseq, writer, content, regdate
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY regdate) rn, ncseq, nseq, writer, content, regdate
 			FROM notice_comment
 			WHERE nseq = #{nseq})
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
@@ -38,14 +38,14 @@
 	
 	<!-- "사용자, 공지사항 댓글" 등록 -->
 	<insert id="saveComment">
-		INSERT INTO notice_comment(ncseq, nseq, content, writer)
-		VALUES(notice_comment_seq.NEXTVAL, #{nseq}, #{content}, #{writer})
+		INSERT INTO notice_comment(ncseq, nseq, writer, content)
+		VALUES(notice_comment_seq.NEXTVAL, #{nseq}, #{writer}, #{content})
 	</insert>
 	
 	<!-- "사용자, 공지사항 댓글" 수정 -->
 	<update id="updateComment">
 		UPDATE notice_comment
-		SET content = #{content}, modifyDate = SYSDATE
+		SET content = #{content}, regdate = SYSDATE
 		WHERE ncseq = #{ncseq}
 			AND nseq = #{nseq}
 	</update>
