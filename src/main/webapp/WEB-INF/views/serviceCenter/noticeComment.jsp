@@ -103,7 +103,7 @@
 				html += "<h5>" + item.writer + "</h5>";
 				html += "<span>" + displayTime(item.regdate) + "</span>";
 				html += "<div style='float: right;'>";
-				html += "<a href='javascript:update_comment_form(" + item.ncseq + "," + item.nseq + ",\"" + item.writer + "\"," + item.regdate + "," + item.content + ")'>수정</a>";
+				html += "<a href='javascript:update_comment_form(" + item.ncseq + "," + item.nseq + ",\"" + item.writer + "\"," + item.regdate + ",\"" + item.content + "\")'>수정</a>";
 				html += "<a href='javascript:delete_comment(" + item.ncseq + "," + item.nseq + ")'>삭제</a>";
 				html += "</div>";
 				html += "<p>" + item.content + "</p>";
@@ -217,7 +217,7 @@
 		html += "<h5>" + writer + "</h5>";
 		html += "<span>" + displayTime(regdate) + "</span>";
 		html += "<div style='float: right;'>";
-		html += "<a href='javascript:update_comment(" + ncseq + "," + nseq + ")'>수정</a>";
+		html += "<a href='javascript:update_comment(" + ncseq + "," + nseq + ")'>등록</a>";
 		html += "<a href='javascript:getCommentList()'>취소</a>";
 		html += "</div>";
 		html += "<textarea id='update_content' name='update_content' rows='3' cols='90' placeholder='댓글을 입력하세요.'>" + content + "</textarea>";
@@ -225,7 +225,8 @@
 		html += "</div>";
 		
 		$("#ncseq" + ncseq).replaceWith(html);
-		$("#ncseq" + ncseq + " " + "#content").focus();
+		$("#ncseq" + ncseq + " " + "#update_content").focus();
+		$('#update_content')[0].setSelectionRange($('#update_content').val().length, $('#update_content').val().length);
 	}
 	
 	// "사용자, 공지사항" 댓글 수정
