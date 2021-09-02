@@ -20,7 +20,7 @@
                 <div class="room__details__content">
                     <div class="room__details__rating">
                         <div class="room__details__hotel">
-                            <span>Hotel</span>
+                            <span>별점</span>
                             <div class="room__details__hotel__rating">
                                 <span class="icon_star"></span>
                                 <span class="icon_star"></span>
@@ -38,106 +38,92 @@
                                 <span class="icon_star"></span>
                                 <span class="icon_star-half_alt"></span>
                             </div>
-                            <span class="review">(1000 Reviews)</span>
+                            <span class="review">(843개의 리뷰)</span>
                         </div>
                     </div>
                     <div class="room__details__title">
-                        <h2>Premium King Room</h2>
+                        <h2>슈페리어 룸</h2>
                         <a href="introduce_room" class="primary-btn">객실안내 목록</a>
                     </div>
                     <div class="room__details__desc">
-                        <h2>Description:</h2>
-                        <p>We’re halfway through the summer, but while plenty of people are kicking back and
-                            enjoying their vacations, the social media development teams likely aren’t doing the
-                            same. In the past two weeks alone, we’ve seen four big new updates that can directly
-                            impact the social marketing campaigns of hotels, resorts, and other businesses in the
-                            hospitality industry. Let’s take a close look at each one.</p>
-                        <p>The new desktop version of the site is significantly improved, which will make it easier
-                            for hotels and resorts to navigate the platform.</p>
-                        <p>There is one big change though that we want to note, and that’s the more live video and
-                            local moments (the latter of which are based on your location). These will be
-                            prioritized in users’ feeds, so take advantage of this and create this content to
-                            improve your reach and connect with more members of your target audience.</p>
-                        <p>We’ve gotten yet another new feature for Instagram Stories, and this time it’s the Chat
-                            sticker, which allows you to invite Story followers to join in on a new group chat.
-                            Instagram is currently advertising this as a way to jumpstart big group conversations or
-                            make plans.</p>
-                    </div>
+                        <h2>객실 소개:</h2>
+                        <p>그렌 호텔의 스탠다드 슈페리어 룸은
+							안정감을 주는 베이지그레이 및 화이트 컬러를 기본으로 한 화려한 분위기의 BABEY MOULTON 사,
+							모던한 감각에 세련된 오리엔탈 무드를 가미한 HBA 사의 각기 다른 두 종류의 인테리어 객실로 준비되어 있습니다.
+						</p>
+                        <p>넓고 쾌적한 객실과 다양한 스타일의 베드가 구성되어 있어, 가족 고객들의 ‘Stay – Vacation’ 으로 각광받고 있습니다.
+						</p>
+						<p>
+						새롭게 선보이는 객실 타입인 슈페리어 룸은 지금까지와는 다른 특별한 경험을 선사합니다.
+						탁 트인 객실에서 바라보는 매혹적인 서울의 모습은 당신이 또 다시 이곳을 떠올리게 만들 것입니다.
+						</p>
+                        </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="room__details__facilities">
-                                <h2>Others facilities:</h2>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <ul>
-                                            <li><span class="icon_check"></span> Takami Bridal Attire</li>
-                                            <li><span class="icon_check"></span> Esthetic Salon</li>
-                                            <li><span class="icon_check"></span> Multilingual staff</li>
-                                            <li><span class="icon_check"></span> Dry cleaning and laundry</li>
-                                            <li><span class="icon_check"></span> Credit cards accepted</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <ul>
-                                            <li><span class="icon_check"></span> Rent-a-car</li>
-                                            <li><span class="icon_check"></span> Reservation & confirmation</li>
-                                            <li><span class="icon_check"></span> Babysitter upon request</li>
-                                            <li><span class="icon_check"></span> 24-hour currency exchange</li>
-                                            <li><span class="icon_check"></span> 24-hour Manager on Duty</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="room__details__more__facilities">
-                                <h2>Most popular facilities:</h2>
+                            <div class="room__details__more__facilities">                           
+                                <h2>주요 시설:</h2>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="room__details__more__facilities__item">
                                             <div class="icon"><img src="img/rooms/details/facilities/fac-1.png"
                                                     alt=""></div>
-                                            <h6>Air Conditioning</h6>
+                                            <h6>자동 냉난방 시설</h6>
                                         </div>
                                         <div class="room__details__more__facilities__item">
                                             <div class="icon"><img src="img/rooms/details/facilities/fac-2.png"
                                                     alt=""></div>
-                                            <h6>Cable TV</h6>
+                                            <h6>스마트 TV(위성 TV 48개 채널)</h6>
                                         </div>
                                         <div class="room__details__more__facilities__item">
                                             <div class="icon"><img src="img/rooms/details/facilities/fac-3.png"
                                                     alt=""></div>
-                                            <h6>Free drinks</h6>
+                                            <h6>무료 음료</h6>
                                         </div>
                                         <div class="room__details__more__facilities__item">
                                             <div class="icon"><img src="img/rooms/details/facilities/fac-4.png"
                                                     alt=""></div>
-                                            <h6>Unlimited Wifi</h6>
+                                            <h6>무제한 Wifi</h6>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="room__details__more__facilities__item">
-                                            <div class="icon"><img src="img/rooms/details/facilities/fac-5.png"
-                                                    alt=""></div>
-                                            <h6>Restaurant quality</h6>
-                                        </div>
-                                        <div class="room__details__more__facilities__item">
                                             <div class="icon"><img src="img/rooms/details/facilities/fac-6.png"
                                                     alt=""></div>
-                                            <h6>Service 24/24</h6>
+                                            <h6>서비스 24/24</h6>
                                         </div>
                                         <div class="room__details__more__facilities__item">
                                             <div class="icon"><img src="img/rooms/details/facilities/fac-7.png"
                                                     alt=""></div>
-                                            <h6>Gym Centre</h6>
+                                            <h6>피트니스 센터 무료 이용</h6>
                                         </div>
-                                        <div class="room__details__more__facilities__item">
-                                            <div class="icon"><img src="img/rooms/details/facilities/fac-8.png"
-                                                    alt=""></div>
-                                            <h6>Spa & Wellness</h6>
-                                        </div>
+                                        
                                     </div>
                                 </div>
+                            </div>
+                        </div>                        
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="room__details__facilities">                           
+                                <h2>기타 시설:</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <ul>
+                                            <li><span class="icon_check"></span> Auto Window 설치</li>
+                                            <li><span class="icon_check"></span> 냉장고 겸용 미니바</li>
+                                            <li><span class="icon_check"></span> 비즈니스센터 이용가능</li>
+                                            <li><span class="icon_check"></span> 무료 주차장</li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ul>
+                                            <li><span class="icon_check"></span> 고급 카페트</li>
+                                            <li><span class="icon_check"></span> 드레스룸</li>
+                                            <li><span class="icon_check"></span> 업무용 책상</li>
+                                            <li><span class="icon_check"></span> 안전금고</li>
+
+                                        </ul>
+                                    </div>
+                                </div>                              
                             </div>
                         </div>
                     </div>
