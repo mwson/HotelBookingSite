@@ -35,6 +35,7 @@ public class MemberController {
 	public String loginAction(MemberVO vo, HttpServletRequest request, Model model) {
 		int result = memberService.memberCheck(vo);
 		MemberVO loginUser = null;
+		String referer = null;
 		
 		if(result == 1) {
 			loginUser = memberService.getMember(vo.getId());
@@ -42,11 +43,11 @@ public class MemberController {
 			model.addAttribute("loginUser", loginUser);
 			
 			// 이전 페이지에 대한 정보 저장
-			String referer = request.getHeader("Referer");
-			// 이전 페이지 정보가 로그인 폼일 경우
-			String loginForm = "http://localhost:8181/biz/login_form";
+			referer = request.getHeader("Referer");			
+			System.out.println(referer);
 			
-			if(referer.equals(loginForm) || referer == null) {	
+			// 문자열 자르기("http://localhost:8181/biz/") 후 이전 페이지 정보와 로그인 폼 비교
+			if(referer.substring(26).equals("login_form") || referer == null) {	
 				return "index";
 			} else {
 				return "redirect:" + referer;

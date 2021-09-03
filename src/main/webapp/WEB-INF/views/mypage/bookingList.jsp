@@ -58,9 +58,9 @@
                                                 <th style="width: 15%">예약번호</th>
 												<th style="width: 15%">체크인</th>
                                                 <th style="width: 15%">체크아웃</th>
-                                                <th style="width: 25%">방</th>
+                                                <th style="width: 20%">방</th>
                                                 <th style="width: 15%">예약일자</th>
-                                                <th style="width: 15%">예약상세</th>
+                                                <th style="width: 20%">예약상태(상세)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -80,7 +80,19 @@
                                                             <fmt:formatDate type="date" value="${bookingVO.indate}"/>
                                                         </td>      
                                                         <td>
-                                                            <a href="booking_detail?bseq=${bookingVO.bseq}">조회</a>
+															<c:choose>
+                                            					<c:when test='${bookingVO.result=="1"}'>
+                                                					<span class="review">
+                                                						<a href="booking_detail?bseq=${bookingVO.bseq}">예약대기(조회)</a>
+                                                					</span>
+                                            					</c:when>
+                                            					
+                                            					<c:otherwise>
+                                                					<span class="review">
+                                                						<a href="booking_detail?bseq=${bookingVO.bseq}">예약완료(조회)</a>
+                                                					</span>
+                                            					</c:otherwise>
+                                        					</c:choose>
                                                         </td>
                                                     </tr>
                                             </c:forEach> 

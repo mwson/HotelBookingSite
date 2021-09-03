@@ -341,9 +341,10 @@ ol {
 }
 
 .header__menu ul li {
+	font-family: 'Noto Sans KR', sans-serif;
 	list-style: none;
 	display: inline-block;
-	margin-right: 110px;
+	margin-right: 118px;
 	position: relative;
 }
 
@@ -383,9 +384,9 @@ ol {
 }
 
 .header__menu ul li .dropdown li a {
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
 	color: #ffffff;
-	font-weight: 400;
 	padding: 8px 20px;
 	text-transform: capitalize;
 }
@@ -502,6 +503,7 @@ ol {
 }
 
 .filter__form__item p {
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 18px;
 	color: #777C81;
 	margin-bottom: 24px;
@@ -638,7 +640,7 @@ ol {
 .home__room__item a {
 	font-size: 18px;
 	color: #ffffff;
-	font-family: "Barlow Condensed", sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	position: relative;
 	padding: 4px 0;
 	display: inline-block;
@@ -680,7 +682,7 @@ ol {
 }
 
 .home__room__title h2 {
-	font-size: 48px;
+	font-size: 36px;
 	color: #ffffff;
 	position: relative;
 	padding-left: 12px;
@@ -1169,6 +1171,7 @@ ol {
 }
 
 .footer__widget ul li a {
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 16px;
 	color: #777C81;
 	line-height: 30px;
@@ -1195,7 +1198,7 @@ ol {
 .footer__information .footer__about h4 {
 	color: #ffffff;
 	font-weight: 500;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 .footer__information .footer__about ul {
@@ -1203,6 +1206,7 @@ ol {
 }
 
 .footer__information .footer__about ul li {
+	font-family: 'Noto Sans KR', sans-serif;
 	list-style: none;
 	font-size: 16px;
 	color: #777C81;
@@ -2082,6 +2086,10 @@ ol {
 	border-radius: 2px;
 	display: inline-block;
 	padding: 4px 16px 4px;
+}
+
+.blog__hero__text h5 {
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .blog__hero__text h2 {
