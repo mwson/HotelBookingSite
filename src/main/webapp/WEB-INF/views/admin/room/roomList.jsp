@@ -21,12 +21,12 @@
 							<table class="table table-striped" style="text-align: center;">
 								<thead>
 									<tr>
+										<th style="width: 15%">사용유무</th> 
 										<th style="width: 10%">객실번호</th>
 										<th style="width: 35%">객실명</th>
-										<th style="width: 10%">인원</th>
+										<th style="width: 10%">수용인원</th>
 										<th style="width: 15%">가격</th>
 										<th style="width: 15%">등록일</th>
-                                        <th style="width: 15%">사용유무</th> 
 									</tr>
 								</thead>
 								
@@ -42,17 +42,8 @@
                                         
                                         <c:otherwise>
                                             <c:forEach items="${roomList}" var="roomVO">
-                                                <tr>  
-                                                    <td>${roomVO.rid}</td>    
-                                                    <td>
-                                                        <a href="admin_room_detail${pageMaker.makeQuery(pageMaker.cri.pageNum)}&rid=${roomVO.rid}">
-                                                            ${roomVO.type}
-                                                        </a>
-                                                    </td>
-													<td>${roomVO.people}</td>   
-                                                    <td><fmt:formatNumber type="currency" value="${roomVO.price}"/></td>
-                                                    <td><fmt:formatDate type="date" value="${roomVO.regdate}"/></td>
-                                                    <td>
+                                                <tr>
+                                                	<td>
                                                         <c:choose>
                                                             <c:when test='${roomVO.useyn=="y"}'>
 																<input type="checkbox" checked="checked" disabled="disabled"> <span style="color: #3b7ddd">사용</span>
@@ -63,6 +54,15 @@
                                                             </c:otherwise>
                                                         </c:choose>	
                                                     </td>
+                                                    <td>${roomVO.rid}</td>    
+                                                    <td>
+                                                        <a href="admin_room_detail${pageMaker.makeQuery(pageMaker.cri.pageNum)}&rid=${roomVO.rid}">
+                                                            ${roomVO.type}
+                                                        </a>
+                                                    </td>
+													<td>${roomVO.people}</td>   
+                                                    <td><fmt:formatNumber type="currency" value="${roomVO.price}"/></td>
+                                                    <td><fmt:formatDate type="date" value="${roomVO.regdate}"/></td>
                                                 </tr>
                                             </c:forEach>
                                         </c:otherwise>    

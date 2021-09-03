@@ -2,7 +2,7 @@
 
 <%@include file="header.jsp"%>
 	
-<section class="hero spad set-bg" data-setbg="img/hero.jpg">
+<section class="hero spad set-bg" data-setbg="images/hero.png">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -73,7 +73,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="home__about__pic">
-                    <img src="img/home-about/home-about.png" alt="">
+                    <img src="images/home-about/home-about.jpg" alt="메인소개">
                 </div>
             </div>
         </div>

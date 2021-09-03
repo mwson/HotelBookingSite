@@ -44,7 +44,6 @@ public class MemberController {
 			
 			// 이전 페이지에 대한 정보 저장
 			referer = request.getHeader("Referer");			
-			System.out.println(referer);
 			
 			// 문자열 자르기("http://localhost:8181/biz/") 후 이전 페이지 정보와 로그인 폼 비교
 			if(referer.substring(26).equals("login_form") || referer == null) {	

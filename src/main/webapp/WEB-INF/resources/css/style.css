@@ -1345,15 +1345,17 @@ ol {
 -----------------------*/
 
 .home-about {
-	margin-top: -100px;
+	margin-top: 75px;
 }
 
 .home__about__pic img {
-	min-width: 100%;
+	min-width: 425px;
+	min-height: 525px;
+	padding-left: 100px;
 }
 
 .home__about__text {
-	padding-top: 200px;
+	padding-top: 75px;
 }
 
 .home__about__text .section-title {
