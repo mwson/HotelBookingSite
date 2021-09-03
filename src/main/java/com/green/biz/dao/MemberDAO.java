@@ -17,17 +17,22 @@ public class MemberDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	// "사용자" 비밀번호 조회
+	public String memberCheck(String id) {
+		return mybatis.selectOne("MemberDAO.memberCheck", id);
+	}
+	
 	// "사용자, 회원정보" 조회
 	public MemberVO getMember(String id) {
 		return mybatis.selectOne("MemberDAO.getMember", id);
 	}
 	
-	// "사용자, 로그인" 조회(아이디, 비밀번호 일치)
-	public int loginID(MemberVO vo) {
+	// "사용자, 회원정보 수정" 비밀번호 확인
+	public int pwdCheck(MemberVO vo) {
 		String pwd = null;
 		int result = -1;
 		
-		pwd = mybatis.selectOne("MemberDAO.confirmID", vo.getId());
+		pwd = mybatis.selectOne("MemberDAO.memberCheck", vo.getId());
 		
 		if(pwd == null) {
 			result = -1;
@@ -38,17 +43,6 @@ public class MemberDAO {
 		}
 		
 		return result;
-	}
-	
-	// "사용자, 회원가입 및 로그인" 조회(아이디 및 비밀번호)
-	public int confirmID(String id) {
-		String pwd = mybatis.selectOne("MemberDAO.confirmID", id);
-		
-		if(pwd != null) {
-			return 1;
-		} else {
-			return -1;
-		}
 	}
 	
 	// "사용자, 회원가입" 우편번호 조회

@@ -60,13 +60,13 @@ public class AdminController {
 	
 	// "관리자" 로그인
 	@RequestMapping(value = "/admin_login")
-	public String adminLogin(@RequestParam(value = "workerId")String workerId, @RequestParam(value = "workerPwd")String workerPwd,
-			Model model) {
-		
+	public String adminLogin(@RequestParam(value = "workerId")String workerId,
+			@RequestParam(value = "workerPwd")String workerPwd, Model model) {
 		int result = adminService.workerCheck(workerId, workerPwd);
+		WorkerVO adminUser = null;
 		
 		if(result == 1) {
-			WorkerVO adminUser = adminService.getEmployee(workerId);
+			adminUser = adminService.getEmployee(workerId);
 			
 			model.addAttribute("adminUser", adminUser);
 			

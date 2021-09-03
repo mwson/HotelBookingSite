@@ -1,46 +1,16 @@
-/*
- * "장바구니" 삭제 처리
- */
-function go_cart_delete() {
-	var count = 0;
-
-	if(document.formm.cseq.length == undefined) {
-		if(document.formm.cseq.checked == true) {
-			count++;
-		}
-	}
-	
-	for(var i=0; i<document.formm.cseq.length; i++) {
-		if(document.formm.cseq[i].checked == true) {
-			count++;
-		}
-	}
-	
-	if(count == 0) {
-		alert("삭제할 항목을 선택해 주세요!");
-	} else {
-		document.formm.action = "cart_delete";
-		document.formm.submit();
-	}
-}
-
-/*
- * "장바구니" 주문 처리
- */
-function go_order_insert() {
-	$("#formm").attr("action", "order_insert").submit();
-}
-
-/*
- * "회원정보 수정" 비밀번호 확인
- */
+// "사용자, 회원정보 수정" 비밀번호 확인
 function update_member_form_pwdCheck() {
-	$("#pwdCheck_form").attr("action", "update_member_form_pwdCheck").submit();
+	if ($("#pwd").val() == "") {
+		alert("비밀번호를 입력해 주세요.");
+		$("#pwd").focus();
+	
+		return false;
+	} else {
+		$("#pwdCheck_form").attr("action", "update_member_form_pwdCheck").submit();
+	}
 }
 
-/*
- * "회원정보 수정" 수정
- */
+// "사용자, 회원정보 수정" 수정
 function updateMember() {
 	var regExpPwd = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 	var regExpPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;

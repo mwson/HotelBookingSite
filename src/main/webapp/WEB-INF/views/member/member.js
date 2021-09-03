@@ -1,4 +1,4 @@
-// "회원가입 동의서" 처리
+// "사용자, 회원가입 동의" 처리
 function join_form() {
 	if($(".agree")[0].checked == true) {
 		$("#contract").attr("action", "join_form").submit();
@@ -9,7 +9,7 @@ function join_form() {
 	}
 }
 
-// "회원가입" 아이디 중복 처리 팝업 창
+// "사용자, 회원가입" 아이디 중복 처리 팝업 창
 function idcheck() {
 	var regExpId = /^[a-z]+[a-z0-9]{5,19}$/g;
 	
@@ -30,14 +30,14 @@ function idcheck() {
 	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=300");
 }
 
-// "회원가입" 우편번호 팝업 창
+// "사용자, 회원가입" 우편번호 팝업 창
 function post_zip() {
 	var url = "find_zip_num";
 	
 	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
 }
 
-// "회원가입" 처리
+// "사용자, 회원가입" 처리
 function joinMember() {
 	var regExpId = /^[a-z]+[a-z0-9]{5,19}$/g;
 	var regExpName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
@@ -112,5 +112,24 @@ function joinMember() {
 		return false;
 	} else {
 		$("#join_form").attr("action", "join").submit();
+		
+		alert("회원가입이 완료되었습니다.");
+	}
+}
+
+// "사용자, 로그인" 처리
+function login() {
+	if($("#id").val() == "") {
+		alert("아이디를 입력해주세요.");
+		$("#id").focus();
+		
+		return false;
+	} else if ($("#pwd").val() == "") {
+		alert("비밀번호를 입력해 주세요.");
+		$("#pwd").focus();
+		
+		return false;
+	} else {
+		$("#login_form").attr("action", "login").submit();
 	}
 }

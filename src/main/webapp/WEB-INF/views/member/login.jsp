@@ -36,7 +36,7 @@
 
             <div class="login col-lg-9 col-md-9">
 				<h2 class="mb-4">로그인</h2>
-		        <form method="post" action="login" id="login_form" name="login_form">
+		        <form method="post" id="login_form" name="login_form">
                     <div style="padding: 10px;">
                         <div class="login_form col-lg-5 col-md-5">
                             <div class="login_form_input">
@@ -60,7 +60,7 @@
                                 <div class="login_form_button_clear"></div>
                             </div>
                             <div class="login_form_button">
-                                <button type="submit" class="btn btn-warning btn-lg btn-block">로그인</button>
+                                <button type="button" class="btn btn-warning btn-lg btn-block" onclick="login()">로그인</button>
                             </div>
                         </div>
                     </div>

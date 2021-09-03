@@ -7,7 +7,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		alert("로그인에 실패했습니다.");
+		alert("패스워드가 일치하지 않습니다.");
 		history.go(-1);
 	</script>
 </body>

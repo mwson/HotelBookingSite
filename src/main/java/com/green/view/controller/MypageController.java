@@ -124,7 +124,7 @@ public class MypageController {
 			return "member/login";
 		} else {
 			vo.setId(loginUser.getId());
-			int result = memberService.loginID(vo);
+			int result = memberService.pwdCheck(vo);
 
 			if(result == 1) {
 				MemberVO memberVO = memberService.getMember(loginUser.getId());

@@ -13,7 +13,7 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminDAO adminDAO;
 	
-	// "관리자" 아이디로 비밀번호 조회 
+	// "관리자" 비밀번호 조회 
 	@Override
 	public int workerCheck(String id, String pwd) {
 		int result = -1;
@@ -32,7 +32,7 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 	
-	// "관리자" 아이디 조회
+	// "관리자, 정보" 조회
 	@Override
 	public WorkerVO getEmployee(String id) {
 		return adminDAO.getEmployee(id);

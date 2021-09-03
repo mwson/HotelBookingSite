@@ -8,14 +8,14 @@ import com.green.biz.utils.Criteria;
 
 public interface MemberService {
 	
+	// "사용자" 비밀번호 조회
+	public int memberCheck(MemberVO vo);
+	
 	// "사용자, 회원정보" 조회
 	public MemberVO getMember(String id);
 	
-	// "사용자, 로그인" 조회(아이디, 비밀번호 일치)
-	public int loginID(MemberVO vo);
-	
-	// "사용자, 회원가입 및 로그인" 조회(아이디 및 비밀번호)
-	public int confirmID(String id);
+	// "사용자, 회원정보 수정" 비밀번호 확인
+	public int pwdCheck(MemberVO vo);
 	
 	// "사용자, 회원가입" 우편번호 조회
 	public List<AddressVO> selectAddressByDong(String dong);

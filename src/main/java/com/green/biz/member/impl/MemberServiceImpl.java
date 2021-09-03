@@ -17,22 +17,35 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDao;
 	
+	// "사용자" 비밀번호 조회
+	@Override
+	public int memberCheck(MemberVO vo) {
+		int result = -1;
+		
+		String pwd_id_db = memberDao.memberCheck(vo.getId());
+		
+		if(pwd_id_db == null) {
+			result = -1;
+		} else {
+			if(vo.getPwd().equals(pwd_id_db)) {
+				result = 1;
+			} else {
+				result = 0;
+			}
+		}
+		return result;
+	}
+	
 	// "사용자, 회원정보" 조회
 	@Override
 	public MemberVO getMember(String id) {
 		return memberDao.getMember(id);
 	}
 	
-	// "사용자, 로그인" 조회(아이디, 비밀번호 일치)
+	// "사용자, 회원정보 수정" 비밀번호 확인
 	@Override
-	public int loginID(MemberVO vo) {
-		return memberDao.loginID(vo);
-	}
-
-	// "사용자, 회원가입 및 로그인" 조회(아이디 및 비밀번호)
-	@Override
-	public int confirmID(String id) {
-		return memberDao.confirmID(id);
+	public int pwdCheck(MemberVO vo) {
+		return memberDao.pwdCheck(vo);
 	}
 	
 	// "사용자, 회원가입" 우편번호 조회

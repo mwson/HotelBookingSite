@@ -33,18 +33,18 @@ public class MemberController {
 	// "사용자, 로그인" 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginAction(MemberVO vo, HttpServletRequest request, Model model) {
-		int result = memberService.loginID(vo);
+		int result = memberService.memberCheck(vo);
 		MemberVO loginUser = null;
 		
-		if(result == 1) { // 사용자 인증 성공
+		if(result == 1) {
 			loginUser = memberService.getMember(vo.getId());
 			
 			model.addAttribute("loginUser", loginUser);
 			
 			// 이전 페이지에 대한 정보 저장
 			String referer = request.getHeader("Referer");
-			// 이전 정보가 로그인폼일 경우
-			String loginForm = "http://localhost:8181/biz/login_form";
+			// 이전 페이지 정보가 로그인 폼일 경우
+			String loginForm = "http://localhost:8080/biz/login_form";
 			
 			if(referer.equals(loginForm) || referer == null) {	
 				return "index";
@@ -52,8 +52,11 @@ public class MemberController {
 				return "redirect:" + referer;
 			}
 		} else {
-			// "사용자, 로그인" 로그인 실패
-			return "member/loginFail";
+			if(result == 0) {
+				return "member/loginPasswordFail";
+			} else {
+				return "member/loginIdFail";
+			}
 		}
 	}
 	
@@ -126,7 +129,7 @@ public class MemberController {
 		vo.setAddress(addr1 + " " + addr2);
 		memberService.insertMember(vo);
 		
-		return "member/login";
+		return "member/login_form";
 	}
 	
 	// "사용자" 로그아웃
@@ -134,7 +137,7 @@ public class MemberController {
 	public String logout(SessionStatus status) {
 		status.setComplete();	// 현재 세션을 종료
 		
-		return "member/login";
+		return "index";
 	}
 	
 	// "사용자, 아이디 및 비밀번호 찾기" 폼 이동
