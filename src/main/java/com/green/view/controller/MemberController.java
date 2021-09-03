@@ -44,7 +44,7 @@ public class MemberController {
 			// 이전 페이지에 대한 정보 저장
 			String referer = request.getHeader("Referer");
 			// 이전 페이지 정보가 로그인 폼일 경우
-			String loginForm = "http://localhost:8080/biz/login_form";
+			String loginForm = "http://localhost:8181/biz/login_form";
 			
 			if(referer.equals(loginForm) || referer == null) {	
 				return "index";
@@ -129,7 +129,7 @@ public class MemberController {
 		vo.setAddress(addr1 + " " + addr2);
 		memberService.insertMember(vo);
 		
-		return "member/login_form";
+		return "redirect:login_form";
 	}
 	
 	// "사용자" 로그아웃

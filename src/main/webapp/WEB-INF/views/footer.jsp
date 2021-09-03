@@ -1,6 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-    <footer class="footer set-bg" data-setbg="img/footer-bg.jpg">
+    <footer class="footer">
         <div class="container">
             <div class="footer__content">
                 <div class="row">

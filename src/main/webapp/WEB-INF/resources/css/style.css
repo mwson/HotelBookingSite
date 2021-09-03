@@ -1140,6 +1140,7 @@ ol {
 
 .footer {
 	padding-top: 60px;
+	background: #1a1a1a;
 }
 
 .footer__logo a {
@@ -1606,6 +1607,11 @@ ol {
 	display: inline-block;
 }
 
+.room__details__hotel h2 {
+	margin-right: 5px;
+	display: inline-block;
+}
+
 .room__details__hotel .room__details__hotel__rating {
 	display: inline-block;
 }
@@ -1645,7 +1651,7 @@ ol {
 
 .room__details__title {
 	position: relative;
-	margin-bottom: 70px;
+	margin-bottom: 50px;
 }
 
 .room__details__title h2 {
@@ -1672,10 +1678,6 @@ ol {
 
 .room__details__desc p {
 	line-height: 28px;
-}
-
-.room__details__desc p:last-child {
-	margin-top: 42px;
 }
 
 .room__details__facilities h2 {
