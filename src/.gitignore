@@ -3,7 +3,14 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=git,java,maven,windows,eclipse
 
 # Custom
-
+MANIFEST.MF
+db.properties
+log4j.xml
+pom.properties
+pom.xml
+.classpath
+.project
+.springBeans
 
 ### Eclipse ###
 .metadata
