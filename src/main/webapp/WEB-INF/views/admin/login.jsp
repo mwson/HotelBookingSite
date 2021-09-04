@@ -24,10 +24,10 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-5">
-									<div class="text-center mb-5">
-										<img src="img/logo.png" width="132" height="132" />										
+									<div class="text-center mb-3">
+										<img src="images/admin/admin.png" width="132" height="132" />										
 									</div>
-									
+
 									<form method="post" id="formm" name="formm" action="admin_login">
 										<p class="text-danger" style="text-align: center">${message}</p>
 										<div class="mb-3">

@@ -2,7 +2,7 @@
 
 <%@include file="../header.jsp"%>
 
-<div class="breadcrumb-option set-bg" data-setbg="img/breadcrumb-bg.jpg">
+<div class="breadcrumb-option set-bg" data-setbg="images/breadcrumb-bg.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -71,7 +71,7 @@
   유아(37개월 미만) 동반 여부는 체크인 시 프런트 데스크 직원에게
   알려 주셔야 무료로 이용 가능합니다.
   
-- 자세한 객실안내는 객실예약과(02-2230-3310)로 문의 바랍니다.
+- 자세한 객실안내는 객실예약과(02-1234-5678)로 문의 바랍니다.
 </textarea>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="bookingPayment__right__button">
-						<input type="button" class="btn btn-secondary btn-lg left" onclick="location.href='booking_button'" value="목록으로">
+						<input type="button" class="btn btn-secondary btn-lg left" onclick="location.href='booking_button'" value="취소하기">
 						<input type="button" class="btn btn-warning btn-lg right" onclick="booking_complete()" value="결제하기">
 					</div>
                 </form>

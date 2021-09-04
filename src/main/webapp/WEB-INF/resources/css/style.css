@@ -942,10 +942,11 @@ ol {
 .latest__blog__text .label {
 	font-size: 14px;
 	color: #ffffff;
+	font-family: 'Noto Sans KR', sans-serif;
 	background: #E9AD28;
 	border-radius: 2px;
 	display: inline-block;
-	padding: 4px 16px 2px;
+	padding: 4px 16px;
 }
 
 .latest__blog__text h5 {
@@ -968,11 +969,11 @@ ol {
 .latest__blog__text a {
 	font-size: 16px;
 	color: #19191A;
-	font-weight: 500;
-	font-family: "Barlow Condensed", sans-serif;
+	font-weight: 400;
+	font-family: 'Noto Sans KR', sans-serif;
 	display: inline-block;
 	position: relative;
-	padding: 2px 0;
+	padding: 4px 0;
 }
 
 .latest__blog__text a:after {
@@ -1033,6 +1034,7 @@ ol {
 }
 
 .room__text {
+	margin-top: 10px;
 	margin-bottom: 60px;
 }
 
@@ -1041,13 +1043,14 @@ ol {
 }
 
 .room__text h3 {
+	font-size: 34px;
 	color: #19191A;
-	font-weight: 500;
+	font-weight: 550;
 	margin-bottom: 32px;
 }
 
 .room__text h2 {
-	font-size: 48px;
+	font-size: 34px;
 	color: #E9AD28;
 	position: relative;
 	padding-left: 12px;
@@ -1055,7 +1058,7 @@ ol {
 }
 
 .room__text h2 sup {
-	font-size: 20px;
+	font-size: 18px;
 	position: absolute;
 	left: 0;
 	top: 15px;
@@ -1073,7 +1076,7 @@ ol {
 
 .room__text ul li {
 	list-style: none;
-	font-size: 18px;
+	font-size: 17px;
 	color: #1d1c1c;
 	line-height: 36px;
 }
@@ -1086,9 +1089,9 @@ ol {
 .room__text a {
 	font-size: 17px;
 	color: #1d1c1c;
-	font-family: "Barlow Condensed", sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	position: relative;
-	padding: 4px 0;
+	padding: 4px;
 	display: inline-block;
 	font-weight: 500;
 	-webkit-transition: all, 0.3s;
@@ -1104,10 +1107,6 @@ ol {
 	width: 100%;
 	background: #E9AD28;
 	content: "";
-}
-
-.room__text .btn {
-	float: right;
 }
 
 .pagination__number {
@@ -1349,8 +1348,8 @@ ol {
 }
 
 .home__about__pic img {
-	min-width: 425px;
-	min-height: 525px;
+	min-width: 100%;
+	min-height: 100%;
 	padding-left: 100px;
 }
 
@@ -1391,15 +1390,15 @@ ol {
 	text-align: left;
 }
 
-.about__text p {
-	color: #707070;
-}
-
-.about__text p:first-child {
+.about__text h5 {
 	font-size: 18px;
 	color: #111111;
 	line-height: 30px;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
+}
+
+.about__text p {
+	color: #707070;
 }
 
 /*---------------------
@@ -1638,18 +1637,6 @@ ol {
 	margin-right: 2px;
 }
 
-.room__details__advisor .room__details__advisor__rating {
-	display: inline-block;
-	margin-right: 6px;
-}
-
-.room__details__advisor .room__details__advisor__rating span {
-	font-size: 14px;
-	color: #E9AD28;
-	margin-right: -4px;
-	display: inline-block;
-}
-
 .room__details__advisor .review {
 	font-size: 16px;
 	color: #1d1c1c;
@@ -1831,10 +1818,11 @@ ol {
 .blog__item__large__pic .tag {
 	font-size: 14px;
 	color: #ffffff;
+	font-family: 'Noto Sans KR', sans-serif;
 	background: #E9AD28;
 	border-radius: 2px;
 	display: inline-block;
-	padding: 4px 16px 2px;
+	padding: 4px 16px;
 	position: absolute;
 	left: 20px;
 	top: 20px;
@@ -2812,4 +2800,98 @@ ol {
 }
 .qnaWrite .qnaWrite_form_button .qnaWrite_form_button_reset {
 	float: left;
+}
+
+
+.BookingSearch {
+	margin-bottom: 45px;
+	display: flex;
+}
+
+.BookingSearch__item__large__pic {
+	position: relative;
+}
+
+.BookingSearch__item__large__pic .tag {
+	font-size: 14px;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #ffffff;
+	background: #E9AD28;
+	border-radius: 2px;
+	display: inline-block;
+	padding: 4px 16px;
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+
+.BookingSearch__item__large__pic img {
+	min-width: 100%;
+	min-height: 225px;
+}
+
+.BookingSearch__details__hotel {
+	margin-top: -5px;
+	display: inline-block;
+}
+
+.BookingSearch__details__hotel a {
+	font-size: 24px;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #1d1c1c;
+	font-weight: 550;
+	margin-right: 5px;
+	display: inline-block;
+}
+
+.BookingSearch__details__hotel .BookingSearch__details__hotel__rating {
+	display: inline-block;
+}
+
+.BookingSearch__details__hotel .BookingSearch__details__hotel__rating span {
+	font-size: 14px;
+	color: #E9AD28;
+	margin-right: -4px;
+	display: inline-block;
+}
+
+.BookingSearch__details__advisor {
+	float: right;
+}
+
+.BookingSearch__details__advisor img {
+	display: inline-block;
+	margin-right: 2px;
+}
+
+.BookingSearch__details__facilities {
+	margin: 5px 5px 10px;
+}
+
+.BookingSearch__details__facilities ul li {
+	font-family: 'Noto Serif KR', serif;
+	list-style: none;
+	font-size: 16px;
+	color: #1d1c1c;
+	line-height: 46px;
+}
+
+.BookingSearch__details__facilities ul li span {
+	font-size: 18px;
+	color: #E9AD28;
+	display: inline-block;
+	margin-right: 6px;
+}
+
+.BookingSearch__text h5 {
+	font-size: 22px;
+	display: inline-block;
+}
+
+.BookingSearch__text span {
+	font-size: 18px;
+}
+
+.BookingSearch__text .btn {
+	float: right;
 }

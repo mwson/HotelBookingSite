@@ -2,7 +2,7 @@
 
 <%@include file="../header.jsp"%>
 
-<section class="blog-hero spad set-bg" data-setbg="img/blog/details/details-bg.jpg">
+<section class="blog-hero spad set-bg" data-setbg="images/details-bg.jpg">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-10 text-center">

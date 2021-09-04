@@ -54,25 +54,25 @@ public class HomeController {
 	}
 	
 	// "사용자, 객실안내" 에서 스위트 룸 상세 이동
-	@RequestMapping(value = "/suiteRoom_detail")
+	@RequestMapping(value = "/suite_room_detail")
 	public String suiteRoom() {
 		return "introduce/suiteRoom";
 	}
 	
 	// "사용자, 객실안내" 에서 슈페리어 룸 상세 이동
-	@RequestMapping(value = "/superior_room")
+	@RequestMapping(value = "/superior_room_detail")
 	public String superiorRoom() {
 		return "introduce/superiorRoom";
 	}
 	
 	// "사용자, 객실안내" 에서 디럭스 룸 상세 이동
-	@RequestMapping(value = "/deluxe_room")
+	@RequestMapping(value = "/deluxe_room_detail")
 	public String deluxeRoom() {
 		return "introduce/deluxeRoom";
 	}
 	
 	// "사용자, 객실안내" 에서 스탠다드 룸 상세 이동
-	@RequestMapping(value = "/standard_room")
+	@RequestMapping(value = "/standard_room_detail")
 	public String standardRoom() {
 		return "introduce/standardRoom";
 	}

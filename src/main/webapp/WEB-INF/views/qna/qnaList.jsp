@@ -2,7 +2,7 @@
 
 <%@include file="../header.jsp"%>   
 
-<div class="breadcrumb-option set-bg" data-setbg="img/breadcrumb-bg.jpg">
+<div class="breadcrumb-option set-bg" data-setbg="images/breadcrumb-bg.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -55,7 +55,7 @@
                                                 <th style="width: 10%">번호</th>
                                                 <th style="width: 60%">제목</th>
                                                 <th style="width: 15%">등록일</th>
-                                                <th style="width: 15%">답변 여부</th>    
+                                                <th style="width: 15%">답변여부</th>    
                                             </tr>
                                         </thead>
                                         <tbody>

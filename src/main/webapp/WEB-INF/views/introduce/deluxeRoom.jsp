@@ -5,10 +5,10 @@
 <div class="room-details-slider">
     <div class="container">
         <div class="room__details__pic__slider owl-carousel">
-            <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-1.jpg"></div>
-            <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-2.jpg"></div>
-            <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-3.jpg"></div>
-            <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-4.jpg"></div>
+            <div class="room__details__pic__slider__item set-bg" data-setbg="images/rooms/details/rd-3.png"></div>
+            <div class="room__details__pic__slider__item set-bg" data-setbg="images/rooms/details/rd-5.png"></div>
+            <div class="room__details__pic__slider__item set-bg" data-setbg="images/rooms/details/rd-6.png"></div>
+            <div class="room__details__pic__slider__item set-bg" data-setbg="images/rooms/details/rd-7.png"></div>
         </div>
     </div>
 </div>
@@ -52,26 +52,26 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="room__details__more__facilities__item">
-                                            <div class="icon"><img src="img/rooms/details/facilities/fac-1.png" alt=""></div>
+                                            <div class="icon"><img src="images/rooms/details/facilities/fac-1.png" alt=""></div>
                                             <h6>자동 냉난방 시설</h6>
                                         </div>
                                         <div class="room__details__more__facilities__item">
-                                            <div class="icon"><img src="img/rooms/details/facilities/fac-2.png" alt=""></div>
+                                            <div class="icon"><img src="images/rooms/details/facilities/fac-2.png" alt=""></div>
                                             <h6>스마트 TV(위성 TV 48개 채널)</h6>
                                         </div>
                                         <div class="room__details__more__facilities__item">
-                                            <div class="icon"><img src="img/rooms/details/facilities/fac-3.png" alt=""></div>
+                                            <div class="icon"><img src="images/rooms/details/facilities/fac-3.png" alt=""></div>
                                             <h6>무료 음료</h6>
                                         </div>
 
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="room__details__more__facilities__item">
-                                            <div class="icon"><img src="img/rooms/details/facilities/fac-6.png" alt=""></div>
+                                            <div class="icon"><img src="images/rooms/details/facilities/fac-6.png" alt=""></div>
                                             <h6>서비스 24/24</h6>
                                         </div>
                                         <div class="room__details__more__facilities__item">
-                                            <div class="icon"><img src="img/rooms/details/facilities/fac-7.png" alt=""></div>
+                                            <div class="icon"><img src="images/rooms/details/facilities/fac-7.png" alt=""></div>
                                             <h6>피트니스 센터 무료 이용</h6>
                                         </div>
                                         

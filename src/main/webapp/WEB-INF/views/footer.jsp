@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="footer__logo">
-                            <a href="index"><img src="img/logo.png" alt=""></a>
+                            <a href="index"><img src="images/logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6">
@@ -31,7 +31,7 @@
                             <div class="footer__about">
                                 <h4>02-1234-5678</h4>
                                 <ul>
-                                    <li>서울시 용산구 호텔그린</li>
+                                    <li>서울시 강님구 호텔그린</li>
                                     <li>(우 : 12345)</li>
                                     <li>green.reserve@email.com</li>
                                 </ul>

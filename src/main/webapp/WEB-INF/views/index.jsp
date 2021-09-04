@@ -60,7 +60,7 @@
                         <h2>호텔그린에 오신 여러분을<br>진심으로 환영합니다.</h2>
                     </div>
                     <p class="first-para">
-                    	1981년 봄, 서울 중심부인 남산 아래, 한강을 내려다보는 위치에 처음 창립된
+                    	1981년 봄, 시가지와 교통발달에 유리한 서울특별시 동남부에 위치한 강남구에서 처음 창립된
 						호텔그린은 풍수지리적으로 최고의 위치에 투숙객들을 편히 쉬게 하고자하는 경영자의 사상이 담겨있습니다.
 						풍수에는 음양오행설을 바탕으로 한 동아시아의 자연관이 잘 나타나 있습니다.
 					</p>
@@ -92,45 +92,45 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                <div class="home__room__item set-bg" data-setbg="img/home-room/hr-1.jpg">
-                    <div class="home__room__title">
-                        <h4>스탠다드 룸</h4>
-                        <h2><sup>&#8361;</sup>150,000<span> / 1박</span></h2>
-                    </div>
-                    <a href="#">예약하기</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                <div class="home__room__item set-bg" data-setbg="img/home-room/hr-2.jpg">
-                    <div class="home__room__title">
-                        <h4>디럭스 룸</h4>
-                        <h2><sup>&#8361;</sup>200,000<span> / 1박</span></h2>
-                    </div>
-                    <a href="#">예약하기</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                <div class="home__room__item set-bg" data-setbg="img/home-room/hr-3.jpg">
-                    <div class="home__room__title">
-                        <h4>슈페리어 룸</h4>
-                        <h2><sup>&#8361;</sup>300,000<span> / 1박</span></h2>
-                    </div>
-                    <a href="#">예약하기</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                <div class="home__room__item set-bg" data-setbg="img/home-room/hr-4.jpg">
-                    <div class="home__room__title">
-                        <h4>스위트 룸</h4>
-                        <h2><sup>&#8361;</sup>400,000<span> / 1박</span></h2>
-                    </div>
-                    <a href="#">예약하기</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	    <div class="row">
+	        <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+	            <div class="home__room__item set-bg" data-setbg="images/home-room/hr-1.png">
+	                <div class="home__room__title">
+	                    <h4>스위트 룸</h4>
+	                    <h2><sup>&#8361;</sup>400,000<span> / 1박</span></h2>
+	                </div>
+	                <a href="suite_room_detail">상세보기</a>
+	            </div>
+	        </div>
+	        <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+	            <div class="home__room__item set-bg" data-setbg="images/home-room/hr-2.png">
+	                <div class="home__room__title">
+	                    <h4>슈페리어 룸</h4>
+	                    <h2><sup>&#8361;</sup>300,000<span> / 1박</span></h2>
+	                </div>
+	                <a href="superior_room_detail">상세보기</a>
+	            </div>
+	        </div>
+	        <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+	            <div class="home__room__item set-bg" data-setbg="images/home-room/hr-3.png">
+	                <div class="home__room__title">
+	                    <h4>디럭스 룸</h4>
+	                    <h2><sup>&#8361;</sup>200,000<span> / 1박</span></h2>
+	                </div>
+	                <a href="deluxe_room_detail">상세보기</a>
+	            </div>
+	        </div>
+	        <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+	            <div class="home__room__item set-bg" data-setbg="images/home-room/hr-4.png">
+	                <div class="home__room__title">
+	                    <h4>스탠다드 룸</h4>
+	                    <h2><sup>&#8361;</sup>150,000<span> / 1박</span></h2>
+	                </div>
+	                <a href="standard_room_detail">상세보기</a>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 </section>
 
 <section class="latest-blog spad_bottom">
@@ -145,7 +145,7 @@
         </div>
         <div class="row">
             <div class="col-lg-3 p-0 order-lg-1 col-md-6 order-md-1">
-                <div class="latest__blog__pic set-bg" data-setbg="img/latest-blog/lb-1.jpg"></div>
+                <div class="latest__blog__pic set-bg" data-setbg="notice_images/${pList1.image}"></div>
             </div>
             <div class="col-lg-3 p-0 order-lg-2 col-md-6 order-md-2">
                 <div class="latest__blog__text">
@@ -159,7 +159,7 @@
                 </div>
             </div>
             <div class="col-lg-3 p-0 order-lg-3 col-md-6 order-md-4">
-                <div class="latest__blog__pic set-bg" data-setbg="img/latest-blog/lb-2.jpg"></div>
+                <div class="latest__blog__pic set-bg" data-setbg="notice_images/${pList2.image}"></div>
             </div>
             <div class="col-lg-3 p-0 order-lg-4 col-md-6 order-md-3">
                 <div class="latest__blog__text">
@@ -173,8 +173,7 @@
                 </div>
             </div>
             <div class="col-lg-3 p-0 order-lg-6 col-md-6 order-md-5">
-                <div class="latest__blog__pic latest__blog__pic__last__row set-bg"
-                    data-setbg="img/latest-blog/lb-3.jpg"></div>
+                <div class="latest__blog__pic latest__blog__pic__last__row set-bg" data-setbg="notice_images/${nList1.image}"></div>
             </div>
             <div class="col-lg-3 p-0 order-lg-5 col-md-6 order-md-6">
                 <div class="latest__blog__text">
@@ -188,8 +187,7 @@
                 </div>
             </div>
             <div class="col-lg-3 p-0 order-lg-8 col-md-6 order-md-8">
-                <div class="latest__blog__pic latest__blog__pic__last__row set-bg"
-                    data-setbg="img/latest-blog/lb-4.jpg"></div>
+                <div class="latest__blog__pic latest__blog__pic__last__row set-bg" data-setbg="notice_images/${nList2.image}"></div>
             </div>
             <div class="col-lg-3 p-0 order-lg-7 col-md-6 order-md-7">
                 <div class="latest__blog__text">

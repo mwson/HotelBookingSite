@@ -182,7 +182,7 @@ public class MemberController {
 		memberService.changePassword(vo);
 		
 		// "사용자, 아이디 및 비밀번호 찾기" 비밀번호 수정 후 팝업 닫기		
-		return "member/close";
+		return "member/changePassword";
 	}
 	
 }

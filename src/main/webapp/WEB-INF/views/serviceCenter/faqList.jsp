@@ -2,7 +2,7 @@
 
 <%@include file="../header.jsp"%>
 
-<div class="breadcrumb-option set-bg" data-setbg="img/breadcrumb-bg.jpg">
+<div class="breadcrumb-option set-bg" data-setbg="images/breadcrumb-bg.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -39,25 +39,43 @@
                 <h2 class="mb-4">자주하는 질문</h2>
                 <div class="faqList_form col-lg-12 col-md-12">
                     <div class="faqList_form_table">
+                    	<div class="contact__widget__item">
+                            <h4>예약 시 나이제한이 있나요?</h4>
+                            <p>객실을 예약하기 위해서는 만 18세 이상이어야 합니다.</p>
+                        </div>
                         <div class="contact__widget__item">
                             <h4>일찍 체크인하고 늦게 체크아웃할 수 있나요?</h4>
-                            <p>호텔 체크인은 원칙상 오후 3시 이후, 체크아웃은 오후 1시 이전으로 하고 있으나<br>
-								 호텔에 미리 문의하시면 시간을 조정해드릴 수 있습니다.<br>
-								 호텔 문의 전화번호는 하단에서 확인하실 수 있습니다.</p>
+                            <p>
+                            	호텔 체크인은 오후 3시 이후, 체크아웃은 정오 12시 이전이 원칙이며<br>
+								오후 3시 이전 Early Check-In 또는 12시 이후 Late Check-Out 하실 경우 추가 요금이 부과될 수 있습니다.
+							</p>
                         </div>
                         <div class="contact__widget__item">
-                            <h4>객실 예약 시 추가 인원을 등록할 수 있나요?</h4>
-                            <p>더 많은 투숙객을 수용하고 싶으신 경우 예약을 바꾸셔야 합니다.<br>
-								인원수 추가에 따른 추가비용은 업데이트된 예약사항을 확인하시기 전에 공지해 드립니다.</p>
+                            <h4>예약 시 인원을 추가할 수 있나요?</h4>
+                            <p>
+                            	객실에 따라 인원이 정해져 있으므로 예약 시 확인하실 수 있습니다.<br>
+								예약 이후 인원 변경 및 추가로 인한 문의사항은 호텔로 연락 바랍니다.
+							</p>
+                        </div>
+                        
+                        <div class="contact__widget__item">
+                            <h4>어린이 동반 시 영유아 용품을 제공해주실 수 있나요?</h4>
+                            <p>
+                            	투숙객 여러분의 편의를 위해 영유아 용품(아기욕조, 아기 침대, 어린이 베게 및 아동용 배스 로브와 슬리퍼)<br>
+                            	를 제공해 드립니다.<br>
+                            	<br>
+                            	객실예약과를 통해 사전 요청 가능하며, 대출 요청이 완료된 영유아 용품,<br>
+                            	엑스트라 베드는 체크인 당일 18시까지 객실에 준비해 드립니다.<br>
+                            	(이용 상황에 따라 조기 마감될 수 있으며, 유모차는 현장에서만 대여 가능합니다.)
+                            </p>
                         </div>
                         <div class="contact__widget__item">
-                            <h4>객실 예약 시 나이제한이 있나요?</h4>
-                            <p>객실을 예약하기 위해서는 만 18세 이상이셔야 합니다.</p>
-                        </div>
-                        <div class="contact__widget__item">
-                            <h4>아기 동반 시 유아용 침대를 제공해주실 수 있나요?</h4>
-                            <p>투숙객 여러분의 편의를 위해 가능한 모든 것을 제공해 드립니다.<br>
-								예약 시, 혹은 체크인 시 말씀해주시면 됩니다.</p>
+                            <h4>유아 동반 시 추가 인원 요금을 내야하나요?</h4>
+                            <p>
+                            	37개월 미만의 유아 동반 시 추가 인원 요금 및 조식은 무료이며,<br>
+  								유아(37개월 미만) 동반 여부는 체크인 시 프런트 데스크 직원에게<br>
+  								알려 주셔야 무료로 이용 가능합니다.
+  							</p>
                         </div>
                         <hr>
                         <div class="contact__widget__item">
