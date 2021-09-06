@@ -6,7 +6,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div class="blog__details__comment">
-    <h3 id="cCnt"></h3>
+    <h4 id="cCnt"></h4>
     <div class="blog__details__comment__item">
         <div class="blog__details__comment__item__text">
             <form id="commentListForm" name="commentListForm">
@@ -22,7 +22,7 @@
 </div>
 <hr class="mb-5">
 <div class="blog__details__comment__form">
-    <h3>댓글 입력</h3>
+    <h4>댓글 입력</h4>
     <form id="commentForm" name="commentForm">
         <div class="blog__details__comment__form__item">
             <input type="hidden" id="nseq" name="nseq" value="${noticeVO.nseq}"/>

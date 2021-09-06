@@ -48,7 +48,6 @@ public class NoticeController {
 		model.addAttribute("noticeVO", noticeVO);
 		
 		List<NoticeVO> noticeList = noticeService.getNoticeBottomList();
-		noticeList.remove(0);
 		
 		model.addAttribute("noticeList", noticeList);
 		

@@ -40,8 +40,8 @@
 	<!-- "사용자 및 관리자, 공지사항" 조회 및 페이징 -->
 	<select id="noticeListWithPaging" parameterType="HashMap" resultType="notice">
 		<![CDATA[
-		SELECT nseq, kind, subject, indate
-		FROM(SELECT ROW_NUMBER() OVER(ORDER BY subject) rn, nseq, kind, subject, indate
+		SELECT nseq, kind, subject, image, indate
+		FROM(SELECT ROW_NUMBER() OVER(ORDER BY subject) rn, nseq, kind, subject, image, indate
 			FROM notice
 			WHERE subject LIKE '%' || #{key} || '%')
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
@@ -62,7 +62,7 @@
 		<![CDATA[
 		SELECT *
 		FROM notice
-		WHERE ROWNUM <= 4
+		WHERE ROWNUM <= 3
 		ORDER BY nseq DESC
 	    ]]>
 	</select>

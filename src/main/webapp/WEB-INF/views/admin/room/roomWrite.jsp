@@ -27,7 +27,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th style="width: 15%">수용인원</th>
+									<th style="width: 15%">최대인원</th>
 									<td>
 										<input type="text" class="form-control" id="people" name="people">
 									</td>

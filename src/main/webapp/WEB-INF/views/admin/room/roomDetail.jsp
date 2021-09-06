@@ -39,7 +39,7 @@
 									<td>${roomVO.type}</td>
 								</tr>
 								<tr>
-									<th style="width: 15%">수용인원</th>
+									<th style="width: 15%">최대인원</th>
 									<td>${roomVO.people}</td>
 								</tr>	
 								<tr>

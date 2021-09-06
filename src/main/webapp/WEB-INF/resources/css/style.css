@@ -1865,6 +1865,7 @@ ol {
 .blog__item__pic .tag {
 	font-size: 14px;
 	color: #ffffff;
+	font-family: 'Noto Sans KR', sans-serif;
 	background: #E9AD28;
 	border-radius: 2px;
 	display: inline-block;
@@ -1876,6 +1877,8 @@ ol {
 
 .blog__item__pic img {
 	min-width: 100%;
+	height: 250px;
+	object-fit: cover;
 }
 
 .blog__item__text {
@@ -2072,10 +2075,11 @@ ol {
 .blog__hero__text .tag {
 	font-size: 14px;
 	color: #ffffff;
+	font-family: 'Noto Sans KR', sans-serif;
 	background: #E9AD28;
 	border-radius: 2px;
 	display: inline-block;
-	padding: 4px 16px 4px;
+	padding: 4px 16px;
 }
 
 .blog__hero__text h5 {
@@ -2094,6 +2098,7 @@ ol {
 .blog__hero__text ul li {
 	list-style: none;
 	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
 	color: #ffffff;
 	display: inline-block;
 	margin-right: 40px;
@@ -2122,16 +2127,17 @@ ol {
 
 .blog__details__pic img {
 	min-width: 100%;
+	height: 490px;
+	object-fit: cover;
 	margin-bottom: 10px;
-	padding-right: 10px;
 }
 
 .blog__details__desc {
-	margin-bottom: 85px;
+	margin-bottom: 50px;
 }
 
 .blog__details__desc__item {
-	margin-bottom: 50px;
+	margin-bottom: 0px;
 }
 
 .blog__details__desc__item:last-child {

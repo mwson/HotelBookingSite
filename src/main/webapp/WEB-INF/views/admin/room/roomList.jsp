@@ -24,7 +24,7 @@
 										<th style="width: 15%">사용유무</th> 
 										<th style="width: 10%">객실번호</th>
 										<th style="width: 35%">객실명</th>
-										<th style="width: 10%">수용인원</th>
+										<th style="width: 10%">최대인원</th>
 										<th style="width: 15%">가격</th>
 										<th style="width: 15%">등록일</th>
 									</tr>

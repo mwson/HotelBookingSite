@@ -2,7 +2,7 @@
 
 <%@include file="../header.jsp"%>
 
-<div class="breadcrumb-option set-bg" data-setbg="images/breadcrumb-bg.jpg">
+<div class="breadcrumb-option set-bg" data-setbg="images/hbg-1.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -56,10 +56,7 @@
 			                    <div class="col-lg-6 col-md-6">
 			                        <div class="blog__item">
 			                            <div class="blog__item__pic">
-			                                <img src="img/blog/blog-1.jpg" alt="">
-			                                <!-- 사진
-			                                <img src="${noticeVO.image}" alt="">
-			                                -->
+			                                <img src="notice_images/${noticeVO.image}" alt="">			                            
 			                                <div class="tag">${noticeVO.kind}</div>
 			                            </div>
 			                            <div class="blog__item__text">
