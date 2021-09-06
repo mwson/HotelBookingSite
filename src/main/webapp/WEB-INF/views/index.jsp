@@ -68,12 +68,13 @@
 						저희 호텔그린은 세련되고 고급진 인테리어 및 객실 디자인,
 						넓은 야외수영장과 각종 편의시설들을 토대로
 						투숙객 여러분께 최상의 서비스를 제공해드리기 위해 최선을 다하고 있습니다.
+						저희와 함께 최고의 추억으로 만들어 드리겠습니다.
 					</p>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="home__about__pic">
-                    <img src="images/home-about/home-about.jpg" alt="메인소개">
+                    <img src="images/home-about/home-about.png" alt="메인소개">
                 </div>
             </div>
         </div>

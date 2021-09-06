@@ -124,7 +124,7 @@
                                         </ul>
                                     </div>
                                     <div class="BookingSearch__text">
-                                        <h5><sup>&#8361; </sup>400,000<span> / 1박</span></h5>
+                                        <h5><sup>&#8361; </sup>400,000<span> / 1박</span> ~</h5>
                                         <c:choose>
                                             <c:when test='${suiteRoom=="1"}'>
                                                 <input type="button" class="btn btn-warning" id="suite_room" name="suite_room" onclick="booking_suite()" value="예약하기">
@@ -178,7 +178,7 @@
                                         </ul>
                                     </div>
                                     <div class="BookingSearch__text">
-                                        <h5><sup>&#8361; </sup>300,000<span> / 1박</span></h5>
+                                        <h5><sup>&#8361; </sup>300,000<span> / 1박</span> ~</h5>
                                         <c:choose>
                                             <c:when test='${superiorRoom=="1"}'>
                                                 <input type="button" class="btn btn-warning" id="superior_room" name="superior_room" onclick="booking_superior()" value="예약하기">
@@ -232,7 +232,7 @@
                                         </ul>
                                     </div>
                                     <div class="BookingSearch__text">
-                                        <h5><sup>&#8361; </sup>250,000<span> / 1박</span></h5>
+                                        <h5><sup>&#8361; </sup>250,000<span> / 1박</span> ~</h5>
                                         <c:choose>
                                             <c:when test='${deluxeRoom=="1"}'>
                                                 <input type="button" class="btn btn-warning" id="deluxe_room" name="deluxe_room" onclick="booking_deluxe()" value="예약하기">
@@ -286,7 +286,7 @@
                                         </ul>
                                     </div>
                                     <div class="BookingSearch__text" style="margin-bottom: 0;">
-                                        <h5><sup>&#8361; </sup>200,000<span> / 1박</span></h5>
+                                        <h5><sup>&#8361; </sup>200,000<span> / 1박</span> ~</h5>
                                         <c:choose>
                                             <c:when test='${standardRoom=="1"}'>
                                                 <input type="button" class="btn btn-warning" id="standard_room" name="standard_room" onclick="booking_standard()" value="예약하기">

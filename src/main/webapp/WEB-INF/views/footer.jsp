@@ -31,7 +31,7 @@
                             <div class="footer__about">
                                 <h4>02-1234-5678</h4>
                                 <ul>
-                                    <li>서울시 강님구 호텔그린</li>
+                                    <li>서울시 강남구 호텔그린</li>
                                     <li>(우 : 12345)</li>
                                     <li>green.reserve@email.com</li>
                                 </ul>

@@ -68,7 +68,7 @@
                                     <div class="col-lg-6">
                                         <div class="room__details__more__facilities__item">
                                             <div class="icon"><img src="images/rooms/details/facilities/fac-6.png" alt=""></div>
-                                            <h6>서비스 24/24</h6>
+                                            <h6>24시간 서비스</h6>
                                         </div>
                                         <div class="room__details__more__facilities__item">
                                             <div class="icon"><img src="images/rooms/details/facilities/fac-7.png" alt=""></div>
@@ -84,7 +84,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <ul>
-                                            <li><span class="icon_check"></span> Auto Window 설치</li>
+                                            <li><span class="icon_check"></span> 자동 창(Auto Window) 설치</li>
                                             <li><span class="icon_check"></span> 냉장고 겸용 미니바</li>
                                             <li><span class="icon_check"></span> 비즈니스센터 이용가능</li>
                                         </ul>

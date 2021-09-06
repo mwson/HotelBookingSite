@@ -2265,6 +2265,7 @@ ol {
 }
 
 .blog__details__comment__item__text p {
+	font-family: 'Noto Sans KR', sans-serif;
 	color: #8B9094;
 	line-height: 24px;
 	margin-top: 4px;
@@ -2382,6 +2383,7 @@ ol {
 }
 
 .blog__details__comment__form .blog__details__comment__form__item {
+	font-family: 'Noto Sans KR', sans-serif;
 	margin: 20px 20px 0 20px;
 }
 
