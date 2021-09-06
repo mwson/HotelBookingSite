@@ -28,6 +28,30 @@ function updateMember() {
 				$("#pwdcheck").focus();
 				
 				return false;
+			} else if ($("#phone").val() == "") {
+				alert("휴대폰번호를 입력해 주세요!");
+				$("#phone").focus();
+				
+				return false;
+			} else if(!regExpPhone.test($("#phone").val())) {
+				alert("휴대폰 번호 형태로 입력해주세요. (ex: 01012345678 또는 010-1234-5678)");
+				$("#phone").focus();
+				
+				return false;
+			} else if ($("#email").val() == "") {
+				alert("이메일을 입력해 주세요!");
+				$("#email").focus();
+				
+				return false;
+			} else if(!regExpEmail.test($("#email").val())) {
+				alert("이메일 형태로 입력해주세요. (ex: email@email.com)");
+				$("#email").focus();
+				
+				return false;
+			} else {
+				$("#updateMember_form").attr("action", "update_member").submit();
+				
+				alert("회원정보 수정이 완료되었습니다.");
 			}
 		} else if ($("#phone").val() == "") {
 			alert("휴대폰번호를 입력해 주세요!");
@@ -51,6 +75,7 @@ function updateMember() {
 			return false;
 		} else {
 			$("#updateMember_form").attr("action", "update_member").submit();
+			
 			alert("회원정보 수정이 완료되었습니다.");
 		}
 	} else {

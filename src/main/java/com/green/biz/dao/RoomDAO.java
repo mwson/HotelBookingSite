@@ -21,6 +21,11 @@ public class RoomDAO {
 		return mybatis.selectOne("RoomDAO.getRoom", rid);
 	}
 	
+	// "사용자, 객실목록" 조회
+	public List<RoomVO> roomList() {
+		return mybatis.selectList("RoomDAO.roomList");
+	}
+	
 	// "관리자, 객실목록" 목록 수 조회
 	public int adminCountRoomList(String type) {
 		return mybatis.selectOne("RoomDAO.adminCountRoomList", type);

@@ -47,12 +47,14 @@
                                 </div>
                             </div>
                             <hr>
+                            <!-- 비밀번호 찾기
                             <div class="login_form_button mb-4">
                                 <div class="register">
                                     <a href="#" class="a" onclick="pwdCheck_find_pwd_form()">비밀번호 찾기</a>
                                 </div>
                                 <div class="login_form_button_clear"></div>
                             </div>
+                            -->
                             <div class="login_form_button">
                                 <input type="button" class="btn btn-warning btn-lg btn-block" onclick="update_member_form_pwdCheck()" value="확인">
                             </div>

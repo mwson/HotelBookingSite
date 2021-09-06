@@ -97,8 +97,8 @@
 	        <div class="col-lg-3 col-md-6 col-sm-6 p-0">
 	            <div class="home__room__item set-bg" data-setbg="images/home-room/hr-1.png">
 	                <div class="home__room__title">
-	                    <h4>스위트 룸</h4>
-	                    <h2><sup>&#8361;</sup>400,000<span> / 1박</span></h2>
+	                    <h4>${roomRid1.type}</h4>
+	                    <h2><sup>&#8361; </sup><fmt:formatNumber value="${roomRid1.price}" pattern="#,###"/><span> / 1박</span></h2>
 	                </div>
 	                <a href="suite_room_detail">상세보기</a>
 	            </div>
@@ -106,8 +106,8 @@
 	        <div class="col-lg-3 col-md-6 col-sm-6 p-0">
 	            <div class="home__room__item set-bg" data-setbg="images/home-room/hr-2.png">
 	                <div class="home__room__title">
-	                    <h4>슈페리어 룸</h4>
-	                    <h2><sup>&#8361;</sup>300,000<span> / 1박</span></h2>
+	                    <h4>${roomRid2.type}</h4>
+	                    <h2><sup>&#8361; </sup><fmt:formatNumber value="${roomRid2.price}" pattern="#,###"/><span> / 1박</span></h2>
 	                </div>
 	                <a href="superior_room_detail">상세보기</a>
 	            </div>
@@ -115,8 +115,8 @@
 	        <div class="col-lg-3 col-md-6 col-sm-6 p-0">
 	            <div class="home__room__item set-bg" data-setbg="images/home-room/hr-3.png">
 	                <div class="home__room__title">
-	                    <h4>디럭스 룸</h4>
-	                    <h2><sup>&#8361;</sup>200,000<span> / 1박</span></h2>
+	                    <h4>${roomRid3.type}</h4>
+	                    <h2><sup>&#8361; </sup><fmt:formatNumber value="${roomRid3.price}" pattern="#,###"/><span> / 1박</span></h2>
 	                </div>
 	                <a href="deluxe_room_detail">상세보기</a>
 	            </div>
@@ -124,8 +124,8 @@
 	        <div class="col-lg-3 col-md-6 col-sm-6 p-0">
 	            <div class="home__room__item set-bg" data-setbg="images/home-room/hr-4.png">
 	                <div class="home__room__title">
-	                    <h4>스탠다드 룸</h4>
-	                    <h2><sup>&#8361;</sup>150,000<span> / 1박</span></h2>
+	                    <h4>${roomRid4.type}</h4>
+	                    <h2><sup>&#8361; </sup><fmt:formatNumber value="${roomRid4.price}" pattern="#,###"/><span> / 1박</span></h2>
 	                </div>
 	                <a href="standard_room_detail">상세보기</a>
 	            </div>

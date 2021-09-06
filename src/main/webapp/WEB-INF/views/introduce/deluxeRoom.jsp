@@ -21,7 +21,7 @@
                     <div class="room__details__title">
                         <div class="room__details__rating">
                             <div class="room__details__hotel">
-                                <h2>디럭스 룸</h2>
+                                <h2>${roomRid3.type}</h2>
                                 <div class="room__details__hotel__rating">
                                     <span class="icon_star"></span>
                                     <span class="icon_star"></span>
@@ -42,7 +42,7 @@
                         	고객의 다양한 취향과 감각을 고려해 SOM 사, WILSON & ASSOCIATES 사, HBA 사 등 세계적인 인테리어 회사들이 디자인한 각기 다른 3가지 인테리어 스타일의 객실을 제공하고 있습니다.
                         </p>
                         <p>
-                        	'괴테의 명작 '젊은 베르테르의 슬픔'의 여주인공처럼 그린 호텔의 디럭스룸은 만인에게 사랑받을 수 밖에 없는 객실입니다. 도심 속 팬트하우스가 연상되는 섬세한 인테리어와 사랑에 빠져 보세요.
+                        	'괴테의 명작 '젊은 베르테르의 슬픔'의 여주인공처럼 그린 호텔의 ${roomRid3.type}은 만인에게 사랑받을 수 밖에 없는 객실입니다. 도심 속 팬트하우스가 연상되는 섬세한 인테리어와 사랑에 빠져 보세요.
                         </p>
                     </div>
                     <div class="row">

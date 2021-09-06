@@ -22,6 +22,12 @@ public class RoomServiceImpl implements RoomService {
 		return roomDao.getRoom(rid);
 	}
 	
+	// "사용자, 객실목록" 조회
+	@Override
+	public List<RoomVO> roomList() {
+		return roomDao.roomList();
+	}
+	
 	// "관리자, 객실목록" 목록 수 조회
 	@Override
 	public int adminCountRoomList(String type) {

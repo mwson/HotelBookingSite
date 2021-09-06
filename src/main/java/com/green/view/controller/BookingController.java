@@ -31,6 +31,9 @@ public class BookingController {
 	public String bookingSearch(BookingVO vo, Model model) {
 		String url = bookingCheck(vo, model);
 		
+		// "객실목록" 조회
+		roomList(model);
+		
 		return url;
 	}
 	
@@ -54,6 +57,9 @@ public class BookingController {
         vo.setPeople(1);
         String url = bookingCheck(vo, model);
 		
+        // "객실목록" 조회
+     	roomList(model);
+        
 		return url;
 	}
 	
@@ -492,6 +498,17 @@ public class BookingController {
 					}
 				}
 			}
+		}
+	}
+	
+	// "객실목록" 조회
+	public void roomList(Model model) {
+		RoomVO[] roomRid = new RoomVO[4];
+		
+		for(int i=0; i<roomRid.length; i++) {
+			roomRid[i] = roomService.getRoom(i + 1);
+
+			model.addAttribute(("roomRid" + (i + 1)), roomRid[i]);
 		}
 	}
 	

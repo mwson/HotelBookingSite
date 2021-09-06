@@ -70,6 +70,7 @@
 								<input type="button" class="btn btn-primary" value="수정" onClick="room_update_form()">
 							</div>
 						</div>
+						<!-- 객실 삭제
 						<hr>
 						<div class="card-header">
 							<h5 class="card-title">객실 삭제</h5>
@@ -80,6 +81,7 @@
 								<input type="button" class="btn btn-danger btn-lg" value="삭제" onClick="room_delete()">
 							</div>
 						</div>
+						-->
 						<hr>
 						<div class="card-header">
 							<h5 class="card-title">객실목록</h5>

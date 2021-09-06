@@ -149,7 +149,11 @@ public class MypageController {
 				vo.setPwd(default_pwd);
 			}
 			
-			vo.setAddress(addr1 + " " + addr2);
+			if(addr2.isEmpty()) {
+				vo.setAddress(addr1);
+			} else {
+				vo.setAddress(addr1 + " " + addr2);
+			}
 
 			memberService.updateMember(vo);
 			

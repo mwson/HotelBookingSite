@@ -10,6 +10,9 @@ public interface RoomService {
 	// "사용자 및 관리자, 예약 및 객실목록" 객실 조회
 	public RoomVO getRoom(int rid);
 	
+	// "사용자, 객실목록" 조회
+	public List<RoomVO> roomList();
+	
 	// "관리자, 객실목록" 목록 수 조회
 	public int adminCountRoomList(String type);
 	

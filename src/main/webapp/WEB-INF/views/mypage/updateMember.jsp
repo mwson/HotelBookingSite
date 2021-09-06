@@ -45,12 +45,12 @@
                                 <input type="text" class="form-control mb-1" id="id" name="id" size="14" placeholder="아이디" value="${memberVO.id}" readonly>
                             </div>
                             <div class="mb-4">
-                                <label for="pwd">비밀번호 <span class="review" style="color: #f44336">*</span></label> 
+                                <label for="pwd">비밀번호</label> 
                                 <input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호">
                                 <input type="password" id="default_pwd" name="default_pwd" value="${memberVO.pwd}" hidden="hidden">
                             </div>
                             <div class="mb-4">
-                                <label for="pwdCheck">비밀번호 확인 <span class="review" style="color: #f44336">*</span></label> 
+                                <label for="pwdCheck">비밀번호 확인</label> 
                                 <input type="password" class="form-control" id="pwdCheck" name="pwdCheck" placeholder="비밀번호 확인">
                             </div>
                             <div class="mb-4">
@@ -78,7 +78,7 @@
                                     <div style="clear: right"></div>
                                 </div>
                                 <div class="mb-1">
-                                    <input type="text" class="form-control" id="addr1" name="addr1" placeholder="주소" value="${memberVO.address}" readonly>
+                                    <input type="text" class="form-control" id="addr1" name="addr1" placeholder="주소" value="${memberVO.address}">
                                 </div>
                                 <div>
                                     <input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소">
@@ -141,6 +141,7 @@
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 $("#zip_num").val(data.zonecode);
+                $("#addr1").attr("readonly", true);
                 $("#addr1").val(addr);
              	/*
               	document.getElementById('zip_num').value = data.zonecode;

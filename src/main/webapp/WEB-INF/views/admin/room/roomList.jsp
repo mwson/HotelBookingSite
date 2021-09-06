@@ -88,6 +88,7 @@
                                 <input type="button" class="btn btn-secondary" value="검색" onclick="room_search()">
 							</div>
 						</div>
+						<!-- 객실 등록
                         <hr>
                         <div class="card-header">
 							<h5 class="card-title">객실등록</h5>
@@ -98,6 +99,7 @@
                                 <input type="button" class="btn btn-primary btn-lg" value="객실등록" onclick="room_write_form()">
 							</div>
 						</div>
+						-->
 					</div>
 				</div>
 			</div>

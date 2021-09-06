@@ -21,7 +21,7 @@
                     <div class="room__details__title">
                         <div class="room__details__rating">
                             <div class="room__details__hotel">
-                                <h2>슈페리어 룸</h2>
+                                <h2>${roomRid2.type}</h2>
                                 <div class="room__details__hotel__rating">
                                     <span class="icon_star"></span>
                                     <span class="icon_star"></span>
@@ -42,7 +42,7 @@
 							넓고 쾌적한 객실과 다양한 스타일의 베드가 구성되어 있어, 가족 고객들의 휴양지로 각광받고 있습니다.
                         </p>
 						<p>
-							새롭게 선보이는 객실 타입인 슈페리어 룸은 지금까지와는 다른 특별한 경험을 선사합니다.
+							새롭게 선보이는 객실 타입인 ${roomRid2.type}은 지금까지와는 다른 특별한 경험을 선사합니다.
 							탁 트인 객실에서 바라보는 매혹적인 서울의 모습은 당신이 또 다시 이곳을 떠올리게 만들 것입니다.
 						</p>
                     </div>

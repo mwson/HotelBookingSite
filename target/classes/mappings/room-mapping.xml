@@ -8,6 +8,12 @@
 		WHERE rid = #{rid}
 	</select>
 	
+	<!-- "사용자, 객실목록" 조회 -->
+	<select id="roomList" resultType="room">
+		SELECT *
+		FROM room
+	</select>
+	
 	<!-- "관리자, 객실목록" 목록 수 조회 -->
 	<select id="adminCountRoomList" parameterType="string" resultType="int">
 		SELECT COUNT(*)

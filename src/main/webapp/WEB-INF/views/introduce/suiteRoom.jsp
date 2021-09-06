@@ -21,7 +21,7 @@
                     <div class="room__details__title">
                         <div class="room__details__rating">
                             <div class="room__details__hotel">
-                                <h2>스위트 룸</h2>
+                                <h2>${roomRid1.type}</h2>
                                 <div class="room__details__hotel__rating">
                                     <span class="icon_star"></span>
                                     <span class="icon_star"></span>
@@ -45,7 +45,7 @@
 						</p>
 						<p>
 							파노라마 도시 뷰, 최고급 대리석과 원목을 사용한 세련된 인테리어, 거실에 오픈 침실이 있어 가족과 함께 머물러도 편안합니다.
-                       		중후함과 실용성을 고루 갖춘 특별한 레지덴셜 스위트룸으로써 럭셔리한 실내 디자인과 홈 네트워크 시스템으로 쾌적함을 더합니다.
+                       		중후함과 실용성을 고루 갖춘 특별한 레지덴셜 ${roomRid1.type}으로써 럭셔리한 실내 디자인과 홈 네트워크 시스템으로 쾌적함을 더합니다.
                        	</p>
                     </div>
                     <div class="row">
