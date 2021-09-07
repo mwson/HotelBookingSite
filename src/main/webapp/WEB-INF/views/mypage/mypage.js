@@ -19,17 +19,17 @@ function updateMember() {
 	if(confirm("회원정보를 수정 하시겠습니까?")) {
 		if($("#pwd").val() != "") {
 			if(!regExpPwd.test($("#pwd").val())) {
-				alert("비밀번호는 영문자와 숫자 조합으로 8자 이상 입력해 주세요.");
+				alert("비밀번호는 영문자와 숫자 조합으로 8자 이상 입력해주세요.");
 				$("#pwd").focus();
 				
 				return false;
 			} else if ($("#pwd").val() != $("#pwdCheck").val()) {
-				alert("비밀번호가 일치하지 않습니다!");
+				alert("비밀번호가 일치하지 않습니다.");
 				$("#pwdcheck").focus();
 				
 				return false;
 			} else if ($("#phone").val() == "") {
-				alert("휴대폰번호를 입력해 주세요!");
+				alert("휴대폰번호를 입력해주세요.");
 				$("#phone").focus();
 				
 				return false;
@@ -39,7 +39,7 @@ function updateMember() {
 				
 				return false;
 			} else if ($("#email").val() == "") {
-				alert("이메일을 입력해 주세요!");
+				alert("이메일을 입력해주세요.");
 				$("#email").focus();
 				
 				return false;
@@ -54,7 +54,7 @@ function updateMember() {
 				alert("회원정보 수정이 완료되었습니다.");
 			}
 		} else if ($("#phone").val() == "") {
-			alert("휴대폰번호를 입력해 주세요!");
+			alert("휴대폰번호를 입력해주세요.");
 			$("#phone").focus();
 			
 			return false;
@@ -64,7 +64,7 @@ function updateMember() {
 			
 			return false;
 		} else if ($("#email").val() == "") {
-			alert("이메일을 입력해 주세요!");
+			alert("이메일을 입력해주세요.");
 			$("#email").focus();
 			
 			return false;

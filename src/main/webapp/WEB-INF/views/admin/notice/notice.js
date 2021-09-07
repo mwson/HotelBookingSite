@@ -23,21 +23,37 @@ function go_notice_write_form() {
  * "공지사항" 등록 처리
  */
 function go_notice_write() {
-	if($("#subject").val() == "") {
-		alert("제목을 입력해 주세요!");
+	if($("#kind").val() == "종류를 선택하세요") {
+		alert("종류를 선택해주세요.");
+		$("#kind").focus();
+		
+		return false;
+	} else if($("#subject").val() == "") {
+		alert("제목을 입력해주세요.");
 		$("#subject").focus();
+		
 		return false;
 	} else if($("#content").val() == "") {
-		alert("내용을 입력해 주세요!");
+		alert("내용을 입력해주세요.");
 		$("#content").focus();
+		
 		return false;
 	} else if($("#notice_image").val() == "") {
-		alert("이미지를 등록해 주세요!");
+		alert("이미지를 등록해주세요.");
 		$("#notice_image").focus();
+		
 		return false;
 	} else {
-		$("#notice_write_form").attr("encoding", "multipart/form-data");
-		$("#notice_write_form").attr("action", "admin_notice_write").submit();
+		if(confirm("등록하시겠습니까?")) {
+			$("#notice_write_form").attr("encoding", "multipart/form-data");
+			$("#notice_write_form").attr("action", "admin_notice_write").submit();
+			
+			alert("등록이 완료되었습니다.");
+		} else {
+			alert("등록이 취소되었습니다.");
+			
+			return false;
+		} 
 	}
 }
 
@@ -81,17 +97,20 @@ function go_notice_list2() {
  * "공지사항 수정" 처리 
  */
 function go_notice_update(nseq) {
-	if($("#kind").val() == "") {
-		alert("종류를 입력해 주세요!");
+	if($("#kind").val() == "종류를 선택하세요") {
+		alert("종류를 선택해주세요.");
 		$("#kind").focus();
+		
 		return false;
 	} else if($("#subject").val() == "") {
-		alert("제목을 입력해 주세요!");
+		alert("제목을 입력해주세요.");
 		$("#subject").focus();
+		
 		return false;
 	} else if($("#content").val() == "") {
-		alert("내용을 입력해 주세요!");
+		alert("내용을 입력해주세요.");
 		$("#content").focus();
+		
 		return false;
 	} else {
 		if(confirm("수정하시겠습니까?")) {

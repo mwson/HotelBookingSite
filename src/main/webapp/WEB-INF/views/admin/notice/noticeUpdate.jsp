@@ -25,7 +25,14 @@
 								<tr>
 									<th style="width: 15%">종류</th>
 									<td>
+										<select class="form-select" name="kind" id="kind">
+											<c:forEach items="${kindList}" var="kind">
+												<option value="${kind}">${kind}</option>
+											</c:forEach>
+										</select>
+										<!-- 종류 입력
 										<input type="text" class="form-control" id="kind" name="kind" value="${noticeVO.kind}">
+										-->
 									</td>
 								</tr>
 								<tr>

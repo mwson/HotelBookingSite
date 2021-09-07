@@ -56,8 +56,12 @@ public class CommentController {
 		if(loginUser == null) {
 			return "not_logged_in";
 		} else {
+			/*
 			String writer = loginUser.getName() + "(" + loginUser.getId() + ")";
-			vo.setWriter(writer);
+			vo.setId(writer);
+			*/
+
+			// vo.setId(loginUser.getId());
 			
 			if(commentService.saveComment(vo) == 1) {
 				return "success";
@@ -76,9 +80,14 @@ public class CommentController {
 			return "not_logged_in";
 		} else {
 			NoticeCommentVO noticeCommentVO = commentService.getComment(vo);
+			
+			/*
 			String writer = loginUser.getName() + "(" + loginUser.getId() + ")";
 			
-			if(noticeCommentVO.getWriter().equals(writer)) {
+			if(noticeCommentVO.getId().equals(writer)) {
+			*/
+			
+			if(noticeCommentVO.getId().equals(loginUser.getId())) {
 				if(commentService.updateComment(vo) == 1) {
 					return "success";
 				} else {
@@ -99,9 +108,14 @@ public class CommentController {
 			return "not_logged_in";
 		} else {
 			NoticeCommentVO noticeCommentVO = commentService.getComment(vo);
+			
+			/*
 			String writer = loginUser.getName() + "(" + loginUser.getId() + ")";
 			
 			if(noticeCommentVO.getWriter().equals(writer)) {
+			*/
+			
+			if(noticeCommentVO.getId().equals(loginUser.getId())) {
 				if(commentService.deleteComment(vo) == 1) {
 					return "success";
 				} else {

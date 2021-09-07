@@ -6,7 +6,7 @@ public class NoticeCommentVO {
 	
 	private int ncseq;
 	private int nseq;
-	private String writer;
+	private String id;
 	private String content;
 	private Date regdate;
 	
@@ -24,11 +24,11 @@ public class NoticeCommentVO {
 		this.nseq = nseq;
 	}
 	
-	public String getWriter() {
-		return writer;
+	public String getId() {
+		return id;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	public String getContent() {
@@ -47,7 +47,7 @@ public class NoticeCommentVO {
 	
 	@Override
 	public String toString() {
-		return "NoticeCommentVO [ncseq=" + ncseq + ", nseq=" + nseq + ", writer=" + writer + ", content=" + content
+		return "NoticeCommentVO [ncseq=" + ncseq + ", nseq=" + nseq + ", id=" + id + ", content=" + content
 				+ ", regdate=" + regdate + "]";
 	}
 
