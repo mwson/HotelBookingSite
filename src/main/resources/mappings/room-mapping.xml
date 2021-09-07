@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="RoomDAO">
+	<!-- "사용자, 예약" 인원 수로 객실 체크 -->
+	<select id="userCountPeopleList" resultType="int">
+		SELECT COUNT(*)
+		FROM room 
+		WHERE rid = #{rid}
+			AND people >= #{people}
+			AND useyn = 'y'
+	</select>
+
 	<!-- "사용자, 예약 및 관리자, 객실목록" 상세 조회 -->
 	<select id="getRoom" parameterType="int" resultType="room">
 		SELECT *

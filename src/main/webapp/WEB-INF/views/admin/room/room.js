@@ -15,27 +15,22 @@ function room_write_form() {
  */
 function room_write() {
 	if($("#type").val() == "") {
-		alert("객실명를 입력해 주세요!");
+		alert("객실명를 입력해주세요.");
 		$("#type").focus();
 		
 		return false;
-	} else if($("#people").val() == "") {
-		alert("인원을 입력해 주세요!");
-		$("#people").focus();
-		
-		return false;
-	} else if(isNaN($("#people").val())) {
-		alert("인원에 숫자만 입력해 주세요!");
+	} else if($("#people").val() == "----") {
+		alert("최대인원을 선택해주세요.");
 		$("#people").focus();
 		
 		return false;
 	} else if($("#price").val() == "") {
-		alert("가격을 입력해 주세요!");
+		alert("가격을 입력해주세요.");
 		$("#price").focus();
 		
 		return false;
 	} else if($("#room_image").val() == "") {
-		alert("객실 이미지를 등록해 주세요!");
+		alert("객실 이미지를 등록해주세요.");
 		$("#room_image").focus();
 		
 		return false;
@@ -96,22 +91,17 @@ function room_list2(page, items_cnt) {
  */
 function room_update() {
 	if($("#type").val() == "") {
-		alert("객실명를 입력해 주세요!");
+		alert("객실명를 입력해주세요.");
 		$("#type").focus();
 		
 		return false;
-	} else if($("#people").val() == "") {
-		alert("인원을 입력해 주세요!");
-		$("#people").focus();
-		
-		return false;
-	} else if(isNaN($("#people").val())) {
-		alert("인원에 숫자만 입력해 주세요!");
+	} else if($("#people").val() == "----") {
+		alert("최대인원을 선택해주세요.");
 		$("#people").focus();
 		
 		return false;
 	} else if($("#price").val() == "") {
-		alert("가격을 입력해 주세요!");
+		alert("가격을 입력해주세요.");
 		$("#price").focus();
 		
 		return false;

@@ -6,7 +6,7 @@
 <main class="content">
 	<div class="container-fluid p-0">
 		<div class="mb-3">
-			<h1 class="h3 d-inline align-middle">상품수정</h1>
+			<h1 class="h3 d-inline align-middle">공지사항 등록</h1>
 		</div>
 		
 		<form method="post" id="notice_write_form" name="notice_write_form" enctype="multipart/form-data"> 

@@ -2,10 +2,14 @@ package com.green.biz.room;
 
 import java.util.List;
 
+import com.green.biz.dto.BookingVO;
 import com.green.biz.dto.RoomVO;
 import com.green.biz.utils.Criteria;
 
 public interface RoomService {
+	
+	// "사용자, 예약" 인원 수로 객실 체크
+	public int userCountPeopleList(BookingVO vo);
 	
 	// "사용자 및 관리자, 예약 및 객실목록" 객실 조회
 	public RoomVO getRoom(int rid);

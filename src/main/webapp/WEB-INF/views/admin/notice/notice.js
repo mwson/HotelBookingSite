@@ -23,7 +23,7 @@ function go_notice_write_form() {
  * "공지사항" 등록 처리
  */
 function go_notice_write() {
-	if($("#kind").val() == "종류를 선택하세요") {
+	if($("#kind").val() == "-----------") {
 		alert("종류를 선택해주세요.");
 		$("#kind").focus();
 		

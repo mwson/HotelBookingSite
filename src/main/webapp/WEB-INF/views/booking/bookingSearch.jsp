@@ -108,7 +108,7 @@
                                     <div class="BookingSearch__details__advisor">
                                         <img src="images/booking-search/tripadvisor.png" alt="">
                                         <c:choose>
-                                            <c:when test='${suiteRoom=="1"}'>
+                                            <c:when test="${bookingRid1==0}">
                                                 <span class="review" style="color: #007BFF">예약가능</span>
                                             </c:when>
                                             <c:otherwise>
@@ -126,8 +126,8 @@
                                     <div class="BookingSearch__text">
                                         <h5><sup>&#8361; </sup><fmt:formatNumber value="${roomRid1.price}" pattern="#,###"/><span> / 1박</span> ~</h5>
                                         <c:choose>
-                                            <c:when test='${suiteRoom=="1"}'>
-                                                <input type="button" class="btn btn-warning" id="suite_room" name="suite_room" onclick="booking_suite()" value="예약하기">
+                                            <c:when test="${bookingRid1==0}">
+                                                <input type="button" class="btn btn-warning" onclick="booking_rid1()" value="예약하기">
                                             </c:when>
                                             <c:otherwise>
                                                 <input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
@@ -162,7 +162,7 @@
                                     <div class="BookingSearch__details__advisor">
                                         <img src="images/booking-search/tripadvisor.png" alt="">
                                         <c:choose>
-                                            <c:when test='${superiorRoom=="1"}'>
+                                            <c:when test="${bookingRid2==0}">
                                                 <span class="review" style="color: #007BFF">예약가능</span>
                                             </c:when>
                                             <c:otherwise>
@@ -180,8 +180,8 @@
                                     <div class="BookingSearch__text">
                                         <h5><sup>&#8361; </sup><fmt:formatNumber value="${roomRid2.price}" pattern="#,###"/><span> / 1박</span> ~</h5>
                                         <c:choose>
-                                            <c:when test='${superiorRoom=="1"}'>
-                                                <input type="button" class="btn btn-warning" id="superior_room" name="superior_room" onclick="booking_superior()" value="예약하기">
+                                            <c:when test="${bookingRid2==0}">
+                                                <input type="button" class="btn btn-warning" onclick="booking_rid2()" value="예약하기">
                                             </c:when>
                                             <c:otherwise>
                                                 <input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
@@ -216,7 +216,7 @@
                                     <div class="BookingSearch__details__advisor">
                                         <img src="images/booking-search/tripadvisor.png" alt="">
                                         <c:choose>
-                                            <c:when test='${deluxeRoom=="1"}'>
+                                            <c:when test="${bookingRid3==0}">
                                                 <span class="review" style="color: #007BFF">예약가능</span>
                                             </c:when>
                                             <c:otherwise>
@@ -234,8 +234,8 @@
                                     <div class="BookingSearch__text">
                                         <h5><sup>&#8361; </sup><fmt:formatNumber value="${roomRid3.price}" pattern="#,###"/><span> / 1박</span> ~</h5>
                                         <c:choose>
-                                            <c:when test='${deluxeRoom=="1"}'>
-                                                <input type="button" class="btn btn-warning" id="deluxe_room" name="deluxe_room" onclick="booking_deluxe()" value="예약하기">
+                                            <c:when test="${bookingRid3==0}">
+                                                <input type="button" class="btn btn-warning" onclick="booking_rid3()" value="예약하기">
                                             </c:when>
                                             <c:otherwise>
                                                 <input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
@@ -270,7 +270,7 @@
                                     <div class="BookingSearch__details__advisor">
                                         <img src="images/booking-search/tripadvisor.png" alt="">
                                         <c:choose>
-                                            <c:when test='${standardRoom=="1"}'>
+                                            <c:when test="${bookingRid4==0}">
                                                 <span class="review" style="color: #007BFF">예약가능</span>
                                             </c:when>
                                             <c:otherwise>
@@ -288,8 +288,8 @@
                                     <div class="BookingSearch__text" style="margin-bottom: 0;">
                                         <h5><sup>&#8361; </sup><fmt:formatNumber value="${roomRid4.price}" pattern="#,###"/><span> / 1박</span> ~</h5>
                                         <c:choose>
-                                            <c:when test='${standardRoom=="1"}'>
-                                                <input type="button" class="btn btn-warning" id="standard_room" name="standard_room" onclick="booking_standard()" value="예약하기">
+                                            <c:when test="${bookingRid4==0}">
+                                                <input type="button" class="btn btn-warning" onclick="booking_rid4()" value="예약하기">
                                             </c:when>
                                             <c:otherwise>
                                                 <input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">

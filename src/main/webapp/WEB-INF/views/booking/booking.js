@@ -20,24 +20,24 @@ function booking_search() {
     }
 }
 
-//"사용자, 예약" 스위트 룸 예약 
-function booking_suite() {
-	$("#booking_form").attr("action", "booking_suite").submit();
+//"사용자, 예약" rid1(스위트 룸) 예약
+function booking_rid1() {
+	$("#booking_form").attr("action", "booking_rid1").submit();
 }
 
-//"사용자, 예약" 슈페리어 룸 예약 
-function booking_superior() {
-	$("#booking_form").attr("action", "booking_superior").submit();
+//"사용자, 예약" rid2(슈페리어 룸) 예약 
+function booking_rid2() {
+	$("#booking_form").attr("action", "booking_rid2").submit();
 }
 
-//"사용자, 예약" 디럭스 룸 예약 
-function booking_deluxe() {
-	$("#booking_form").attr("action", "booking_deluxe").submit();
+//"사용자, 예약" rid3(디럭스 룸) 예약 
+function booking_rid3() {
+	$("#booking_form").attr("action", "booking_rid3").submit();
 }
 
-//"사용자, 예약" 스탠다드 룸 예약 
-function booking_standard() {
-	$("#booking_form").attr("action", "booking_standard").submit();
+//"사용자, 예약" rid4(스탠다드 룸) 예약 
+function booking_rid4() {
+	$("#booking_form").attr("action", "booking_rid4").submit();
 }
 
 // "사용자, 예약" 예약불가

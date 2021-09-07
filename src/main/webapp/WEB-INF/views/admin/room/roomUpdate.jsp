@@ -45,7 +45,13 @@
 								<tr>
 									<th style="width: 15%">최대인원</th>
 									<td>
-										<input type="text" class="form-control" id="people" name="people" value="${roomVO.people}" readonly="readonly">
+										<select class="form-select" id="people" name="people">
+											<option selected="selected">----</option>
+											<option value="1">1명</option>
+											<option value="2">2명</option>
+											<option value="3">3명</option>
+											<option value="4">4명</option>
+										</select>
 									</td>
 								</tr>
 								<tr>

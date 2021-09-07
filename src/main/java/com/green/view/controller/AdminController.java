@@ -405,7 +405,7 @@ public class AdminController {
 		if(adminUser == null) {
 			return "admin/login";
 		} else {
-			String[] kindList = {"종류를 선택하세요", "프로모션", "공지사항", "이벤트"};
+			String[] kindList = {"-----------", "프로모션", "공지사항", "이벤트"};
 			
 			model.addAttribute("kindList", kindList);
 			
@@ -453,7 +453,7 @@ public class AdminController {
 			return "admin/login";
 		} else {
 			NoticeVO noticeVO = noticeService.getNotice(vo.getNseq());
-			String[] kindList = {"종류를 선택하세요", "프로모션", "공지사항", "이벤트"};
+			String[] kindList = {"-----------", "프로모션", "공지사항", "이벤트"};
 			
 			model.addAttribute("noticeVO", noticeVO);
 			model.addAttribute("kindList", kindList);

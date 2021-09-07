@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.green.biz.dto.BookingVO;
 import com.green.biz.dto.RoomVO;
 import com.green.biz.utils.Criteria;
 
@@ -15,8 +16,13 @@ public class RoomDAO {
 	
 	@Autowired
 	private SqlSessionTemplate mybatis;
+		
+	// "사용자, 예약" 인원 수 체크
+	public int userCountPeopleList(BookingVO vo) {
+		return mybatis.selectOne("RoomDAO.userCountPeopleList", vo);
+	}
 	
-	// "사용자, 예약" 객실 조회
+	// "사용자 및 관리자, 예약 및 객실목록" 객실 조회
 	public RoomVO getRoom(int rid) {
 		return mybatis.selectOne("RoomDAO.getRoom", rid);
 	}
