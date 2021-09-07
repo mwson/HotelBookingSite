@@ -82,7 +82,7 @@
                                         </div>
                                         <div class="room__details__more__facilities__item">
                                             <div class="icon"><img src="images/rooms/details/facilities/fac-8.png" alt=""></div>
-                                            <h6>스파 & 웰니스</h6>                                         
+                                            <h6>스파 &#38; 웰니스</h6>                                         
                                         </div>
                                     </div>
                                 </div>

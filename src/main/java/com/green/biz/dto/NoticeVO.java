@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 public class NoticeVO {
 	
 	private int nseq;
+	private String id;
 	private String kind;
 	private String subject;
 	private String content;
@@ -16,6 +17,13 @@ public class NoticeVO {
 	}
 	public void setNseq(int nseq) {
 		this.nseq = nseq;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	public String getKind() {
