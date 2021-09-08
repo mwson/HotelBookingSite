@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="bookingPayment__right__button">
-						<input type="button" class="btn btn-secondary btn-lg left" onclick="location.href='booking_button'" value="취소하기">
+						<input type="button" class="btn btn-secondary btn-lg left" onclick="booking_cancel()" value="취소하기">
 						<input type="button" class="btn btn-warning btn-lg right" onclick="booking_complete()" value="결제하기">
 					</div>
                 </form>

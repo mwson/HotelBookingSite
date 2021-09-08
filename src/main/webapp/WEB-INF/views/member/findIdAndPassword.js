@@ -1,15 +1,19 @@
-/*
- * "아이디, 비밀번호 찾기" 화면 팝업 창
- */
+// 엔터키 방지
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+    }
+}, true);
+
+
+// "아이디, 비밀번호 찾기" 화면 팝업 창
 function find_idAndPwd_form() {
 	var url = "find_idAndPwd_form";
 	
 	window.open(url, "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
 }
 
-/*
- * "아이디 찾기" 처리
- */
+// "아이디 찾기" 처리
 function findMemberId() {
 	if($("#nameId").val() == "") {
 		alert("이름을 입력해 주세요!");
@@ -24,9 +28,7 @@ function findMemberId() {
 	}
 }
 
-/*
- * "비밀번호 찾기" 처리
- */
+// "비밀번호 찾기" 처리
 function findPassword() {
 	if($("#idPw").val() == "") {
 		alert("아이디를 입력해 주세요!");
@@ -45,9 +47,7 @@ function findPassword() {
 	}
 }
 
-/*
- * "비밀번호 변경" 처리
- */
+// "비밀번호 변경" 처리
 function changePassword() {
 	if(confirm("비밀번호를 변경 하시겠습니까?")) {
 		if($("#pwd").val() == "") {

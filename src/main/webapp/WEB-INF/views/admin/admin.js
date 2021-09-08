@@ -1,3 +1,10 @@
+// 엔터키 방지
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+    }
+}, true);
+
 // "관리자" 로그인
 function worker_check() {
 	if($("#workerId").val() == "") {

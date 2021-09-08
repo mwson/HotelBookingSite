@@ -17,10 +17,16 @@ public class RoomServiceImpl implements RoomService {
 	@Autowired
 	private RoomDAO roomDao;
 	
-	// "사용자, 예약" 인원 수 체크
+	// "사용자, 예약" 객실 수 체크
 	@Override
-	public int userCountPeopleList(BookingVO vo) {
-		return roomDao.userCountPeopleList(vo);
+	public int countRoomList() {
+		return roomDao.countRoomList();
+	}
+	
+	// "사용자, 예약" 인원 수로 객실 체크
+	@Override
+	public int countPeopleList(BookingVO vo) {
+		return roomDao.countPeopleList(vo);
 	}
 	
 	// "사용자 및 관리자, 예약 및 객실목록" 객실 조회

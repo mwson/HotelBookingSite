@@ -1,3 +1,10 @@
+// 엔터키 방지
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+    }
+}, true);
+
 // "사용자, 회원정보 수정" 비밀번호 확인
 function update_member_form_pwdCheck() {
 	if ($("#pwd").val() == "") {

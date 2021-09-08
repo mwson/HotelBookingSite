@@ -7,9 +7,11 @@ import com.green.biz.dto.RoomVO;
 import com.green.biz.utils.Criteria;
 
 public interface RoomService {
+	// "사용자, 예약" 객실 수 체크
+	public int countRoomList();
 	
 	// "사용자, 예약" 인원 수로 객실 체크
-	public int userCountPeopleList(BookingVO vo);
+	public int countPeopleList(BookingVO vo);
 	
 	// "사용자 및 관리자, 예약 및 객실목록" 객실 조회
 	public RoomVO getRoom(int rid);

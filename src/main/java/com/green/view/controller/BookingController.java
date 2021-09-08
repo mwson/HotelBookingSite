@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.green.biz.booking.BookingService;
 import com.green.biz.dto.BookingVO;
@@ -30,13 +31,12 @@ public class BookingController {
 	@RequestMapping(value = "/booking_search")
 	public String bookingSearch(BookingVO vo, Model model) {
 		// 중복 조회
-		String url = bookingCheck(vo, model);
-		//String url = bookingCheck2(vo, model);
+		bookingCheck(vo, model);
 		
 		// "객실목록" 조회
 		roomList(model);		
 		
-		return url;
+		return "booking/bookingSearch";
 	}
 	
 	// "사용자, 예약하기(버튼)" 클릭으로 이동
@@ -46,147 +46,72 @@ public class BookingController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         Calendar cal = Calendar.getInstance();
         
-        // "체크인" 오늘
+        // "체크인" 오늘날짜(기본 값)
         String today = sdf.format(cal.getTime());
         vo.setCheckin(today);
         
-        // "체크아웃" 내일
+        // "체크아웃" 내일날짜(기본 값)
         cal.add(Calendar.DATE, 1);
         String tomorrow = sdf.format(cal.getTime());
         vo.setCheckout(tomorrow);
         
-        // "인원" 1명
+        // "인원" 1명(기본 값)
         vo.setPeople(1);
-        // 중복 조회
-        String url = bookingCheck(vo, model);
+        
+        // "객실" 중복 조회
+        bookingCheck(vo, model);
 		
         // "객실목록" 조회
      	roomList(model);
         
-		return url;
+     	return "booking/bookingSearch";
 	}
 	
-	// "사용자, 예약" rid1(스위트 룸) 결제
-	@RequestMapping(value = "/booking_rid1")
-	public String bookingSuite(HttpSession session, BookingVO vo, Model model) {
-		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+	@RequestMapping(value = "/booking_fail")
+	public String bookingFail(@RequestParam(value = "roomRid")int roomRid, BookingVO vo) {
+		// 객실 id
+		vo.setRid(roomRid);
+		// 객실 사용유무 확인(사용 : "y", 불가능 : "n")
+		RoomVO roomUseyn = roomService.getRoom(vo.getRid());
+		// 객실 인원 확인(0: 불가능, 1: 가능)
+		int peopleCheck = roomService.countPeopleList(vo);
+		// 체크인, 체크아웃, 객실로 중복 확인(0: 가능, 1: 불가능)
+		int bookingCheck = bookingService.countBookingCheck(vo);
 		
-		if(loginUser == null) {
-			return "member/login";
+		if(roomUseyn.getUseyn().equals("n")) {
+			return "booking/bookingCheckFail1";
+		} else if(peopleCheck == 0) {
+			return "booking/bookingCheckFail2";
+		} else if(bookingCheck >= 1) {
+			return "booking/bookingCheckFail3";
 		} else {
-			vo.setRid(1);
-			// 객실 인원 확인(0: 불가능, 1: 가능)
-			int peopleCheck = roomService.userCountPeopleList(vo);
-			// 체크인, 체크아웃, 객실로 중복 확인(0: 가능, 1: 불가능)
-			int bookingCheck = bookingService.countBookingCheck(vo);
-			
-			if(peopleCheck == 0) {
-				return "booking/bookingCheckFail1";
-			} else if(bookingCheck >= 1) {
-				return "booking/bookingCheckFail2";
-			} else {
-				// 예약자 조회
-				model.addAttribute("loginUser", loginUser);
-				model.addAttribute("bookingVO", vo);
-				
-				// 룸 조회
-				RoomVO roomVO = roomService.getRoom(vo.getRid());
-				model.addAttribute("roomVO", roomVO);
-				
-				checkSubPriceCal(vo.getCheckin(), vo.getCheckout(), roomVO.getPrice(), model);
-				
-				return "booking/bookingPayment";
-			}
+			return "redirect:booking_button";
 		}
 	}
 	
-	// "사용자, 예약" rid2(슈페리어 룸) 결제
-	@RequestMapping(value = "/booking_rid2")
-	public String bookingSuperior(HttpSession session, BookingVO vo, Model model) {
+	// "사용자, 예약" 예약하기
+	@RequestMapping(value = "/booking")
+	public String booking(HttpSession session, @RequestParam(value = "roomRid")int roomRid, BookingVO vo, Model model) {
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setRid(2);
+			// 객실 id
+			vo.setRid(roomRid);
+			// 객실 사용유무 확인(사용 : "y", 불가능 : "n")
+			RoomVO roomUseyn = roomService.getRoom(vo.getRid());
 			// 객실 인원 확인(0: 불가능, 1: 가능)
-			int peopleCheck = roomService.userCountPeopleList(vo);
+			int peopleCheck = roomService.countPeopleList(vo);
 			// 체크인, 체크아웃, 객실로 중복 확인(0: 가능, 1: 불가능)
 			int bookingCheck = bookingService.countBookingCheck(vo);
 			
-			if(peopleCheck == 0) {
+			if(roomUseyn.getUseyn().equals("n")) {
 				return "booking/bookingCheckFail1";
-			} else if(bookingCheck >= 1) {
+			} else if(peopleCheck == 0) {
 				return "booking/bookingCheckFail2";
-			} else {
-				// 예약자 조회
-				model.addAttribute("loginUser", loginUser);
-				model.addAttribute("bookingVO", vo);
-				
-				// 룸 조회
-				RoomVO roomVO = roomService.getRoom(vo.getRid());
-				model.addAttribute("roomVO", roomVO);
-				
-				checkSubPriceCal(vo.getCheckin(), vo.getCheckout(), roomVO.getPrice(), model);
-				
-				return "booking/bookingPayment";
-			}
-		}
-	}
-	
-	// "사용자, 예약" rid3(디럭스 룸) 결제
-	@RequestMapping(value = "/booking_rid3")
-	public String bookingDeluxe(HttpSession session, BookingVO vo, Model model) {
-		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-		
-		if(loginUser == null) {
-			return "member/login";
-		} else {
-			vo.setRid(3);
-			// 객실 인원 확인(0: 불가능, 1: 가능)
-			int peopleCheck = roomService.userCountPeopleList(vo);
-			// 체크인, 체크아웃, 객실로 중복 확인(0: 가능, 1: 불가능)
-			int bookingCheck = bookingService.countBookingCheck(vo);
-			
-			if(peopleCheck == 0) {
-				return "booking/bookingCheckFail1";
 			} else if(bookingCheck >= 1) {
-				return "booking/bookingCheckFail2";
-			} else {
-				// 예약자 조회
-				model.addAttribute("loginUser", loginUser);
-				model.addAttribute("bookingVO", vo);
-				
-				// 룸 조회
-				RoomVO roomVO = roomService.getRoom(vo.getRid());
-				model.addAttribute("roomVO", roomVO);
-				
-				checkSubPriceCal(vo.getCheckin(), vo.getCheckout(), roomVO.getPrice(), model);
-				
-				return "booking/bookingPayment";
-			}
-		}
-	}
-	
-	// "사용자, 예약" rid4(스탠다드 룸) 결제
-	@RequestMapping(value = "/booking_rid4")
-	public String bookingStandard(HttpSession session, BookingVO vo, Model model) {
-		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-		
-		if(loginUser == null) {
-			return "member/login";
-		} else {
-			vo.setRid(4);
-			// 객실 인원 확인(0: 불가능, 1: 가능)
-			int peopleCheck = roomService.userCountPeopleList(vo);
-			System.out.println(peopleCheck);
-			// 체크인, 체크아웃, 객실로 중복 확인(0: 가능, 1: 불가능)
-			int bookingCheck = bookingService.countBookingCheck(vo);
-			 
-			if(peopleCheck == 0) {
-				return "booking/bookingCheckFail1";
-			} else if(bookingCheck >= 1) {
-				return "booking/bookingCheckFail2";
+				return "booking/bookingCheckFail3";
 			} else {
 				// 예약자 조회
 				model.addAttribute("loginUser", loginUser);
@@ -211,10 +136,19 @@ public class BookingController {
 		if(loginUser == null) {
 			return "member/login";
 		} else {
+			// 객실 사용유무 확인(사용 : "y", 불가능 : "n")
+			RoomVO roomUseyn = roomService.getRoom(vo.getRid());
+			// 객실 인원 확인(0: 불가능, 1: 가능)
+			int peopleCheck = roomService.countPeopleList(vo);
+			// 체크인, 체크아웃, 객실로 중복 확인(0: 가능, 1: 불가능)
 			int bookingCheck = bookingService.countBookingCheck(vo);
 			
-			if(bookingCheck >= 1) {
-				return "booking/bookingFail";
+			if(roomUseyn.getUseyn().equals("n")) {
+				return "booking/bookingCheckFail1";
+			} else if(peopleCheck == 0) {
+				return "booking/bookingCheckFail2";
+			} else if(bookingCheck >= 1) {
+				return "booking/bookingCheckFail3";
 			} else {
 				vo.setId(loginUser.getId());
 				// vo.getBseq()에 bseq값 반환
@@ -231,47 +165,53 @@ public class BookingController {
 	}
 	
 	/*
-	 * 모듈화
+	 * 모듈
 	 */
 	// "사용자, 메인(예약하기)" 인원, 체크인, 체크아웃으로 중복 조회
-	public String bookingCheck(BookingVO vo, Model model) {
-		// 객실 번호(방 4개)
-		int[] roomRid = new int[4];
-		// 객실 인원 확인(방 4개)
-		int[] roomCheck = new int[4];
-		// 객실로 중복 확인 (jsp에서는 0: 가능, 1: 불가능)
-		int bookingCheck = 1;
-		
-		for(int i=0; i<roomRid.length; i++) {
+	public void bookingCheck(BookingVO vo, Model model) {
+		// 객실 수
+		int roomCount = roomService.countRoomList(); 
+		// 객실 번호
+		int[] roomRid = new int[roomCount];
+		// 객실 인원 확인
+		int[] peopleCheck = new int[roomCount];
+
+		for(int i=0; i<roomCount; i++) {
+			// 객실로 중복 확인 (jsp에서 0: 가능, 1: 불가능)
+			int bookingCheck = 1;
+			// 객실 번호 설정
 			vo.setRid(i + 1);
-			// 객실 번호(1, 2, 3, 4)
+			// 객실 번호
 			roomRid[i] = i + 1;
+			// 객실 사용유무 확인(사용 : "y", 불가능 : "n")
+			RoomVO roomUseyn = roomService.getRoom(vo.getRid());
 			// 객실 인원 확인(0: 불가능, 1: 가능)
-			roomCheck[i] = roomService.userCountPeopleList(vo);
+			peopleCheck[i] = roomService.countPeopleList(vo);
 			
-			// 인원으로 입실 가능(1)
-			if(roomCheck[i] >= 1) {
-				vo.setRid(roomRid[i]);
-				// 체크인, 체크아웃, 객실로 중복 확인(0: 가능, 1: 불가능)
-				bookingCheck = bookingService.countBookingCheck(vo);
-				
-				// 체크인, 체크아웃, 객실로 입실 불가능(1)
-				if(bookingCheck >= 1) {
-					model.addAttribute(("bookingRid" + (roomRid[i])), bookingCheck);
-				// 체크인, 체크아웃, 객실로 입실 가능(0)
+			// 객실 사용유무 확인(사용 : "y")
+			if(roomUseyn.getUseyn().equals("y")) {
+				// 인원으로 입실 가능(1)
+				if(peopleCheck[i] >= 1) {
+					vo.setRid(roomRid[i]);
+					// 체크인, 체크아웃, 객실로 중복 확인(0: 가능, 1: 불가능)
+					bookingCheck = bookingService.countBookingCheck(vo);
+					
+					// 체크인, 체크아웃, 객실로 입실 불가능(1)
+					if(bookingCheck >= 1) {
+						model.addAttribute(("bookingRid" + (roomRid[i])), bookingCheck);
+					// 체크인, 체크아웃, 객실로 입실 가능(0)
+					} else {
+						model.addAttribute(("bookingRid" + (roomRid[i])), bookingCheck);
+					}
+				// 인원으로 입실 불가능(0)
 				} else {
 					model.addAttribute(("bookingRid" + (roomRid[i])), bookingCheck);
 				}
-			// 인원으로 입실 불가능(0)
-			} else {
-				// jsp에서는 0: 가능, 1: 불가능
-				bookingCheck = 1;
-				
+			// 객실 사용유무 확인(미사용 : "n")
+			} else {				
 				model.addAttribute(("bookingRid" + (roomRid[i])), bookingCheck);
 			}
 		}
-
-		return "booking/bookingSearch";
 	}
 	
 	// "객실목록" 조회

@@ -23,6 +23,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <form method="get" id="booking_form" name="booking_form">
+                <input type="hidden" id="roomRid" name="roomRid">
                     <div class="room__details__content">
                         <div class="room__details__title">
                             <h2>예약하기</h2>
@@ -130,7 +131,7 @@
                                                 <input type="button" class="btn btn-warning" onclick="booking_rid1()" value="예약하기">
                                             </c:when>
                                             <c:otherwise>
-                                                <input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
+                                                <input type="button" class="btn btn-secondary" onclick="booking_rid1_fail()" value="예약불가">
                                             </c:otherwise>
                                         </c:choose>
                                     </div>
@@ -184,7 +185,7 @@
                                                 <input type="button" class="btn btn-warning" onclick="booking_rid2()" value="예약하기">
                                             </c:when>
                                             <c:otherwise>
-                                                <input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
+                                                <input type="button" class="btn btn-secondary" onclick="booking_rid2_fail()" value="예약불가">
                                             </c:otherwise>
                                         </c:choose>
                                     </div>
@@ -238,7 +239,7 @@
                                                 <input type="button" class="btn btn-warning" onclick="booking_rid3()" value="예약하기">
                                             </c:when>
                                             <c:otherwise>
-                                                <input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
+                                                <input type="button" class="btn btn-secondary" onclick="booking_rid3_fail()" value="예약불가">
                                             </c:otherwise>
                                         </c:choose>
                                     </div>
@@ -292,7 +293,7 @@
                                                 <input type="button" class="btn btn-warning" onclick="booking_rid4()" value="예약하기">
                                             </c:when>
                                             <c:otherwise>
-                                                <input type="button" class="btn btn-secondary" onclick="booking_fail()" value="예약불가">
+                                                <input type="button" class="btn btn-secondary" onclick="booking_rid4_fail()" value="예약불가">
                                             </c:otherwise>
                                         </c:choose>
                                     </div>
