@@ -38,8 +38,8 @@
 	<!-- "관리자, 객실목록" 조회 -->
 	<select id="adminRoomListWithPaging" parameterType="HashMap" resultType="room">
 		<![CDATA[
-		SELECT rid, type, people, price, useyn, regdate
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY type) rn, rid, type, people, price, useyn, regdate
+		SELECT rid, type, people, bed, price, useyn, regdate
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY type) rn, rid, type, people, bed, price, useyn, regdate
 			FROM room
 			WHERE type LIKE '%' || #{type} || '%')
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
@@ -50,14 +50,14 @@
 	
 	<!-- "관리자, 객실목록" 객실 등록 -->
 	<insert id="insertRoom">
-		INSERT INTO room(rid, type, people, price, image)
-		VALUES(room_seq.NEXTVAL, #{type}, #{people}, #{price}, #{image})
+		INSERT INTO room(rid, type, people, bed, price, image)
+		VALUES(room_seq.NEXTVAL, #{type}, #{people}, #{bed}, #{price}, #{image})
 	</insert>
 	
 	<!-- "관리자, 객실목록" 객실 수정 -->
 	<update id="updateRoom">
 		UPDATE room
-		SET type=#{type}, people=#{people}, price=#{price}, image=#{image}, useyn=#{useyn}
+		SET type=#{type}, people=#{people}, bed=#{bed}, price=#{price}, image=#{image}, useyn=#{useyn}
 		WHERE rid=#{rid}
 	</update>
 	

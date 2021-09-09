@@ -36,7 +36,7 @@
                     <ul>
                         <li><span>크기:</span>30평</li>
                         <li><span>최대인원:</span>${roomRid1.people}인실</li>
-                        <li><span>침대:</span>킹사이즈 2개</li>
+                        <li><span>침대:</span>${roomRid1.bed}</li>
                         <li><span>서비스:</span>와이파이, 65인치 티비, 욕조, 안마기, 소파, 에어드레서</li>
                         <li><span>뷰:</span>한강 뷰</li>
                     </ul>
@@ -58,7 +58,7 @@
                     <ul>
                         <li><span>크기:</span>20평</li>
                         <li><span>최대인원:</span>${roomRid2.people}인실</li>
-                        <li><span>침대:</span>킹사이즈 1개, 퀸사이즈 1개</li>
+                        <li><span>침대:</span>${roomRid2.bed}</li>
                         <li><span>서비스:</span>와이파이, 65인치 티비, 욕조, 안마기, 에어드레서</li>
                         <li><span>뷰:</span>한강 뷰</li>
                     </ul>
@@ -80,7 +80,7 @@
                     <ul>
                         <li><span>크기:</span>15평</li>
                         <li><span>최대인원:</span>${roomRid3.people}인실</li>
-                        <li><span>침대:</span>킹사이즈 1개</li>
+                        <li><span>침대:</span>${roomRid3.bed}</li>
                         <li><span>서비스:</span>와이파이, 65인치 티비, 욕조, 에어드레서</li>
                         <li><span>뷰:</span>한강 뷰</li>
                     </ul>
@@ -102,7 +102,7 @@
                     <ul>
                         <li><span>크기:</span>12평</li>
                         <li><span>최대인원:</span>${roomRid4.people}인실</li>
-                        <li><span>침대:</span>트윈사이즈 2개</li>
+                        <li><span>침대:</span>${roomRid4.bed}</li>
                         <li><span>서비스:</span>와이파이, 65인치 티비, 욕조</li>
                         <li><span>뷰:</span>한강 뷰</li>
                     </ul>

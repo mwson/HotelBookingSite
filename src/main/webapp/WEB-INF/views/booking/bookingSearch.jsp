@@ -90,6 +90,7 @@
                                 <div class="BookingSearch__item__large">
                                     <div class="BookingSearch__item__large__pic">
                                         <a href="suite_room_detail"><img src="images/booking-search/bs-1.png" alt=""></a>
+                                        <!-- <a href="suite_room_detail"><img src="notice_images/${roomRid1.image}" alt=""></a> -->
                                         <div class="tag">${roomRid1.type}</div>
                                     </div>
                                 </div>
@@ -121,7 +122,7 @@
                                         <ul>
                                             <li><span class="icon_check"></span> 크기 : 30평</li>
                                             <li><span class="icon_check"></span> 최대인원 : ${roomRid1.people}인실</li>
-                                            <li><span class="icon_check"></span> 침대 : 킹사이즈 2개</li>
+                                            <li><span class="icon_check"></span> 침대 : ${roomRid1.bed}</li>
                                         </ul>
                                     </div>
                                     <div class="BookingSearch__text">
@@ -144,6 +145,7 @@
                                 <div class="BookingSearch__item__large">
                                     <div class="BookingSearch__item__large__pic">
                                         <a href="superior_room_detail"><img src="images/booking-search/bs-2.png" alt=""></a>
+                                        <!-- <a href="suite_room_detail"><img src="notice_images/${roomRid2.image}" alt=""></a> -->
                                         <div class="tag">${roomRid2.type}</div>
                                     </div>
                                 </div>
@@ -175,7 +177,7 @@
                                         <ul>
                                             <li><span class="icon_check"></span> 크기 : 20평</li>
                                             <li><span class="icon_check"></span> 최대인원 : ${roomRid2.people}인실</li>
-                                            <li><span class="icon_check"></span> 침대 : 킹사이즈 1개, 퀸사이즈 1개</li>
+                                            <li><span class="icon_check"></span> 침대 : ${roomRid2.bed}</li>
                                         </ul>
                                     </div>
                                     <div class="BookingSearch__text">
@@ -198,6 +200,7 @@
                                 <div class="BookingSearch__item__large">
                                     <div class="BookingSearch__item__large__pic">
                                         <a href="deluxe_room_detail"><img src="images/booking-search/bs-3.png" alt=""></a>
+                                        <!-- <a href="suite_room_detail"><img src="notice_images/${roomRid3.image}" alt=""></a> -->
                                         <div class="tag">${roomRid3.type}</div>
                                     </div>
                                 </div>
@@ -229,7 +232,7 @@
                                         <ul>
                                             <li><span class="icon_check"></span> 크기 : 15평</li>
                                             <li><span class="icon_check"></span> 최대인원 : ${roomRid3.people}인실</li>
-                                            <li><span class="icon_check"></span> 침대 : 킹사이즈 1개</li>
+                                            <li><span class="icon_check"></span> 침대 : ${roomRid3.bed}</li>
                                         </ul>
                                     </div>
                                     <div class="BookingSearch__text">
@@ -252,6 +255,7 @@
                                 <div class="BookingSearch__item__large">
                                     <div class="BookingSearch__item__large__pic">
                                         <a href="standard_room_detail"><img src="images/booking-search/bs-4.png" alt=""></a>
+                                        <!-- <a href="suite_room_detail"><img src="notice_images/${roomRid4.image}" alt=""></a> -->
                                         <div class="tag">${roomRid4.type}</div>
                                     </div>
                                 </div>
@@ -283,7 +287,7 @@
                                         <ul>
                                             <li><span class="icon_check"></span> 크기 : 12평</li>
                                             <li><span class="icon_check"></span> 최대인원 : ${roomRid4.people}인실</li>
-                                            <li><span class="icon_check"></span> 침대 : 트윈사이즈 2개</li>
+                                            <li><span class="icon_check"></span> 침대 : ${roomRid4.bed}</li>
                                         </ul>
                                     </div>
                                     <div class="BookingSearch__text" style="margin-bottom: 0;">

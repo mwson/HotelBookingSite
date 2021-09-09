@@ -55,6 +55,12 @@
 									</td>
 								</tr>
 								<tr>
+									<th style="width: 15%">침대</th>
+									<td>
+										<input type="text" class="form-control" id="bed" name="bed" value="${roomVO.bed}">
+									</td>
+								</tr>
+								<tr>
 									<th style="width: 15%">가격</th>
 									<td>
 										<input type="text" class="form-control" id="price" name="price" onKeyUp='NumFormat(this)' value="<fmt:formatNumber value="${roomVO.price}"/>">
