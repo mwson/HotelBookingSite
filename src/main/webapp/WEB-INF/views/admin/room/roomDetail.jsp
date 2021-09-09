@@ -40,7 +40,7 @@
 								</tr>
 								<tr>
 									<th style="width: 15%">최대인원</th>
-									<td>${roomVO.people}</td>
+									<td>${roomVO.people}명</td>
 								</tr>
 								<tr>
 									<th style="width: 15%">침대</th>

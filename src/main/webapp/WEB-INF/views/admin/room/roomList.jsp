@@ -60,7 +60,7 @@
                                                             ${roomVO.type}
                                                         </a>
                                                     </td>
-													<td>${roomVO.people}</td>   
+													<td>${roomVO.people}명</td>   
                                                     <td><fmt:formatNumber type="currency" value="${roomVO.price}"/></td>
                                                     <td><fmt:formatDate type="date" value="${roomVO.regdate}"/></td>
                                                 </tr>

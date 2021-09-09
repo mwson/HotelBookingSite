@@ -25,6 +25,10 @@
 									<td>${noticeVO.kind}</td>
 								</tr>
 								<tr>
+									<th style="width: 15%">작성자</th>
+									<td>${noticeVO.id}</td>
+								</tr>
+								<tr>
 									<th style="width: 15%">제목</th>
 									<td>${noticeVO.subject}</td>
 								</tr>

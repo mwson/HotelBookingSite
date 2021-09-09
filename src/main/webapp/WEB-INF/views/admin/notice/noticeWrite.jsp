@@ -9,7 +9,7 @@
 			<h1 class="h3 d-inline align-middle">공지사항 등록</h1>
 		</div>
 		
-		<form method="post" id="notice_write_form" name="notice_write_form" enctype="multipart/form-data"> 
+		<form method="post" id="notice_write_form" name="notice_write_form" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-8 col-lg-9">
 					<div class="card">
@@ -31,6 +31,12 @@
 										<!-- 종류 입력
 										<input type="text" class="form-control" id="kind" name="kind">
 										-->
+									</td>
+								</tr>
+								<tr>
+									<th style="width: 15%">작성자</th>
+									<td>
+										<input type="text" class="form-control" id="id" name="id" value="${sessionScope.adminUser.id}" readonly="readonly">
 									</td>
 								</tr>
 								<tr>

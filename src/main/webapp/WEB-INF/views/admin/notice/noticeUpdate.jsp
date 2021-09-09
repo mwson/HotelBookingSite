@@ -36,6 +36,12 @@
 									</td>
 								</tr>
 								<tr>
+									<th style="width: 15%">작성자</th>
+									<td>
+										<input type="text" class="form-control" id="id" name="id" value="${sessionScope.adminUser.id}" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
 									<th style="width: 15%">제목</th>
 									<td>
 										<input type="text" class="form-control" id="subject" name="subject" value="${noticeVO.subject}">

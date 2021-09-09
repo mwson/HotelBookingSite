@@ -29,23 +29,47 @@ function booking_search() {
 
 // "사용자, 예약" rid1(스위트 룸) 예약
 function booking_rid1() {
-	$('#roomRid').val(1);
-	$("#booking_form").attr("action", "booking").submit();
+    if ($("#checkin").val() >= $("#checkout").val()) {
+        alert("날짜가 잘못 입력 되었습니다. 올바른 날짜를 입력해주세요.");
+
+        return false;
+    } else {
+    	$('#roomRid').val(1);
+    	$("#booking_form").attr("action", "booking").submit();
+    }
 }
 // "사용자, 예약" rid2(슈페리어 룸) 예약 
 function booking_rid2() {
-	$('#roomRid').val(2);
-	$("#booking_form").attr("action", "booking").submit();
+    if ($("#checkin").val() >= $("#checkout").val()) {
+        alert("날짜가 잘못 입력 되었습니다. 올바른 날짜를 입력해주세요.");
+
+        return false;
+    } else {
+		$('#roomRid').val(2);
+		$("#booking_form").attr("action", "booking").submit();
+    }
 }
 // "사용자, 예약" rid3(디럭스 룸) 예약 
 function booking_rid3() {
-	$('#roomRid').val(3);
-	$("#booking_form").attr("action", "booking").submit();
+    if ($("#checkin").val() >= $("#checkout").val()) {
+        alert("날짜가 잘못 입력 되었습니다. 올바른 날짜를 입력해주세요.");
+
+        return false;
+    } else {
+		$('#roomRid').val(3);
+		$("#booking_form").attr("action", "booking").submit();
+    }
 }
 // "사용자, 예약" rid4(스탠다드 룸) 예약 
 function booking_rid4() {
-	$('#roomRid').val(4);
-	$("#booking_form").attr("action", "booking").submit();
+    if ($("#checkin").val() >= $("#checkout").val()) {
+        alert("날짜가 잘못 입력 되었습니다. 올바른 날짜를 입력해주세요.");
+
+        return false;
+    } else {
+		$('#roomRid').val(4);
+		$("#booking_form").attr("action", "booking").submit();
+    }
 }
 
 // "사용자, 예약" rid1(스위트 룸) 예약 불가
@@ -83,7 +107,13 @@ function booking_cancel() {
 // "사용자" 결제완료 화면 이동	
 function booking_complete() {
 	if(confirm("결제 하시겠습니까?")) {
-		$("#booking_payment_form").attr("action", "booking_complete").submit();
+	    if ($("#checkin").val() >= $("#checkout").val()) {
+	        alert("날짜가 잘못 입력 되었습니다. 올바른 날짜를 입력해주세요.");
+
+	        $("#booking_payment_form").attr("action", "booking_button").submit();
+	    } else {
+	    	$("#booking_payment_form").attr("action", "booking_complete").submit();
+	    }
 	} else {
 		alert("결제가 취소되었습니다.");
 		
