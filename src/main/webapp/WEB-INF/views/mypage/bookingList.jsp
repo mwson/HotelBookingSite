@@ -81,17 +81,27 @@
                                                         </td>      
                                                         <td>
 															<c:choose>
-                                            					<c:when test='${bookingVO.result=="1"}'>
-                                                					<span class="review">
-                                                						<span class="review" style="color: #f44336">예약대기<a href="booking_detail?bseq=${bookingVO.bseq}">(조회)</a></span>
-                                                					</span>
-                                            					</c:when>
-                                            					
-                                            					<c:otherwise>
-                                                					<span class="review">
-                                                						<span class="review" style="color: #007BFF">예약완료<a href="booking_detail?bseq=${bookingVO.bseq}">(조회)</a></span>
-                                                					</span>
-                                            					</c:otherwise>
+																<c:when test='${bookingVO.cancel=="1"}'>
+																	<c:choose>
+		                                            					<c:when test='${bookingVO.result=="1"}'>
+		                                                					<span class="review">
+		                                                						<span class="review" style="color: #f44336">예약대기<a href="booking_detail?bseq=${bookingVO.bseq}">(조회)</a></span>
+		                                                					</span>
+		                                            					</c:when>
+		                                            					
+		                                            					<c:otherwise>
+		                                                					<span class="review">
+		                                                						<span class="review" style="color: #007BFF">예약완료<a href="booking_detail?bseq=${bookingVO.bseq}">(조회)</a></span>
+		                                                					</span>
+		                                            					</c:otherwise>
+	                                            					</c:choose>
+	                                            				</c:when>
+	                                            				
+	                                            				<c:otherwise>
+	                                            					<span class="review">
+	                                                						<span class="review" style="color: #f44336">예약취소<a href="booking_detail?bseq=${bookingVO.bseq}">(조회)</a></span>
+	                                                					</span>
+	                                            				</c:otherwise>	
                                         					</c:choose>
                                                         </td>
                                                     </tr>

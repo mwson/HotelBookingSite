@@ -84,7 +84,7 @@
 		// 바 차트 그리기
 		var barchart_option = {
 			title: '예약별 판매 실적',
-			width: '700',
+			width: '580',
 			height: '450',
 			legend: {position: 'bottom'}
 		};
@@ -96,7 +96,7 @@
 		// 파이 차트 그리기
 		var piechart_option = {
 			title: '예약별 판매 실적',
-			width: '700',
+			width: '580',
 			height: '450',
 			legend: {position: 'bottom'}
 		};

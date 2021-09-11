@@ -6,10 +6,10 @@
 <main class="content">
 	<div class="container-fluid p-0">
 		<div class="mb-3">
-			<h1 class="h3 d-inline align-middle">상품수정</h1>
+			<h1 class="h3 d-inline align-middle">공지사항 등록</h1>
 		</div>
 		
-		<form method="post" id="notice_write_form" name="notice_write_form" enctype="multipart/form-data"> 
+		<form method="post" id="notice_write_form" name="notice_write_form" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-8 col-lg-9">
 					<div class="card">
@@ -23,7 +23,20 @@
 								<tr>
 									<th style="width: 15%">종류</th>
 									<td>
+										<select class="form-control" name="kind" id="kind">
+											<c:forEach items="${kindList}" var="kind">
+												<option value="${kind}">${kind}</option>
+											</c:forEach>
+										</select>
+										<!-- 종류 입력
 										<input type="text" class="form-control" id="kind" name="kind">
+										-->
+									</td>
+								</tr>
+								<tr>
+									<th style="width: 15%">작성자</th>
+									<td>
+										<input type="text" class="form-control" id="id" name="id" value="${sessionScope.adminUser.id}" readonly="readonly">
 									</td>
 								</tr>
 								<tr>

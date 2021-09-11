@@ -7,6 +7,7 @@ public class RoomVO {
 	private int rid;
 	private String type;
 	private int people;
+	private String bed;
 	private int price;
 	private String image;
 	private String useyn;
@@ -31,6 +32,13 @@ public class RoomVO {
 	}
 	public void setPeople(int people) {
 		this.people = people;
+	}
+	
+	public String getBed() {
+		return bed;
+	}
+	public void setBed(String bed) {
+		this.bed = bed;
 	}
 	
 	public int getPrice() {
@@ -63,8 +71,8 @@ public class RoomVO {
 	
 	@Override
 	public String toString() {
-		return "RoomVO [rid=" + rid + ", type=" + type + ", people=" + people + ", price=" + price + ", image=" + image
-				+ ", useyn=" + useyn + ", regdate=" + regdate + "]";
+		return "RoomVO [rid=" + rid + ", type=" + type + ", people=" + people + ", bed=" + bed + ", price=" + price
+				+ ", image=" + image + ", useyn=" + useyn + ", regdate=" + regdate + "]";
 	}
 	
 }

@@ -7,7 +7,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		alert("이미 예약된 날짜입니다. 다시 조회하세요.");
+		alert("예약이 불가능한 객실입니다. 다른 조건으로 검색하세요.");
 		history.go(-1);
 	</script>
 </body>

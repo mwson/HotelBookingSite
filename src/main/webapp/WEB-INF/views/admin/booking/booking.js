@@ -1,3 +1,10 @@
+// 엔터키 방지
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+    }
+}, true);
+
 // "관리자, 예약목록" 검색 
 function booking_search() {
 	$("#booking_list_form").attr("action", "admin_booking_list").submit();

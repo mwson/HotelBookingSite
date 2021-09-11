@@ -11,7 +11,7 @@
                     <h2>${noticeVO.kind} 상세</h2>
                     <ul>
                         <li><i class="fa fa-clock-o"></i><fmt:formatDate value="${noticeVO.indate}" type="date"/></li>
-                        <li><i class="fa fa-user"></i>그린호텔</li>
+                        <li><i class="fa fa-user"></i>${noticeVO.id}</li>
                     </ul>
                 </div>
             </div>

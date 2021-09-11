@@ -22,8 +22,9 @@
 								<thead>
 									<tr>
 										<th style="width: 15%">번호</th>
-										<th style="width: 20%">종류</th> 
-										<th style="width: 50%">제목</th>
+										<th style="width: 15%">작성자</th>
+										<th style="width: 15%">종류</th> 
+										<th style="width: 40%">제목</th>
 										<th style="width: 15%">작성일</th>
 									</tr>
 								</thead>
@@ -41,6 +42,7 @@
 											<c:forEach items="${noticeList}" var="noticeVO">
 												<tr>  
 													<td>${noticeVO.nseq}</td>
+													<td>${noticeVO.id}</td>
 													<td>${noticeVO.kind}</td> 
 													<td><a href="admin_notice_detail?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></td>      
 													<td><fmt:formatDate value="${noticeVO.indate}"/></td>

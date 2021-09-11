@@ -3,9 +3,7 @@ package com.green.biz.utils;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-/*
- * 화면에 표시할 페이지 버튼 정보 저장 클래스
- */
+// 화면에 표시할 페이지 버튼 정보 저장 클래스
 public class PageMaker {
 	
 	private Criteria cri;	// 페이지번호, 페이지당 항목 수

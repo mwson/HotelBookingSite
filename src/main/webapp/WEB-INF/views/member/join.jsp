@@ -2,15 +2,15 @@
 
 <%@include file="../header.jsp"%>   
 
-<div class="breadcrumb-option set-bg" data-setbg="images/breadcrumb-bg.jpg">
+<div class="breadcrumb-option set-bg" data-setbg="images/hbg-1.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h1>로그인</h1>
+                    <h1>회원가입</h1>
                     <div class="breadcrumb__links">
                         <a href="index">메인</a>
-                        <span>로그인</span>
+                        <span>회원가입</span>
                     </div>
                 </div>
             </div>

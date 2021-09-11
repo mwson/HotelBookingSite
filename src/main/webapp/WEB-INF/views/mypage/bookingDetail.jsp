@@ -43,12 +43,22 @@
                                     <th style="width: 15%">예약상태</th>
                                     <td>
                                         <c:choose>
-                                            <c:when test='${bookingVO.result=="1"}'>
-                                                <span class="review" style="color: #f44336">예약대기</span>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <span class="review" style="color: #007BFF">예약완료</span>
-                                            </c:otherwise>
+	                                        <c:when test='${bookingVO.cancel=="1"}'>
+	                                        	<c:choose>
+		                                            <c:when test='${bookingVO.result=="1"}'>
+		                                                <span class="review" style="color: #f44336">예약대기</span>
+		                                            </c:when>
+		                                            <c:otherwise>
+		                                                <span class="review" style="color: #007BFF">예약완료</span>
+		                                            </c:otherwise>
+	                                            </c:choose>
+	                                        </c:when>
+		                                            				
+											<c:otherwise>
+												<span class="review">
+													<span class="review" style="color: #f44336">예약취소</span>
+												</span>
+											</c:otherwise>
                                         </c:choose>
                                     </td>
                                 </tr>

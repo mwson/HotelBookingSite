@@ -43,9 +43,7 @@ public class Criteria {
 		}
 	}
 	
-	/*
-	 * 각 페이지에서 시작하는 항목 번호를 반환
-	 */
+	// 각 페이지에서 시작하는 항목 번호를 반환
 	public int getPageStart() {
 		//            1      *	    10     + 1
 		return (pageNum - 1) * rowsPerPage + 1;

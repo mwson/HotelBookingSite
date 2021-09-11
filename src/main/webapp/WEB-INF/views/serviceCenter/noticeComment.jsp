@@ -28,7 +28,7 @@
             <input type="hidden" id="nseq" name="nseq" value="${noticeVO.nseq}"/>
             <div class="row">
                 <div class="col-lg-4">
-                    <input type="text" id="writer" value="${sessionScope.loginUser.name}" placeholder="로그인이 필요합니다." readonly>
+                    <input type="text" id="id" name="id" value="${sessionScope.loginUser.id}" placeholder="로그인이 필요합니다." readonly>
                 </div>
             </div>        
             <textarea rows="3" cols="80" id="content" name="content" placeholder="댓글을 입력하세요."></textarea>
@@ -100,10 +100,10 @@
 			// 상품평의 각 항목별로 HTML 생성
 			$.each(commentList, function(index, item) {			
 				html += "<div id=ncseq" + item.ncseq + ">";
-				html += "<h5>" + item.writer + "</h5>";
+				html += "<h5>" + item.id + "</h5>";
 				html += "<span>" + displayTime(item.regdate) + "</span>";
 				html += "<div style='float: right;'>";
-				html += "<a href='javascript:update_comment_form(" + item.ncseq + "," + item.nseq + ",\"" + item.writer + "\"," + item.regdate + ",\"" + item.content + "\")'>수정</a>";
+				html += "<a href='javascript:update_comment_form(" + item.ncseq + "," + item.nseq + ",\"" + item.id + "\"," + item.regdate + ",\"" + item.content + "\")'>수정</a>";
 				html += "<a href='javascript:delete_comment(" + item.ncseq + "," + item.nseq + ")'>삭제</a>";
 				html += "</div>";
 				html += "<p>" + item.content + "</p>";
@@ -220,11 +220,11 @@
 	}
 	
 	// "사용자, 공지사항" 댓글 수정 폼
-	function update_comment_form(ncseq, nseq, writer, regdate, content) {
+	function update_comment_form(ncseq, nseq, id, regdate, content) {
 		var html = "";
 		
 		html += "<div id=ncseq" + ncseq + ">";
-		html += "<h5>" + writer + "</h5>";
+		html += "<h5>" + id + "</h5>";
 		html += "<span>" + displayTime(regdate) + "</span>";
 		html += "<div style='float: right;'>";
 		html += "<a href='javascript:update_comment(" + ncseq + "," + nseq + ")'>등록</a>";

@@ -1,3 +1,10 @@
+// 엔터키 방지
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+    }
+}, true);
+
 // "Q&A목록" 검색
 function go_search_qna() {
 	$("#qna_form").attr("action", "admin_qna_list").submit();
