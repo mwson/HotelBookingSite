@@ -86,7 +86,7 @@ function go_notice_list2() {
 
 // "공지사항 수정" 처리 
 function go_notice_update(nseq) {
-	if($("#kind").val() == "종류를 선택하세요") {
+	if($("#kind").val() == "-----------") {
 		alert("종류를 선택해주세요.");
 		$("#kind").focus();
 		

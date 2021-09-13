@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>호텔그린</title>
+	<title>그린호텔</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
 	<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <ul class="header__top__widget">
-                            <li><span class="icon_pin_alt"></span> 서울시 강남구 호텔그린</li>
+                            <li><span class="icon_pin_alt"></span> 서울시 강남구 그린호텔</li>
                             <li><span class="icon_phone"></span> 02-1234-5678</li>
                         </ul>
                     </div>
