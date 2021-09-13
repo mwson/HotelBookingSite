@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.green</groupId>
 	<artifactId>biz</artifactId>
-	<name>20_ShoppingMall</name>
+	<name>Hotel_Booking_Site</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
