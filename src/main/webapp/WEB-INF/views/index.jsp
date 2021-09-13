@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="hero__text">
-                    <h5>호텔그린에 오신걸 환영합니다.</h5>
+                    <h5>그린호텔에 오신걸 환영합니다.</h5>
                     <h2>최고의 추억으로<br>만들어 드리겠습니다.</h2>
                 </div>
 				<div class="col-lg-11" style="margin: 0 5%;">
@@ -57,7 +57,7 @@
                 <div class="home__about__text">
                     <div class="section-title">
                         <h5>유구한 역사를 가진 호텔</h5>
-                        <h2>호텔그린에 오신 여러분을<br>진심으로 환영합니다.</h2>
+                        <h2>그린호텔에 오신 여러분을<br>진심으로 환영합니다.</h2>
                     </div>
                     <p class="first-para">
                     	1981년 봄, 시가지와 교통발달에 유리한 서울특별시 동남부에 위치한 강남구에서 처음 창립된
