@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>호텔그린</title>
+	<title>그린호텔</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
 	<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
