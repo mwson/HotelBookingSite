@@ -149,7 +149,7 @@
 				</exclusion>
 				<exclusion>
 					<groupId>com.sun.jdmk</groupId>
-					<artifactId>jmxtools</artifactId>
+					<artifactId>jmxtools</artifactId> 
 				</exclusion>
 				<exclusion>
 					<groupId>com.sun.jmx</groupId>
