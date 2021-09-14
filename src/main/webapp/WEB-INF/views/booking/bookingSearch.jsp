@@ -89,8 +89,8 @@
                             <div class="col-lg-4 col-md-4">
                                 <div class="BookingSearch__item__large">
                                     <div class="BookingSearch__item__large__pic">
-                                        <a href="suite_room_detail"><img src="images/booking-search/bs-1.png" alt=""></a>
-                                        <!-- <a href="suite_room_detail"><img src="room_images/${roomRid1.image}" alt=""></a> -->
+                                        <!-- <a href="suite_room_detail"><img src="images/booking-search/bs-1.png" alt=""></a> -->
+                                        <a href="suite_room_detail"><img src="room_images/${roomRid1.image}" alt=""></a>
                                         <div class="tag">${roomRid1.type}</div>
                                     </div>
                                 </div>
@@ -144,8 +144,8 @@
                             <div class="col-lg-4 col-md-4">
                                 <div class="BookingSearch__item__large">
                                     <div class="BookingSearch__item__large__pic">
-                                        <a href="superior_room_detail"><img src="images/booking-search/bs-2.png" alt=""></a>
-                                        <!-- <a href="suite_room_detail"><img src="room_images/${roomRid2.image}" alt=""></a> -->
+                                        <!-- <a href="superior_room_detail"><img src="images/booking-search/bs-2.png" alt=""></a> -->
+                                        <a href="suite_room_detail"><img src="room_images/${roomRid2.image}" alt=""></a>
                                         <div class="tag">${roomRid2.type}</div>
                                     </div>
                                 </div>
@@ -199,8 +199,8 @@
                             <div class="col-lg-4 col-md-4">
                                 <div class="BookingSearch__item__large">
                                     <div class="BookingSearch__item__large__pic">
-                                        <a href="deluxe_room_detail"><img src="images/booking-search/bs-3.png" alt=""></a>
-                                        <!-- <a href="suite_room_detail"><img src="room_images/${roomRid3.image}" alt=""></a> -->
+                                        <!-- <a href="deluxe_room_detail"><img src="images/booking-search/bs-3.png" alt=""></a> -->
+                                        <a href="suite_room_detail"><img src="room_images/${roomRid3.image}" alt=""></a>
                                         <div class="tag">${roomRid3.type}</div>
                                     </div>
                                 </div>
@@ -254,8 +254,8 @@
                             <div class="col-lg-4 col-md-4">
                                 <div class="BookingSearch__item__large">
                                     <div class="BookingSearch__item__large__pic">
-                                        <a href="standard_room_detail"><img src="images/booking-search/bs-4.png" alt=""></a>
-                                        <!-- <a href="suite_room_detail"><img src="room_images/${roomRid4.image}" alt=""></a> -->
+                                        <!-- <a href="standard_room_detail"><img src="images/booking-search/bs-4.png" alt=""></a> -->
+                                        <a href="suite_room_detail"><img src="room_images/${roomRid4.image}" alt=""></a>
                                         <div class="tag">${roomRid4.type}</div>
                                     </div>
                                 </div>
